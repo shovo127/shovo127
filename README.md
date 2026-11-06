@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/shovo127/shovo127/main/assets/banner.svg" width="100%" alt="Mohammed Thuhidul Islam Shovo — AI, Automation, Android and Web Engineering" />
+<img src="assets/banner.svg" width="100%" alt="Mohammed Thuhidul Islam Shovo — AI, Automation, Android and Web Engineering" />
 
 <a href="https://readme-typing-svg.demolab.com/demo/"><img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=20&duration=2600&pause=700&color=43E6C5&center=true&vCenter=true&width=820&lines=Building+technology+that+solves+real+problems.;Exploring+AI%2C+automation+and+software+engineering.;Engineering+browser+workflows+and+Android+utilities.;Learning+continuously.+Building+thoughtfully.+Shipping+practically." alt="Animated typing introduction" /></a>
 
@@ -88,7 +88,7 @@ Learning platforms, multilingual experiences, interactive practice, digital tool
 
 <div align="center">
 
-<a href="https://github.com/shovo127/kostenlos-ai"><img src="https://raw.githubusercontent.com/shovo127/shovo127/main/assets/projects/kostenlos-ai.svg" width="49%" alt="Kostenlos AI — Multi-provider AI chat"/></a>
+<a href="https://github.com/shovo127/kostenlos-ai"><img src="assets/projects/kostenlos-ai.svg" width="49%" alt="Kostenlos AI — Multi-provider AI chat"/></a>
 <a href="https://github.com/shovo127/visaflowx"><img src="https://raw.githubusercontent.com/shovo127/shovo127/main/assets/projects/visaflowx.svg" width="49%" alt="VisaFlowX — IVAC browser workflow assistant"/></a>
 <a href="https://github.com/shovo127/visaflowx-universal"><img src="https://raw.githubusercontent.com/shovo127/shovo127/main/assets/projects/visaflowx-universal.svg" width="49%" alt="VisaFlowX Universal — Configurable browser automation"/></a>
 <a href="https://github.com/shovo127/Noti-Fixer-for-Chinese-Devices"><img src="https://raw.githubusercontent.com/shovo127/shovo127/main/assets/projects/noti-fixer.svg" width="49%" alt="Noti-Fixer — Android notification diagnostics"/></a>
