@@ -90,12 +90,12 @@ Learning platforms, multilingual experiences, interactive practice, digital tool
 
 <div align="center">
 
-<a href="https://github.com/shovo127/kostenlos-ai"><img src="assets/projects/kostenlos-ai.svg" width="49%" alt="Kostenlos AI — Multi-provider AI chat"/></a>
-<a href="https://github.com/shovo127/visaflowx"><img src="https://raw.githubusercontent.com/shovo127/shovo127/main/assets/projects/visaflowx.svg" width="49%" alt="VisaFlowX — IVAC browser workflow assistant"/></a>
-<a href="https://github.com/shovo127/visaflowx-universal"><img src="https://raw.githubusercontent.com/shovo127/shovo127/main/assets/projects/visaflowx-universal.svg" width="49%" alt="VisaFlowX Universal — Configurable browser automation"/></a>
-<a href="https://github.com/shovo127/Noti-Fixer-for-Chinese-Devices"><img src="https://raw.githubusercontent.com/shovo127/shovo127/main/assets/projects/noti-fixer.svg" width="49%" alt="Noti-Fixer — Android notification diagnostics"/></a>
-<a href="https://github.com/shovo127/Circle-to-Search-for-Xiaomi"><img src="https://raw.githubusercontent.com/shovo127/shovo127/main/assets/projects/circle-search.svg" width="49%" alt="Circle to Search for Xiaomi — Native Android assistant shortcut"/></a>
-<a href="https://github.com/shovo127/IPTV-By-Shovo"><img src="https://raw.githubusercontent.com/shovo127/shovo127/main/assets/projects/iptv-shovo.svg" width="49%" alt="IPTV By Shovo — Global M3U playlist collection"/></a>
+<a href="https://github.com/shovo127/kostenlos-ai"><img src="./assets/projects/kostenlos-ai.svg" width="49%" alt="Kostenlos AI — Multi-provider AI chat"/></a>
+<a href="https://github.com/shovo127/visaflowx"><img src="./assets/projects/visaflowx.svg" width="49%" alt="VisaFlowX — IVAC browser workflow assistant"/></a>
+<a href="https://github.com/shovo127/visaflowx-universal"><img src="./assets/projects/visaflowx-universal.svg" width="49%" alt="VisaFlowX Universal — Configurable browser automation"/></a>
+<a href="https://github.com/shovo127/Noti-Fixer-for-Chinese-Devices"><img src="./assets/projects/noti-fixer.svg" width="49%" alt="Noti-Fixer — Android notification diagnostics"/></a>
+<a href="https://github.com/shovo127/Circle-to-Search-for-Xiaomi"><img src="./assets/projects/circle-search.svg" width="49%" alt="Circle to Search for Xiaomi — Native Android assistant shortcut"/></a>
+<a href="https://github.com/shovo127/IPTV-By-Shovo"><img src="./assets/projects/iptv-shovo.svg" width="49%" alt="IPTV By Shovo — Global M3U playlist collection"/></a>
 
 </div>
 
