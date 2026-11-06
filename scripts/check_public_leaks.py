@@ -12,7 +12,7 @@ PATTERNS = [
     re.compile(r"\bAIza[0-9A-Za-z_-]{30,}\b"),
     re.compile(r"\bsk-proj-[A-Za-z0-9_-]{30,}\b"),
     re.compile(r"\bsk-[A-Za-z0-9]{32,}\b"),
-    re.compile(r"\b xox[baprs]-[A-Za-z0-9-]{10,}\b"),
+    re.compile(r"\bxox[baprs]-[A-Za-z0-9-]{10,}\b"),
 ]
 FORBIDDEN_NAMES = {
     ".env", ".env.local", ".env.production", "credentials.json",
