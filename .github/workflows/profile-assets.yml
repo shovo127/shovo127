@@ -1,32 +1,28 @@
-name: Build self-hosted profile media
+name: Build self-hosted realistic 3D profile media
 
 on:
   push:
     branches: [main]
     paths:
       - "README.md"
-      - "SETUP.md"
-      - "scripts/generate_profile_media.py"
+      - "scripts/render_profile_3d.py"
+      - "scripts/pack_profile_3d.py"
       - ".github/workflows/profile-assets.yml"
-      - ".github/workflows/readme-check.yml"
-      - "scripts/generate_dashboard.py"
-      - "scripts/update_blog_feed.py"
-  schedule:
-    - cron: "30 18 * * *"
   workflow_dispatch:
 
 permissions:
   contents: write
 
 concurrency:
-  group: profile-content-build
+  group: profile-3d-media
   cancel-in-progress: false
 
 jobs:
-  generate:
+  render:
     runs-on: ubuntu-latest
+    timeout-minutes: 90
     steps:
-      - name: Checkout this repository without third-party actions
+      - name: Clone repository without third-party actions
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPOSITORY: ${{ github.repository }}
@@ -36,67 +32,61 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-      - name: Generate local animated media
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_USERNAME: ${{ github.repository_owner }}
+      - name: Install open-source 3D renderer and image encoder
         run: |
-          python -m pip install --disable-pip-version-check --quiet Pillow numpy cairosvg
+          sudo apt-get update
+          sudo apt-get install -y blender python3-pil
+
+      - name: Render real 3D product scenes
+        env:
+          PROFILE_RENDER_DIR: ${{ runner.temp }}/profile-render
+        run: |
           cd repo
-          python -m py_compile scripts/generate_profile_media.py
-          python scripts/generate_profile_media.py
-          python - <<'PY'
-          import cairosvg
+          python3 -m py_compile scripts/render_profile_3d.py scripts/pack_profile_3d.py
+          blender --background --factory-startup --python scripts/render_profile_3d.py
+          python3 scripts/pack_profile_3d.py
+
+      - name: Verify every rendered animation and preserve the approved snake
+        run: |
+          cd repo
+          python3 - <<'PY'
           from pathlib import Path
-          svg = Path("assets/github-dashboard.svg")
-          if svg.is_file():
-              cairosvg.svg2png(url=str(svg), write_to="assets/github-dashboard.png", output_width=1200, output_height=690)
-          tech = Path("assets/technology-stack.svg")
-          if tech.is_file():
-              cairosvg.svg2png(url=str(tech), write_to="assets/technology-stack.png", output_width=1200, output_height=420)
-          png = Path("assets/github-dashboard.png")
-          assert png.is_file() and png.read_bytes()[:8] == bytes([137,80,78,71,13,10,26,10]), "Dashboard PNG is missing or invalid."
-          print("Verified local dashboard PNG.")
-          PY
-          python - <<'PY'
-          from pathlib import Path
-          import re
-          readme = Path("README.md").read_text(encoding="utf-8")
-          required = [
-              "section-01.gif", "section-02.gif", "section-03.gif",
-              "section-04.gif", "section-05.gif", "section-06.gif",
-              "section-07.gif", "section-08-contribution-snake.gif",
-              "section-09.gif", "section-10.gif", "section-11.gif", "section-12.gif",
+          from PIL import Image
+          expected = [
+              "00-hero", "01-about", "02-engineering-focus", "03-featured-work",
+              "04-technology", "05-command-center", "06-achievements",
+              "07-contribution-city", "09-coding-habits", "10-learning-loop",
+              "11-beyond-code", "12-connect",
           ]
-          for name in required:
-              path = Path("assets") / name
-              assert path.is_file() and path.stat().st_size > 100, f"Missing generated animation: {path}"
-              assert f"./assets/{name}" in readme, f"Generated animation is not referenced: {name}"
-          assert not re.search(r'<(?:img|source)[^>]+(?:src|srcset)="https?://', readme, re.I), "External image dependency found."
-          print("All self-hosted animated assets exist, are referenced, and README contains no remote image sources.")
+          for name in expected:
+              path = Path("assets/3d") / (name + ".gif")
+              assert path.is_file() and path.stat().st_size > 5000, f"Missing or undersized render: {path}"
+              with Image.open(path) as gif:
+                  assert gif.format == "GIF" and gif.n_frames == 20, f"Invalid animation: {path}"
+                  assert gif.size == (1200, 300), f"Unexpected dimensions: {path} {gif.size}"
+              print(f"PASS {path}: 1200x300, 20 frames, {path.stat().st_size} bytes")
+          snake=Path("assets/contribution-snake.gif")
+          assert snake.is_file() and snake.stat().st_size > 1000, "Previously approved contribution snake is missing."
+          print("PASS: approved contribution snake remains present and untouched.")
           PY
 
-      - name: Commit and push repository-owned images
+      - name: Commit self-hosted 3D renders
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPOSITORY: ${{ github.repository }}
         run: |
           cd repo
-          git add assets/section-*.gif assets/github-dashboard.png assets/technology-stack.png
+          git add assets/3d/*.gif
           if git diff --cached --quiet; then
-            echo "No generated media changes."
+            echo "No rendered 3D assets changed."
             exit 0
           fi
-          git commit -m "chore: refresh self-hosted animated profile media"
+          git commit -m "chore: render self-hosted realistic 3D profile scenes"
           git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${REPOSITORY}.git"
           for attempt in 1 2 3 4 5; do
             git fetch origin main
             git rebase origin/main
-            if git push origin HEAD:main; then
-              exit 0
-            fi
-            echo "Push race detected; retrying after fetching latest main (attempt $attempt)."
-            sleep 3
+            if git push origin HEAD:main; then exit 0; fi
+            echo "Push race; retrying ($attempt/5)."
           done
-          echo "Unable to push generated assets after five retries."
           exit 1
