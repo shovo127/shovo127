@@ -37,9 +37,20 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_USERNAME: ${{ github.repository_owner }}
         run: |
-          python -m pip install --disable-pip-version-check --quiet Pillow numpy
+          python -m pip install --disable-pip-version-check --quiet Pillow numpy cairosvg
           cd repo
+          python -m py_compile scripts/generate_profile_media.py
           python scripts/generate_profile_media.py
+          python - <<'PY'
+          import cairosvg
+          from pathlib import Path
+          svg = Path("assets/github-dashboard.svg")
+          if svg.is_file():
+              cairosvg.svg2png(url=str(svg), write_to="assets/github-dashboard.png", output_width=1200, output_height=690)
+          png = Path("assets/github-dashboard.png")
+          assert png.is_file() and png.read_bytes().startswith(b"\\x89PNG\\r\\n\\x1a\\n"), "Dashboard PNG is missing or invalid."
+          print("Verified local dashboard PNG.")
+          PY
           python - <<'PY'
           from pathlib import Path
           import re
@@ -64,7 +75,7 @@ jobs:
           REPOSITORY: ${{ github.repository }}
         run: |
           cd repo
-          git add assets/section-*.gif
+          git add assets/section-*.gif assets/github-dashboard.png
           if git diff --cached --quiet; then
             echo "No generated media changes."
             exit 0
