@@ -275,4 +275,5 @@ for slug,builder in SCENES:
         scene.frame_set(frame)
         scene.render.filepath=os.path.join(OUT,slug+"_%03d.png"%frame)
         bpy.ops.render.render(write_still=True)
-    print("RENDERED_PROFILE_SCENE",slug)
+        print("FRAME_RENDERED",slug,frame,"/",FRAMES,flush=True)
+    print("RENDERED_PROFILE_SCENE",slug,flush=True)
