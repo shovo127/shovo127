@@ -72,7 +72,7 @@ def render(section,frame,total):
     xs=[660,800,940,1080]
     if section==1:
         metallic(d,900,143,76); d=ImageDraw.Draw(im,"RGBA")
-        for r,ry,a in [(104,42,frame*180/total),(128,52,55-i*180/n)]:
+        for r,ry,a in [(104,42,frame*180/total),(128,52,55-frame*180/total)]:
             pts=[]
             for q in range(181):
                 t=2*math.pi*q/180; ang=math.radians(a)
