@@ -15,8 +15,14 @@ def mat(name,color,metal=0.0,rough=.35,emission=None):
     p.inputs["Metallic"].default_value=metal
     p.inputs["Roughness"].default_value=rough
     if emission:
-        p.inputs["Emission Color"].default_value=(*emission,1)
-        p.inputs["Emission Strength"].default_value=.45
+        emission_input = p.inputs.get("Emission Color") or p.inputs.get("Emission")
+        if emission_input: emission_input.default_value=(*emission,1)
+        if p.inputs.get("Emission Strength"): p.inputs["Emission Strength"].default_value=.32
+    # Fine-scale surface variation keeps machined metal from looking like flat plastic.
+    nodes=m.node_tree.nodes; links=m.node_tree.links
+    noise=nodes.new("ShaderNodeTexNoise"); noise.inputs["Scale"].default_value=145; noise.inputs["Detail"].default_value=2
+    bump=nodes.new("ShaderNodeBump"); bump.inputs["Strength"].default_value=.075; bump.inputs["Distance"].default_value=.012
+    links.new(noise.outputs["Fac"],bump.inputs["Height"]); links.new(bump.outputs["Normal"],p.inputs["Normal"])
     return m
 
 STEEL=mat("Brushed titanium",(0.36,.43,.48),.88,.24)
@@ -72,6 +78,22 @@ def text_obj(body,loc,size,material):
     bpy.ops.object.text_add(location=loc,rotation=(math.radians(90),0,0))
     o=bpy.context.object; o.data.body=body; o.data.size=size; o.data.extrude=.001
     assign(o,material); return o
+
+def hero_turbo():
+    # A restrained, machined turbocharger assembly as the profile's hero object.
+    torus("Turbo compressor housing",(2,0,0),.93,.24,STEEL,(math.pi/2,0,0))
+    torus("Machined housing lip",(2,-.23,0),.92,.055,GOLD,(math.pi/2,0,0))
+    cyl("Compressor inlet",(2,-.24,0),.68,.12,DARK,bev=.035).rotation_euler[0]=math.pi/2
+    cyl("Compressor hub",(2,-.34,0),.19,.12,STEEL,bev=.025).rotation_euler[0]=math.pi/2
+    for i in range(11):
+        a=2*math.pi*i/11
+        x=2+.48*math.cos(a); z=.48*math.sin(a)
+        rod("Compressor impeller blade",(2,-.39,0),(x,-.39,z),.045,WHITE)
+    cyl("Turbine shaft",(2,.34,0),.22,.95,STEEL,bev=.025).rotation_euler[0]=math.pi/2
+    torus("Rear turbine flange",(2,.82,0),.62,.1,STEEL,(math.pi/2,0,0))
+    for i in range(8):
+        a=2*math.pi*i/8
+        sphere("Flange bolt",(2+.78*math.cos(a),.82,.78*math.sin(a)),.065,GOLD)
 
 def piston():
     cyl("Piston crown",(2.1,0,.2),.88,.28,STEEL)
@@ -189,6 +211,7 @@ def connector():
     torus("Cable strain relief",(2.7,.78,0),.2,.04,STEEL,(0,math.pi/2,0))
 
 SCENES=[
+ ("00-hero",hero_turbo),
  ("01-about",piston),
  ("02-engineering-focus",chip),
  ("03-featured-work",laptop),
@@ -231,7 +254,10 @@ for slug,builder in SCENES:
     scene.render.resolution_x=W; scene.render.resolution_y=H; scene.render.resolution_percentage=100
     scene.render.image_settings.file_format="PNG"; scene.render.film_transparent=False
     scene.world.color=(.012,.018,.025)
-    scene.view_settings.view_transform="AgX"
+    if "AgX" in scene.view_settings.bl_rna.properties["view_transform"].enum_items:
+        scene.view_settings.view_transform="AgX"
+    else:
+        scene.view_settings.view_transform="Filmic"
     scene.render.image_settings.color_mode="RGB"
     scene.frame_start=1; scene.frame_end=FRAMES
     # A restrained product turn, not a fast decorative loop.
