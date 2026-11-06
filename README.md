@@ -133,11 +133,15 @@ I prefer sustainable progress: plan clearly, build in small steps, test carefull
 
 ## 11 / Beyond Code
 
+<img src="./assets/beyond-code-motion.gif" width="100%" alt="Subtle animated line connecting engineering, language learning, technology and exploration" />
+
 - **Automotive engineering:** connecting mechanical systems, electronics and software.
 - **Language learning:** German and tools that make structured learning more accessible.
 - **Technology exploration:** AI products, Android customization, PC hardware and practical automation.
 
 ## 12 / Let's Connect
+
+<img src="./assets/connect-motion.gif" width="100%" alt="Subtle animated connection nodes" />
 
 <div align="center">
 
