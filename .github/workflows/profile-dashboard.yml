@@ -1,6 +1,11 @@
 name: Refresh profile dashboard
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/generate_dashboard.py"
+      - ".github/workflows/profile-dashboard.yml"
   schedule:
     - cron: "11 18 * * *"
   workflow_dispatch:
