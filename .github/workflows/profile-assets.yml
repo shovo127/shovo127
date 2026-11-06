@@ -9,7 +9,6 @@ on:
       - "scripts/generate_profile_media.py"
       - ".github/workflows/profile-assets.yml"
       - ".github/workflows/readme-check.yml"
-      - ".github/workflows/profile-dashboard.yml"
       - "scripts/generate_dashboard.py"
       - "scripts/update_blog_feed.py"
   schedule:
