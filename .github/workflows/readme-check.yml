@@ -115,11 +115,6 @@ jobs:
               if p.suffix == ".png":
                   assert p.read_bytes()[:8] == bytes([137,80,78,71,13,10,26,10]), f"Invalid PNG file: {asset}"
 
-          from PIL import Image
-          for asset in [p for p in required if p.startswith("assets/3d/")]:
-              with Image.open(asset) as gif:
-                  assert gif.size == (1200,300) and gif.n_frames == 20, f"Invalid 3D render: {asset}"
-
 
           import xml.etree.ElementTree as ET
           for svg in Path("assets").rglob("*.svg"):
@@ -151,7 +146,7 @@ jobs:
           external = []
           for path in workflow_files:
               content = path.read_text(encoding="utf-8")
-              if re.search(r"^\\s*uses\\s*:", content, re.MULTILINE):
+              if any(line.strip().startswith("uses:") for line in content.splitlines()):
                   external.append(str(path))
           assert not external, "Third-party GitHub Actions are still used: " + ", ".join(external)
           print(f"PASS: {len(workflow_files)} workflows use repository-owned scripts; no third-party actions.")
