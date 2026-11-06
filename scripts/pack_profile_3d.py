@@ -4,7 +4,7 @@ import os
 
 src=Path(os.environ.get("PROFILE_RENDER_DIR","/tmp/profile-render"))
 dst=Path("assets/3d"); dst.mkdir(parents=True,exist_ok=True)
-for prefix in ("01-about","02-engineering-focus","03-featured-work","04-technology","05-command-center","06-achievements","07-contribution-city","09-coding-habits","10-learning-loop","11-beyond-code","12-connect"):
+for prefix in ("00-hero","01-about","02-engineering-focus","03-featured-work","04-technology","05-command-center","06-achievements","07-contribution-city","09-coding-habits","10-learning-loop","11-beyond-code","12-connect"):
     files=sorted(src.glob(prefix+"_*.png"))
     if len(files)!=20:
         raise SystemExit(f"{prefix}: expected 20 rendered frames, found {len(files)}")
