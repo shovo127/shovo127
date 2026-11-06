@@ -10,6 +10,7 @@ permissions:
 
 jobs:
   update:
+    if: ${{ vars.BLOG_FEED_URL != '' }}
     runs-on: ubuntu-latest
     steps:
       - name: Update profile feed
