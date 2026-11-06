@@ -1,0 +1,49 @@
+name: Update latest blog posts
+
+on:
+  schedule:
+    - cron: "13 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: profile-blog-feed
+  cancel-in-progress: false
+
+jobs:
+  update:
+    if: ${{ vars.BLOG_FEED_URL != '' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone this repository
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          git clone --depth 1 "https://x-access-token:${GH_TOKEN}@github.com/${REPOSITORY}.git" repo
+          cd repo
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Update README from RSS or Atom
+        env:
+          BLOG_FEED_URL: ${{ vars.BLOG_FEED_URL }}
+        run: |
+          cd repo
+          python scripts/update_blog_feed.py
+
+      - name: Commit feed changes
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          cd repo
+          git add README.md
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "chore: update latest blog posts"
+          git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${REPOSITORY}.git"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
