@@ -1,12 +1,11 @@
 <div align="center">
 
-<img src="./assets/section-01.gif" width="100%" alt="Shovo — automobile engineering, software products and practical problem-solving. Subtle technical motion graphic." />
+<img src="./assets/3d/00-hero.gif" width="100%" alt="Self-hosted cinematic 3D turbocharger product render with machined metal surfaces and studio lighting" />
 
 ### Mohammed Thuhidul Islam Shovo
-
 **Automobile Engineering Graduate · Independent Software Builder · Technology Enthusiast**
 
-I build practical digital products across AI applications, browser automation, Android utilities and web technology. My approach is simple: understand a real problem, design a useful solution, and improve it through careful engineering.
+*I turn curiosity into practical tools — combining engineering thinking with software, automation and AI.*
 
 [Projects](https://github.com/shovo127?tab=repositories) · [Lerne Deutsch Mit Technologie](https://lernedeutschmittechnologie.tech) · [MailMerge by Shovo](https://mailmergebyshovo.qzz.io/) · [GitHub](https://github.com/shovo127)
 
@@ -16,120 +15,113 @@ I build practical digital products across AI applications, browser automation, A
 
 ## 01 / About Me
 
-<img src="./assets/section-01.gif" width="100%" alt="Professional engineering identity visual with restrained metallic orbital motion." />
+<img src="./assets/3d/01-about.gif" width="100%" alt="Photorealistic 3D machined automotive piston and connecting rod in a dark product-photography studio" />
 
-I’m a technology-focused engineer from **Dhaka, Bangladesh**, with a Diploma in Automobile Engineering. My interests sit at the intersection of engineering, software, automation and accessible digital learning.
+### Engineer by training. Builder by curiosity.
 
-- **Education:** Diploma in Engineering — Automobile, Dhaka Polytechnic Institute
-- **Current learning:** German language; preparing for TELC Deutsch B2
-- **Building:** AI-powered tools, browser automation and practical web applications
-- **Exploring:** Android systems, HyperOS utilities, PC hardware and developer tooling
-- **Working principle:** build useful things, verify them carefully and improve them with evidence
+I’m based in **Dhaka, Bangladesh**, with a Diploma in Automobile Engineering from **Dhaka Polytechnic Institute**. My interests connect mechanical systems, software, digital products and practical problem-solving.
+
+- 🎓 Diploma in Engineering — Automobile
+- 🇩🇪 Learning German; preparing for TELC Deutsch B2
+- 🧩 Building AI-powered tools and browser automation
+- 📱 Exploring Android, HyperOS and device reliability
+- 🌱 Learning by building, testing and improving
+
+**My principle:** make technology useful, understandable and accessible.
 
 ## 02 / Engineering Focus
 
-<img src="./assets/section-02.gif" width="100%" alt="Four engineering disciplines represented by restrained technical illustrations: AI systems, automation, Android and education technology." />
+<img src="./assets/3d/02-engineering-focus.gif" width="100%" alt="Photorealistic 3D processor assembly with machined contacts and glass die, rendered in a product studio" />
 
-| Discipline | Areas of interest | Selected work |
-|---|---|---|
-| **AI Applications** | Multi-provider AI experiences, API integrations and practical AI workflows | [Kostenlos AI](https://github.com/shovo127/kostenlos-ai) |
-| **Automation Engineering** | Browser extensions, configurable workflows, scheduling, monitoring and recovery | [VisaFlowX](https://github.com/shovo127/visaflowx) · [Universal](https://github.com/shovo127/visaflowx-universal) |
-| **Android & Device Utilities** | Android tooling, HyperOS utilities, diagnostics and notification reliability | [Noti-Fixer](https://github.com/shovo127/Noti-Fixer-for-Chinese-Devices) |
-| **Web & Learning Technology** | Multilingual experiences, interactive practice and digital learning tools | [Lerne Deutsch Mit Technologie](https://lernedeutschmittechnologie.tech) |
+I work across connected disciplines rather than treating technology as isolated tools:
+
+- **AI applications** — useful AI experiences, API integrations and multi-provider workflows.
+- **Automation engineering** — browser workflows, scheduling, monitoring, retries and error recovery.
+- **Android systems** — device tooling, HyperOS utilities, diagnostics and notification reliability.
+- **Learning technology** — multilingual learning, interactive practice and exam preparation.
 
 ## 03 / Featured Work
 
-<img src="./assets/section-03.gif" width="100%" alt="Selected projects connected through a precise technical system diagram." />
+<img src="./assets/3d/03-featured-work.gif" width="100%" alt="Photorealistic 3D workstation with an open laptop and illuminated software display in a cinematic studio" />
 
-| Project | Purpose |
+
+
+### More projects
+
+| Project | What it explores |
 |---|---|
-| [Kostenlos AI](https://github.com/shovo127/kostenlos-ai) | Multi-provider AI chat experience |
-| [VisaFlowX](https://github.com/shovo127/visaflowx) | Browser workflow assistant for IVAC processes |
-| [VisaFlowX Universal](https://github.com/shovo127/visaflowx-universal) | Configurable browser automation |
-| [Noti-Fixer](https://github.com/shovo127/Noti-Fixer-for-Chinese-Devices) | Android notification diagnostics and device troubleshooting |
-| [Circle to Search for Xiaomi](https://github.com/shovo127/Circle-to-Search-for-Xiaomi) | Xiaomi-focused Android assistant shortcut |
-| [IPTV By Shovo](https://github.com/shovo127/IPTV-By-Shovo) | M3U playlist and media utility project |
-
-### More work
-
-- [Lerne Deutsch Mit Technologie](https://lernedeutschmittechnologie.tech) — German-learning platform and exam preparation.
-- [MailMerge by Shovo](https://mailmergebyshovo.qzz.io/) — email productivity and automation.
-- [Smart Scanner Pro](https://github.com/shovo127/Smart-Scanner-Pro) — utility application.
-- [All public repositories](https://github.com/shovo127?tab=repositories) — explore the complete project list.
+| [Lerne Deutsch Mit Technologie](https://lernedeutschmittechnologie.tech) | German learning, language practice and exam preparation |
+| [MailMerge by Shovo](https://mailmergebyshovo.qzz.io/) | Email productivity and automation |
+| [Smart Scanner Pro](https://github.com/shovo127/Smart-Scanner-Pro) | Utility application |
+| [All repositories](https://github.com/shovo127?tab=repositories) | Explore public source code |
 
 ## 04 / Technology & Tools
 
-<img src="./assets/section-04.gif" width="100%" alt="Technology stack arranged in a restrained technical layout." />
+<img src="./assets/technology-stack.svg" width="100%" alt="Self-hosted technology toolkit graphic covering web, programming, platforms, infrastructure and creative tools" />
 
-| Area | Technologies and tools |
-|---|---|
-| **Web & Programming** | HTML, CSS, JavaScript, TypeScript, Python, React, Next.js, Node.js, Tailwind CSS |
-| **Platforms** | Android, Linux, Windows |
-| **Infrastructure & Developer Tools** | Git, GitHub, Cloudflare, Vercel, Appwrite, Firebase, PowerShell |
-| **Creative & Productivity** | Photoshop, Illustrator, Premiere Pro, VS Code |
+<img src="./assets/technology-motion.gif" width="100%" alt="Subtle animated highlights moving across the technology toolkit" />
 
-<sub>These represent technologies I work with or explore. They are not proficiency ratings or claims of equal expertise.</sub>
+<sub>These are technologies I work with or explore — not claims of equal proficiency.</sub>
 
 ## 05 / GitHub Command Center
 
-<img src="./assets/section-05.gif" width="100%" alt="Professional analytics visual for public GitHub repository data." />
+<img src="./assets/github-dashboard.svg" width="100%" alt="Self-hosted GitHub dashboard showing public repositories, followers, stars, languages and recently updated projects" />
 
-<img src="./assets/github-dashboard.png" width="100%" alt="Self-hosted GitHub dashboard with public repository metrics, language distribution and recently updated projects." />
+<img src="./assets/dashboard-motion.gif" width="100%" alt="Animated dashboard accent line" />
 
-<sub>Generated from GitHub's public API and committed to this repository. Language shares represent code volume, not skill level. Dashboard refreshes automatically.</sub>
+<sub>Generated from GitHub's public API and committed to this repository. Language shares indicate code volume, not skill level. Dashboard refreshes automatically.</sub>
 
 [Dashboard workflow](https://github.com/shovo127/shovo127/actions/workflows/profile-dashboard.yml) · [Public repositories](https://github.com/shovo127?tab=repositories)
 
 ## 06 / Achievements & Milestones
 
-<img src="./assets/section-06.gif" width="100%" alt="A restrained milestone timeline representing engineering practice, open-source work, automation and learning." />
+<img src="./assets/profile-trophies.svg" width="100%" alt="Original achievement illustration celebrating open source, automation, AI engineering and lifelong learning" />
 
-I value demonstrable work and continuous learning over decorative achievement counts. The original repository-hosted achievement illustration is retained: [View the achievement artwork](./assets/profile-trophies.svg).
+<img src="./assets/achievement-motion.gif" width="100%" alt="Subtle animated milestone lights" />
+
+*Milestones are evidence of work and learning — not a substitute for building useful things.*
 
 ## 07 / Your Contribution City
 
-<img src="./assets/section-07.gif" width="100%" alt="Isometric contribution city with subtle architectural highlights." />
+<img src="./assets/contribution-city.svg" width="100%" alt="Isometric contribution city illustration representing steady development and learning" />
 
-An original visual metaphor for steady development and learning. The earlier contribution-city illustration remains available: [View the original contribution city](./assets/contribution-city.svg).
+<img src="./assets/city-motion.gif" width="100%" alt="Soft animated lights moving through a contribution city skyline" />
+
+*Every meaningful contribution adds another piece to the city.*
 
 ## 08 / Contribution Snake
 
-<img src="./assets/section-08-contribution-snake.gif" width="100%" alt="A moving snake travels across a GitHub contribution calendar, using locally generated animation and public contribution data." />
+<img src="./assets/contribution-snake.gif" width="100%" alt="Animated snake travelling across a contribution calendar generated from GitHub contribution data" />
 
-The snake animation is generated locally and stored in this repository. Contribution intensity comes from GitHub's public contribution calendar; when the data source is unavailable, the grid stays neutral rather than inventing activity. The earlier snake illustration is preserved: [View the original snake artwork](./assets/contribution-snake.svg).
+<sub>Generated from the public contribution calendar when GitHub makes the data available. A local visual fallback is retained if the API is unavailable.</sub>
 
 ## 09 / Coding Habits
 
-<img src="./assets/section-09.gif" width="100%" alt="A disciplined engineering cycle: plan, build, verify and refine." />
+<img src="./assets/3d/09-coding-habits.gif" width="100%" alt="Photorealistic 3D developer workstation with mechanical keyboard, monitor and precision desk lamp" />
 
-I prefer a repeatable process: understand the requirement, build in small increments, test edge cases and refine based on evidence. Optional WakaTime reporting is not enabled, so no coding-hour totals are displayed or fabricated.
+I prefer sustainable progress: plan clearly, build in small steps, test carefully and improve based on evidence. No coding-hour totals or productivity scores are invented.
 
-## 10 / Recent Writing
+## 10 / Learning Loop
 
-<img src="./assets/section-10.gif" width="100%" alt="Technical field-notes visual representing research, building and refinement." />
+<img src="./assets/3d/10-learning-loop.gif" width="100%" alt="Photorealistic 3D leather notebook, ivory pages and precision pen in a product-photography studio" />
 
-<!-- BLOG-POST-LIST:START -->
-*Blog feed will appear here after a public RSS or Atom feed is configured.*
-<!-- BLOG-POST-LIST:END -->
+*Curiosity → Research → Experiment → Feedback → Improvement.*
 
 ## 11 / Beyond Code
 
-<img src="./assets/section-11.gif" width="100%" alt="Technical visual representing automotive engineering, German language learning, hardware and design." />
+<img src="./assets/3d/11-beyond-code.gif" width="100%" alt="Photorealistic 3D forged automotive wheel and tyre in a dark studio with controlled reflections" />
 
-- **Automotive engineering:** the connection between mechanical systems, electronics and software.
+- **Automotive engineering:** connecting mechanical systems, electronics and software.
 - **Language learning:** German and tools that make structured learning more accessible.
 - **Technology exploration:** AI products, Android customization, PC hardware and practical automation.
-- **Creative work:** visual communication and thoughtful product presentation.
 
 ## 12 / Let's Connect
 
-<img src="./assets/section-12.gif" width="100%" alt="A restrained connection diagram representing professional collaboration." />
-
 <div align="center">
 
-[GitHub · @shovo127](https://github.com/shovo127) · [Discord profile](https://discord.com/users/838358451393396746) · [Discord community](https://discord.gg/kcAhn7n3kb)
+<a href="https://github.com/shovo127">GitHub · @shovo127</a> · <a href="https://discord.com/users/838358451393396746">Discord</a> · <a href="https://discord.gg/kcAhn7n3kb">Community</a>
 
-[Lerne Deutsch Mit Technologie](https://lernedeutschmittechnologie.tech) · [MailMerge by Shovo](https://mailmergebyshovo.qzz.io/) · [Instagram](https://www.instagram.com/thuhidul_islamshovo/)
+<a href="https://lernedeutschmittechnologie.tech">Lerne Deutsch Mit Technologie</a> · <a href="https://mailmergebyshovo.qzz.io/">MailMerge by Shovo</a> · <a href="https://www.instagram.com/thuhidul_islamshovo/">Instagram</a>
 
 **Have an interesting technical idea or a useful project? Let's connect.**
 
@@ -141,18 +133,20 @@ I prefer a repeatable process: understand the requirement, build in small increm
 
 *Build with curiosity. Engineer with care. Improve through iteration.*
 
-<sub>Profile visuals are generated and stored in this repository · Dhaka, Bangladesh</sub>
+<img src="./assets/3d/12-connect.gif" width="100%" alt="Photorealistic 3D industrial multi-pin connector and cable assembly in a premium product studio" />
 
-</div>
+<sub>Blender-rendered 3D media · Self-hosted in this repository · Dhaka, Bangladesh</sub>
 
 <details>
-<summary>Earlier artwork and animation iterations — retained in this repository</summary>
+<summary>Previous artwork and animation assets — preserved</summary>
 
-The previous visual assets were kept rather than deleted. They remain available as source artwork and archived iterations:
+All previous artwork remains in the repository; the new 3D renders are additional assets, not destructive replacements.
 
-- Header and identity: [banner](./assets/banner.svg) · [profile badges](./assets/profile-badges.svg) · [About portrait](./assets/about-portrait.svg)
-- Sections: [engineering focus](./assets/engineering-focus.svg) · [technology stack SVG](./assets/technology-stack.svg) · [technology stack PNG preview](./assets/technology-stack.png) · [achievement artwork](./assets/profile-trophies.svg) · [contribution city](./assets/contribution-city.svg) · [original contribution snake](./assets/contribution-snake.svg) · [coding rhythm](./assets/coding-rhythm.svg) · [learning loop](./assets/learning-loop.svg) · [footer](./assets/footer.svg)
-- Project illustrations: [Kostenlos AI](./assets/projects/kostenlos-ai.svg) · [VisaFlowX](./assets/projects/visaflowx.svg) · [VisaFlowX Universal](./assets/projects/visaflowx-universal.svg) · [Noti-Fixer](./assets/projects/noti-fixer.svg) · [Circle to Search](./assets/projects/circle-search.svg) · [IPTV By Shovo](./assets/projects/iptv-shovo.svg)
-- Earlier motion iterations: [About](./assets/about-motion.gif) · [Focus](./assets/focus-motion.gif) · [Projects](./assets/projects-motion.gif) · [Technology](./assets/technology-motion.gif) · [Dashboard](./assets/dashboard-motion.gif) · [Achievements](./assets/achievement-motion.gif) · [City](./assets/city-motion.gif) · [Coding habits](./assets/habits-motion.gif) · [Beyond code](./assets/beyond-code-motion.gif) · [Connect](./assets/connect-motion.gif) · [Earlier snake](./assets/contribution-snake.gif)
+- [Original banner](./assets/banner.svg) · [Profile badges](./assets/profile-badges.svg) · [About portrait](./assets/about-portrait.svg)
+- [Engineering focus](./assets/engineering-focus.svg) · [Technology stack](./assets/technology-stack.svg) · [Coding rhythm](./assets/coding-rhythm.svg) · [Learning loop](./assets/learning-loop.svg)
+- [Contribution city](./assets/contribution-city.svg) · [Original contribution snake](./assets/contribution-snake.svg) · [Achievements](./assets/profile-trophies.svg)
+- [About motion](./assets/about-motion.gif) · [Focus motion](./assets/focus-motion.gif) · [Projects motion](./assets/projects-motion.gif) · [Technology motion](./assets/technology-motion.gif) · [Dashboard motion](./assets/dashboard-motion.gif) · [Achievement motion](./assets/achievement-motion.gif) · [City motion](./assets/city-motion.gif) · [Coding habits motion](./assets/habits-motion.gif) · [Beyond code motion](./assets/beyond-code-motion.gif) · [Connect motion](./assets/connect-motion.gif)
 
 </details>
+
+</div>
