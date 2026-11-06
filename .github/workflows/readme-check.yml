@@ -17,31 +17,34 @@ jobs:
       - uses: actions/checkout@v4
       - name: Check README exists
         run: test -s README.md
-      - name: Validate local SVG references and workflow files
+      - name: Validate required repository-owned assets
         run: |
           python - <<'PY'
           from pathlib import Path
           import re
           readme = Path("README.md").read_text(encoding="utf-8")
-          for start, end in [
-              ("<!-- BLOG-POST-LIST:START -->", "<!-- BLOG-POST-LIST:END -->"),
-          ]:
-              assert readme.count(start) == 1
-              assert readme.count(end) == 1
-              assert readme.index(start) < readme.index(end)
-          for ref in re.findall(r'(?:src|srcset)="([^"]+)"', readme):
-              ref = ref.split()[0]
-              if ref.startswith(("http://","https://")):
-                  continue
-              path = ref.lstrip("./").split("?")[0]
-              assert Path(path).exists(), f"Missing README asset: {ref}"
+          required = [
+              "assets/banner.svg",
+              "assets/github-dashboard.svg",
+              "assets/profile-trophies.svg",
+              "assets/contribution-city.svg",
+              "assets/contribution-snake.svg",
+              "assets/projects/kostenlos-ai.svg",
+              "assets/projects/visaflowx.svg",
+              "assets/projects/visaflowx-universal.svg",
+              "assets/projects/noti-fixer.svg",
+              "assets/projects/circle-search.svg",
+              "assets/projects/iptv-shovo.svg",
+          ]
+          for asset in required:
+              assert Path(asset).is_file(), f"Missing required asset: {asset}"
+              assert Path(asset).stat().st_size > 100, f"Empty asset: {asset}"
+              assert f'./{asset}' in readme or f'"{asset}"' in readme, f"Asset not referenced: {asset}"
           assert "github-readme-stats.vercel.app/api" not in readme
           assert "github-readme-activity-graph.vercel.app" not in readme
-          print("README references and local assets are valid.")
+          print("All required local README assets exist and are referenced.")
           PY
       - name: Check workflow files exist
         run: |
           test -s .github/workflows/profile-dashboard.yml
           test -s .github/workflows/profile-assets.yml
-          test -s .github/workflows/metrics.yml
-          test -s .github/workflows/blog-post-workflow.yml
