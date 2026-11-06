@@ -1,29 +1,28 @@
-# Profile integrations setup
+# Profile repository maintenance
 
-The core profile is designed to work without external credentials.
+The public profile README is intentionally self-contained: every displayed image and illustration is stored in this repository under `assets/`. The README does not load images from badge services, icon CDNs, statistics providers, or third-party image hosts.
 
-## GitHub Metrics
-The Metrics workflow initially uses the repository's built-in `GITHUB_TOKEN`. For extended read access, create a fine-grained token limited to the required repository/user read scopes, then add it as `METRICS_TOKEN`. Never commit tokens.
+## Automated media
 
-## WakaTime
-1. Create a WakaTime account and install its editor plugin.
-2. Add repository secret `WAKATIME_API_KEY` in Settings → Secrets and variables → Actions.
-3. Use a maintained WakaTime integration and follow its current documented input names. Do not publish a fabricated coding-hours report.
+- `.github/workflows/profile-assets.yml` runs the local generator in `scripts/generate_profile_media.py`.
+- The generator creates the subtle animated GIFs and contribution snake, then commits them into `assets/`.
+- `.github/workflows/profile-dashboard.yml` builds the GitHub dashboard SVG from GitHub's public API and commits it into `assets/`.
+- `.github/workflows/readme-check.yml` verifies that every displayed image is repository-local, all required media exists, and the generator compiles.
 
-## Blog / RSS
-Add a repository variable called `BLOG_FEED_URL` under Settings → Secrets and variables → Actions → Variables. Set it to a public RSS or Atom feed. The workflow inserts up to five posts.
+These workflows use GitHub Actions' built-in `GITHUB_TOKEN` with repository-scoped permissions. No personal access token, API key, WakaTime key, Spotify token, Discord bot token, or other private credential is required for the core profile.
 
-## Spotify
-A Spotify README integration requires Spotify OAuth authorization and usually a client ID, client secret, refresh token, and username. Add secrets only after choosing and reviewing the integration. Never commit credentials.
+## Security and maintenance
 
-## LeetCode
-Add your LeetCode username when ready. Use a maintained stats provider or a scheduled workflow that obtains your public profile data. Verify the provider before relying on its ranking data.
+- Never put credentials, private keys, recovery codes, personal access tokens, or private data in README files, SVGs, GIFs, workflow logs, or commits.
+- Do not add third-party image URLs to README `img`, `source`, or Markdown image syntax. Add the image to `assets/` and reference it with a relative path.
+- Keep workflow permissions minimal. The media and dashboard workflows need `contents: write`; the README validator needs only `contents: read`.
+- Review workflow changes before merging. Prefer repository-owned scripts and GitHub's built-in token over third-party actions.
+- The contribution snake uses public contribution-calendar data when available. If GitHub's API does not provide it, the generator keeps an illustrative local fallback rather than fabricating contribution totals.
 
-## Discord
-Discord Rich Presence is local desktop activity and is not exposed to a static README. A third-party service needs explicit authorization and secure hosting. Never publish Discord bot tokens.
+## Motion and accessibility
 
-## Skill radar / wheel
-A skill wheel should use self-assessed levels or verified repository data. Source-code percentages are not the same as proficiency. Add data only after defining and checking the method.
+Animations are decorative and do not carry essential information. Keep them slow, low-contrast, non-flashing and lightweight. GitHub profile README rendering does not provide a reliable custom pause control or a CSS `prefers-reduced-motion` switch for embedded GIFs, so avoid intense or large-area motion. Keep descriptive alt text and a static illustration beside animated media.
 
-## Photo / video
-The profile currently uses your GitHub avatar. Add a portrait or animated GIF only when you upload an image you have permission to publish. GitHub README pages do not support video as a background.
+## Repository visibility
+
+This repository must remain public for GitHub to display it as a public profile README. Do not store secrets here. GitHub Actions secrets and variables belong in repository Settings and must never be copied into tracked files. Branch protection and ruleset configuration should be managed in GitHub repository settings by an administrator; the connected integration used for this maintenance cannot read or change those administrative settings.
