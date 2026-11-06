@@ -4,7 +4,7 @@
 
 [![Typing SVG](https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=18&duration=2600&pause=900&color=5EEAD4&center=true&vCenter=true&width=820&lines=Building+useful+AI+applications;Engineering+browser+automation+tools;Exploring+Android+and+automotive+technology;Learning+continuously%2C+building+every+day)](https://github.com/shovo127)
 
-<a href="https://readme-typing-svg.demolab.com/demo/"><img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=20&duration=2600&pause=700&color=43E6C5&center=true&vCenter=true&width=820&lines=Building+technology+that+solves+real+problems.;Exploring+AI%2C+automation+and+software+engineering.;Engineering+browser+workflows+and+Android+utilities.;Learning+continuously.+Building+thoughtfully.+Shipping+practically." alt="Animated typing introduction" /></a>
+
 
 <p>
   <a href="https://github.com/shovo127"><img src="https://komarev.com/ghpvc/?username=shovo127&label=PROFILE%20VIEWS&color=0E9F8A&style=for-the-badge" alt="Profile views" /></a>
