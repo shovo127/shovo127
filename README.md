@@ -144,3 +144,15 @@ I prefer a repeatable process: understand the requirement, build in small increm
 <sub>Profile visuals are generated and stored in this repository · Dhaka, Bangladesh</sub>
 
 </div>
+
+<details>
+<summary>Earlier artwork and animation iterations — retained in this repository</summary>
+
+The previous visual assets were kept rather than deleted. They remain available as source artwork and archived iterations:
+
+- Header and identity: [banner](./assets/banner.svg) · [profile badges](./assets/profile-badges.svg) · [About portrait](./assets/about-portrait.svg)
+- Sections: [engineering focus](./assets/engineering-focus.svg) · [technology stack](./assets/technology-stack.svg) · [achievement artwork](./assets/profile-trophies.svg) · [contribution city](./assets/contribution-city.svg) · [original contribution snake](./assets/contribution-snake.svg) · [coding rhythm](./assets/coding-rhythm.svg) · [learning loop](./assets/learning-loop.svg) · [footer](./assets/footer.svg)
+- Project illustrations: [Kostenlos AI](./assets/projects/kostenlos-ai.svg) · [VisaFlowX](./assets/projects/visaflowx.svg) · [VisaFlowX Universal](./assets/projects/visaflowx-universal.svg) · [Noti-Fixer](./assets/projects/noti-fixer.svg) · [Circle to Search](./assets/projects/circle-search.svg) · [IPTV By Shovo](./assets/projects/iptv-shovo.svg)
+- Earlier motion iterations: [About](./assets/about-motion.gif) · [Focus](./assets/focus-motion.gif) · [Projects](./assets/projects-motion.gif) · [Technology](./assets/technology-motion.gif) · [Dashboard](./assets/dashboard-motion.gif) · [Achievements](./assets/achievement-motion.gif) · [City](./assets/city-motion.gif) · [Coding habits](./assets/habits-motion.gif) · [Beyond code](./assets/beyond-code-motion.gif) · [Connect](./assets/connect-motion.gif) · [Earlier snake](./assets/contribution-snake.gif)
+
+</details>
