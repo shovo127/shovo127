@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&height=230&color=0:07111F,35:102A43,70:075985,100:00BFA6&text=MOHAMMED%20THUHIDUL%20ISLAM%20SHOVO&fontColor=FFFFFF&fontSize=34&fontAlignY=36&desc=AI%20%7C%20Automation%20%7C%20Android%20%7C%20Web%20Engineering&descAlignY=57&descSize=16&animation=fadeIn" width="100%" alt="Animated banner introducing Mohammed Thuhidul Islam Shovo" />
+<img src="https://raw.githubusercontent.com/shovo127/shovo127/main/assets/banner.svg" width="100%" alt="Mohammed Thuhidul Islam Shovo — AI, Automation, Android and Web Engineering" />
 
 <a href="https://readme-typing-svg.demolab.com/demo/"><img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=20&duration=2600&pause=700&color=43E6C5&center=true&vCenter=true&width=820&lines=Building+technology+that+solves+real+problems.;Exploring+AI%2C+automation+and+software+engineering.;Engineering+browser+workflows+and+Android+utilities.;Learning+continuously.+Building+thoughtfully.+Shipping+practically." alt="Animated typing introduction" /></a>
 
@@ -126,7 +126,7 @@ Learning platforms, multilingual experiences, interactive practice, digital tool
 
 <sub>These icons represent technologies and tools I work with or explore; they are not proficiency ratings.</sub>
 
-## 05 / GitHub Intelligence
+## 05 / GitHub Command Center
 
 <div align="center">
 
@@ -141,7 +141,7 @@ Learning platforms, multilingual experiences, interactive practice, digital tool
 
 </div>
 
-## 06 / Achievement Showcase
+## 06 / Achievements
 
 <div align="center">
 
@@ -149,7 +149,7 @@ Learning platforms, multilingual experiences, interactive practice, digital tool
 
 </div>
 
-## 07 / 3D Contribution City
+## 07 / Your Contribution City
 
 <div align="center">
 
@@ -159,7 +159,7 @@ Learning platforms, multilingual experiences, interactive practice, digital tool
 
 </div>
 
-## 08 / Contribution Snake
+## 08 / Contribution Snake Game
 
 <div align="center">
 
@@ -169,7 +169,7 @@ Learning platforms, multilingual experiences, interactive practice, digital tool
 
 </div>
 
-## 09 / Engineering Habits & Interests
+## 09 / Coding Habits
 
 <div align="center">
 
@@ -179,23 +179,25 @@ Learning platforms, multilingual experiences, interactive practice, digital tool
 
 WakaTime's report appears once a WakaTime account is connected and the repository has a valid `WAKATIME_API_KEY` secret. No coding hours are fabricated.
 
-## 10 / Writing & Recent Updates
+## 10 / Recent Writing
 
 <!-- BLOG-POST-LIST:START -->
 *Blog feed will appear here after a public RSS or Atom feed is configured.*
 <!-- BLOG-POST-LIST:END -->
 
-## 11 / Beyond the Code
+## 11 / Beyond Code
 
 - **Automotive engineering:** Interested in the connection between mechanical systems, electronics, and software.
 - **Language learning:** German language learning and building tools that make structured learning more accessible.
 - **Technology exploration:** AI products, Android customization, PC hardware, and practical automation.
 
-## 12 / Connect
+## 12 / Let's Connect
 
 <div align="center">
 
 <a href="https://github.com/shovo127"><img src="https://img.shields.io/badge/GitHub-shovo127-181717?style=for-the-badge&logo=github" alt="GitHub" /></a>
+  <a href="https://discord.com/users/838358451393396746"><img src="https://img.shields.io/badge/Discord-@Shovo-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord profile" /></a>
+  <a href="https://discord.gg/kcAhn7n3kb"><img src="https://img.shields.io/badge/Community-Join%20Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Join Discord server" /></a>
 <a href="https://lernedeutschmittechnologie.qzz.io/"><img src="https://img.shields.io/badge/Website-Lerne_Deutsch-0E7C86?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Website" /></a>
   <a href="https://mailmergebyshovo.qzz.io/"><img src="https://img.shields.io/badge/Website-MailMerge-12304A?style=for-the-badge&logo=googlechrome&logoColor=white" alt="MailMerge by Shovo" /></a>
   <a href="https://www.instagram.com/thuhidul_islamshovo/"><img src="https://img.shields.io/badge/Instagram-Connect-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram" /></a>
