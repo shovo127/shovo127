@@ -133,8 +133,7 @@ Learning platforms, multilingual experiences, interactive practice, digital tool
 <div align="center">
 
 <img src="./assets/github-dashboard.svg" width="100%" alt="Shovo's GitHub dashboard showing repository, follower, and contribution activity" />
-
-
+<img src="./assets/github-streak.svg" width="100%" alt="Automatically generated GitHub contribution streak statistics" />
 
 </div>
 
