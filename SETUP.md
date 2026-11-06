@@ -11,7 +11,7 @@ The public profile README is intentionally self-contained: every displayed image
 
 These workflows use GitHub Actions' built-in `GITHUB_TOKEN` with repository-scoped permissions. No personal access token, API key, WakaTime key, Spotify token, Discord bot token, or other private credential is required for the core profile.
 
-## Security and maintenance
+## Current implementation\n\nThe README currently uses only repository-local image files. Ten subtle section-level GIF animations plus the contribution snake are generated into `assets/`; all static profile illustrations are also checked into the same folder. The dashboard is generated locally as SVG. No remote image badge, icon CDN, statistics image provider, or animation host is used.\n\n## Security and maintenance
 
 - Never put credentials, private keys, recovery codes, personal access tokens, or private data in README files, SVGs, GIFs, workflow logs, or commits.
 - Do not add third-party image URLs to README `img`, `source`, or Markdown image syntax. Add the image to `assets/` and reference it with a relative path.
