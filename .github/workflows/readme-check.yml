@@ -16,9 +16,13 @@ jobs:
     steps:
       - name: Checkout repository
         run: |
-          git clone --depth 1 "https://github.com/${GITHUB_REPOSITORY}.git" repo
+          git clone --no-checkout "https://github.com/${GITHUB_REPOSITORY}.git" repo
+          cd repo
+          git fetch origin "${GITHUB_SHA}"
+          git checkout --detach "${GITHUB_SHA}"
         env:
           GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_SHA: ${{ github.sha }}
 
       - name: Validate self-hosted profile media and README references
         run: |
@@ -116,5 +120,6 @@ jobs:
         run: |
           cd repo
           python -m py_compile scripts/generate_profile_media.py
+          test -s scripts/generate_profile_media.py
           test -s .github/workflows/profile-assets.yml
           test -s .github/workflows/profile-dashboard.yml
