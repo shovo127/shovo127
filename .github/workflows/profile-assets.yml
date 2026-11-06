@@ -31,10 +31,23 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-      - name: Install open-source 3D renderer and image encoder
+      - name: Install official Blender release and GIF encoder
         run: |
-          sudo apt-get update
-          sudo apt-get install -y blender python3-pil
+          set -euo pipefail
+          VERSION="4.5.15"
+          BASE="https://download.blender.org/release/Blender4.5"
+          curl -fL --retry 3 --retry-delay 2 "$BASE/blender-$VERSION-linux-x64.tar.xz" -o "$RUNNER_TEMP/blender.tar.xz"
+          curl -fL --retry 3 --retry-delay 2 "$BASE/blender-$VERSION.sha256" -o "$RUNNER_TEMP/blender.sha256"
+          EXPECTED="$(awk '/blender-4.5.15-linux-x64.tar.xz/ {print $1; exit}' "$RUNNER_TEMP/blender.sha256")"
+          ACTUAL="$(sha256sum "$RUNNER_TEMP/blender.tar.xz" | cut -d' ' -f1)"
+          test -n "$EXPECTED" && test "$EXPECTED" = "$ACTUAL"
+          mkdir -p "$RUNNER_TEMP/blender"
+          tar -xf "$RUNNER_TEMP/blender.tar.xz" -C "$RUNNER_TEMP/blender"
+          BLENDER_BIN="$RUNNER_TEMP/blender/blender-$VERSION-linux-x64/blender"
+          test -x "$BLENDER_BIN"
+          "$BLENDER_BIN" --background --python-expr 'import bpy; print("Blender runtime:", bpy.app.version_string)'
+          echo "BLENDER_BIN=$BLENDER_BIN" >> "$GITHUB_ENV"
+          python -m pip install --disable-pip-version-check --quiet --user Pillow
 
       - name: Render real 3D product scenes
         env:
@@ -42,7 +55,7 @@ jobs:
         run: |
           cd repo
           python3 -m py_compile scripts/render_profile_3d.py scripts/pack_profile_3d.py
-          blender --background --factory-startup --python scripts/render_profile_3d.py
+          "$BLENDER_BIN" --background --factory-startup --python scripts/render_profile_3d.py
           python3 scripts/pack_profile_3d.py
 
       - name: Verify every rendered animation and preserve the approved snake
