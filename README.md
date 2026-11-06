@@ -28,7 +28,7 @@ I build practical digital products across **AI-powered applications, browser aut
 ## About Me
 
 <div align="center">
-  <img src="https://github.com/shovo127.png" width="120" style="border-radius:50%" alt="Shovo's GitHub avatar"/>
+  <img src="https://github.com/shovo127.png" width="120" alt="Shovo's GitHub avatar"/>
   <h3>Mohammed Thuhidul Islam Shovo</h3>
   <p><b>Automobile Engineering Graduate · IT Support · Technology & AI</b></p>
   <p>
