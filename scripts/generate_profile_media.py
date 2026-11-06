@@ -53,7 +53,7 @@ def book(d,x,y,r):
     d.polygon([(x+2,y-r+8),(x+r,y-r),(x+r,y+r-8),(x+2,y+r)],fill=(42,57,64,255),outline=(*ICE,190))
     d.line((x,y-r+6,x,y+r),fill=(*TEAL,210),width=2)
     for q in range(3): d.line((x-r*.7,y-r*.35+q*15,x-r*.2,y-r*.35+q*15),fill=(170,190,192,130),width=1)
-def render(i,n):
+def render(section,frame,total):
     im=base(); d=ImageDraw.Draw(im,"RGBA")
     titles=[
       (1,"ABOUT / IDENTITY","Shovo — engineer & builder","Automobile engineering  ·  Software products  ·  Practical problem-solving"),
@@ -68,11 +68,11 @@ def render(i,n):
       (11,"BEYOND CODE","Curiosity beyond the screen","Automotive  ·  German language  ·  Hardware  ·  Creative work"),
       (12,"CONTACT","Open to thoughtful collaboration","GitHub  ·  Lerne Deutsch Mit Technologie  ·  MailMerge by Shovo")
     ]
-    num,kicker,name,sub=next(x for x in titles if x[0]==i); title(d,num,kicker,name,sub)
+    num,kicker,name,sub=next(x for x in titles if x[0]==section); title(d,num,kicker,name,sub)
     xs=[660,800,940,1080]
-    if i==1:
+    if section==1:
         metallic(d,900,143,76); d=ImageDraw.Draw(im,"RGBA")
-        for r,ry,a in [(104,42,i*180/n),(128,52,55-i*180/n)]:
+        for r,ry,a in [(104,42,frame*180/total),(128,52,55-i*180/n)]:
             pts=[]
             for q in range(181):
                 t=2*math.pi*q/180; ang=math.radians(a)
@@ -80,53 +80,53 @@ def render(i,n):
                 pts.append((900+xx*math.cos(ang)-yy*math.sin(ang),143+xx*math.sin(ang)+yy*math.cos(ang)))
             d.line(pts,fill=(*TEAL,145),width=2)
         d.ellipse((887,130,913,156),fill=(13,29,35,255),outline=(*TEAL,220),width=2); d.text((900,143),"S",font=f(17,True),fill=WHITE,anchor="mm")
-    elif i==2:
+    elif section==2:
         metallic(d,xs[0],122,34); chip(d,xs[1],122,31); phone(d,xs[2],122,29); book(d,xs[3],122,28)
         for x,l in zip(xs,["AI SYSTEMS","AUTOMATION","ANDROID","EDTECH"]): d.text((x,205),l,font=f(10,True,m=True),fill=WHITE,anchor="mm")
-    elif i==3:
+    elif section==3:
         names=["KAI","VFX","VFU","NF","CTS","IPTV"]; xx=[630,730,830,930,1030,1130]
         for j,x in enumerate(xx):
             d.rounded_rectangle((x-30+3,108+5,x+30+3,162+5),radius=4,fill=(0,0,0,90))
             d.rounded_rectangle((x-30,108,x+30,162),radius=4,fill=(29,46,55,255),outline=(*ICE,170),width=1)
             d.line((x-20,118,x+20,118),fill=(*TEAL,130),width=1); d.text((x,137),names[j],font=f(10,True,m=True),fill=WHITE,anchor="mm")
             if j<5: d.line((x+31,137,xx[j+1]-31,137),fill=(*ICE,110),width=1)
-    elif i==4:
+    elif section==4:
         for j,(a,b) in enumerate([("WEB","TypeScript · JavaScript · Python · React · Next.js"),("SYSTEMS","Android · Linux · Windows · Git · GitHub"),("CLOUD","Cloudflare · Vercel · Firebase · Appwrite"),("CREATIVE","Photoshop · Illustrator · Premiere · PowerShell")]):
             y=57+j*53; d.text((620,y),a,font=f(10,True,m=True),fill=[TEAL,ICE,BRASS,ICE][j]); d.text((620,y+20),b,font=f(12),fill=WHITE); d.line((620,y+43,1140,y+43),fill=(100,127,138,80),width=1)
-    elif i==5:
+    elif section==5:
         for j,x in enumerate([620,795,970]):
             d.rounded_rectangle((x,62,x+150,124),radius=4,fill=(15,27,35,240),outline=(106,133,145,100),width=1)
             d.text((x+13,76),["REPOSITORIES","LANGUAGES","ACTIVITY"][j],font=f(9,m=True),fill=MUTED)
             d.line((x+13,104,x+135,104),fill=[(*TEAL,170),(*ICE,170),(*BRASS,170)][j],width=2)
         d.rounded_rectangle((620,148,1145,250),radius=4,fill=(13,24,32,230),outline=(100,127,139,90),width=1)
         pts=[(635+k*22,218-22*math.sin(k*.39)-10*math.sin(k*.18)) for k in range(23)]
-        d.line(pts,fill=(*ICE,175),width=2); x,y=pts[(i*3)%22]; d.ellipse((x-4,y-4,x+4,y+4),fill=(*TEAL,230))
-    elif i==6:
+        d.line(pts,fill=(*ICE,175),width=2); x,y=pts[(frame*3)%22]; d.ellipse((x-4,y-4,x+4,y+4),fill=(*TEAL,230))
+    elif section==6:
         for j,x in enumerate([650,805,960,1115]):
             metallic(d,x,137,13,TEAL); d.text((x,178),["ENGINEERING","OPEN SOURCE","AUTOMATION","LEARNING"][j],font=f(9,True,m=True),fill=WHITE,anchor="mm")
             if j<3: d.line((x+14,137,x+141,137),fill=(*ICE,120),width=2)
-    elif i==7:
+    elif section==7:
         for j in range(8):
             x=620+j*66; h=30+(j*19)%82; top=[(x,216-h),(x+22,204-h),(x+62,216-h),(x+40,228-h)]
             d.polygon([top[0],top[3],(x+40,216),(x,204)],fill=(26,47,56,255),outline=(99,136,147,155))
             d.polygon([top[3],top[2],(x+62,216),(x+40,216)],fill=(17,32,40,255),outline=(99,136,147,155))
             d.polygon(top,fill=(45,70,79,255),outline=(*TEAL,110))
-    elif i==9:
+    elif section==9:
         labels=["PLAN","BUILD","VERIFY","REFINE"]
         d.line((650,138,1100,138),fill=(*ICE,120),width=2)
         for j,x in enumerate(xs):
-            d.ellipse((x-18,120,x+18,156),fill=(21,36,44,255),outline=(*TEAL if j==(i//5)%4 else ICE,210),width=2)
+            d.ellipse((x-18,120,x+18,156),fill=(21,36,44,255),outline=(*TEAL if j==(frame//5)%4 else ICE,210),width=2)
             d.text((x,138),str(j+1),font=f(11,True,m=True),fill=WHITE,anchor="mm"); d.text((x,185),labels[j],font=f(10,True,m=True),fill=WHITE,anchor="mm")
-    elif i==10:
+    elif section==10:
         book(d,880,142,58); d.text((1000,95),"FIELD NOTES",font=f(10,True,m=True),fill=TEAL)
         for j,t in enumerate(["RESEARCH","BUILD","REFINE"]): d.text((1000,125+j*22),t,font=f(10,m=True),fill=WHITE)
         d.line((1000,195,1138,195),fill=(*BRASS,130),width=1)
-    elif i==11:
+    elif section==11:
         x=665; d.line((x-43,142,x-28,125,x+25,125,x+42,143,x+48,151,x-50,151,x-43,142),fill=(*ICE,220),width=3)
         d.arc((x-36,135,x-15,164),180,360,fill=(*TEAL,220),width=3); d.arc((x+15,135,x+36,164),180,360,fill=(*TEAL,220),width=3)
         d.text((820,140),"Aä",font=f(38,True),fill=ICE,anchor="mm"); chip(d,975,140,28); d.ellipse((1095,110,1155,170),outline=(*BRASS,210),width=2); d.line((1105,158,1145,122),fill=(*BRASS,210),width=3)
         for x,l in zip(xs,["AUTOMOTIVE","LANGUAGE","HARDWARE","DESIGN"]): d.text((x,205),l,font=f(9,True,m=True),fill=WHITE,anchor="mm")
-    elif i==12:
+    elif section==12:
         d.line((680,143,1135,143),fill=(*ICE,110),width=2)
         for j,x in enumerate(xs):
             metallic(d,x,143,18,TEAL); d.text((x,198),["GITHUB","LEARNING","MAILMERGE","CONTACT"][j],font=f(9,True,m=True),fill=WHITE,anchor="mm")
