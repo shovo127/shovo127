@@ -37,18 +37,18 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_USERNAME: ${{ github.repository_owner }}
         run: |
-          python -m pip install --disable-pip-version-check --quiet Pillow
+          python -m pip install --disable-pip-version-check --quiet Pillow numpy
           cd repo
-          python scripts/generate_profile_media.py
+          python scripts/run_profile_art.py
           python - <<'PY'
           from pathlib import Path
           import re
           readme = Path("README.md").read_text(encoding="utf-8")
           required = [
-              "about-motion.gif", "focus-motion.gif", "projects-motion.gif",
-              "technology-motion.gif", "dashboard-motion.gif", "achievement-motion.gif",
-              "city-motion.gif", "habits-motion.gif", "beyond-code-motion.gif",
-              "connect-motion.gif", "contribution-snake.gif",
+              "section-01.gif", "section-02.gif", "section-03.gif",
+              "section-04.gif", "section-05.gif", "section-06.gif",
+              "section-07.gif", "section-08-contribution-snake.gif",
+              "section-09.gif", "section-10.gif", "section-11.gif", "section-12.gif",
           ]
           for name in required:
               path = Path("assets") / name
@@ -64,7 +64,7 @@ jobs:
           REPOSITORY: ${{ github.repository }}
         run: |
           cd repo
-          git add assets/*.gif
+          git add assets/section-*.gif
           if git diff --cached --quiet; then
             echo "No generated media changes."
             exit 0
