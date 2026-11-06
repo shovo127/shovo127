@@ -5,8 +5,8 @@ from mathutils import Vector
 
 OUT=os.environ.get("PROFILE_RENDER_DIR","/tmp/profile-render")
 os.makedirs(OUT,exist_ok=True)
-W,H=960,240
-FRAMES=12
+W,H=900,225
+FRAMES=10
 
 def mat(name,color,metal=0.0,rough=.35,emission=None):
     m=bpy.data.materials.new(name); m.diffuse_color=(*color,1); m.use_nodes=True
@@ -252,7 +252,7 @@ for slug,builder in SCENES:
     # Eevee Next is substantially faster than CPU Cycles for these clean studio scenes.
     # Keep real geometry, PBR materials, area lights and shadows; render 12 eased frames.
     scene.render.engine="BLENDER_EEVEE_NEXT"
-    scene.eevee.taa_render_samples=16
+    scene.eevee.taa_render_samples=8
     scene.render.resolution_percentage=100
     scene.render.resolution_x=W; scene.render.resolution_y=H; scene.render.resolution_percentage=100
     scene.render.image_settings.file_format="PNG"; scene.render.film_transparent=False
@@ -264,9 +264,11 @@ for slug,builder in SCENES:
     scene.render.image_settings.color_mode="RGB"
     scene.frame_start=1; scene.frame_end=FRAMES
     # A restrained product turn, not a fast decorative loop.
-    for frame,angle in ((1,0),(7,2.2),(13,0),(19,-2.2),(FRAMES,0)):
+    for frame,angle,height in ((1,-18,-.10),(5,18,.10),(FRAMES,-18,-.10)):
         root.rotation_euler[2]=math.radians(angle)
+        root.location.z=height
         root.keyframe_insert(data_path="rotation_euler",frame=frame)
+        root.keyframe_insert(data_path="location",frame=frame)
     if root.animation_data and root.animation_data.action:
         for fc in root.animation_data.action.fcurves:
             for key in fc.keyframe_points: key.interpolation="BEZIER"
