@@ -1,8 +1,9 @@
 name: Profile README checks
 
 on:
-  push:
-    branches: [main]
+  workflow_run:
+    workflows: ["Build self-hosted profile media"]
+    types: [completed]
   pull_request:
     branches: [main]
   workflow_dispatch:
@@ -18,11 +19,17 @@ jobs:
         run: |
           git clone --no-checkout "https://github.com/${GITHUB_REPOSITORY}.git" repo
           cd repo
-          git fetch origin "${GITHUB_SHA}"
-          git checkout --detach "${GITHUB_SHA}"
+          if [ "${GITHUB_EVENT_NAME}" = "workflow_run" ]; then
+            git fetch origin main
+            git checkout --detach origin/main
+          else
+            git fetch origin "${GITHUB_SHA}"
+            git checkout --detach "${GITHUB_SHA}"
+          fi
         env:
           GITHUB_REPOSITORY: ${{ github.repository }}
           GITHUB_SHA: ${{ github.sha }}
+          GITHUB_EVENT_NAME: ${{ github.event_name }}
 
       - name: Validate self-hosted profile media and README references
         run: |
@@ -127,7 +134,7 @@ jobs:
               if p.suffix == ".gif":
                   assert p.read_bytes()[:6] in (b"GIF87a", b"GIF89a"), f"Invalid GIF file: {asset}"
               if p.suffix == ".png":
-                  assert p.read_bytes()[:8] == b"\\x89PNG\\r\\n\\x1a\\n", f"Invalid PNG file: {asset}"
+                  assert p.read_bytes()[:8] == bytes([137,80,78,71,13,10,26,10]), f"Invalid PNG file: {asset}"
 
           import xml.etree.ElementTree as ET
           for svg in Path("assets").rglob("*.svg"):
