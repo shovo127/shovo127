@@ -150,9 +150,9 @@ The dashboard above is generated from GitHub's public API by this repository's s
 
 <div align="center">
 
-<a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=shovo127&theme=algolia&no-frame=true&no-bg=true&margin-w=8&column=7" width="98%" alt="GitHub profile trophies" /></a>
+<img src="./assets/profile-trophies.svg" width="98%" alt="Shovo’s developer achievement showcase" />
 
-<sub>Achievement cards are supplied by the GitHub Profile Trophy service. They may load more slowly than repository-hosted artwork.</sub>
+<sub>Repository-hosted artwork — no third-party trophy image server required.</sub>
 
 </div>
 
@@ -160,7 +160,7 @@ The dashboard above is generated from GitHub's public API by this repository's s
 
 <div align="center">
 
-<img src="./profile-3d-contrib/profile-green-animate.svg" width="100%" alt="3D animated contribution city" />
+<img src="./assets/contribution-city.svg" width="100%" alt="3D contribution city visualization" />
 
 </div>
 
@@ -168,7 +168,7 @@ The dashboard above is generated from GitHub's public API by this repository's s
 
 <div align="center">
 
-<picture><source media="(prefers-color-scheme: dark)" srcset="./output/github-contribution-grid-snake-dark.svg"/><source media="(prefers-color-scheme: light)" srcset="./output/github-contribution-grid-snake.svg"/><img src="./output/github-contribution-grid-snake.svg" width="100%" alt="Animated contribution snake game"/></picture>
+<img src="./assets/contribution-snake.svg" width="100%" alt="Animated contribution snake game" />
 
 </div>
 
