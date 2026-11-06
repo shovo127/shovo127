@@ -68,6 +68,19 @@ I work across connected disciplines rather than treating technology as isolated 
 
 </div>
 
+### What each project explores
+
+| Project | Problem space | Engineering themes |
+|---|---|---|
+| [Kostenlos AI](https://github.com/shovo127/kostenlos-ai) | A multi-provider AI chat experience | AI integration, provider workflows and web application design |
+| [VisaFlowX](https://github.com/shovo127/visaflowx) | A browser assistant for IVAC workflows | Browser extension APIs, automation and workflow feedback |
+| [VisaFlowX Universal](https://github.com/shovo127/visaflowx-universal) | Configurable browser automation | Reusable automation patterns and user-configurable flows |
+| [Noti-Fixer](https://github.com/shovo127/Noti-Fixer-for-Chinese-Devices) | Android notification diagnostics | ADB, Android settings and device troubleshooting |
+| [Circle to Search for Xiaomi](https://github.com/shovo127/Circle-to-Search-for-Xiaomi) | A Xiaomi-focused assistant shortcut | Android customization and device integration |
+| [IPTV By Shovo](https://github.com/shovo127/IPTV-By-Shovo) | A curated M3U playlist project | Playlist organization and media tooling |
+
+**What visitors can learn:** breaking down a real problem, choosing the right platform APIs, designing repeatable workflows, testing device-specific behaviour and documenting practical tools.
+
 ### More projects
 
 | Project | What it explores |
