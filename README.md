@@ -2,6 +2,8 @@
 
 <img src="assets/banner.svg" width="100%" alt="Mohammed Thuhidul Islam Shovo — AI, Automation, Android and Web Engineering" />
 
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=18&duration=2600&pause=900&color=5EEAD4&center=true&vCenter=true&width=820&lines=Building+useful+AI+applications;Engineering+browser+automation+tools;Exploring+Android+and+automotive+technology;Learning+continuously%2C+building+every+day)](https://github.com/shovo127)
+
 <a href="https://readme-typing-svg.demolab.com/demo/"><img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=20&duration=2600&pause=700&color=43E6C5&center=true&vCenter=true&width=820&lines=Building+technology+that+solves+real+problems.;Exploring+AI%2C+automation+and+software+engineering.;Engineering+browser+workflows+and+Android+utilities.;Learning+continuously.+Building+thoughtfully.+Shipping+practically." alt="Animated typing introduction" /></a>
 
 <p>
@@ -155,9 +157,7 @@ The dashboard above is generated from GitHub's public API by this repository's s
 
 <div align="center">
 
-<a href="https://github.com/shovo127/shovo127/actions/workflows/profile-3d.yml"><img src="https://img.shields.io/badge/3D%20Contribution%20City-Generate%20visualization-12304A?style=for-the-badge&logo=githubactions&logoColor=white" alt="Run the 3D contribution generator" /></a>
-
-<sub>The 3D image will appear here after the first successful workflow run.</sub>
+<img src="./profile-3d-contrib/profile-green-animate.svg" width="100%" alt="3D animated contribution city" />
 
 </div>
 
@@ -165,9 +165,7 @@ The dashboard above is generated from GitHub's public API by this repository's s
 
 <div align="center">
 
-<a href="https://github.com/shovo127/shovo127/actions/workflows/snake.yml"><img src="https://img.shields.io/badge/Contribution%20Snake-Generate%20animation-0E9F8A?style=for-the-badge&logo=githubactions&logoColor=white" alt="Run contribution snake generator" /></a>
-
-<sub>The animated snake will appear here after the first successful workflow run.</sub>
+<picture><source media="(prefers-color-scheme: dark)" srcset="./output/github-contribution-grid-snake-dark.svg"/><source media="(prefers-color-scheme: light)" srcset="./output/github-contribution-grid-snake.svg"/><img src="./output/github-contribution-grid-snake.svg" width="100%" alt="Animated contribution snake game"/></picture>
 
 </div>
 
