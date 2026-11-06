@@ -6,7 +6,7 @@ from mathutils import Vector
 OUT=os.environ.get("PROFILE_RENDER_DIR","/tmp/profile-render")
 os.makedirs(OUT,exist_ok=True)
 W,H=1200,300
-FRAMES=20
+FRAMES=24
 
 def mat(name,color,metal=0.0,rough=.35,emission=None):
     m=bpy.data.materials.new(name); m.diffuse_color=(*color,1); m.use_nodes=True
@@ -261,8 +261,9 @@ for slug,builder in SCENES:
     scene.render.image_settings.color_mode="RGB"
     scene.frame_start=1; scene.frame_end=FRAMES
     # A restrained product turn, not a fast decorative loop.
-    root.rotation_euler[2]=math.radians(-2.2); root.keyframe_insert(data_path="rotation_euler",frame=1)
-    root.rotation_euler[2]=math.radians(2.2); root.keyframe_insert(data_path="rotation_euler",frame=FRAMES)
+    for frame,angle in ((1,0),(7,2.2),(13,0),(19,-2.2),(FRAMES,0)):
+        root.rotation_euler[2]=math.radians(angle)
+        root.keyframe_insert(data_path="rotation_euler",frame=frame)
     if root.animation_data and root.animation_data.action:
         for fc in root.animation_data.action.fcurves:
             for key in fc.keyframe_points: key.interpolation="BEZIER"
