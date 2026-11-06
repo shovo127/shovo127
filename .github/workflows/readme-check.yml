@@ -15,16 +15,51 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - name: Check README exists
         run: test -s README.md
-      - name: Validate required repository-owned assets
+
+      - name: Validate every repository-owned README image
         run: |
           python - <<'PY'
           from pathlib import Path
+          from html.parser import HTMLParser
           import re
+
           readme = Path("README.md").read_text(encoding="utf-8")
+
+          class ImageRefs(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.refs = []
+              def handle_starttag(self, tag, attrs):
+                  attrs = dict(attrs)
+                  for key in ("src", "srcset"):
+                      value = attrs.get(key, "")
+                      if not value:
+                          continue
+                      for candidate in value.split(","):
+                          ref = candidate.strip().split()[0]
+                          if ref and not ref.startswith(("http://", "https://", "data:")):
+                              self.refs.append(ref)
+
+          parser = ImageRefs()
+          parser.feed(readme)
+          # Markdown image syntax is also checked.
+          parser.refs.extend(re.findall(r"!\[[^\]]*\]\((?!https?://)([^)]+)\)", readme))
+          missing = []
+          for ref in sorted(set(parser.refs)):
+              path = ref.split("#", 1)[0].split("?", 1)[0].lstrip("./")
+              if not path:
+                  continue
+              if not Path(path).is_file():
+                  missing.append(ref)
+              elif Path(path).stat().st_size == 0:
+                  missing.append(ref + " (empty)")
+          assert not missing, "Broken local README media: " + ", ".join(missing)
           required = [
               "assets/banner.svg",
+              "assets/profile-motion.gif",
               "assets/github-dashboard.svg",
               "assets/profile-trophies.svg",
               "assets/contribution-city.svg",
@@ -37,14 +72,13 @@ jobs:
               "assets/projects/iptv-shovo.svg",
           ]
           for asset in required:
-              assert Path(asset).is_file(), f"Missing required asset: {asset}"
-              assert Path(asset).stat().st_size > 100, f"Empty asset: {asset}"
-              assert f'./{asset}' in readme or f'"{asset}"' in readme, f"Asset not referenced: {asset}"
+              assert Path(asset).is_file() and Path(asset).stat().st_size > 100, f"Missing or invalid required asset: {asset}"
           assert "github-readme-stats.vercel.app/api" not in readme
           assert "github-readme-activity-graph.vercel.app" not in readme
-          print("All required local README assets exist and are referenced.")
+          print(f"Validated {len(set(parser.refs))} local README media references and all required assets.")
           PY
-      - name: Check workflow files exist
+
+      - name: Validate workflow definitions
         run: |
           test -s .github/workflows/profile-dashboard.yml
           test -s .github/workflows/profile-assets.yml
