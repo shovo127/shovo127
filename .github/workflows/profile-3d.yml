@@ -40,6 +40,9 @@ jobs:
           BLENDER_BIN="$RUNNER_TEMP/blender/blender-$VERSION-linux-x64/blender"
           "$BLENDER_BIN" --background --python-expr 'import bpy; print(bpy.app.version_string)'
           echo "BLENDER_BIN=$BLENDER_BIN" >> "$GITHUB_ENV"
+          sudo apt-get update
+          sudo apt-get install -y libegl1 libgl1 libxkbcommon0 libdbus-1-3 libxrender1 libxi6 libxfixes3 libsm6 libxext6 libx11-6
+          ldconfig -p | grep -q "libEGL.so.1"
           python -m pip install --disable-pip-version-check --quiet --user Pillow
 
       - name: Render and package all 3D scenes
@@ -47,7 +50,7 @@ jobs:
           PROFILE_RENDER_DIR: ${{ runner.temp }}/profile-render
         run: |
           cd repo
-          "$BLENDER_BIN" --background --factory-startup --python scripts/render_profile_3d.py
+          EGL_PLATFORM=surfaceless LIBGL_ALWAYS_SOFTWARE=1 "$BLENDER_BIN" --background --factory-startup --python scripts/render_profile_3d.py
           python scripts/pack_profile_3d.py
 
       - name: Commit only self-hosted 3D renders
