@@ -39,7 +39,7 @@ jobs:
         run: |
           python -m pip install --disable-pip-version-check --quiet Pillow numpy
           cd repo
-          python scripts/run_profile_art.py
+          python scripts/generate_profile_media.py
           python - <<'PY'
           from pathlib import Path
           import re
