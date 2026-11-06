@@ -18,13 +18,13 @@ def background():
         for y in range(H): px[x,y]=c
     return im.convert("RGBA")
 
-def save_gif(name, painter, size=(W,H), frames=FRAMES, duration=110):
+def save_gif(name, painter, size=(W,H), frames=FRAMES, duration=100):
     result=[]
     for i in range(frames):
         im=Image.new("RGBA",size,(7,19,33,255))
         painter(im,i,frames)
         result.append(im.convert("P",palette=Image.Palette.ADAPTIVE))
-    result[0].save(OUT/name,save_all=True,append_images=result[1:],duration=duration,loop=0,optimize=True,disposal=2)
+    result[0].save(OUT/name,save_all=True,append_images=result[1:],duration=duration,loop=1,optimize=True,disposal=2)
 
 def about(im,i,n):
     im.alpha_composite(background())
@@ -195,7 +195,7 @@ def snake_gif():
             hx,hy=points[head]
             d.ellipse((hx-7,hy-7,hx+7,hy+7),fill=(220,255,247,255),outline=(39,190,164,255),width=2)
         result.append(im.convert("P",palette=Image.Palette.ADAPTIVE))
-    result[0].save(OUT/"contribution-snake.gif",save_all=True,append_images=result[1:],duration=115,loop=0,optimize=True,disposal=2)
+    result[0].save(OUT/"contribution-snake.gif",save_all=True,append_images=result[1:],duration=85,loop=1,optimize=True,disposal=2)
 
 for name, painter in [
     ("about-motion.gif",about),("focus-motion.gif",focus),("projects-motion.gif",projects),
