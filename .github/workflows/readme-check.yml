@@ -151,9 +151,22 @@ jobs:
       - name: Validate generator and workflow files
         run: |
           cd repo
-          python -m py_compile scripts/generate_profile_media.py scripts/check_public_leaks.py
+          python -m py_compile scripts/generate_profile_media.py scripts/generate_dashboard.py scripts/update_blog_feed.py scripts/check_public_leaks.py
           python scripts/check_public_leaks.py
           test -s scripts/generate_profile_media.py
           test -s scripts/check_public_leaks.py
           test -s .github/workflows/profile-assets.yml
           test -s .github/workflows/profile-dashboard.yml
+          test -s scripts/generate_dashboard.py
+          test -s scripts/update_blog_feed.py
+          python - <<'PY'
+          from pathlib import Path
+          workflow_files = list(Path(".github/workflows").glob("*.yml"))
+          external = []
+          for path in workflow_files:
+              content = path.read_text(encoding="utf-8")
+              if "uses:" in content:
+                  external.append(str(path))
+          assert not external, "Third-party GitHub Actions are still used: " + ", ".join(external)
+          print(f"PASS: {len(workflow_files)} workflows use repository-owned scripts; no third-party actions.")
+          PY
