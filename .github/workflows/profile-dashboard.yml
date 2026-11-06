@@ -8,6 +8,8 @@ on:
     branches: [main]
     paths:
       - ".github/workflows/profile-dashboard.yml"
+      - "README.md"
+      - "assets/**"
 
 permissions:
   contents: write
@@ -62,10 +64,9 @@ jobs:
 
           lang_rows = sorted(langs.items(), key=lambda item: item[1], reverse=True)[:6]
           total = sum(langs.values()) or 1
-          width, height = 1200, 690
           pieces = []
           def add(s): pieces.append(s)
-          add(f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-labelledby="title desc">')
+          add('<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="690" viewBox="0 0 1200 690" role="img" aria-labelledby="title desc">')
           add('<title id="title">GitHub Engineering Dashboard</title><desc id="desc">Live public GitHub repository, follower, star, language and recent project data for '+html.escape(user)+'.</desc>')
           add('''<defs>
           <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#071321"/><stop offset="1" stop-color="#102A43"/></linearGradient>
@@ -89,11 +90,10 @@ jobs:
               add(f'<rect x="{x}" y="190" width="260" height="5" rx="2.5" fill="{color}"/>')
               add(f'<text x="{x+22}" y="235" font-family="Arial,sans-serif" font-size="13" letter-spacing="1.5" fill="#B0C4D8">{label}</text>')
               add(f'<text x="{x+22}" y="291" font-family="Arial,sans-serif" font-size="44" font-weight="800" fill="#F8FAFC">{value}</text>')
-
           add('<rect x="54" y="350" width="540" height="280" rx="22" fill="#FFFFFF" fill-opacity=".045" stroke="#B8D3E8" stroke-opacity=".13"/>')
           add('<text x="82" y="395" font-family="Arial,sans-serif" font-size="21" font-weight="700" fill="#F8FAFC">Language footprint</text>')
           y=445
-          for name,size in lang_rows:
+          for name,size in lang_rows[:5]:
               pct=size/total
               add(f'<text x="82" y="{y}" font-family="Arial,sans-serif" font-size="15" fill="#D7E5F3">{html.escape(name)}</text>')
               add(f'<text x="554" y="{y}" font-family="Arial,sans-serif" font-size="14" fill="#AFC4D8" text-anchor="end">{pct*100:.1f}%</text>')
@@ -102,21 +102,20 @@ jobs:
               y+=43
           if not lang_rows:
               add('<text x="82" y="455" font-family="Arial,sans-serif" font-size="15" fill="#AFC4D8">Language data is not available yet.</text>')
-
           add('<rect x="620" y="350" width="526" height="280" rx="22" fill="#FFFFFF" fill-opacity=".045" stroke="#B8D3E8" stroke-opacity=".13"/>')
           add('<text x="650" y="395" font-family="Arial,sans-serif" font-size="21" font-weight="700" fill="#F8FAFC">Recently updated projects</text>')
           y=442
           for repo in sorted(public_repos,key=lambda r:r.get("updated_at",""),reverse=True)[:5]:
               name=html.escape(repo["name"])
               desc=html.escape((repo.get("description") or "Open repository").strip())
-              if len(desc)>52: desc=desc[:49]+"..."
+              if len(desc)>48: desc=desc[:45]+"..."
               stars=repo.get("stargazers_count",0)
               add(f'<circle cx="660" cy="{y-5}" r="5" fill="#2DD4BF"/>')
-              add(f'<text x="679" y="{y}" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#EAF4FF">{name}</text>')
-              add(f'<text x="679" y="{y+22}" font-family="Arial,sans-serif" font-size="13" fill="#9FB6CB">{desc}</text>')
+              add(f'<text x="679" y="{y}" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#EAF4FF">{name}</text>')
+              add(f'<text x="679" y="{y+21}" font-family="Arial,sans-serif" font-size="12" fill="#9FB6CB">{desc}</text>')
               add(f'<text x="1110" y="{y}" font-family="Arial,sans-serif" font-size="13" fill="#FBBF24" text-anchor="end">★ {stars}</text>')
               y+=42
-          add('<text x="54" y="662" font-family="Arial,sans-serif" font-size="12" fill="#7F9AB2">Source: GitHub public REST API  ·  Language shares are based on detected bytes in public repositories, not skill proficiency.</text>')
+          add('<text x="54" y="662" font-family="Arial,sans-serif" font-size="12" fill="#7F9AB2">Source: GitHub public REST API  ·  Language shares represent repository code volume, not proficiency.</text>')
           add('</svg>')
           Path("assets/github-dashboard.svg").write_text("".join(pieces),encoding="utf-8")
           print("Generated self-hosted dashboard.")
