@@ -130,14 +130,16 @@ Learning platforms, multilingual experiences, interactive practice, digital tool
 
 <div align="center">
 
-<a href="https://github.com/shovo127/shovo127/actions/workflows/metrics.yml"><img src="https://img.shields.io/badge/Advanced%20Metrics-Generate%20dashboard-0E9F8A?style=for-the-badge&logo=githubactions&logoColor=white" alt="Run the advanced metrics dashboard workflow" /></a>
+<img src="./assets/github-dashboard.svg" width="100%" alt="Shovo's GitHub dashboard showing repository, follower, and contribution activity" />
 
-<a href="https://github.com/anuraghazra/github-readme-stats"><img height="175" src="https://github-readme-stats.vercel.app/api?username=shovo127&show_icons=true&include_all_commits=true&rank_icon=github&theme=transparent&hide_border=true" alt="GitHub statistics" /></a>
-<a href="https://github.com/anuraghazra/github-readme-stats"><img height="175" src="https://github-readme-stats.vercel.app/api/top-langs/?username=shovo127&layout=compact&langs_count=8&theme=transparent&hide_border=true" alt="Top repository languages" /></a>
+</div>
 
-<img src="https://github-readme-streak-stats.herokuapp.com?user=shovo127&theme=transparent&hide_border=true&date_format=M%20j%5B%2C%20Y%5D" alt="GitHub contribution streak" width="95%" />
+The dashboard above is generated from GitHub's public API by this repository's scheduled workflow. It is maintained as an SVG in this repository, so profile statistics and charts no longer rely on third-party README-stat image hosts.
 
-<a href="https://github.com/Ashutosh00710/github-readme-activity-graph"><img src="https://github-readme-activity-graph.vercel.app/graph?username=shovo127&theme=github-compact&hide_border=true&area=true" width="98%" alt="GitHub activity graph" /></a>
+<div align="center">
+
+<a href="https://github.com/shovo127/shovo127/actions/workflows/profile-dashboard.yml"><img src="https://img.shields.io/badge/Dashboard-Automated%20Refresh-10B981?style=for-the-badge&logo=githubactions&logoColor=white" alt="Dashboard workflow"/></a>
+<a href="https://github.com/shovo127?tab=repositories"><img src="https://img.shields.io/badge/Repositories-Explore-2563EB?style=for-the-badge&logo=github" alt="Repositories"/></a>
 
 </div>
 
