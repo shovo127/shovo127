@@ -98,6 +98,19 @@ jobs:
               "assets/connect-motion.gif",
               "assets/learning-loop.svg",
               "assets/footer.svg",
+              "assets/section-01.gif",
+              "assets/section-02.gif",
+              "assets/section-03.gif",
+              "assets/section-04.gif",
+              "assets/section-05.gif",
+              "assets/section-06.gif",
+              "assets/section-07.gif",
+              "assets/section-08-contribution-snake.gif",
+              "assets/section-09.gif",
+              "assets/section-10.gif",
+              "assets/section-11.gif",
+              "assets/section-12.gif",
+              "assets/github-dashboard.png",
               "assets/projects/kostenlos-ai.svg",
               "assets/projects/visaflowx.svg",
               "assets/projects/visaflowx-universal.svg",
@@ -108,6 +121,17 @@ jobs:
           for asset in required:
               p = Path(asset)
               assert p.is_file() and p.stat().st_size > 100, f"Missing or invalid required asset: {asset}"
+
+          for asset in required:
+              p = Path(asset)
+              if p.suffix == ".gif":
+                  assert p.read_bytes()[:6] in (b"GIF87a", b"GIF89a"), f"Invalid GIF file: {asset}"
+              if p.suffix == ".png":
+                  assert p.read_bytes()[:8] == b"\\x89PNG\\r\\n\\x1a\\n", f"Invalid PNG file: {asset}"
+
+          import xml.etree.ElementTree as ET
+          for svg in Path("assets").rglob("*.svg"):
+              ET.parse(svg)
 
           assert "github-readme-stats.vercel.app" not in readme
           assert "github-readme-activity-graph.vercel.app" not in readme
