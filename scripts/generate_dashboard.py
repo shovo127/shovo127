@@ -1,0 +1,91 @@
+'
+import json, os, urllib.request, datetime, html
+from pathlib import Path
+
+user = os.environ["GITHUB_USERNAME"]
+token = os.environ["GITHUB_TOKEN"]
+
+def api(path):
+    req = urllib.request.Request(
+        "https://api.github.com" + path,
+        headers={
+            "Accept": "application/vnd.github+json",
+            "Authorization": f"Bearer {token}",
+            "X-GitHub-Api-Version": "2022-11-28",
+            "User-Agent": "profile-dashboard-workflow",
+        },
+    )
+    with urllib.request.urlopen(req, timeout=30) as response:
+        return json.load(response)
+
+profile = api(f"/users/{user}")
+repos = api(f"/users/{user}/repos?per_page=100&sort=updated")
+public_repos = [r for r in repos if not r.get("fork") and not r.get("archived")]
+langs = {}
+for repo in public_repos:
+    try:
+        data = api(f"/repos/{user}/{repo['name']}/languages")
+        for name, size in data.items():
+            langs[name] = langs.get(name, 0) + size
+    except Exception:
+        pass
+
+lang_rows = sorted(langs.items(), key=lambda item: item[1], reverse=True)[:6]
+total = sum(langs.values()) or 1
+pieces = []
+def add(s): pieces.append(s)
+add('<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="690" viewBox="0 0 1200 690" role="img" aria-labelledby="title desc">')
+add('<title id="title">GitHub Engineering Dashboard</title><desc id="desc">Live public GitHub repository, follower, star, language and recent project data for '+html.escape(user)+'.</desc>')
+add('''<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#071321"/><stop offset="1" stop-color="#102A43"/></linearGradient>
+<linearGradient id="aqua"><stop stop-color="#2DD4BF"/><stop offset="1" stop-color="#60A5FA"/></linearGradient>
+<pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M28 0H0V28" fill="none" stroke="#A7C5DD" stroke-opacity=".07"/></pattern>
+</defs>''')
+add('<rect width="1200" height="690" rx="30" fill="url(#bg)"/><rect width="1200" height="690" rx="30" fill="url(#grid)"/>')
+add('<circle cx="1080" cy="70" r="240" fill="#0D9488" opacity=".08"/>')
+add('<text x="54" y="62" font-family="Arial,sans-serif" font-size="17" letter-spacing="4" fill="#5EEAD4">ENGINEERING SNAPSHOT</text>')
+add('<text x="54" y="112" font-family="Arial,sans-serif" font-size="38" font-weight="800" fill="#F8FAFC">GitHub Command Center</text>')
+add('<text x="56" y="147" font-family="Arial,sans-serif" font-size="17" fill="#AFC4D8">@'+html.escape(user)+'  ·  '+datetime.datetime.now(datetime.timezone.utc).strftime('%d %b %Y UTC')+'</text>')
+metrics = [
+    ("PUBLIC REPOSITORIES", str(profile.get("public_repos",0)), "#2DD4BF"),
+    ("FOLLOWERS", str(profile.get("followers",0)), "#60A5FA"),
+    ("FOLLOWING", str(profile.get("following",0)), "#A78BFA"),
+    ("PUBLIC STARS", str(sum(r.get("stargazers_count",0) for r in repos)), "#FBBF24"),
+]
+for i,(label,value,color) in enumerate(metrics):
+    x=54+i*284
+    add(f'<rect x="{x}" y="190" width="260" height="128" rx="20" fill="#FFFFFF" fill-opacity=".055" stroke="#B8D3E8" stroke-opacity=".13"/>')
+    add(f'<rect x="{x}" y="190" width="260" height="5" rx="2.5" fill="{color}"/>')
+    add(f'<text x="{x+22}" y="235" font-family="Arial,sans-serif" font-size="13" letter-spacing="1.5" fill="#B0C4D8">{label}</text>')
+    add(f'<text x="{x+22}" y="291" font-family="Arial,sans-serif" font-size="44" font-weight="800" fill="#F8FAFC">{value}</text>')
+add('<rect x="54" y="350" width="540" height="280" rx="22" fill="#FFFFFF" fill-opacity=".045" stroke="#B8D3E8" stroke-opacity=".13"/>')
+add('<text x="82" y="395" font-family="Arial,sans-serif" font-size="21" font-weight="700" fill="#F8FAFC">Language footprint</text>')
+y=445
+for name,size in lang_rows[:5]:
+    pct=size/total
+    add(f'<text x="82" y="{y}" font-family="Arial,sans-serif" font-size="15" fill="#D7E5F3">{html.escape(name)}</text>')
+    add(f'<text x="554" y="{y}" font-family="Arial,sans-serif" font-size="14" fill="#AFC4D8" text-anchor="end">{pct*100:.1f}%</text>')
+    add(f'<rect x="82" y="{y+12}" width="472" height="9" rx="4.5" fill="#FFFFFF" fill-opacity=".09"/>')
+    add(f'<rect x="82" y="{y+12}" width="{472*pct:.1f}" height="9" rx="4.5" fill="url(#aqua)"/>')
+    y+=43
+if not lang_rows:
+    add('<text x="82" y="455" font-family="Arial,sans-serif" font-size="15" fill="#AFC4D8">Language data is not available yet.</text>')
+add('<rect x="620" y="350" width="526" height="280" rx="22" fill="#FFFFFF" fill-opacity=".045" stroke="#B8D3E8" stroke-opacity=".13"/>')
+add('<text x="650" y="395" font-family="Arial,sans-serif" font-size="21" font-weight="700" fill="#F8FAFC">Recently updated projects</text>')
+y=442
+for repo in sorted(public_repos,key=lambda r:r.get("updated_at",""),reverse=True)[:5]:
+    name=html.escape(repo["name"])
+    desc=html.escape((repo.get("description") or "Open repository").strip())
+    if len(desc)>48: desc=desc[:45]+"..."
+    stars=repo.get("stargazers_count",0)
+    add(f'<circle cx="660" cy="{y-5}" r="5" fill="#2DD4BF"/>')
+    add(f'<text x="679" y="{y}" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#EAF4FF">{name}</text>')
+    add(f'<text x="679" y="{y+21}" font-family="Arial,sans-serif" font-size="12" fill="#9FB6CB">{desc}</text>')
+    add(f'<text x="1110" y="{y}" font-family="Arial,sans-serif" font-size="13" fill="#FBBF24" text-anchor="end">★ {stars}</text>')
+    y+=42
+add('<text x="54" y="662" font-family="Arial,sans-serif" font-size="12" fill="#7F9AB2">Source: GitHub public REST API  ·  Language shares represent repository code volume, not proficiency.</text>')
+add('</svg>')
+Path("assets/github-dashboard.svg").write_text("".join(pieces),encoding="utf-8")
+import cairosvg
+cairosvg.svg2png(url="assets/github-dashboard.svg", write_to="assets/github-dashboard.png", output_width=1200, output_height=690)
+print("Generated self-hosted SVG and PNG dashboard.")
