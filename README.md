@@ -122,7 +122,7 @@ Learning platforms, multilingual experiences, interactive practice, digital tool
 
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/shovo127/shovo127/metrics/github-metrics.svg" width="98%" alt="Automated GitHub metrics: activity, habits, languages, stars, topics and repository insights" />
+<a href="https://github.com/shovo127/shovo127/actions/workflows/metrics.yml"><img src="https://img.shields.io/badge/Advanced%20Metrics-Generate%20dashboard-0E9F8A?style=for-the-badge&logo=githubactions&logoColor=white" alt="Run the advanced metrics dashboard workflow" /></a>
 
 <a href="https://github.com/anuraghazra/github-readme-stats"><img height="175" src="https://github-readme-stats.vercel.app/api?username=shovo127&show_icons=true&include_all_commits=true&rank_icon=github&theme=transparent&hide_border=true" alt="GitHub statistics" /></a>
 <a href="https://github.com/anuraghazra/github-readme-stats"><img height="175" src="https://github-readme-stats.vercel.app/api/top-langs/?username=shovo127&layout=compact&langs_count=8&theme=transparent&hide_border=true" alt="Top repository languages" /></a>
@@ -145,7 +145,9 @@ Learning platforms, multilingual experiences, interactive practice, digital tool
 
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/shovo127/shovo127/main/profile-3d-contrib/profile-night-rainbow.svg" width="98%" alt="Automatically generated 3D contribution skyline" />
+<a href="https://github.com/shovo127/shovo127/actions/workflows/profile-3d.yml"><img src="https://img.shields.io/badge/3D%20Contribution%20City-Generate%20visualization-12304A?style=for-the-badge&logo=githubactions&logoColor=white" alt="Run the 3D contribution generator" /></a>
+
+<sub>The 3D image will appear here after the first successful workflow run.</sub>
 
 </div>
 
@@ -153,11 +155,9 @@ Learning platforms, multilingual experiences, interactive practice, digital tool
 
 <div align="center">
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/shovo127/shovo127/output/github-contribution-grid-snake-dark.svg" />
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/shovo127/shovo127/output/github-contribution-grid-snake.svg" />
-  <img src="https://raw.githubusercontent.com/shovo127/shovo127/output/github-contribution-grid-snake.svg" width="98%" alt="Animated contribution snake game" />
-</picture>
+<a href="https://github.com/shovo127/shovo127/actions/workflows/snake.yml"><img src="https://img.shields.io/badge/Contribution%20Snake-Generate%20animation-0E9F8A?style=for-the-badge&logo=githubactions&logoColor=white" alt="Run contribution snake generator" /></a>
+
+<sub>The animated snake will appear here after the first successful workflow run.</sub>
 
 </div>
 
