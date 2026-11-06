@@ -132,6 +132,29 @@ def habits(im,i,n):
     x=xs[active]
     d.ellipse((x-25,44,x+25,94),outline=(*cols[active],110),width=2)
 
+def beyond(im,i,n):
+    im.alpha_composite(background()); d=ImageDraw.Draw(im)
+    labels=["ENGINEERING","LANGUAGES","TECHNOLOGY","TRAVEL"]
+    xs=[145,415,685,955]; cols=[MINT,BLUE,VIOLET,GOLD]
+    d.text((30,16),"INTERESTS THAT KEEP CURIOSITY MOVING",fill=(170,210,220))
+    d.line((xs[0],65,xs[-1],65),fill=(68,124,148,180),width=2)
+    active=(i//6)%4
+    for j,(x,label,c) in enumerate(zip(xs,labels,cols)):
+        r=15 if j==active else 9
+        d.ellipse((x-r,65-r,x+r,65+r),fill=(*c,220 if j==active else 100))
+        d.text((x-48,96),label,fill=(225,241,247))
+
+def connect(im,i,n):
+    im.alpha_composite(background()); d=ImageDraw.Draw(im)
+    d.text((30,16),"OPEN TO SHARING IDEAS AND BUILDING USEFUL THINGS",fill=(170,210,220))
+    pts=[(160,68),(420,68),(680,68),(940,68)]
+    for a,b in zip(pts,pts[1:]): d.line((*a,*b),fill=(63,142,160,160),width=2)
+    cols=[MINT,BLUE,VIOLET,GOLD]
+    for j,(x,y) in enumerate(pts):
+        d.ellipse((x-13,y-13,x+13,y+13),fill=(*cols[j],190))
+    x=pts[(i//6)%4][0]
+    d.ellipse((x-22,46,x+22,90),outline=(218,255,246,180),width=2)
+
 def snake_data():
     login=os.environ.get("GITHUB_USERNAME","shovo127")
     token=os.environ.get("GITHUB_TOKEN","")
@@ -177,7 +200,8 @@ def snake_gif():
 for name, painter in [
     ("about-motion.gif",about),("focus-motion.gif",focus),("projects-motion.gif",projects),
     ("technology-motion.gif",tech),("dashboard-motion.gif",dashboard),
-    ("achievement-motion.gif",achievement),("city-motion.gif",city),("habits-motion.gif",habits)
+    ("achievement-motion.gif",achievement),("city-motion.gif",city),("habits-motion.gif",habits),
+    ("beyond-code-motion.gif",beyond),("connect-motion.gif",connect)
 ]:
     save_gif(name,painter)
     print("Generated",name)
