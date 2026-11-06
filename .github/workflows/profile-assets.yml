@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - "README.md"
+      - "SETUP.md"
       - "scripts/generate_profile_media.py"
       - ".github/workflows/profile-assets.yml"
   schedule:
@@ -47,6 +48,9 @@ jobs:
           svg = Path("assets/github-dashboard.svg")
           if svg.is_file():
               cairosvg.svg2png(url=str(svg), write_to="assets/github-dashboard.png", output_width=1200, output_height=690)
+          tech = Path("assets/technology-stack.svg")
+          if tech.is_file():
+              cairosvg.svg2png(url=str(tech), write_to="assets/technology-stack.png", output_width=1200, output_height=420)
           png = Path("assets/github-dashboard.png")
           assert png.is_file() and png.read_bytes()[:8] == bytes([137,80,78,71,13,10,26,10]), "Dashboard PNG is missing or invalid."
           print("Verified local dashboard PNG.")
@@ -75,7 +79,7 @@ jobs:
           REPOSITORY: ${{ github.repository }}
         run: |
           cd repo
-          git add assets/section-*.gif assets/github-dashboard.png
+          git add assets/section-*.gif assets/github-dashboard.png assets/technology-stack.png
           if git diff --cached --quiet; then
             echo "No generated media changes."
             exit 0
