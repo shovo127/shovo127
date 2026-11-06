@@ -1,28 +1,37 @@
 # Profile repository maintenance
 
-The public profile README is intentionally self-contained: every displayed image and illustration is stored in this repository under `assets/`. The README does not load images from badge services, icon CDNs, statistics providers, or third-party image hosts.
+The public profile README uses repository-owned media. Displayed animations are committed under `assets/`; the README does not depend on remote image hosts, animation services or icon CDNs.
 
-## Automated media
+## 3D rendering pipeline
 
-- `.github/workflows/profile-assets.yml` runs the local generator in `scripts/generate_profile_media.py`.
-- The generator creates the subtle animated GIFs and contribution snake, then commits them into `assets/`.
-- `.github/workflows/profile-dashboard.yml` builds the GitHub dashboard SVG from GitHub's public API and commits it into `assets/`.
-- `.github/workflows/readme-check.yml` verifies that every displayed image is repository-local, all required media exists, and the generator compiles.
+- `.github/workflows/profile-assets.yml` builds the profile media automatically when the README or Blender scene scripts change.
+- `scripts/render_profile_3d.py` renders the product scenes with **Blender**, an open-source 3D renderer.
+- `scripts/pack_profile_3d.py` converts the rendered frames into self-hosted animated GIFs.
+- The resulting 3D animations are stored in `assets/3d/` and embedded directly in the README.
+- The existing `assets/contribution-snake.gif` is preserved. The snake workflow only verifies it; it does not regenerate or replace it.
+- `.github/workflows/readme-check.yml` validates local image references, media file signatures, SVG integrity, Python syntax and workflow declarations.
 
-These workflows use GitHub Actions' built-in `GITHUB_TOKEN` with repository-scoped permissions. No personal access token, API key, WakaTime key, Spotify token, Discord bot token, or other private credential is required for the core profile.
+The rendering workflow uses GitHub Actions' built-in `GITHUB_TOKEN` with repository-scoped permissions. Blender and Pillow are installed from Ubuntu's package repositories. No personal access token, paid image service or third-party GitHub Action is required.
 
-## Current implementation\n\nThe README currently uses only repository-local image files. Ten subtle section-level GIF animations plus the contribution snake are generated into `assets/`; all static profile illustrations are also checked into the same folder. The dashboard is generated locally as SVG. No remote image badge, icon CDN, statistics image provider, or animation host is used.\n\n## Security and maintenance
+## Other repository-owned media
 
-- Never put credentials, private keys, recovery codes, personal access tokens, or private data in README files, SVGs, GIFs, workflow logs, or commits.
-- Do not add third-party image URLs to README `img`, `source`, or Markdown image syntax. Add the image to `assets/` and reference it with a relative path.
-- Keep workflow permissions minimal. The media and dashboard workflows need `contents: write`; the README validator needs only `contents: read`.
-- Review workflow changes before merging. Prefer repository-owned scripts and GitHub's built-in token over third-party actions.
-- The contribution snake uses public contribution-calendar data when available. If GitHub's API does not provide it, the contribution grid stays neutral rather than fabricating contribution totals.
+- `.github/workflows/profile-dashboard.yml` builds the GitHub dashboard from public repository data.
+- `scripts/generate_dashboard.py` generates the dashboard SVG; a PNG copy is used for README compatibility.
+- `scripts/update_blog_feed.py` updates the writing section only when the optional `BLOG_FEED_URL` repository variable is configured.
+- Previous SVG artwork and earlier GIF iterations remain in `assets/` as preserved source/history; the current README uses the new 3D renders for its main visual sections.
+
+## Security and maintenance
+
+- Never put credentials, private keys, recovery codes, personal access tokens or private data in README files, SVGs, GIFs, workflow logs or commits.
+- Do not add third-party image URLs to README `img`, `source` or Markdown image syntax. Add media to `assets/` and reference it with a relative path.
+- Keep workflow permissions minimal. Rendering and dashboard workflows need `contents: write`; validation needs only `contents: read`.
+- Prefer repository-owned scripts and GitHub's built-in token over third-party actions.
+- Contribution data must come from GitHub's public contribution calendar. If the data source is unavailable, do not invent contribution totals.
 
 ## Motion and accessibility
 
-Animations are decorative and do not carry essential information. Keep them slow, low-contrast, non-flashing and lightweight. GitHub profile README rendering does not provide a reliable custom pause control or a CSS `prefers-reduced-motion` switch for embedded GIFs, so avoid intense or large-area motion. Keep descriptive alt text and a static illustration beside animated media.
+Animations are decorative and do not carry essential information. Keep motion subtle, slow, non-flashing and lightweight. GitHub profile README rendering does not provide a reliable custom pause control or a CSS `prefers-reduced-motion` switch for embedded GIFs, so avoid intense or large-area motion. Keep descriptive alt text.
 
 ## Repository visibility
 
-This repository must remain public for GitHub to display it as a public profile README. Do not store secrets here. GitHub Actions secrets and variables belong in repository Settings and must never be copied into tracked files. Branch protection and ruleset configuration should be managed in GitHub repository settings by an administrator; the connected integration used for this maintenance cannot read or change those administrative settings.
+This repository must remain public for GitHub to display it as a public profile README. Do not store secrets here. GitHub Actions secrets and variables belong in repository Settings and must never be copied into tracked files.
