@@ -16,6 +16,11 @@ jobs:
         run: |
           git clone --depth 1 "https://github.com/${REPOSITORY}.git" repo
 
+      - name: Install image metadata reader
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y python3-pil
+
       - name: Verify the approved snake without replacing it
         run: |
           cd repo
