@@ -115,7 +115,7 @@ def render(section,frame,total):
         labels=["PLAN","BUILD","VERIFY","REFINE"]
         d.line((650,138,1100,138),fill=(*ICE,120),width=2)
         for j,x in enumerate(xs):
-            d.ellipse((x-18,120,x+18,156),fill=(21,36,44,255),outline=(*TEAL if j==(frame//5)%4 else ICE,210),width=2)
+            d.ellipse((x-18,120,x+18,156),fill=(21,36,44,255),outline=(*(TEAL if j==(frame//5)%4 else ICE),210),width=2)
             d.text((x,138),str(j+1),font=f(11,True,m=True),fill=WHITE,anchor="mm"); d.text((x,185),labels[j],font=f(10,True,m=True),fill=WHITE,anchor="mm")
     elif section==10:
         book(d,880,142,58); d.text((1000,95),"FIELD NOTES",font=f(10,True,m=True),fill=TEAL)
