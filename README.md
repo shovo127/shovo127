@@ -122,6 +122,8 @@ Learning platforms, multilingual experiences, interactive practice, digital tool
 
 <div align="center">
 
+<img src="https://raw.githubusercontent.com/shovo127/shovo127/metrics/github-metrics.svg" width="98%" alt="Automated GitHub metrics: activity, habits, languages, stars, topics and repository insights" />
+
 <a href="https://github.com/anuraghazra/github-readme-stats"><img height="175" src="https://github-readme-stats.vercel.app/api?username=shovo127&show_icons=true&include_all_commits=true&rank_icon=github&theme=transparent&hide_border=true" alt="GitHub statistics" /></a>
 <a href="https://github.com/anuraghazra/github-readme-stats"><img height="175" src="https://github-readme-stats.vercel.app/api/top-langs/?username=shovo127&layout=compact&langs_count=8&theme=transparent&hide_border=true" alt="Top repository languages" /></a>
 
