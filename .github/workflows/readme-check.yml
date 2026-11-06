@@ -2,7 +2,7 @@ name: Profile README checks
 
 on:
   workflow_run:
-    workflows: ["Build self-hosted profile media"]
+    workflows: ["Build self-hosted realistic 3D profile media"]
     types: [completed]
   pull_request:
     branches: [main]
@@ -83,42 +83,20 @@ jobs:
           assert not missing, "Broken local README media: " + ", ".join(missing)
 
           required = [
-              "assets/banner.svg",
-              "assets/profile-badges.svg",
-              "assets/about-portrait.svg",
-              "assets/about-motion.gif",
-              "assets/engineering-focus.svg",
-              "assets/focus-motion.gif",
-              "assets/projects-motion.gif",
-              "assets/technology-stack.svg",
-              "assets/technology-motion.gif",
-              "assets/github-dashboard.svg",
-              "assets/dashboard-motion.gif",
-              "assets/profile-trophies.svg",
-              "assets/achievement-motion.gif",
-              "assets/contribution-city.svg",
-              "assets/city-motion.gif",
+              "assets/3d/00-hero.gif",
+              "assets/3d/01-about.gif",
+              "assets/3d/02-engineering-focus.gif",
+              "assets/3d/03-featured-work.gif",
+              "assets/3d/04-technology.gif",
+              "assets/3d/05-command-center.gif",
+              "assets/3d/06-achievements.gif",
+              "assets/3d/07-contribution-city.gif",
               "assets/contribution-snake.gif",
-              "assets/coding-rhythm.svg",
-              "assets/habits-motion.gif",
-              "assets/beyond-code-motion.gif",
-              "assets/connect-motion.gif",
-              "assets/learning-loop.svg",
-              "assets/footer.svg",
-              "assets/section-01.gif",
-              "assets/section-02.gif",
-              "assets/section-03.gif",
-              "assets/section-04.gif",
-              "assets/section-05.gif",
-              "assets/section-06.gif",
-              "assets/section-07.gif",
-              "assets/section-08-contribution-snake.gif",
-              "assets/section-09.gif",
-              "assets/section-10.gif",
-              "assets/section-11.gif",
-              "assets/section-12.gif",
+              "assets/3d/09-coding-habits.gif",
+              "assets/3d/10-learning-loop.gif",
+              "assets/3d/11-beyond-code.gif",
+              "assets/3d/12-connect.gif",
               "assets/github-dashboard.png",
-              "assets/technology-stack.png",
               "assets/projects/kostenlos-ai.svg",
               "assets/projects/visaflowx.svg",
               "assets/projects/visaflowx-universal.svg",
@@ -137,6 +115,12 @@ jobs:
               if p.suffix == ".png":
                   assert p.read_bytes()[:8] == bytes([137,80,78,71,13,10,26,10]), f"Invalid PNG file: {asset}"
 
+          from PIL import Image
+          for asset in [p for p in required if p.startswith("assets/3d/")]:
+              with Image.open(asset) as gif:
+                  assert gif.size == (1200,300) and gif.n_frames == 20, f"Invalid 3D render: {asset}"
+
+
           import xml.etree.ElementTree as ET
           for svg in Path("assets").rglob("*.svg"):
               ET.parse(svg)
@@ -151,8 +135,10 @@ jobs:
       - name: Validate generator and workflow files
         run: |
           cd repo
-          python -m py_compile scripts/generate_profile_media.py scripts/generate_dashboard.py scripts/update_blog_feed.py scripts/check_public_leaks.py
+          python -m py_compile scripts/generate_profile_media.py scripts/render_profile_3d.py scripts/pack_profile_3d.py scripts/generate_dashboard.py scripts/update_blog_feed.py scripts/check_public_leaks.py
           python scripts/check_public_leaks.py
+          test -s scripts/render_profile_3d.py
+          test -s scripts/pack_profile_3d.py
           test -s scripts/generate_profile_media.py
           test -s scripts/check_public_leaks.py
           test -s .github/workflows/profile-assets.yml
@@ -165,7 +151,7 @@ jobs:
           external = []
           for path in workflow_files:
               content = path.read_text(encoding="utf-8")
-              if "uses:" in content:
+              if re.search(r"^\\s*uses\\s*:", content, re.MULTILINE):
                   external.append(str(path))
           assert not external, "Third-party GitHub Actions are still used: " + ", ".join(external)
           print(f"PASS: {len(workflow_files)} workflows use repository-owned scripts; no third-party actions.")
