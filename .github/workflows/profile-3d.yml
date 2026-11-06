@@ -1,4 +1,4 @@
-name: Refresh contribution city artwork
+name: Re-render self-hosted 3D profile scenes
 
 on:
   workflow_dispatch:
@@ -7,14 +7,15 @@ permissions:
   contents: write
 
 concurrency:
-  group: profile-content-build
+  group: profile-3d-media
   cancel-in-progress: false
 
 jobs:
-  generate:
+  render:
     runs-on: ubuntu-latest
+    timeout-minutes: 90
     steps:
-      - name: Clone this repository
+      - name: Clone repository
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPOSITORY: ${{ github.repository }}
@@ -24,24 +25,28 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-      - name: Generate local contribution artwork
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_USERNAME: ${{ github.repository_owner }}
+      - name: Install Blender and GIF encoder
         run: |
-          python -m pip install --disable-pip-version-check --quiet Pillow numpy
-          cd repo
-          python scripts/generate_profile_media.py
+          sudo apt-get update
+          sudo apt-get install -y blender python3-pil
 
-      - name: Commit city artwork
+      - name: Render and package all 3D scenes
+        env:
+          PROFILE_RENDER_DIR: ${{ runner.temp }}/profile-render
+        run: |
+          cd repo
+          blender --background --factory-startup --python scripts/render_profile_3d.py
+          python3 scripts/pack_profile_3d.py
+
+      - name: Commit only self-hosted 3D renders
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPOSITORY: ${{ github.repository }}
         run: |
           cd repo
-          git add assets/section-07.gif
+          git add assets/3d/*.gif
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m "chore: refresh local contribution city"
+          git commit -m "chore: re-render self-hosted 3D profile scenes"
           git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${REPOSITORY}.git"
           git fetch origin main
           git rebase origin/main
