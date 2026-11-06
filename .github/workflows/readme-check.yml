@@ -34,19 +34,23 @@ jobs:
                   self.refs = []
               def handle_starttag(self, tag, attrs):
                   attrs = dict(attrs)
-                  for key in ("src", "srcset"):
-                      value = attrs.get(key, "")
-                      if not value:
-                          continue
-                      for candidate in value.split(","):
-                          ref = candidate.strip().split()[0]
-                          if ref and not ref.startswith(("http://", "https://", "data:")):
-                              self.refs.append(ref)
+                  src = attrs.get("src", "").strip()
+                  if src and not src.startswith(("http://", "https://", "data:")):
+                      self.refs.append(src)
+                  srcset = attrs.get("srcset", "")
+                  for candidate in srcset.split(","):
+                      ref = candidate.strip().split()[0] if candidate.strip() else ""
+                      if ref and not ref.startswith(("http://", "https://", "data:")):
+                          self.refs.append(ref)
 
           parser = ImageRefs()
           parser.feed(readme)
-          # Markdown image syntax is also checked.
-          parser.refs.extend(re.findall(r"!\[[^\]]*\]\((?!https?://)([^)]+)\)", readme))
+          # Markdown image URLs are scanned without splitting commas inside URLs.
+          for ref in re.findall(r"!\[[^\]]*\]\(([^)]+)\)", readme):
+              ref = ref.strip().split()[0]
+              if ref and not ref.startswith(("http://", "https://", "data:")):
+                  parser.refs.append(ref)
+
           missing = []
           for ref in sorted(set(parser.refs)):
               path = ref.split("#", 1)[0].split("?", 1)[0].lstrip("./")
@@ -57,6 +61,7 @@ jobs:
               elif Path(path).stat().st_size == 0:
                   missing.append(ref + " (empty)")
           assert not missing, "Broken local README media: " + ", ".join(missing)
+
           required = [
               "assets/banner.svg",
               "assets/profile-motion.gif",
