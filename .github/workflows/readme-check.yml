@@ -119,7 +119,9 @@ jobs:
       - name: Validate generator and workflow files
         run: |
           cd repo
-          python -m py_compile scripts/generate_profile_media.py
+          python -m py_compile scripts/generate_profile_media.py scripts/check_public_leaks.py
+          python scripts/check_public_leaks.py
           test -s scripts/generate_profile_media.py
+          test -s scripts/check_public_leaks.py
           test -s .github/workflows/profile-assets.yml
           test -s .github/workflows/profile-dashboard.yml
