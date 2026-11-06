@@ -38,6 +38,7 @@ jobs:
           GITHUB_USERNAME: ${{ github.repository_owner }}
         run: |
           cd repo
+          python -m pip install --disable-pip-version-check --quiet cairosvg
           python - <<'PY'
           import json, os, urllib.request, datetime, html
           from pathlib import Path
@@ -126,7 +127,9 @@ jobs:
           add('<text x="54" y="662" font-family="Arial,sans-serif" font-size="12" fill="#7F9AB2">Source: GitHub public REST API  ·  Language shares represent repository code volume, not proficiency.</text>')
           add('</svg>')
           Path("assets/github-dashboard.svg").write_text("".join(pieces),encoding="utf-8")
-          print("Generated self-hosted dashboard.")
+          import cairosvg
+          cairosvg.svg2png(url="assets/github-dashboard.svg", write_to="assets/github-dashboard.png", output_width=1200, output_height=690)
+          print("Generated self-hosted SVG and PNG dashboard.")
           PY
 
       - name: Commit and push the generated dashboard
@@ -135,7 +138,7 @@ jobs:
           REPOSITORY: ${{ github.repository }}
         run: |
           cd repo
-          git add assets/github-dashboard.svg
+          git add assets/github-dashboard.svg assets/github-dashboard.png
           if git diff --cached --quiet; then
             echo "Dashboard is already up to date."
             exit 0
