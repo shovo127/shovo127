@@ -83,6 +83,7 @@ def render(section,frame,total):
     elif section==2:
         metallic(d,xs[0],122,34); chip(d,xs[1],122,31); phone(d,xs[2],122,29); book(d,xs[3],122,28)
         for x,l in zip(xs,["AI SYSTEMS","AUTOMATION","ANDROID","EDTECH"]): d.text((x,205),l,font=f(10,True,m=True),fill=WHITE,anchor="mm")
+        active=xs[(frame//5)%4]; d.ellipse((active-43,79,active+43,165),outline=(*TEAL,85),width=1)
     elif section==3:
         names=["KAI","VFX","VFU","NF","CTS","IPTV"]; xx=[630,730,830,930,1030,1130]
         for j,x in enumerate(xx):
@@ -90,9 +91,11 @@ def render(section,frame,total):
             d.rounded_rectangle((x-30,108,x+30,162),radius=4,fill=(29,46,55,255),outline=(*ICE,170),width=1)
             d.line((x-20,118,x+20,118),fill=(*TEAL,130),width=1); d.text((x,137),names[j],font=f(10,True,m=True),fill=WHITE,anchor="mm")
             if j<5: d.line((x+31,137,xx[j+1]-31,137),fill=(*ICE,110),width=1)
+        active=xx[(frame//3)%6]; d.ellipse((active-37,99,active+37,171),outline=(*TEAL,150),width=1)
     elif section==4:
         for j,(a,b) in enumerate([("WEB","TypeScript · JavaScript · Python · React · Next.js"),("SYSTEMS","Android · Linux · Windows · Git · GitHub"),("CLOUD","Cloudflare · Vercel · Firebase · Appwrite"),("CREATIVE","Photoshop · Illustrator · Premiere · PowerShell")]):
             y=57+j*53; d.text((620,y),a,font=f(10,True,m=True),fill=[TEAL,ICE,BRASS,ICE][j]); d.text((620,y+20),b,font=f(12),fill=WHITE); d.line((620,y+43,1140,y+43),fill=(100,127,138,80),width=1)
+        scan=620+(frame*21)%520; d.line((scan,54,scan,270),fill=(*TEAL,55),width=1)
     elif section==5:
         for j,x in enumerate([620,795,970]):
             d.rounded_rectangle((x,62,x+150,124),radius=4,fill=(15,27,35,240),outline=(106,133,145,100),width=1)
@@ -105,12 +108,14 @@ def render(section,frame,total):
         for j,x in enumerate([650,805,960,1115]):
             metallic(d,x,137,13,TEAL); d.text((x,178),["ENGINEERING","OPEN SOURCE","AUTOMATION","LEARNING"][j],font=f(9,True,m=True),fill=WHITE,anchor="mm")
             if j<3: d.line((x+14,137,x+141,137),fill=(*ICE,120),width=2)
+        active=[650,805,960,1115][(frame//5)%4]; d.ellipse((active-23,114,active+23,160),outline=(*TEAL,105),width=1)
     elif section==7:
         for j in range(8):
             x=620+j*66; h=30+(j*19)%82; top=[(x,216-h),(x+22,204-h),(x+62,216-h),(x+40,228-h)]
             d.polygon([top[0],top[3],(x+40,216),(x,204)],fill=(26,47,56,255),outline=(99,136,147,155))
             d.polygon([top[3],top[2],(x+62,216),(x+40,216)],fill=(17,32,40,255),outline=(99,136,147,155))
             d.polygon(top,fill=(45,70,79,255),outline=(*TEAL,110))
+            if j==(frame//5)%8: d.line((top[0],top[1],top[1][0],top[1][1]+8),fill=(*TEAL,170),width=2)
     elif section==9:
         labels=["PLAN","BUILD","VERIFY","REFINE"]
         d.line((650,138,1100,138),fill=(*ICE,120),width=2)
@@ -121,15 +126,18 @@ def render(section,frame,total):
         book(d,880,142,58); d.text((1000,95),"FIELD NOTES",font=f(10,True,m=True),fill=TEAL)
         for j,t in enumerate(["RESEARCH","BUILD","REFINE"]): d.text((1000,125+j*22),t,font=f(10,m=True),fill=WHITE)
         d.line((1000,195,1138,195),fill=(*BRASS,130),width=1)
+        px=1000+(frame*7)%138; d.ellipse((px-3,192,px+3,198),fill=(*TEAL,220))
     elif section==11:
         x=665; d.line((x-43,142,x-28,125,x+25,125,x+42,143,x+48,151,x-50,151,x-43,142),fill=(*ICE,220),width=3)
         d.arc((x-36,135,x-15,164),180,360,fill=(*TEAL,220),width=3); d.arc((x+15,135,x+36,164),180,360,fill=(*TEAL,220),width=3)
         d.text((820,140),"Aä",font=f(38,True),fill=ICE,anchor="mm"); chip(d,975,140,28); d.ellipse((1095,110,1155,170),outline=(*BRASS,210),width=2); d.line((1105,158,1145,122),fill=(*BRASS,210),width=3)
         for x,l in zip(xs,["AUTOMOTIVE","LANGUAGE","HARDWARE","DESIGN"]): d.text((x,205),l,font=f(9,True,m=True),fill=WHITE,anchor="mm")
+        px=630+(frame*22)%520; d.line((px,235,px+36,235),fill=(*TEAL,110),width=2)
     elif section==12:
         d.line((680,143,1135,143),fill=(*ICE,110),width=2)
         for j,x in enumerate(xs):
             metallic(d,x,143,18,TEAL); d.text((x,198),["GITHUB","LEARNING","MAILMERGE","CONTACT"][j],font=f(9,True,m=True),fill=WHITE,anchor="mm")
+        active=xs[(frame//5)%4]; d.ellipse((active-27,116,active+27,170),outline=(*TEAL,120),width=1)
     return im
 def save(name,fn,frames=20,duration=90):
     fs=[fn(i,frames).convert("P",palette=Image.Palette.ADAPTIVE) for i in range(frames)]
