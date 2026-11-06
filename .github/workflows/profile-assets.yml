@@ -4,8 +4,8 @@ on:
   push:
     branches: [main]
     paths:
-      - "README.md"
       - "scripts/render_profile_3d.py"
+      - "scripts/pack_profile_3d.py"
       - ".github/workflows/profile-assets.yml"
   workflow_dispatch:
 
@@ -85,13 +85,39 @@ jobs:
           print("PASS: approved contribution snake remains present and untouched.")
           PY
 
+      - name: Switch README to 3D assets only after all renders pass
+        run: |
+          cd repo
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path("README.md")
+          text = p.read_text(encoding="utf-8")
+          replacements = {
+              "./assets/banner.svg": "./assets/3d/00-hero.gif",
+              "./assets/section-01.gif": "./assets/3d/01-about.gif",
+              "./assets/section-02.gif": "./assets/3d/02-engineering-focus.gif",
+              "./assets/section-03.gif": "./assets/3d/03-featured-work.gif",
+              "./assets/section-04.gif": "./assets/3d/04-technology.gif",
+              "./assets/section-05.gif": "./assets/3d/05-command-center.gif",
+              "./assets/section-06.gif": "./assets/3d/06-achievements.gif",
+              "./assets/section-07.gif": "./assets/3d/07-contribution-city.gif",
+              "./assets/section-09.gif": "./assets/3d/09-coding-habits.gif",
+              "./assets/section-10.gif": "./assets/3d/10-learning-loop.gif",
+              "./assets/section-11.gif": "./assets/3d/11-beyond-code.gif",
+              "./assets/section-12.gif": "./assets/3d/12-connect.gif",
+          }
+          for old, new in replacements.items():
+              text = text.replace(old, new)
+          p.write_text(text, encoding="utf-8")
+          PY
+
       - name: Commit self-hosted 3D renders
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPOSITORY: ${{ github.repository }}
         run: |
           cd repo
-          git add assets/3d/*.gif
+          git add assets/3d/*.gif README.md
           if git diff --cached --quiet; then
             echo "No rendered 3D assets changed."
             exit 0
