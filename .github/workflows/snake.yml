@@ -1,4 +1,4 @@
-name: Verify approved contribution snake
+name: Verify previously approved realistic contribution snake
 
 on:
   workflow_dispatch:
@@ -21,13 +21,13 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y python3-pil
 
-      - name: Verify the approved snake without replacing it
+      - name: Verify the previously approved snake without replacing it
         run: |
           cd repo
           python3 - <<'PY'
           from pathlib import Path
           from PIL import Image
-          path=Path("assets/contribution-snake.gif")
+          path=Path("assets/section-08-contribution-snake.gif")
           assert path.is_file() and path.stat().st_size > 1000, "Approved contribution snake is missing."
           with Image.open(path) as gif:
               assert gif.format == "GIF" and gif.n_frames > 1, "Contribution snake is not animated."
