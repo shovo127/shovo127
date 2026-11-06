@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="./assets/3d/00-hero.gif" width="100%" alt="Self-hosted cinematic 3D turbocharger product render with machined metal surfaces and studio lighting" />
+<img src="./assets/banner.svg" width="100%" alt="Original profile banner" />
 
 ### Mohammed Thuhidul Islam Shovo
 **Automobile Engineering Graduate · Independent Software Builder · Technology Enthusiast**
@@ -15,7 +15,7 @@
 
 ## 01 / About Me
 
-<img src="./assets/3d/01-about.gif" width="100%" alt="Photorealistic 3D machined automotive piston and connecting rod in a dark product-photography studio" />
+<img src="./assets/section-01.gif" width="100%" alt="Animated about and identity artwork" />
 
 ### Engineer by training. Builder by curiosity.
 
@@ -31,7 +31,7 @@ I’m based in **Dhaka, Bangladesh**, with a Diploma in Automobile Engineering f
 
 ## 02 / Engineering Focus
 
-<img src="./assets/3d/02-engineering-focus.gif" width="100%" alt="Photorealistic 3D processor assembly with machined contacts and glass die, rendered in a product studio" />
+<img src="./assets/section-02.gif" width="100%" alt="Animated engineering focus artwork" />
 
 I work across connected disciplines rather than treating technology as isolated tools:
 
@@ -42,7 +42,7 @@ I work across connected disciplines rather than treating technology as isolated 
 
 ## 03 / Featured Work
 
-<img src="./assets/3d/03-featured-work.gif" width="100%" alt="Photorealistic 3D workstation with an open laptop and illuminated software display in a cinematic studio" />
+<img src="./assets/section-03.gif" width="100%" alt="Animated featured projects artwork" />
 
 
 
@@ -57,13 +57,13 @@ I work across connected disciplines rather than treating technology as isolated 
 
 ## 04 / Technology & Tools
 
-<img src="./assets/3d/04-technology.gif" width="100%" alt="Photorealistic 3D premium smartphone with glass display and machined metal frame" />
+<img src="./assets/section-04.gif" width="100%" alt="Animated technology stack artwork" />
 
 <sub>These are technologies I work with or explore — not claims of equal proficiency.</sub>
 
 ## 05 / GitHub Command Center
 
-<img src="./assets/3d/05-command-center.gif" width="100%" alt="Photorealistic 3D analytics monitor with glass display and physical studio reflections" />
+<img src="./assets/section-05.gif" width="100%" alt="Animated GitHub command center artwork" />
 
 <img src="./assets/github-dashboard.png" width="100%" alt="Factual self-hosted GitHub dashboard built from public repository data" />
 
@@ -73,37 +73,37 @@ I work across connected disciplines rather than treating technology as isolated 
 
 ## 06 / Achievements & Milestones
 
-<img src="./assets/3d/06-achievements.gif" width="100%" alt="Photorealistic 3D machined metal award trophy in a premium studio environment" />
+<img src="./assets/section-06.gif" width="100%" alt="Animated milestones artwork" />
 
 *Milestones are evidence of work and learning — not a substitute for building useful things.*
 
 ## 07 / Your Contribution City
 
-<img src="./assets/3d/07-contribution-city.gif" width="100%" alt="Photorealistic architectural miniature city with glass and steel towers, lit windows and studio shadows" />
+<img src="./assets/section-07.gif" width="100%" alt="Animated contribution city artwork" />
 
 *Every meaningful contribution adds another piece to the city.*
 
 ## 08 / Contribution Snake
 
-<img src="./assets/contribution-snake.gif" width="100%" alt="Animated snake travelling across a contribution calendar generated from GitHub contribution data" />
+<img src="./assets/section-08-contribution-snake.gif" width="100%" alt="Animated snake travelling across a contribution calendar generated from GitHub contribution data" />
 
 <sub>Generated from the public contribution calendar when GitHub makes the data available. A local visual fallback is retained if the API is unavailable.</sub>
 
 ## 09 / Coding Habits
 
-<img src="./assets/3d/09-coding-habits.gif" width="100%" alt="Photorealistic 3D developer workstation with mechanical keyboard, monitor and precision desk lamp" />
+<img src="./assets/section-09.gif" width="100%" alt="Animated coding habits artwork" />
 
 I prefer sustainable progress: plan clearly, build in small steps, test carefully and improve based on evidence. No coding-hour totals or productivity scores are invented.
 
 ## 10 / Learning Loop
 
-<img src="./assets/3d/10-learning-loop.gif" width="100%" alt="Photorealistic 3D leather notebook, ivory pages and precision pen in a product-photography studio" />
+<img src="./assets/section-10.gif" width="100%" alt="Animated learning loop artwork" />
 
 *Curiosity → Research → Experiment → Feedback → Improvement.*
 
 ## 11 / Beyond Code
 
-<img src="./assets/3d/11-beyond-code.gif" width="100%" alt="Photorealistic 3D forged automotive wheel and tyre in a dark studio with controlled reflections" />
+<img src="./assets/section-11.gif" width="100%" alt="Animated beyond code artwork" />
 
 - **Automotive engineering:** connecting mechanical systems, electronics and software.
 - **Language learning:** German and tools that make structured learning more accessible.
@@ -127,7 +127,7 @@ I prefer sustainable progress: plan clearly, build in small steps, test carefull
 
 *Build with curiosity. Engineer with care. Improve through iteration.*
 
-<img src="./assets/3d/12-connect.gif" width="100%" alt="Photorealistic 3D industrial multi-pin connector and cable assembly in a premium product studio" />
+<img src="./assets/section-12.gif" width="100%" alt="Animated connection artwork" />
 
 <sub>Blender-rendered 3D media · Self-hosted in this repository · Dhaka, Bangladesh</sub>
 
