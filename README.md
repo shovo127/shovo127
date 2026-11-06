@@ -23,18 +23,25 @@ I build practical digital products across **AI-powered applications, browser aut
 
 ---
 
-## 01 / About Me
+## About Me
 
-<img align="right" width="175" src="https://github.com/shovo127.png" alt="GitHub avatar of Shovo" />
+<div align="center">
+  <img src="https://github.com/shovo127.png" width="120" style="border-radius:50%" alt="Shovo's GitHub avatar"/>
+  <h3>Mohammed Thuhidul Islam Shovo</h3>
+  <p><b>Automobile Engineering Graduate · IT Support · Technology & AI</b></p>
+  <p>
+    <a href="https://lernedeutschmittechnologie.tech"><img src="https://img.shields.io/badge/Learn%20German-Visit%20Platform-0E7C86?style=flat-square&logo=googlechrome&logoColor=white" alt="German learning platform"/></a>
+    <a href="https://mailmergebyshovo.qzz.io/"><img src="https://img.shields.io/badge/MailMerge-Visit%20Website-245B91?style=flat-square&logo=maildotru&logoColor=white" alt="MailMerge"/></a>
+    <a href="https://discord.gg/kcAhn7n3kb"><img src="https://img.shields.io/badge/Discord-Join%20Server-5865F2?style=flat-square&logo=discord&logoColor=white" alt="Discord server"/></a>
+  </p>
+</div>
 
-- **Name:** Mohammed Thuhidul Islam Shovo
-- **Location:** Dhaka, Bangladesh 🇧🇩
-- **Education:** Diploma in Engineering — Automobile, Dhaka Polytechnic Institute
-- **Current learning:** German language — preparing for TELC Deutsch B2
-- **Interests:** AI applications, software engineering, Android systems, automation, automotive technology, and data
-- **Builder mindset:** I enjoy solving technical problems and turning ideas into tools people can actually use.
+I’m a technology-focused engineer from **Dhaka, Bangladesh**, with a Diploma in Automobile Engineering. I build practical tools at the intersection of **software, automation, AI, Android, and engineering**.
 
-I have a background in automobile engineering and a strong interest in the intersection of software, intelligent systems, and practical engineering. I am continuously developing my skills through hands-on projects.
+- 🎓 Diploma in Engineering — Automobile, Dhaka Polytechnic Institute
+- 🇩🇪 Learning German and preparing for TELC Deutsch B2
+- 🧠 Exploring AI applications, web technologies, device systems, and developer tooling
+- 🛠️ Interested in reliable software that solves real everyday problems
 
 ## 02 / Engineering Focus
 
@@ -77,26 +84,27 @@ Learning platforms, multilingual experiences, interactive practice, digital tool
 </tr>
 </table>
 
-## 03 / Selected Projects
+## 03 / Featured Work
 
 <div align="center">
 
-<a href="https://github.com/shovo127/kostenlos-ai"><img src="https://github-readme-stats.vercel.app/api/pin/?username=shovo127&repo=kostenlos-ai&theme=transparent&hide_border=true" alt="Kostenlos AI project card" /></a>
-<a href="https://github.com/shovo127/visaflowx"><img src="https://github-readme-stats.vercel.app/api/pin/?username=shovo127&repo=visaflowx&theme=transparent&hide_border=true" alt="VisaFlowX project card" /></a>
-<a href="https://github.com/shovo127/visaflowx-universal"><img src="https://github-readme-stats.vercel.app/api/pin/?username=shovo127&repo=visaflowx-universal&theme=transparent&hide_border=true" alt="VisaFlowX Universal project card" /></a>
-<a href="https://github.com/shovo127/Noti-Fixer-for-Chinese-Devices"><img src="https://github-readme-stats.vercel.app/api/pin/?username=shovo127&repo=Noti-Fixer-for-Chinese-Devices&theme=transparent&hide_border=true" alt="Noti-Fixer project card" /></a>
-<a href="https://github.com/shovo127/Circle-to-Search-for-Xiaomi"><img src="https://github-readme-stats.vercel.app/api/pin/?username=shovo127&repo=Circle-to-Search-for-Xiaomi&theme=transparent&hide_border=true" alt="Circle to Search for Xiaomi project card" /></a>
-<a href="https://github.com/shovo127/IPTV-By-Shovo"><img src="https://github-readme-stats.vercel.app/api/pin/?username=shovo127&repo=IPTV-By-Shovo&theme=transparent&hide_border=true" alt="IPTV By Shovo project card" /></a>
+<a href="https://github.com/shovo127/kostenlos-ai"><img src="https://raw.githubusercontent.com/shovo127/shovo127/main/assets/projects/kostenlos-ai.svg" width="49%" alt="Kostenlos AI — Multi-provider AI chat"/></a>
+<a href="https://github.com/shovo127/visaflowx"><img src="https://raw.githubusercontent.com/shovo127/shovo127/main/assets/projects/visaflowx.svg" width="49%" alt="VisaFlowX — IVAC browser workflow assistant"/></a>
+<a href="https://github.com/shovo127/visaflowx-universal"><img src="https://raw.githubusercontent.com/shovo127/shovo127/main/assets/projects/visaflowx-universal.svg" width="49%" alt="VisaFlowX Universal — Configurable browser automation"/></a>
+<a href="https://github.com/shovo127/Noti-Fixer-for-Chinese-Devices"><img src="https://raw.githubusercontent.com/shovo127/shovo127/main/assets/projects/noti-fixer.svg" width="49%" alt="Noti-Fixer — Android notification diagnostics"/></a>
+<a href="https://github.com/shovo127/Circle-to-Search-for-Xiaomi"><img src="https://raw.githubusercontent.com/shovo127/shovo127/main/assets/projects/circle-search.svg" width="49%" alt="Circle to Search for Xiaomi — Native Android assistant shortcut"/></a>
+<a href="https://github.com/shovo127/IPTV-By-Shovo"><img src="https://raw.githubusercontent.com/shovo127/shovo127/main/assets/projects/iptv-shovo.svg" width="49%" alt="IPTV By Shovo — Global M3U playlist collection"/></a>
 
 </div>
 
-### Other work
+### More of my work
 
-| Project | What it does |
+| Project | Focus |
 |---|---|
-| [Lerne Deutsch Mit Technologie](https://lernedeutschmittechnologie.tech) | My German-learning platform with lessons, practice tools, and exam preparation. |
-| [Smart Scanner Pro](https://github.com/shovo127/Smart-Scanner-Pro) | A public project in my repository portfolio. |
-| [Project collection](https://github.com/shovo127?tab=repositories) | Browse the rest of my repositories and experiments. |
+| [Lerne Deutsch Mit Technologie](https://lernedeutschmittechnologie.tech) | German-learning platform, language practice and exam preparation |
+| [MailMerge by Shovo](https://mailmergebyshovo.qzz.io/) | Email productivity and automation |
+| [Smart Scanner Pro](https://github.com/shovo127/Smart-Scanner-Pro) | Utility project |
+| [All repositories](https://github.com/shovo127?tab=repositories) | Browse every public project |
 
 ## 04 / Technology & Tools
 
