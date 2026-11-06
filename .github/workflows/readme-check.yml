@@ -1,0 +1,33 @@
+name: Profile README checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  markdown:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check README exists and is non-empty
+        run: test -s README.md
+      - name: Check section markers are paired
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          text = Path("README.md").read_text(encoding="utf-8")
+          pairs = [
+              ("<!-- BLOG-POST-LIST:START -->", "<!-- BLOG-POST-LIST:END -->"),
+          ]
+          for start, end in pairs:
+              assert text.count(start) == 1, f"Expected one {start}"
+              assert text.count(end) == 1, f"Expected one {end}"
+              assert text.index(start) < text.index(end), f"Marker order invalid: {start}"
+          print("README structure checks passed.")
+          PY
