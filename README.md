@@ -143,7 +143,7 @@ Learning platforms, multilingual experiences, interactive practice, digital tool
 
 <div align="center">
 
-<img src="./profile-3d-contrib/profile-night-rainbow.svg" width="98%" alt="Automatically generated 3D contribution skyline" />
+<img src="https://raw.githubusercontent.com/shovo127/shovo127/main/profile-3d-contrib/profile-night-rainbow.svg" width="98%" alt="Automatically generated 3D contribution skyline" />
 
 </div>
 
@@ -163,7 +163,7 @@ Learning platforms, multilingual experiences, interactive practice, digital tool
 
 <div align="center">
 
-<img src="https://github-readme-stats.vercel.app/api/wakatime?username=shovo127&theme=transparent&hide_border=true&layout=compact" alt="WakaTime coding activity, available after account setup" />
+<a href="https://wakatime.com"><img src="https://img.shields.io/badge/WakaTime-setup%20required-718096?style=for-the-badge&logo=wakatime&logoColor=white" alt="WakaTime setup required" /></a>
 
 </div>
 
