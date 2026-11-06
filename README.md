@@ -57,17 +57,15 @@ I work across connected disciplines rather than treating technology as isolated 
 
 ## 04 / Technology & Tools
 
-<img src="./assets/technology-stack.svg" width="100%" alt="Self-hosted technology toolkit graphic covering web, programming, platforms, infrastructure and creative tools" />
-
-<img src="./assets/technology-motion.gif" width="100%" alt="Subtle animated highlights moving across the technology toolkit" />
+<img src="./assets/3d/04-technology.gif" width="100%" alt="Photorealistic 3D premium smartphone with glass display and machined metal frame" />
 
 <sub>These are technologies I work with or explore — not claims of equal proficiency.</sub>
 
 ## 05 / GitHub Command Center
 
-<img src="./assets/github-dashboard.svg" width="100%" alt="Self-hosted GitHub dashboard showing public repositories, followers, stars, languages and recently updated projects" />
+<img src="./assets/3d/05-command-center.gif" width="100%" alt="Photorealistic 3D analytics monitor with glass display and physical studio reflections" />
 
-<img src="./assets/dashboard-motion.gif" width="100%" alt="Animated dashboard accent line" />
+<img src="./assets/github-dashboard.png" width="100%" alt="Factual self-hosted GitHub dashboard built from public repository data" />
 
 <sub>Generated from GitHub's public API and committed to this repository. Language shares indicate code volume, not skill level. Dashboard refreshes automatically.</sub>
 
@@ -75,17 +73,13 @@ I work across connected disciplines rather than treating technology as isolated 
 
 ## 06 / Achievements & Milestones
 
-<img src="./assets/profile-trophies.svg" width="100%" alt="Original achievement illustration celebrating open source, automation, AI engineering and lifelong learning" />
-
-<img src="./assets/achievement-motion.gif" width="100%" alt="Subtle animated milestone lights" />
+<img src="./assets/3d/06-achievements.gif" width="100%" alt="Photorealistic 3D machined metal award trophy in a premium studio environment" />
 
 *Milestones are evidence of work and learning — not a substitute for building useful things.*
 
 ## 07 / Your Contribution City
 
-<img src="./assets/contribution-city.svg" width="100%" alt="Isometric contribution city illustration representing steady development and learning" />
-
-<img src="./assets/city-motion.gif" width="100%" alt="Soft animated lights moving through a contribution city skyline" />
+<img src="./assets/3d/07-contribution-city.gif" width="100%" alt="Photorealistic architectural miniature city with glass and steel towers, lit windows and studio shadows" />
 
 *Every meaningful contribution adds another piece to the city.*
 
