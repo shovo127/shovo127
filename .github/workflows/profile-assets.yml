@@ -13,12 +13,9 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  generate:
+  snake:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
       - name: Generate contribution snake
         uses: Platane/snk/svg-only@v3
         with:
@@ -27,7 +24,7 @@ jobs:
             dist/github-contribution-grid-snake.svg
             dist/github-contribution-grid-snake-dark.svg?palette=github-dark
 
-      - name: Publish snake branch
+      - name: Publish snake to output branch
         uses: crazy-max/ghaction-github-pages@v4
         with:
           target_branch: output
@@ -35,29 +32,20 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+  three-dimensional:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout profile repository
+        uses: actions/checkout@v4
+
       - name: Generate 3D contribution calendar
         uses: yoshi389111/github-profile-3d-contrib@latest
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           USERNAME: ${{ github.repository_owner }}
 
-      - name: Commit 3D SVGs
+      - name: Commit generated 3D SVGs
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "chore: update 3D contribution visuals"
+          commit_message: "chore: refresh 3D contribution profile"
           file_pattern: profile-3d-contrib/*.svg
-
-      - name: Generate streak SVG
-        uses: DenverCoder1/github-readme-streak-stats@v1
-        with:
-          username: ${{ github.repository_owner }}
-          theme: dark
-          hide_border: true
-          type: svg
-          path: assets/github-streak.svg
-
-      - name: Commit streak SVG
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "chore: update contribution streak graphic"
-          file_pattern: assets/github-streak.svg
