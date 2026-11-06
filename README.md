@@ -87,7 +87,7 @@ I work across connected disciplines rather than treating technology as isolated 
 
 <img src="./assets/section-08-contribution-snake.gif" width="100%" alt="Animated snake travelling across a contribution calendar generated from GitHub contribution data" />
 
-<sub>Generated from the public contribution calendar when GitHub makes the data available. A local visual fallback is retained if the API is unavailable.</sub>
+<sub>Self-hosted in this repository. Contribution intensity is based on public GitHub data; unavailable data is shown neutrally, never fabricated.</sub>
 
 ## 09 / Coding Habits
 
