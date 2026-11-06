@@ -37,10 +37,8 @@ jobs:
           plugin_topics_mode: icons
           filename: github-metrics.svg
 
-      - name: Publish generated metrics
-        uses: crazy-max/ghaction-github-pages@v4
+      - name: Commit generated metrics
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          target_branch: metrics
-          build_dir: .
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          commit_message: "chore: update GitHub metrics dashboard"
+          file_pattern: github-metrics.svg
