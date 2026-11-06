@@ -134,6 +134,8 @@ Learning platforms, multilingual experiences, interactive practice, digital tool
 
 <img src="./assets/github-dashboard.svg" width="100%" alt="Shovo's GitHub dashboard showing repository, follower, and contribution activity" />
 
+
+
 </div>
 
 The dashboard above is generated from GitHub's public API by this repository's scheduled workflow. It is maintained as an SVG in this repository, so profile statistics and charts no longer rely on third-party README-stat image hosts.
@@ -150,6 +152,8 @@ The dashboard above is generated from GitHub's public API by this repository's s
 <div align="center">
 
 <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=shovo127&theme=algolia&no-frame=true&no-bg=true&margin-w=8&column=7" width="98%" alt="GitHub profile trophies" /></a>
+
+<sub>Achievement cards are supplied by the GitHub Profile Trophy service. They may load more slowly than repository-hosted artwork.</sub>
 
 </div>
 
