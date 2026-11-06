@@ -8,7 +8,7 @@ The public profile README uses repository-owned media. Displayed animations are 
 - `scripts/render_profile_3d.py` renders the product scenes with **Blender**, an open-source 3D renderer.
 - `scripts/pack_profile_3d.py` converts the rendered frames into self-hosted animated GIFs.
 - The resulting 3D animations are stored in `assets/3d/` and embedded directly in the README.
-- The existing `assets/contribution-snake.gif` is preserved. The snake workflow only verifies it; it does not regenerate or replace it.
+- The previously approved `assets/section-08-contribution-snake.gif` is restored byte-for-byte from its earlier repository revision. The snake workflow only verifies it; it does not regenerate or replace it.
 - `.github/workflows/readme-check.yml` validates local image references, media file signatures, SVG integrity, Python syntax and workflow declarations.
 
 The rendering workflow downloads the official Blender 4.5.15 Linux archive, verifies it against Blender's published SHA-256 checksum, and uses Pillow to package the rendered frames. GitHub Actions' built-in `GITHUB_TOKEN` is limited to repository contents. No personal access token, paid image service or third-party GitHub Action is required.
