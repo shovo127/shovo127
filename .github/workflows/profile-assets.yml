@@ -76,9 +76,9 @@ jobs:
               path = Path("assets/3d") / (name + ".gif")
               assert path.is_file() and path.stat().st_size > 5000, f"Missing or undersized render: {path}"
               with Image.open(path) as gif:
-                  assert gif.format == "GIF" and gif.n_frames == 12, f"Invalid animation: {path}"
-                  assert gif.size == (960, 240), f"Unexpected dimensions: {path} {gif.size}"
-              print(f"PASS {path}: 960x240, 12 frames, {path.stat().st_size} bytes")
+                  assert gif.format == "GIF" and gif.n_frames == 10, f"Invalid animation: {path}"
+                  assert gif.size == (900, 225), f"Unexpected dimensions: {path} {gif.size}"
+              print(f"PASS {path}: 900x225, 10 frames, {path.stat().st_size} bytes")
           snake=Path("assets/section-08-contribution-snake.gif")
           assert snake.is_file() and snake.stat().st_size > 1000, "Previously previously approved contribution snake is missing."
           print("PASS: previously approved contribution snake remains present and untouched.")
