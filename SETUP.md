@@ -11,7 +11,7 @@ The public profile README uses repository-owned media. Displayed animations are 
 - The existing `assets/contribution-snake.gif` is preserved. The snake workflow only verifies it; it does not regenerate or replace it.
 - `.github/workflows/readme-check.yml` validates local image references, media file signatures, SVG integrity, Python syntax and workflow declarations.
 
-The rendering workflow uses GitHub Actions' built-in `GITHUB_TOKEN` with repository-scoped permissions. Blender and Pillow are installed from Ubuntu's package repositories. No personal access token, paid image service or third-party GitHub Action is required.
+The rendering workflow downloads the official Blender 4.5.15 Linux archive, verifies it against Blender's published SHA-256 checksum, and uses Pillow to package the rendered frames. GitHub Actions' built-in `GITHUB_TOKEN` is limited to repository contents. No personal access token, paid image service or third-party GitHub Action is required.
 
 ## Other repository-owned media
 
