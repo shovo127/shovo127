@@ -17,7 +17,7 @@
 
 I build practical digital products across **AI-powered applications, browser automation, Android utilities, and web technology**. My approach is simple: understand a real problem, design a useful solution, and improve it through careful engineering.
 
-[Explore my projects](https://github.com/shovo127?tab=repositories) · [Visit my learning platform](https://lernedeutschmittechnologie.tech) · [Connect on GitHub](https://github.com/shovo127)
+[Explore my projects](https://github.com/shovo127?tab=repositories) · [Visit my learning platform](https://lernedeutschmittechnologie.qzz.io/) · [MailMerge by Shovo](https://mailmergebyshovo.qzz.io/) · [Connect on GitHub](https://github.com/shovo127)
 
 </div>
 
@@ -188,7 +188,9 @@ WakaTime's report appears once a WakaTime account is connected and the repositor
 <div align="center">
 
 <a href="https://github.com/shovo127"><img src="https://img.shields.io/badge/GitHub-shovo127-181717?style=for-the-badge&logo=github" alt="GitHub" /></a>
-<a href="https://lernedeutschmittechnologie.tech"><img src="https://img.shields.io/badge/Website-Lerne_Deutsch-0E7C86?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Website" /></a>
+<a href="https://lernedeutschmittechnologie.qzz.io/"><img src="https://img.shields.io/badge/Website-Lerne_Deutsch-0E7C86?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Website" /></a>
+  <a href="https://mailmergebyshovo.qzz.io/"><img src="https://img.shields.io/badge/Website-MailMerge-12304A?style=for-the-badge&logo=googlechrome&logoColor=white" alt="MailMerge by Shovo" /></a>
+  <a href="https://www.instagram.com/thuhidul_islamshovo/"><img src="https://img.shields.io/badge/Instagram-Connect-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram" /></a>
 <a href="https://github.com/shovo127?tab=repositories"><img src="https://img.shields.io/badge/Projects-Explore-12304A?style=for-the-badge&logo=github" alt="Projects" /></a>
 
 **Have an interesting technical idea or a useful project? Let's connect.**
