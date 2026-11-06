@@ -164,17 +164,24 @@ def snake():
     for r in range(rows):
         for c in (range(cols) if r%2==0 else range(cols-1,-1,-1)): path.append((ox+c*(cell+gap)+cell/2,oy+r*(cell+gap)+cell/2))
     frames=[]
-    for frame in range(40):
+    for frame in range(60):
         im=base(); im.alpha_composite(grid); d=ImageDraw.Draw(im,"RGBA")
         d.text((35,25),"08 / CONTRIBUTION SNAKE",font=f(11,m=True),fill=TEAL); d.text((760,27),"GITHUB CONTRIBUTION CALENDAR · SELF-HOSTED",font=f(9,m=True),fill=MUTED)
-        head=round(frame/39*(len(path)-1))
+        head=9+round(frame/59*(len(path)-10))
         for k in range(9,0,-1):
             x,y=path[max(0,head-k)]; rr=5.4-k*.12
             d.ellipse((x-rr+1,y-rr+2,x+rr+1,y+rr+2),fill=(0,0,0,95)); d.ellipse((x-rr,y-rr,x+rr,y+rr),fill=(36+int(16*(1-k/9)),112+int(48*(1-k/9)),91+int(40*(1-k/9)),255),outline=(153,219,194,210),width=1)
         hx,hy=path[head]; d.ellipse((hx-6,hy-6,hx+6,hy+6),fill=(113,217,184,255),outline=(229,255,243,240),width=1)
+        nxt=path[min(len(path)-1,head+1)]; dx=nxt[0]-hx; dy=nxt[1]-hy
+        if abs(dx)>=abs(dy):
+            eye_x=hx+(3 if dx>=0 else -3)
+            for eye_y in (hy-2,hy+2): d.ellipse((eye_x-1,eye_y-1,eye_x+1,eye_y+1),fill=(7,22,25,255))
+        else:
+            eye_y=hy+(3 if dy>=0 else -3)
+            for eye_x in (hx-2,hx+2): d.ellipse((eye_x-1,eye_y-1,eye_x+1,eye_y+1),fill=(7,22,25,255))
         d.text((35,250),"Contribution intensity reflects GitHub data; unavailable data is never fabricated.",font=f(9),fill=MUTED)
         frames.append(im.convert("P",palette=Image.Palette.ADAPTIVE))
-    frames[0].save(OUT/"section-08-contribution-snake.gif",save_all=True,append_images=frames[1:],duration=60,loop=1,optimize=True,disposal=2)
+    frames[0].save(OUT/"section-08-contribution-snake.gif",save_all=True,append_images=frames[1:],duration=40,loop=1,optimize=True,disposal=2)
 for i in [1,2,3,4,5,6,7,9,10,11,12]: save(f"section-{i:02d}.gif",lambda frame,total:render(i,frame,total))
 snake()
 print("Generated twelve self-hosted section animations.")
