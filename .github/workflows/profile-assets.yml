@@ -48,7 +48,7 @@ jobs:
           if svg.is_file():
               cairosvg.svg2png(url=str(svg), write_to="assets/github-dashboard.png", output_width=1200, output_height=690)
           png = Path("assets/github-dashboard.png")
-          assert png.is_file() and png.read_bytes().startswith(b"\\x89PNG\\r\\n\\x1a\\n"), "Dashboard PNG is missing or invalid."
+          assert png.is_file() and png.read_bytes()[:8] == bytes([137,80,78,71,13,10,26,10]), "Dashboard PNG is missing or invalid."
           print("Verified local dashboard PNG.")
           PY
           python - <<'PY'
