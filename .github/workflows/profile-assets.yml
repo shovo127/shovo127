@@ -6,7 +6,6 @@ on:
     paths:
       - "README.md"
       - "scripts/render_profile_3d.py"
-      - "scripts/pack_profile_3d.py"
       - ".github/workflows/profile-assets.yml"
   workflow_dispatch:
 
@@ -15,7 +14,7 @@ permissions:
 
 concurrency:
   group: profile-3d-media
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   render:
