@@ -11,16 +11,18 @@ permissions:
   contents: read
 
 jobs:
-  markdown:
+  validate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Check README exists
-        run: test -s README.md
-
-      - name: Validate every repository-owned README image
+      - name: Checkout repository
         run: |
+          git clone --depth 1 "https://github.com/${GITHUB_REPOSITORY}.git" repo
+        env:
+          GITHUB_REPOSITORY: ${{ github.repository }}
+
+      - name: Validate self-hosted profile media and README references
+        run: |
+          cd repo
           python - <<'PY'
           from pathlib import Path
           from html.parser import HTMLParser
@@ -28,34 +30,41 @@ jobs:
 
           readme = Path("README.md").read_text(encoding="utf-8")
 
-          class ImageRefs(HTMLParser):
+          class MediaParser(HTMLParser):
               def __init__(self):
                   super().__init__()
                   self.refs = []
+                  self.remote = []
               def handle_starttag(self, tag, attrs):
                   attrs = dict(attrs)
-                  src = attrs.get("src", "").strip()
-                  if src and not src.startswith(("http://", "https://", "data:")):
-                      self.refs.append(src)
-                  srcset = attrs.get("srcset", "")
-                  for candidate in srcset.split(","):
-                      ref = candidate.strip().split()[0] if candidate.strip() else ""
-                      if ref and not ref.startswith(("http://", "https://", "data:")):
-                          self.refs.append(ref)
+                  if tag not in ("img", "source"):
+                      return
+                  for key in ("src", "srcset"):
+                      value = attrs.get(key, "").strip()
+                      if not value:
+                          continue
+                      for candidate in value.split(","):
+                          ref = candidate.strip().split()[0]
+                          if ref.startswith(("http://", "https://", "//")):
+                              self.remote.append(ref)
+                          else:
+                              self.refs.append(ref)
 
-          parser = ImageRefs()
+          parser = MediaParser()
           parser.feed(readme)
-          # Markdown image URLs are scanned without splitting commas inside URLs.
+
           for ref in re.findall(r"!\[[^\]]*\]\(([^)]+)\)", readme):
               ref = ref.strip().split()[0]
-              if ref and not ref.startswith(("http://", "https://", "data:")):
+              if ref.startswith(("http://", "https://", "//")):
+                  parser.remote.append(ref)
+              else:
                   parser.refs.append(ref)
+
+          assert not parser.remote, "External image dependencies found: " + ", ".join(parser.remote)
 
           missing = []
           for ref in sorted(set(parser.refs)):
               path = ref.split("#", 1)[0].split("?", 1)[0].lstrip("./")
-              if not path:
-                  continue
               if not Path(path).is_file():
                   missing.append(ref)
               elif Path(path).stat().st_size == 0:
@@ -64,11 +73,25 @@ jobs:
 
           required = [
               "assets/banner.svg",
-              "assets/profile-motion.gif",
+              "assets/profile-badges.svg",
+              "assets/about-portrait.svg",
+              "assets/about-motion.gif",
+              "assets/engineering-focus.svg",
+              "assets/focus-motion.gif",
+              "assets/projects-motion.gif",
+              "assets/technology-stack.svg",
+              "assets/technology-motion.gif",
               "assets/github-dashboard.svg",
+              "assets/dashboard-motion.gif",
               "assets/profile-trophies.svg",
+              "assets/achievement-motion.gif",
               "assets/contribution-city.svg",
-              "assets/contribution-snake.svg",
+              "assets/city-motion.gif",
+              "assets/contribution-snake.gif",
+              "assets/coding-rhythm.svg",
+              "assets/habits-motion.gif",
+              "assets/learning-loop.svg",
+              "assets/footer.svg",
               "assets/projects/kostenlos-ai.svg",
               "assets/projects/visaflowx.svg",
               "assets/projects/visaflowx-universal.svg",
@@ -77,13 +100,19 @@ jobs:
               "assets/projects/iptv-shovo.svg",
           ]
           for asset in required:
-              assert Path(asset).is_file() and Path(asset).stat().st_size > 100, f"Missing or invalid required asset: {asset}"
-          assert "github-readme-stats.vercel.app/api" not in readme
+              p = Path(asset)
+              assert p.is_file() and p.stat().st_size > 100, f"Missing or invalid required asset: {asset}"
+
+          assert "github-readme-stats.vercel.app" not in readme
           assert "github-readme-activity-graph.vercel.app" not in readme
-          print(f"Validated {len(set(parser.refs))} local README media references and all required assets.")
+          assert "skillicons.dev" not in readme
+          assert "capsule-render.vercel.app" not in readme
+          print(f"PASS: {len(set(parser.refs))} local media refs; zero external image hosts; all required assets exist.")
           PY
 
-      - name: Validate workflow definitions
+      - name: Validate generator and workflow files
         run: |
-          test -s .github/workflows/profile-dashboard.yml
+          cd repo
+          python -m py_compile scripts/generate_profile_media.py
           test -s .github/workflows/profile-assets.yml
+          test -s .github/workflows/profile-dashboard.yml
