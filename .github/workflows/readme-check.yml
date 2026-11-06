@@ -15,19 +15,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Check README exists and is non-empty
-        run: test -s README.md
-      - name: Check section markers are paired
+      - name: Validate Markdown structure and local asset links
         run: |
           python - <<'PY'
           from pathlib import Path
-          text = Path("README.md").read_text(encoding="utf-8")
-          pairs = [
+          import re
+          readme = Path("README.md").read_text(encoding="utf-8")
+          assert readme.strip(), "README is empty"
+          markers = [
               ("<!-- BLOG-POST-LIST:START -->", "<!-- BLOG-POST-LIST:END -->"),
           ]
-          for start, end in pairs:
-              assert text.count(start) == 1, f"Expected one {start}"
-              assert text.count(end) == 1, f"Expected one {end}"
-              assert text.index(start) < text.index(end), f"Marker order invalid: {start}"
-          print("README structure checks passed.")
+          for start, end in markers:
+              assert readme.count(start) == 1, f"Missing/duplicate {start}"
+              assert readme.count(end) == 1, f"Missing/duplicate {end}"
+              assert readme.index(start) < readme.index(end), f"Invalid order for {start}"
+          # All project art is repository-owned, so reject missing local SVG assets.
+          for src in re.findall(r'src=["\']([^"\']+\.svg)["\']', readme):
+              if src.startswith(("http://", "https://")):
+                  continue
+              path = Path(src)
+              assert path.exists(), f"Missing local SVG: {src}"
+          assert "github-readme-stats.vercel.app/api/pin" not in readme, "Fragile pin cards returned"
+          print("README structure and local asset checks passed.")
           PY
