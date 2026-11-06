@@ -17,7 +17,7 @@ These workflows use GitHub Actions' built-in `GITHUB_TOKEN` with repository-scop
 - Do not add third-party image URLs to README `img`, `source`, or Markdown image syntax. Add the image to `assets/` and reference it with a relative path.
 - Keep workflow permissions minimal. The media and dashboard workflows need `contents: write`; the README validator needs only `contents: read`.
 - Review workflow changes before merging. Prefer repository-owned scripts and GitHub's built-in token over third-party actions.
-- The contribution snake uses public contribution-calendar data when available. If GitHub's API does not provide it, the generator keeps an illustrative local fallback rather than fabricating contribution totals.
+- The contribution snake uses public contribution-calendar data when available. If GitHub's API does not provide it, the contribution grid stays neutral rather than fabricating contribution totals.
 
 ## Motion and accessibility
 
