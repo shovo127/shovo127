@@ -15,21 +15,29 @@ permissions:
   contents: write
 
 concurrency:
-  group: profile-dashboard
+  group: profile-content-build
   cancel-in-progress: false
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout profile repository
-        uses: actions/checkout@v4
+      - name: Checkout this repository without third-party actions
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          git clone --depth 1 "https://x-access-token:${GH_TOKEN}@github.com/${REPOSITORY}.git" repo
+          cd repo
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
       - name: Build self-hosted SVG dashboard from GitHub public data
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_USERNAME: ${{ github.repository_owner }}
         run: |
+          cd repo
           python - <<'PY'
           import json, os, urllib.request, datetime, html
           from pathlib import Path
@@ -121,8 +129,18 @@ jobs:
           print("Generated self-hosted dashboard.")
           PY
 
-      - name: Commit generated dashboard
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "chore: refresh self-hosted profile dashboard"
-          file_pattern: assets/github-dashboard.svg
+      - name: Commit and push the generated dashboard
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          cd repo
+          git add assets/github-dashboard.svg
+          if git diff --cached --quiet; then
+            echo "Dashboard is already up to date."
+            exit 0
+          fi
+          git commit -m "chore: refresh self-hosted profile dashboard"
+          git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${REPOSITORY}.git"
+          git pull --rebase origin main
+          git push origin HEAD:main
