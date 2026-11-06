@@ -5,8 +5,8 @@ from mathutils import Vector
 
 OUT=os.environ.get("PROFILE_RENDER_DIR","/tmp/profile-render")
 os.makedirs(OUT,exist_ok=True)
-W,H=1200,300
-FRAMES=24
+W,H=960,240
+FRAMES=12
 
 def mat(name,color,metal=0.0,rough=.35,emission=None):
     m=bpy.data.materials.new(name); m.diffuse_color=(*color,1); m.use_nodes=True
@@ -249,8 +249,11 @@ for slug,builder in SCENES:
       ("Front fill",(4,-6,1),500,5,(.72,.82,1))):
         bpy.ops.object.light_add(type="AREA",location=loc)
         light=bpy.context.object; light.name=name; light.data.energy=power; light.data.shape="DISK"; light.data.size=size; light.data.color=color; aim(light,(2,0,0))
-    scene.render.engine="CYCLES"; scene.cycles.samples=20
-    scene.cycles.use_denoising=True
+    # Eevee Next is substantially faster than CPU Cycles for these clean studio scenes.
+    # Keep real geometry, PBR materials, area lights and shadows; render 12 eased frames.
+    scene.render.engine="BLENDER_EEVEE_NEXT"
+    scene.eevee.taa_render_samples=16
+    scene.render.resolution_percentage=100
     scene.render.resolution_x=W; scene.render.resolution_y=H; scene.render.resolution_percentage=100
     scene.render.image_settings.file_format="PNG"; scene.render.film_transparent=False
     scene.world.color=(.012,.018,.025)
