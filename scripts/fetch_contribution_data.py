@@ -90,7 +90,7 @@ def fetch():
         for day in week.get("contributionDays", []):
             days.append({
                 "week": week_index,
-                "weekday": int(day.get("weekday", 0)),
+                "weekday": int(day.get("weekday", 0)) % 7,
                 "date": day["date"],
                 "count": int(day.get("contributionCount", 0)),
             })
@@ -131,8 +131,8 @@ def render_svg(data):
     parts.append(f'<text x="56" y="135" fill="#AFC4D8" font-family="Arial,sans-serif" font-size="14">{html.escape(subtitle)}</text>')
     days = {(d["week"], d["weekday"]): d["count"] for d in data.get("days", [])}
     max_count = max(1, max_count)
-    cell_w, cell_h = 15.2, 9.0
-    origin_x, origin_y = 620, 195
+    cell_w, cell_h = 9.5, 5.0
+    origin_x, origin_y = 620, 145
     for week in range(weeks):
         for weekday in range(7):
             count = days.get((week, weekday), 0) if available else 0
