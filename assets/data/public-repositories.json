@@ -1,0 +1,59 @@
+{
+  "as_of": "2026-11-07",
+  "source": "GitHub REST API: public owner repositories and repository metadata",
+  "scope": "Seven public project repositories; excludes the profile repository and all private repositories.",
+  "repositories": 7,
+  "stars": 13,
+  "forks": 4,
+  "primary_languages": {
+    "JavaScript": 2,
+    "TypeScript": 2,
+    "C#": 1,
+    "PowerShell": 1,
+    "Python": 1
+  },
+  "repositories_detail": [
+    {
+      "name": "visaflowx",
+      "language": "JavaScript",
+      "stars": 0,
+      "forks": 1
+    },
+    {
+      "name": "visaflowx-universal",
+      "language": "JavaScript",
+      "stars": 0,
+      "forks": 0
+    },
+    {
+      "name": "kostenlos-ai",
+      "language": "TypeScript",
+      "stars": 0,
+      "forks": 0
+    },
+    {
+      "name": "Smart-Scanner-Pro",
+      "language": "C#",
+      "stars": 0,
+      "forks": 0
+    },
+    {
+      "name": "IPTV-By-Shovo",
+      "language": "TypeScript",
+      "stars": 12,
+      "forks": 3
+    },
+    {
+      "name": "Circle-to-Search-for-Xiaomi",
+      "language": "PowerShell",
+      "stars": 0,
+      "forks": 0
+    },
+    {
+      "name": "Noti-Fixer-for-Chinese-Devices",
+      "language": "Python",
+      "stars": 1,
+      "forks": 0
+    }
+  ]
+}
