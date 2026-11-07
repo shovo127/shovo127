@@ -128,7 +128,7 @@ I work iteratively: research a problem, build a small solution, test it, documen
 - **German:** preparing for TELC Deutsch B2.
 - **Technology exploration:** Android/HyperOS, PC hardware, AI applications and practical automation.
 
-## 12 / Let's Connect
+## 10 / Let's Connect
 
 <div align="center">
 
