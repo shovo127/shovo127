@@ -32,5 +32,5 @@ The industrial-campus scene is an original decorative architectural scene. It is
 ## Pending work
 
 - The current 3D workflow must complete successfully with the final contribution-city scene and validation before the new GIFs are promoted into the README.
-- PROFILE_READ_TOKEN is optional but required to fetch the GraphQL contribution calendar. Without it, the city renders a neutral empty state. Private counts require read:user scope and the user's GitHub profile setting.
+- The built-in GITHUB_TOKEN is used for public GraphQL contribution data. PROFILE_READ_TOKEN is optional and adds private counts only when read:user scope and the user's GitHub profile setting permit them. If GraphQL is unavailable, the city renders a neutral empty state.
 - The final verification report must be updated after the final workflow runs and the resulting GIFs are inspected.
