@@ -63,6 +63,7 @@ def typewriter(label,path,accent=TEAL,width=560,height=58,size=25):
 def title_assets():
     labels=[
       ("hero-name.gif","MOHAMMED THUHIDUL ISLAM SHOVO",GOLD,880,62,28),
+      ("hero-tagline.gif","ENGINEERING MINDSET · SOFTWARE BUILDING · AI & AUTOMATION · PRACTICAL TECHNOLOGY",TEAL,1050,52,17),
       ("section-profile.gif","ENGINEERING PROFILE",TEAL,560,54,22),
       ("section-projects.gif","SELECTED PROJECTS",GOLD,560,54,22),
       ("section-focus.gif","TECHNICAL FOCUS",TEAL,560,54,22),
@@ -122,13 +123,13 @@ def unique_project_motion():
                     x=75+j*29; h=8+int((.5+.5*math.sin(t*2*math.pi+j*.8))*38)
                     d.rounded_rectangle((x,170-h,x+12,170),radius=4,fill=TEAL if j%3 else GOLD)
             frames.append(im)
-        save(frames,M/f"project-{idx+1:02d}-scan.gif",100,64)
+        save(frames,M/f"project-{idx+1:02d}-kinetic-v2.gif",120,32)
 def unique_focus_motion():
     for idx in range(1,7):
         base=recolor(Image.open(A/"focus"/f"focus-{idx:02d}.jpg")).resize((480,225),Image.Resampling.LANCZOS)
         frames=[]
-        for i in range(32):
-            im=base.copy(); d=ImageDraw.Draw(im); t=i/32
+        for i in range(24):
+            im=base.copy(); d=ImageDraw.Draw(im); t=i/24
             if idx==1: # terminal typing
                 msg="git commit -m \"verified build\""; k=min(len(msg),int(t*len(msg)*1.2))
                 d.rounded_rectangle((220,195,468,220),radius=4,fill=(8,18,27))
@@ -163,12 +164,12 @@ def unique_focus_motion():
                     d.line(pts+[pts[0]],fill=TEAL if k%2 else GOLD,width=2)
                 d.ellipse((cx-6,cy-6,cx+6,cy+6),fill=WHITE)
             frames.append(im)
-        save(frames,M/f"focus-{idx:02d}-live.gif",100,64)
+        save(frames,M/f"focus-{idx:02d}-motion-v2.gif",120,32)
 def education_motion():
     base=recolor(Image.open(A/"engineering/education-path.jpg")).resize((900,225),Image.Resampling.LANCZOS)
     frames=[]
-    for i in range(36):
-        im=base.copy(); d=ImageDraw.Draw(im); t=i/35
+    for i in range(24):
+        im=base.copy(); d=ImageDraw.Draw(im); t=i/23
         d.line((60,195,840,195),fill=(52,76,89),width=3)
         x1=60+int(780*min(1,t*1.4)); x2=60+int(780*max(0,(t-.25)*1.34))
         d.line((60,195,x1,195),fill=TEAL,width=3)
@@ -176,22 +177,22 @@ def education_motion():
             r=8+int(4*(.5+.5*math.sin(i*.35)))
             d.ellipse((x-r,195-r,x+r,195+r),fill=GOLD if on else PANEL,outline=TEAL,width=2)
         frames.append(im)
-    save(frames,M/"education-path-live.gif",100,64)
+    save(frames,M/"education-path-v2.gif",120,32)
 def analytics_motion():
     base=recolor(Image.open(A/"data/public-repository-snapshot.jpg")).resize((720,216),Image.Resampling.LANCZOS)
     frames=[]
-    for i in range(40):
-        im=base.copy(); d=ImageDraw.Draw(im); t=i/39
+    for i in range(24):
+        im=base.copy(); d=ImageDraw.Draw(im); t=i/23
         # Values remain the dated snapshot; bars/counts animate to those exact values.
         for x,y,w,val,col in [(145,150,70,7,TEAL),(285,150,130,13,GOLD),(425,150,40,4,ICE)]:
             d.rectangle((x,y,x+w,y+8),fill=(25,43,55))
             d.rectangle((x,y,x+int(w*min(1,t*1.5)),y+8),fill=col)
         d.arc((620,24,690,94),start=int(i*9),end=int(i*9+230),fill=TEAL,width=2)
         frames.append(im)
-    save(frames,M/"analytics-snapshot-live.gif",100,64)
+    save(frames,M/"analytics-data-v2.gif",120,32)
 def hero_motion():
     w,h=1200,420; frames=[]
-    for i in range(52):
+    for i in range(36):
         im=Image.new("RGB",(w,h),BG); d=ImageDraw.Draw(im)
         # Layered graphite blueprint field and restrained teal/brass accents.
         for x in range(0,w,32): d.line((x,0,x,h),fill=(17,34,47),width=1)
@@ -206,26 +207,15 @@ def hero_motion():
             x2=cx+int(72*math.cos(a)); y2=cy+int(72*math.sin(a))
             d.polygon([(x1,y1),(x1+int(10*math.cos(a+1.57)),y1+int(10*math.sin(a+1.57))),(x2,y2)],fill=TEAL)
         d.ellipse((cx-28,cy-28,cx+28,cy+28),fill=(18,43,54),outline=GOLD,width=2)
-        # Letter-by-letter title reveal over the opening half of the loop.
-        title="Mohammed Thuhidul"; second="Islam Shovo"; k=max(0,min(len(title)+len(second),int((i/51)*(len(title)+len(second))*2.0)))
-        first=title[:min(len(title),k)]; rest=second[:max(0,k-len(title))]
-        text(d,(70,183),first,42,WHITE,True)
-        if k>=len(title): text(d,(70,235),rest,42,WHITE,True)
-        # Small cursor blinks at the active character edge.
-        current=first if k<len(title) else rest
-        origin=70 if k<len(title) else 70
-        tw=d.textbbox((0,0),current,font=font(42,True))[2]
-        yy=176 if k<len(title) else 228
-        if i%3!=0: d.rounded_rectangle((origin+tw+5,yy,origin+tw+9,yy+48),radius=2,fill=GOLD)
-        text(d,(72,292),"Engineering mindset. Practical software.",17,ICE)
-        text(d,(72,320),"Technology built with care.",17,ICE)
+        text(d,(70,82),"ENGINEERING / SOFTWARE / SYSTEMS",13,TEAL,True,True)
+        text(d,(72,320),"PRECISION · SYSTEMS · PRACTICAL TECHNOLOGY",15,ICE)
         text(d,(72,372),"DHAKA, BANGLADESH",12,TEAL,True,True)
         frames.append(im)
-    save(frames,M/"hero-engineering.gif",110,96)
+    save(frames,M/"hero-engineering-v2.gif",120,48)
 def recolor_existing_gifs():
     # Convert unused-but-retained motion assets too; nothing is removed from the repository.
-    for p in M.glob("*.gif"):
-        if p.name in {"hero-engineering.gif"}: continue
+    for p in [M/"signal-sweep.gif", M/"focus-pulse.gif", M/"analytics-trace.gif", M/"piston-crankshaft-cycle.gif"]:
+        if not p.is_file(): continue
         try:
             im=Image.open(p); frames=[]
             for i in range(im.n_frames):
