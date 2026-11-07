@@ -87,7 +87,7 @@ def unique_project_motion():
     names=["visaflowx-interface","kostenlos-ai-workspace","noti-fixer-diagnostics","circle-search-native","smart-scanner-architecture","iptv-by-shovo"]
     for idx,name in enumerate(names):
         base=recolor(Image.open(A/"projects"/(name+".jpg"))).resize((480,208),Image.Resampling.LANCZOS)
-        frames=[]; n=32
+        frames=[]; n=24
         for i in range(n):
             im=base.copy(); d=ImageDraw.Draw(im); t=i/n
             if idx==0: # sequential route nodes
@@ -122,7 +122,7 @@ def unique_project_motion():
                 for j in range(12):
                     x=75+j*29; h=8+int((.5+.5*math.sin(t*2*math.pi+j*.8))*38)
                     d.rounded_rectangle((x,170-h,x+12,170),radius=4,fill=TEAL if j%3 else GOLD)
-            frames.append(im)
+            frames.append(im.resize((360,156),Image.Resampling.LANCZOS))
         save(frames,M/f"project-{idx+1:02d}-kinetic-v2.gif",120,32)
 def unique_focus_motion():
     for idx in range(1,7):
@@ -163,7 +163,7 @@ def unique_focus_motion():
                         pts.append((cx+int(r*math.cos(ang)),cy+int(r*.45*math.sin(ang))))
                     d.line(pts+[pts[0]],fill=TEAL if k%2 else GOLD,width=2)
                 d.ellipse((cx-6,cy-6,cx+6,cy+6),fill=WHITE)
-            frames.append(im)
+            frames.append(im.resize((360,169),Image.Resampling.LANCZOS))
         save(frames,M/f"focus-{idx:02d}-motion-v2.gif",120,32)
 def education_motion():
     base=recolor(Image.open(A/"engineering/education-path.jpg")).resize((900,225),Image.Resampling.LANCZOS)
@@ -176,7 +176,7 @@ def education_motion():
         for x,on in [(60,t>.1),(840,t>.78)]:
             r=8+int(4*(.5+.5*math.sin(i*.35)))
             d.ellipse((x-r,195-r,x+r,195+r),fill=GOLD if on else PANEL,outline=TEAL,width=2)
-        frames.append(im)
+        frames.append(im.resize((640,160),Image.Resampling.LANCZOS))
     save(frames,M/"education-path-v2.gif",120,32)
 def analytics_motion():
     base=recolor(Image.open(A/"data/public-repository-snapshot.jpg")).resize((720,216),Image.Resampling.LANCZOS)
@@ -188,7 +188,7 @@ def analytics_motion():
             d.rectangle((x,y,x+w,y+8),fill=(25,43,55))
             d.rectangle((x,y,x+int(w*min(1,t*1.5)),y+8),fill=col)
         d.arc((620,24,690,94),start=int(i*9),end=int(i*9+230),fill=TEAL,width=2)
-        frames.append(im)
+        frames.append(im.resize((640,192),Image.Resampling.LANCZOS))
     save(frames,M/"analytics-data-v2.gif",120,32)
 def hero_motion():
     w,h=1200,420; frames=[]
@@ -203,14 +203,14 @@ def hero_motion():
         d.ellipse((cx-124,cy-124,cx+124,cy+124),outline=TEAL,width=2)
         d.ellipse((cx-78,cy-78,cx+78,cy+78),outline=GOLD,width=3)
         for j in range(8):
-            a=2*math.pi*j/8+2*math.pi*i/52; x1=cx+int(96*math.cos(a)); y1=cy+int(96*math.sin(a))
+            a=2*math.pi*j/8+2*math.pi*i/36; x1=cx+int(96*math.cos(a)); y1=cy+int(96*math.sin(a))
             x2=cx+int(72*math.cos(a)); y2=cy+int(72*math.sin(a))
             d.polygon([(x1,y1),(x1+int(10*math.cos(a+1.57)),y1+int(10*math.sin(a+1.57))),(x2,y2)],fill=TEAL)
         d.ellipse((cx-28,cy-28,cx+28,cy+28),fill=(18,43,54),outline=GOLD,width=2)
         text(d,(70,82),"ENGINEERING / SOFTWARE / SYSTEMS",13,TEAL,True,True)
         text(d,(72,320),"PRECISION · SYSTEMS · PRACTICAL TECHNOLOGY",15,ICE)
         text(d,(72,372),"DHAKA, BANGLADESH",12,TEAL,True,True)
-        frames.append(im)
+        frames.append(im.resize((900,315),Image.Resampling.LANCZOS))
     save(frames,M/"hero-engineering-v2.gif",120,48)
 def recolor_existing_gifs():
     # Convert unused-but-retained motion assets too; nothing is removed from the repository.
@@ -220,8 +220,48 @@ def recolor_existing_gifs():
             im=Image.open(p); frames=[]
             for i in range(im.n_frames):
                 im.seek(i); fr=im.convert("RGB"); frames.append(recolor(fr))
-            if frames: save(frames,p,im.info.get("duration",120),64)
+            if frames:
+                if p.name == "piston-crankshaft-cycle.gif":
+                    frames=[fr.resize((640,277),Image.Resampling.LANCZOS) for fr in frames]
+                    save(frames,M/"piston-cycle-v2.gif",120,32)
+                else:
+                    save(frames,p,im.info.get("duration",120),48)
         except Exception as e: print("SKIP_RECOLOR",p.name,str(e))
+def render_dividers():
+    specs=[("divider-profile-v2.gif","wave"),("divider-projects-v2.gif","orbit"),("divider-focus-v2.gif","nodes"),("divider-analytics-v2.gif","chart"),("divider-footer-v2.gif","rotor")]
+    for filename,kind in specs:
+        frames=[]; w,h=560,64
+        for i in range(36):
+            im=Image.new("RGB",(w,h),BG); d=ImageDraw.Draw(im)
+            for x in range(0,w,28): d.line((x,0,x,h),fill=(20,39,51),width=1)
+            for y in range(0,h,16): d.line((0,y,w,y),fill=(20,39,51),width=1)
+            t=2*math.pi*i/36
+            if kind=="wave":
+                pts=[(x,32+int(12*math.sin(x*.035-t))) for x in range(0,w,4)]
+                d.line(pts,fill=TEAL,width=2); x=275+int(80*math.sin(t)); d.ellipse((x-5,27,x+5,37),fill=GOLD)
+            elif kind=="orbit":
+                cx,cy=280,32; d.ellipse((cx-35,cy-18,cx+35,cy+18),outline=(63,101,112),width=1)
+                for j in range(4):
+                    a=t+j*math.pi/2; x=cx+int(35*math.cos(a)); y=cy+int(18*math.sin(a))
+                    d.ellipse((x-5,y-5,x+5,y+5),fill=GOLD if j==int(i/9)%4 else TEAL)
+            elif kind=="nodes":
+                pts=[(170,32),(230,12),(280,32),(330,12),(390,32)]
+                for a,b in zip(pts,pts[1:]): d.line((a,b),fill=(59,91,104),width=2)
+                for j,(x,y) in enumerate(pts):
+                    r=4+int(3*(.5+.5*math.sin(t*2+j)))
+                    d.ellipse((x-r,y-r,x+r,y+r),fill=GOLD if j==int(i/7)%5 else TEAL)
+            elif kind=="chart":
+                pts=[(x,48-int(22*(.5+.5*math.sin(x*.03-t)))) for x in range(0,w,5)]
+                d.line(pts,fill=TEAL,width=2); x=int((i/36)*w); yy=pts[min(len(pts)-1,int(x/5))][1]
+                d.ellipse((x-4,yy-4,x+4,yy+4),fill=GOLD)
+            else:
+                cx,cy=280,32
+                for j in range(3):
+                    a=t*(1 if j%2==0 else -1)
+                    d.arc((cx-12-j*10,cy-12-j*7,cx+12+j*10,cy+12+j*7),start=int(a*180/math.pi),end=int(a*180/math.pi+260),fill=TEAL if j%2==0 else GOLD,width=2)
+            frames.append(im)
+        save(frames,M/filename,100,48)
+
 def main():
     recolor_sources()
     unique_project_motion()
@@ -230,6 +270,7 @@ def main():
     analytics_motion()
     hero_motion()
     title_assets()
+    render_dividers()
     recolor_existing_gifs()
     total=sum(p.stat().st_size for p in A.rglob("*") if p.is_file())
     print("TOTAL_ASSETS",total)
