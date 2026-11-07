@@ -18,19 +18,46 @@ def api(path):
         return json.load(response)
 
 profile = api(f"/users/{user}")
-repos = api(f"/users/{user}/repos?per_page=100&sort=updated")
+repos = []
+page = 1
+while True:
+    batch = api(f"/users/{user}/repos?per_page=100&page={page}&sort=updated")
+    if not batch:
+        break
+    repos.extend(batch)
+    if len(batch) < 100:
+        break
+    page += 1
 public_repos = [r for r in repos if not r.get("fork") and not r.get("archived")]
+generated_at = datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0).isoformat()
 langs = {}
 for repo in public_repos:
-    try:
-        data = api(f"/repos/{user}/{repo['name']}/languages")
-        for name, size in data.items():
-            langs[name] = langs.get(name, 0) + size
-    except Exception:
-        pass
+    data = api(f"/repos/{user}/{repo['name']}/languages")
+    for name, size in data.items():
+        langs[name] = langs.get(name, 0) + size
 
 lang_rows = sorted(langs.items(), key=lambda item: item[1], reverse=True)[:6]
 total = sum(langs.values()) or 1
+dashboard_data = {
+    "schema_version": 1,
+    "username": user,
+    "source": "GitHub public REST API",
+    "generated_at": generated_at,
+    "metrics": {
+        "public_repositories": profile.get("public_repos"),
+        "public_followers": profile.get("followers"),
+        "public_following": profile.get("following"),
+        "public_repository_stars": sum(r.get("stargazers_count", 0) for r in repos),
+    },
+    "language_bytes": [{"name": name, "bytes": size, "share": round(size / total, 6)} for name, size in sorted(langs.items(), key=lambda item: item[1], reverse=True)],
+    "repositories": [{
+        "name": r["name"], "url": r.get("html_url"), "description": r.get("description"),
+        "stars": r.get("stargazers_count", 0), "language": r.get("language"),
+        "created_at": r.get("created_at"), "updated_at": r.get("updated_at"),
+        "fork": r.get("fork", False), "archived": r.get("archived", False)
+    } for r in sorted(repos, key=lambda item: item.get("updated_at", ""), reverse=True)],
+}
+Path("assets/github-dashboard-data.json").write_text(json.dumps(dashboard_data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 pieces = []
 def add(s): pieces.append(s)
 add('<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="690" viewBox="0 0 1200 690" role="img" aria-labelledby="title desc">')
@@ -44,12 +71,12 @@ add('<rect width="1200" height="690" rx="30" fill="url(#bg)"/><rect width="1200"
 add('<circle cx="1080" cy="70" r="240" fill="#0D9488" opacity=".08"/>')
 add('<text x="54" y="62" font-family="Arial,sans-serif" font-size="17" letter-spacing="4" fill="#5EEAD4">ENGINEERING SNAPSHOT</text>')
 add('<text x="54" y="112" font-family="Arial,sans-serif" font-size="38" font-weight="800" fill="#F8FAFC">GitHub Command Center</text>')
-add('<text x="56" y="147" font-family="Arial,sans-serif" font-size="17" fill="#AFC4D8">@'+html.escape(user)+'  ·  '+datetime.datetime.now(datetime.timezone.utc).strftime('%d %b %Y UTC')+'</text>')
+add('<text x="56" y="147" font-family="Arial,sans-serif" font-size="17" fill="#AFC4D8">@'+html.escape(user)+'  ·  '+datetime.datetime.fromisoformat(generated_at).strftime('%d %b %Y %H:%M UTC')+'</text>')
 metrics = [
-    ("PUBLIC REPOSITORIES", str(profile.get("public_repos",0)), "#2DD4BF"),
-    ("FOLLOWERS", str(profile.get("followers",0)), "#60A5FA"),
-    ("FOLLOWING", str(profile.get("following",0)), "#A78BFA"),
-    ("PUBLIC STARS", str(sum(r.get("stargazers_count",0) for r in repos)), "#FBBF24"),
+    ("PUBLIC REPOSITORIES", str(profile.get("public_repos") if profile.get("public_repos") is not None else "—"), "#2DD4BF"),
+    ("FOLLOWERS", str(profile.get("followers") if profile.get("followers") is not None else "—"), "#60A5FA"),
+    ("FOLLOWING", str(profile.get("following") if profile.get("following") is not None else "—"), "#A78BFA"),
+    ("PUBLIC REPOSITORY STARS", str(sum(r.get("stargazers_count",0) for r in repos)), "#FBBF24"),
 ]
 for i,(label,value,color) in enumerate(metrics):
     x=54+i*284
@@ -78,7 +105,8 @@ for repo in sorted(public_repos,key=lambda r:r.get("updated_at",""),reverse=True
     if len(desc)>48: desc=desc[:45]+"..."
     stars=repo.get("stargazers_count",0)
     add(f'<circle cx="660" cy="{y-5}" r="5" fill="#2DD4BF"/>')
-    add(f'<text x="679" y="{y}" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#EAF4FF">{name}</text>')
+    url = html.escape(repo.get("html_url") or ("https://github.com/" + user + "/" + repo["name"]), quote=True)
+    add(f'<a href="{url}"><text x="679" y="{y}" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#EAF4FF">{name}</text></a>')
     add(f'<text x="679" y="{y+21}" font-family="Arial,sans-serif" font-size="12" fill="#9FB6CB">{desc}</text>')
     add(f'<text x="1110" y="{y}" font-family="Arial,sans-serif" font-size="13" fill="#FBBF24" text-anchor="end">★ {stars}</text>')
     y+=42
@@ -87,4 +115,4 @@ add('</svg>')
 Path("assets/github-dashboard.svg").write_text("".join(pieces),encoding="utf-8")
 import cairosvg
 cairosvg.svg2png(url="assets/github-dashboard.svg", write_to="assets/github-dashboard.png", output_width=1200, output_height=690)
-print("Generated self-hosted SVG and PNG dashboard.")
+print(f"Generated self-hosted SVG, PNG and JSON dashboard for {len(repos)} public repositories; {len(public_repos)} non-fork, non-archived repositories used for language shares.")
