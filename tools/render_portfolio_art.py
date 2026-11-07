@@ -603,9 +603,37 @@ def render_project_motion():
         frames[0].save(out,save_all=True,append_images=frames[1:],duration=120,loop=0,optimize=True,disposal=2)
 
 
+
+def render_aux_motion():
+    for name, mode in [("focus-pulse.gif","focus"),("analytics-trace.gif","analytics")]:
+        frames=[]
+        fw,fh=560,84
+        for i in range(36):
+            im=Image.new("RGB",(fw,fh),(3,3,3))
+            d=ImageDraw.Draw(im)
+            for x in range(0,fw,32): d.line((x,0,x,fh),fill=(34,10,15),width=1)
+            for y in range(0,fh,21): d.line((0,y,fw,y),fill=(34,10,15),width=1)
+            if mode=="focus":
+                cx=int((1+sin(2*pi*i/36))*0.5*(fw-40))+20
+                d.ellipse((cx-19,23,cx+19,61),outline=(143,0,26),width=2)
+                d.ellipse((cx-9,33,cx+9,51),fill=(200,16,46))
+                txt(d,(18,12),"FOCUS / SIGNAL STATUS",11,(255,48,79),True,True)
+                txt(d,(18,44),"DISCIPLINE TRACE",15,(245,245,245),True)
+            else:
+                txt(d,(18,12),"PUBLIC DATA / SNAPSHOT",11,(255,48,79),True,True)
+                txt(d,(18,44),"REPOSITORY METRICS",15,(245,245,245),True)
+                x=int(i*fw/36)
+                d.line((0,70,x,70),fill=(143,0,26),width=2)
+                d.ellipse((x-4,66,x+4,74),fill=(255,82,104))
+            txt(d,(fw-18,15),"STATIC VALUES / RED TRACE",9,(181,181,181),False,True,"ra")
+            frames.append(im.quantize(colors=32,method=Image.Quantize.FASTOCTREE,dither=Image.Dither.NONE))
+        out=MOTION/name
+        frames[0].save(out,save_all=True,append_images=frames[1:],duration=160,loop=0,optimize=True,disposal=2)
+
+
 def main():
     created = [visa(), kostenlos(), noti(), circle(), scanner(), render_iptv(), render_engine(),
-               render_focus(), render_focus_cards(), render_education(), render_analytics(), render_motion(), render_project_motion()]
+               render_focus(), render_focus_cards(), render_education(), render_analytics(), render_motion(), render_project_motion(), render_aux_motion()]
     for path in created:
         print(f"{path.relative_to(ROOT)}\t{path.stat().st_size}")
     total = sum(p.stat().st_size for folder in (PROJECTS, ENGINEERING, MOTION, DATA)
