@@ -23,9 +23,15 @@ def scan(src,out,kind,n=24):
             x=int(-w*.25+w*1.5*i/n); d.polygon([(x-22,0),(x-8,0),(x+88,h),(x+68,h)],fill=(200,16,46,24)); d.line((x,0,x+76,h),fill=(255,48,79,125),width=2)
             a=int(75+65*(.5+.5*math.sin(2*math.pi*i/n))); d.ellipse((40,80,180,220),outline=(255,48,79,a),width=2)
         elif kind=="education":
-            x=int(-80+(w+160)*i/n); d.polygon([(x-24,0),(x-8,0),(x+40,h),(x+18,h)],fill=(200,16,46,22)); d.line((x,0,x+25,h),fill=(255,48,79,105),width=2)
+            x=int(w*i/n)
+            for xx in (x, x-w if x>w-80 else (x+w if x<80 else None)):
+                if xx is not None:
+                    d.polygon([(xx-24,0),(xx-8,0),(xx+40,h),(xx+18,h)],fill=(200,16,46,22)); d.line((xx,0,xx+25,h),fill=(255,48,79,105),width=2)
         else:
-            x=int(-40+(w+80)*i/n); d.polygon([(x-30,0),(x-8,0),(x+36,h),(x+12,h)],fill=(200,16,46,22)); d.line((x,0,x+20,h),fill=(255,48,79,110),width=2)
+            x=int(w*i/n)
+            for xx in (x, x-w if x>w-80 else (x+w if x<80 else None)):
+                if xx is not None:
+                    d.polygon([(xx-30,0),(xx-8,0),(xx+36,h),(xx+12,h)],fill=(200,16,46,22)); d.line((xx,0,xx+20,h),fill=(255,48,79,110),width=2)
         frames.append(Image.alpha_composite(im,ov).convert("RGB"))
     save_gif(frames,out,180,48)
 
