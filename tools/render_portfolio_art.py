@@ -635,9 +635,9 @@ def main():
     created = [visa(), kostenlos(), noti(), circle(), scanner(), render_iptv(), render_engine(),
                render_focus(), render_focus_cards(), render_education(), render_analytics(), render_motion(), render_project_motion(), render_aux_motion()]
     for path in created:
-        print(f"{path.relative_to(ROOT)}\t{path.stat().st_size}")
-    total = sum(p.stat().st_size for folder in (PROJECTS, ENGINEERING, MOTION, DATA)
-                for p in folder.glob("*") if p.is_file())
+        if path is not None:
+            print(f"{path.relative_to(ROOT)}\t{path.stat().st_size}")
+    total = sum(p.stat().st_size for p in (ROOT / "assets").rglob("*") if p.is_file())
     print(f"TOTAL_GENERATED_BYTES\t{total}")
 
 
