@@ -6,98 +6,99 @@
 
 ---
 
-## Profile
+## ENGINEERING PROFILE
 
-I am a Diploma in Automobile Engineering graduate from **Dhaka Polytechnic Institute**. I explore the connection between engineering systems and software by building practical tools, testing real workflows and documenting technical limits.
+Diploma graduate in **Automobile Engineering** from Dhaka Polytechnic Institute, building practical software around real workflows and system behaviour. My work spans browser automation, AI integrations, Android diagnostics and engineering-oriented software architecture.
 
-My current interests include software products, AI integrations, browser automation, Android systems, PC hardware and learning technology. I am also preparing for **TELC Deutsch B2**.
+I approach projects with an engineering mindset: understand the system, define its safety boundaries, build the smallest useful solution, and verify what it actually does. Current learning focus: **TELC Deutsch B2**.
 
-<img src="./assets/motion/section-rule.svg" width="100%" alt="" />
+<p align="center"><img src="./assets/motion/signal-sweep.gif" width="560" alt="A seamless cyan signal sweep across a technical grid, representing monitoring, verification and action." /></p>
 
-## Selected work
+## SELECTED PROJECTS
 
-A selection of public projects spanning browser automation, AI applications, Android tooling and engineering-oriented software architecture.
+Five public projects across automation, AI, Android and desktop engineering. The visuals below are original interface studies based on each project's public README and source; they are not claimed to be screenshots of running applications.
 
 <table>
   <tr>
     <td width="50%" valign="top">
-      <img src="./assets/projects/visaflowx-workflow.svg" width="100%" alt="VisaFlowX workflow architecture diagram" />
-      <h3><a href="https://github.com/shovo127/visaflowx-universal">VisaFlowX Universal</a></h3>
-      <p>A Manifest V3 browser workflow assistant with site profiles, DOM monitoring, configurable rules, retries, scheduling and notifications. Protected verification remains a manual user action.</p>
-      <p><sub><strong>Stack</strong> · JavaScript · Chrome Extensions · Manifest V3</sub></p>
-      <p><sub><a href="https://github.com/shovo127/visaflowx-universal">Repository ↗</a></sub></p>
+      <img src="./assets/projects/visaflowx-interface.jpg" width="100%" alt="Original VisaFlowX browser extension interface study showing workflow status, site profiles, monitor rules and a manual human-verification boundary." />
+      <h3>01 / <a href="https://github.com/shovo127/visaflowx-universal">VisaFlowX Universal</a></h3>
+      <p>A Manifest V3 browser workflow assistant with site profiles, MutationObserver-based monitoring, configurable rules, retry and recovery handling, scheduling and notifications. Protected verification is detected and handed back to the user; the extension does not solve or bypass CAPTCHA or anti-bot checks.</p>
+      <p><sub><strong>STACK</strong> · JavaScript · Chrome Extension APIs · Manifest V3 · MutationObserver</sub></p>
+      <p><a href="https://github.com/shovo127/visaflowx-universal">Repository ↗</a></p>
     </td>
     <td width="50%" valign="top">
-      <img src="./assets/projects/kostenlos-ai-routing.svg" width="100%" alt="Kostenlos AI provider routing diagram" />
-      <h3><a href="https://github.com/shovo127/kostenlos-ai">Kostenlos AI</a></h3>
-      <p>A bring-your-own-key chat application with Appwrite authentication and provider failover across Groq, Gemini, OpenAI and Mistral. Tavily can add web-search context.</p>
-      <p><sub><strong>Stack</strong> · React · TypeScript · Tailwind CSS · Appwrite · Cloudflare Pages</sub></p>
-      <p><sub><a href="https://github.com/shovo127/kostenlos-ai">Repository ↗</a></sub></p>
+      <img src="./assets/projects/kostenlos-ai-workspace.jpg" width="100%" alt="Original Kostenlos AI chat workspace study showing conversation UI and Groq, Gemini, OpenAI and Mistral provider routes." />
+      <h3>02 / <a href="https://github.com/shovo127/kostenlos-ai">Kostenlos AI</a></h3>
+      <p>A bring-your-own-key multi-AI chat application. Users manage their own provider keys through Appwrite; the chat function supports failover across Groq, Gemini, OpenAI and Mistral, with optional Tavily search context.</p>
+      <p><sub><strong>STACK</strong> · React · TypeScript · Tailwind CSS · Appwrite · Cloudflare Pages Functions</sub></p>
+      <p><a href="https://github.com/shovo127/kostenlos-ai">Repository ↗</a></p>
     </td>
   </tr>
   <tr>
     <td width="50%" valign="top">
-      <img src="./assets/projects/noti-fixer-device.svg" width="100%" alt="Noti-Fixer Android and ADB diagnostic workflow diagram" />
-      <h3><a href="https://github.com/shovo127/Noti-Fixer-for-Chinese-Devices">Noti-Fixer for Chinese Devices</a></h3>
-      <p>A Python and ADB toolkit for inspecting notification delivery and managing reversible background-app settings on selected Android ROMs. Device behaviour depends on firmware and user approval.</p>
-      <p><sub><strong>Stack</strong> · Python · Android Debug Bridge · Android</sub></p>
-      <p><sub><a href="https://github.com/shovo127/Noti-Fixer-for-Chinese-Devices">Repository ↗</a></sub></p>
+      <img src="./assets/projects/noti-fixer-diagnostics.jpg" width="100%" alt="Original Noti-Fixer diagnostic scene showing Android wireless debugging, ADB pairing, read-only diagnostics and a user approval gate." />
+      <h3>03 / <a href="https://github.com/shovo127/Noti-Fixer-for-Chinese-Devices">Noti-Fixer for Chinese Devices</a></h3>
+      <p>A Python and ADB toolkit for wireless device pairing, notification and background-behaviour diagnostics, and user-approved reversible settings changes on selected Android ROMs. Its safety flow requires reviewing findings before applying changes; root access is not required.</p>
+      <p><sub><strong>STACK</strong> · Python · Android Debug Bridge · Shell / PowerShell · Android</sub></p>
+      <p><a href="https://github.com/shovo127/Noti-Fixer-for-Chinese-Devices">Repository ↗</a></p>
     </td>
     <td width="50%" valign="top">
-      <img src="./assets/projects/circle-search-trigger.svg" width="100%" alt="Circle to Search for Xiaomi trigger flow diagram" />
-      <h3><a href="https://github.com/shovo127/Circle-to-Search-for-Xiaomi">Circle to Search for Xiaomi</a></h3>
-      <p>A minimal native Android trigger designed to invoke Google's Circle to Search on supported Xiaomi and HyperOS configurations. Availability depends on Google's device eligibility and firmware options.</p>
-      <p><sub><strong>Stack</strong> · Android · Android system APIs</sub></p>
-      <p><sub><a href="https://github.com/shovo127/Circle-to-Search-for-Xiaomi">Repository ↗</a></sub></p>
+      <img src="./assets/projects/circle-search-native.jpg" width="100%" alt="Original Circle to Search for Xiaomi visual study showing the HyperOS double-back-tap trigger and route to Google's native search surface." />
+      <h3>04 / <a href="https://github.com/shovo127/Circle-to-Search-for-Xiaomi">Circle to Search for Xiaomi</a></h3>
+      <p>A minimal native Android trigger for Google's Circle to Search on supported Xiaomi and HyperOS configurations. A HyperOS Double Back Tap launches a transparent activity that invokes Android's Voice Interaction Manager route. Google must be the default assistant, and Google's device eligibility still applies.</p>
+      <p><sub><strong>STACK</strong> · Kotlin · Android SDK · HyperOS Back Tap · Voice Interaction Manager</sub></p>
+      <p><a href="https://github.com/shovo127/Circle-to-Search-for-Xiaomi">Repository ↗</a></p>
     </td>
   </tr>
   <tr>
     <td colspan="2" valign="top">
-      <img src="./assets/projects/smart-scanner-architecture.svg" width="100%" alt="Smart Scanner Pro documented Windows scanning architecture concept" />
-      <h3><a href="https://github.com/shovo127/Smart-Scanner-Pro">Smart Scanner Pro</a></h3>
-      <p>An architecture-first Windows document-scanning project. Its README labels scanner drivers, OCR, image processing, PDF workflows and plugin support as planned capabilities; this showcase does not present them as shipped features.</p>
-      <p><sub><strong>Documented platform</strong> · Windows · .NET 9 SDK · WPF</sub></p>
-      <p><sub><a href="https://github.com/shovo127/Smart-Scanner-Pro">Repository ↗</a></sub></p>
+      <img src="./assets/projects/smart-scanner-architecture.jpg" width="100%" alt="Smart Scanner Pro architecture concept with a flatbed scanner and documented software layers; planned capabilities are clearly labelled." />
+      <h3>05 / <a href="https://github.com/shovo127/Smart-Scanner-Pro">Smart Scanner Pro</a></h3>
+      <p>An architecture-first Windows document-scanning project organised around Clean Architecture and domain/application boundaries. TWAIN, WIA and eSCL drivers, OCR, image processing, PDF workflows and plugin features are explicitly marked as planned in the project README; this portfolio does not present them as shipped functionality.</p>
+      <p><sub><strong>STACK</strong> · C# · .NET 9 · WPF · Clean Architecture</sub></p>
+      <p><a href="https://github.com/shovo127/Smart-Scanner-Pro">Repository ↗</a></p>
     </td>
   </tr>
 </table>
 
-<p align="right"><sub><a href="https://github.com/shovo127?tab=repositories">Browse all public repositories ↗</a></sub></p>
+---
 
-<img src="./assets/motion/section-rule.svg" width="100%" alt="" />
+## TECHNICAL FOCUS
 
-## Technical focus
+<img src="./assets/engineering/technical-focus.jpg" width="100%" alt="Five technical focus cards: software engineering, AI and automation, Android systems, automotive engineering and learning technology." />
 
-| Area | Current work |
-|---|---|
-| **Software engineering** | Web applications, browser extensions and practical utilities |
-| **AI & automation** | Provider integrations, workflow rules, scheduling and recovery |
-| **Android systems** | ADB tooling, HyperOS behaviour and device-level troubleshooting |
-| **Automotive engineering** | Mechanical systems, diagnostics and hardware–software connections |
-| **Learning technology** | Multilingual learning experiences and German exam preparation |
+My interests connect software systems with practical engineering: web applications and extensions, provider integrations and rule engines, Android device diagnostics, mechanical systems, and multilingual learning tools.
 
-<sub>Technologies are listed where they are documented in the featured projects. They indicate project usage, not a proficiency ranking.</sub>
+### Automotive engineering / 3D study
 
-GitHub's native contribution graph, activity timeline and pinned repository cards remain the source of truth. I do not duplicate them with third-party counters or unverified contribution statistics.
+<img src="./assets/engineering/piston-connecting-rod-crankshaft.jpg" width="100%" alt="Original shaded 3D mesh render of a piston, compression rings, connecting rod, crank pin and crankshaft, created for an automotive engineering study." />
+
+<sub>Original parametric 3D mesh study rendered from source geometry. It is an engineering visual, not a claim about a specific production engine.</sub>
 
 ---
 
-## Education
+## EDUCATION & LEARNING
 
-**Diploma in Automobile Engineering**  
-Dhaka Polytechnic Institute
+<img src="./assets/engineering/education-path.jpg" width="100%" alt="Education timeline showing Diploma in Automobile Engineering at Dhaka Polytechnic Institute and current TELC Deutsch B2 preparation." />
 
-**Current learning**  
-TELC Deutsch B2 preparation
-
----
-
-## Connect
-
-- **GitHub** · [@shovo127](https://github.com/shovo127)
-- **Learning project** · [Lerne Deutsch Mit Technologie](https://lernedeutschmittechnologie.tech)
+- **Completed:** Diploma in Automobile Engineering — Dhaka Polytechnic Institute.
+- **Current learning:** German language, preparing for TELC Deutsch B2.
 
 ---
 
-<p align="center"><sub>Build with curiosity. Engineer with care. Improve through iteration.</sub></p>
-<p align="center"><sub>Independent engineering · Dhaka, Bangladesh</sub></p>
+## PUBLIC REPOSITORY SIGNAL
+
+<img src="./assets/data/public-repository-snapshot.jpg" width="100%" alt="GitHub public repository snapshot dated 2026-11-07: seven public project repositories, thirteen stars, four forks, and primary repository language counts." />
+
+<sub>Snapshot date: 7 November 2026. Counts cover seven public project repositories and exclude this profile repository and private repositories. Language bars count each repository's GitHub-reported primary language; they do not represent code-byte share or personal proficiency. Contribution history remains available in GitHub's native contribution graph.</sub>
+
+---
+
+## CONNECT
+
+- **GitHub:** [github.com/shovo127](https://github.com/shovo127)
+- **Learning project:** [Lerne Deutsch Mit Technologie](https://lernedeutschmittechnologie.tech)
+
+<p align="center"><sub>ENGINEERING · SOFTWARE · SYSTEMS</sub></p>
+<p align="center"><sub>Designed and maintained independently · Dhaka, Bangladesh</sub></p>
