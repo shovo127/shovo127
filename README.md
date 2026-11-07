@@ -84,36 +84,36 @@ Six distinct engineering disciplines, presented as separate visual cards.
 <table>
   <tr>
     <td width="50%" valign="top">
-      <img src="./assets/focus/focus-01.jpg" width="100%" alt="Software Engineering card: web applications, browser extensions and structured systems." />
+      <img src="./assets/motion/focus-01-live.gif" width="100%" alt="Software Engineering card: web applications, browser extensions and structured systems." />
       <h3>01 — Software Engineering</h3>
       <p>Web applications, browser extensions, structured interfaces and practical architecture.</p>
     </td>
     <td width="50%" valign="top">
-      <img src="./assets/focus/focus-02.jpg" width="100%" alt="AI and Automation card: provider routing, workflow rules and failover." />
+      <img src="./assets/motion/focus-02-live.gif" width="100%" alt="AI and Automation card: provider routing, workflow rules and failover." />
       <h3>02 — AI & Automation</h3>
       <p>Multi-provider integrations, routing, retries and user-controlled workflows.</p>
     </td>
   </tr>
   <tr>
     <td width="50%" valign="top">
-      <img src="./assets/focus/focus-03.jpg" width="100%" alt="Android Systems card: ADB, HyperOS and device diagnostics." />
+      <img src="./assets/motion/focus-03-live.gif" width="100%" alt="Android Systems card: ADB, HyperOS and device diagnostics." />
       <h3>03 — Android Systems</h3>
       <p>ADB workflows, HyperOS behaviour, notification diagnostics and native integrations.</p>
     </td>
     <td width="50%" valign="top">
-      <img src="./assets/focus/focus-04.jpg" width="100%" alt="Automotive Engineering card: mechanical systems and diagnostic thinking." />
+      <img src="./assets/motion/focus-04-live.gif" width="100%" alt="Automotive Engineering card: mechanical systems and diagnostic thinking." />
       <h3>04 — Automotive Engineering</h3>
       <p>Mechanical assemblies, automotive systems and diagnostic thinking grounded in diploma study.</p>
     </td>
   </tr>
   <tr>
     <td width="50%" valign="top">
-      <img src="./assets/focus/focus-05.jpg" width="100%" alt="Learning Technology card: multilingual learning tools and German study." />
+      <img src="./assets/motion/focus-05-live.gif" width="100%" alt="Learning Technology card: multilingual learning tools and German study." />
       <h3>05 — Learning Technology</h3>
       <p>Multilingual learning experiences and German study resources, including current TELC B2 preparation.</p>
     </td>
     <td width="50%" valign="top">
-      <img src="./assets/focus/focus-06.jpg" width="100%" alt="Mechanical Visualisation card: parametric geometry and assembly studies." />
+      <img src="./assets/motion/focus-06-live.gif" width="100%" alt="Mechanical Visualisation card: parametric geometry and assembly studies." />
       <h3>06 — Mechanical Visualisation</h3>
       <p>Parametric geometry, assembly studies and technical visualisation alongside software work.</p>
     </td>
@@ -124,7 +124,7 @@ Six distinct engineering disciplines, presented as separate visual cards.
 
 ## AUTOMOTIVE ENGINEERING / 3D STUDY
 
-<img src="./assets/engineering/piston-connecting-rod-crankshaft.jpg" width="100%" alt="Parametric 3D mesh study of a piston, rings, connecting rod and crankshaft." />
+<img src="./assets/motion/piston-crankshaft-cycle.gif" width="100%" alt="Parametric 3D mesh study of a piston, rings, connecting rod and crankshaft." />
 
 <sub>Original parametric mesh study rendered from generated geometry; not a production engine model. The available source is a rendered study, not an editable CAD assembly.</sub>
 
@@ -147,7 +147,7 @@ Six distinct engineering disciplines, presented as separate visual cards.
   </tr>
 </table>
 
-<img src="./assets/engineering/education-path.jpg" width="100%" alt="Education timeline showing completed automobile engineering diploma and current TELC Deutsch B2 preparation." />
+<img src="./assets/motion/education-path-live.gif" width="100%" alt="Education timeline showing completed automobile engineering diploma and current TELC Deutsch B2 preparation." />
 
 ## PUBLIC REPOSITORY ANALYTICS
 
@@ -155,7 +155,7 @@ Six distinct engineering disciplines, presented as separate visual cards.
   <tr>
     <td width="100%" valign="top">
       <p><strong><sub>GITHUB PUBLIC DATA / SNAPSHOT 2026-11-07</sub></strong></p>
-      <img src="./assets/data/public-repository-snapshot.jpg" width="100%" alt="Dated chart of seven public project repositories, 13 stars, four forks and primary-language repository counts." />
+      <img src="./assets/motion/analytics-snapshot-live.gif" width="100%" alt="Dated chart of seven public project repositories, 13 stars, four forks and primary-language repository counts." />
       <p><sub>Seven public project repositories · 13 stars · 4 forks. Language counts represent each repository's primary language, not code-byte share or personal proficiency. The snapshot excludes this profile repository and private repositories. Values are static, not live.</sub></p>
     </td>
   </tr>
@@ -188,5 +188,17 @@ Six distinct engineering disciplines, presented as separate visual cards.
 </table>
 
 <p align="center"><img src="./assets/motion/signal-sweep.gif" width="560" alt="Blood-red signal sweep closing the engineering portfolio." /></p>
-<p align="center"><sub>ENGINEERING · SOFTWARE · SYSTEMS</sub></p>
-<p align="center"><sub>Designed and maintained independently · Dhaka, Bangladesh</sub></p>
+<table>
+  <tr>
+    <td width="50%" valign="top" align="center">
+      <img src="./assets/cards/footer-engineering.jpg" width="100%" alt="Black and blood-red engineering identity card." />
+      <p><strong>ENGINEERING · SOFTWARE · SYSTEMS</strong></p>
+      <p><sub>Practical tools, careful implementation.</sub></p>
+    </td>
+    <td width="50%" valign="top" align="center">
+      <img src="./assets/cards/footer-location.jpg" width="100%" alt="Black and blood-red independent creator location card." />
+      <p><strong>DHAKA, BANGLADESH</strong></p>
+      <p><sub>Designed and maintained independently.</sub></p>
+    </td>
+  </tr>
+</table>
