@@ -1,9 +1,6 @@
 name: Render unique profile motion and typography
 
 on:
-  push:
-    branches:
-      - refine/unique-motion-and-premium-palette
   workflow_dispatch:
 
 permissions:
