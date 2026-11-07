@@ -45,7 +45,8 @@ Never paste credentials into this document, README, issue, workflow log or commi
 - scripts/pack_profile_3d.py uses Pillow to create shared-palette animated GIFs.
 - Blender is downloaded from the official Blender release server and checked against the published SHA-256 checksum.
 - Intermediate PNG frames are temporary runner files; committed GIFs live in assets/3d/.
-- Current scene outputs are 900×225, 10 frames, 120 ms per frame.
+- Current scene outputs are 900×225, 10 frames, 120 ms per frame, with matching first/last poses for seamless infinite looping.
+- The optimized profile build renders nine selected scenes at six Eevee TAA samples; three legacy section animations remain preserved but are no longer repeated in the README. The latest render duration is recorded in the verification report.
 - Rendering uses Eevee Next with software rendering on GitHub-hosted Linux runners. The observed twelve-scene render took about 6 minutes 34 seconds, excluding setup and verification. Actual duration varies with runner load.
 - The profile workflow promotes the new scene GIFs only after every expected output passes validation.
 
