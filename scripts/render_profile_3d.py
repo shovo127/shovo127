@@ -241,9 +241,6 @@ SCENES=[
  ("05-command-center",monitor_dashboard),
  ("06-precision-tools",caliper),
  ("07-contribution-city",city),
- ("09-coding-habits",keyboard),
- ("10-learning-loop",book),
- ("11-beyond-code",wheel),
  ("12-connect",connector),
 ]
 
@@ -276,7 +273,7 @@ for slug,builder in SCENES:
     # Eevee Next is substantially faster than CPU Cycles for these clean studio scenes.
     # Keep real geometry, PBR materials, area lights and shadows; render 10 eased frames.
     scene.render.engine="BLENDER_EEVEE_NEXT"
-    scene.eevee.taa_render_samples=8
+    scene.eevee.taa_render_samples=6
     scene.render.resolution_percentage=100
     scene.render.resolution_x=W; scene.render.resolution_y=H; scene.render.resolution_percentage=100
     scene.render.image_settings.file_format="PNG"; scene.render.film_transparent=False
