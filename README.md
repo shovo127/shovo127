@@ -46,14 +46,19 @@ I work across connected disciplines rather than treating technology as isolated 
 
 
 
-### More projects
+### Selected public repositories
 
-| Project | What it explores |
+| Project | Verified scope |
 |---|---|
-| [Lerne Deutsch Mit Technologie](https://lernedeutschmittechnologie.tech) | German learning, language practice and exam preparation |
-| [MailMerge by Shovo](https://mailmergebyshovo.qzz.io/) | Email productivity and automation |
-| [Smart Scanner Pro](https://github.com/shovo127/Smart-Scanner-Pro) | Utility application |
-| [All repositories](https://github.com/shovo127?tab=repositories) | Explore public source code |
+| [VisaFlowX Universal](https://github.com/shovo127/visaflowx-universal) | Manifest V3 browser workflow assistant with site profiles, DOM monitoring, retries, schedules and notifications. Protected verification is completed manually. |
+| [Kostenlos AI](https://github.com/shovo127/kostenlos-ai) | Bring-your-own-key AI chat app with Appwrite accounts and provider failover across Groq, Gemini, OpenAI and Mistral. |
+| [Noti-Fixer for Chinese Devices](https://github.com/shovo127/Noti-Fixer-for-Chinese-Devices) | Android/ADB toolkit focused on notification reliability and reversible background-app configuration for Chinese ROMs. Check its repository licence before reuse. |
+| [Circle to Search for Xiaomi](https://github.com/shovo127/Circle-to-Search-for-Xiaomi) | Small native Android trigger for Google's Circle to Search on supported Xiaomi/HyperOS configurations. |
+| [VisaFlowX](https://github.com/shovo127/visaflowx) | IVAC Bangladesh sign-in workflow helper with user-completed verification and OTP handoff. |
+
+**Other work:** [Lerne Deutsch Mit Technologie](https://lernedeutschmittechnologie.tech) · [MailMerge by Shovo](https://mailmergebyshovo.qzz.io/) · [IPTV By Shovo](https://github.com/shovo127/IPTV-By-Shovo)
+
+[Browse all public repositories](https://github.com/shovo127?tab=repositories)
 
 ## 04 / Technology & Tools
 
@@ -71,17 +76,17 @@ I work across connected disciplines rather than treating technology as isolated 
 
 [Dashboard workflow](https://github.com/shovo127/shovo127/actions/workflows/profile-dashboard.yml) · [Public repositories](https://github.com/shovo127?tab=repositories)
 
-## 06 / Achievements & Milestones
+## 06 / Precision Engineering
 
-<img src="./assets/section-06.gif" width="100%" alt="Animated milestones artwork" />
+<img src="./assets/section-06.gif" width="100%" alt="Animated precision vernier caliper model rendered in Blender" />
 
-*Milestones are evidence of work and learning — not a substitute for building useful things.*
+*A visual nod to measurement, tolerances and careful engineering. This is illustrative artwork, not an award or achievement claim.*
 
-## 07 / Your Contribution City
+## 07 / Engineering City Study
 
-<img src="./assets/section-07.gif" width="100%" alt="Animated contribution city artwork" />
+<img src="./assets/section-07.gif" width="100%" alt="Decorative Blender-rendered isometric industrial campus; not a contribution-data visualization" />
 
-*Every meaningful contribution adds another piece to the city.*
+*An original architectural scene. It is decorative artwork and is not mapped to GitHub contribution counts.*
 
 ## 08 / Contribution Snake
 
