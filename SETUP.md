@@ -12,11 +12,11 @@
 
 | Workflow | Purpose | Trigger |
 |---|---|---|
-| profile-dashboard.yml | Refresh dashboard SVG/PNG/JSON and the isometric metrics city | Daily schedule, generator or contribution-data changes, manual |
+| profile-dashboard.yml | Refresh dashboard SVG/PNG/JSON, contribution calendar, metrics city and data-driven snake GIF | Daily schedule, generator or contribution-data changes, manual |
 | profile-assets.yml | Fetch contribution data, render and validate Blender scenes, then update README image references | Renderer/packer/contribution-data generator changes, manual |
 | profile-3d.yml | Manual 3D render entry point | Manual |
 | readme-check.yml | Validate local image references, SVG, dashboard JSON, scripts and public leaks | PR, successful media workflow, manual |
-| snake.yml | Verify the preserved approved snake GIF | Manual |
+| snake.yml | Verify the preserved classic snake GIF | Manual |
 | blog-post-workflow.yml | Update latest posts from a user-supplied RSS/Atom feed | Daily schedule/manual, only if BLOG_FEED_URL is configured |
 
 The old duplicate metrics.yml workflow has been removed; profile-dashboard.yml is the single dashboard entry point.
@@ -42,12 +42,12 @@ Never paste credentials into this document, README, issue, workflow log or commi
 ## 3D asset generation
 
 - scripts/render_profile_3d.py builds original Blender geometry, materials, lighting, camera framing and eased animation.
-- scripts/pack_profile_3d.py uses Pillow to create shared-palette animated GIFs.
+- scripts/pack_profile_3d.py uses Pillow to create shared-palette animated GIFs. scripts/generate_contribution_snake.py simulates a collision-free route through the actual 53-week calendar, places food only on days with recorded contributions, and grows the snake as it reaches those days.
 - Blender is downloaded from the official Blender release server and checked against the published SHA-256 checksum.
 - Intermediate PNG frames are temporary runner files; committed GIFs live in assets/3d/.
 - Current scene outputs are 900×225, 10 frames, 120 ms per frame, with matching first/last poses for seamless infinite looping.
-- The profile build renders all 12 selected Blender scenes at six Eevee TAA samples. All 12 outputs are self-hosted in assets/3d/; the approved contribution snake remains a separate preserved animation.
-- Rendering uses Eevee Next with software rendering on GitHub-hosted Linux runners. The first verified twelve-scene render took about 6 minutes from job start through commit. A camera/light-motion revision is being verified separately; actual duration varies with runner load.
+- The profile build renders all 12 selected Blender scenes at six Eevee TAA samples. All 12 outputs are self-hosted in assets/3d/; the approved classic contribution snake remains preserved separately from the new data-driven snake.
+- Rendering uses Eevee Next with software rendering on GitHub-hosted Linux runners. The first verified twelve-scene render took about 6 minutes from job start through commit. The final render adds camera dolly/orbit movement and a warm rim-light sweep; actual duration varies with runner load.
 - The profile workflow promotes the new scene GIFs only after every expected output passes validation.
 
 The contribution city is built from the GitHub GraphQL contributionCalendar. scripts/fetch_contribution_data.py writes assets/contribution-calendar.json and assets/contribution-city-data.svg. Blender reads that same dated daily-count data to build the 3D isometric calendar city. scripts/generate_metrics_city.py writes assets/metrics-city.svg from the public repository metrics, language byte totals, verified project categories and contribution total when available. If PROFILE_READ_TOKEN and the built-in GITHUB_TOKEN are both absent or rejected, the JSON records status=unavailable and the city uses a neutral empty grid. The built-in token may provide public contribution data; PROFILE_READ_TOKEN is optional for read:user/private contribution visibility. It never invents activity. Private counts appear only when the account setting and token scope permit them.
@@ -60,6 +60,7 @@ scripts/generate_dashboard.py calls the GitHub public REST API and writes:
 - assets/github-dashboard-data.json
 - assets/metrics-city.svg — generated from the same verified public metrics, repository language bytes, project categories and contribution data when available.
 - assets/contribution-calendar.json and assets/contribution-city-data.svg
+- assets/contribution-snake-live.gif — generated from the same daily counts; not a playable game.
 
 The JSON file records the source, UTC generation timestamp, public account metrics, language byte totals and public repository metadata. Language shares are code volume across non-fork, non-archived public repositories; they are not skill scores. If a language API request fails, generation fails rather than silently publishing a partial distribution.
 
@@ -72,7 +73,7 @@ Set the repository variable BLOG_FEED_URL to an RSS or Atom feed you own. Remove
 - Keep existing approved assets unless a replacement has passed visual and technical checks.
 - Use descriptive alt text and avoid excessive full-width motion.
 - GitHub README cannot run arbitrary JavaScript; a GIF is not an interactive game.
-- The snake workflow only verifies the previously approved GIF; it does not regenerate it.
+- The snake.yml workflow verifies the preserved classic GIF; the daily profile-dashboard.yml workflow generates the data-driven contribution-snake-live.gif.
 - The contribution-city generator uses GITHUB_TOKEN for public data; PROFILE_READ_TOKEN is optional for private counts. If GitHub GraphQL data is unavailable, the neutral empty state is intentional.
 - Check the generated JSON and workflow run before trusting dashboard values.
 - See assets/design-system.md and docs/profile-audit/ for design and audit decisions.
