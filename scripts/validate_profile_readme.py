@@ -171,7 +171,7 @@ for rel in expected_gifs:
 
 # No README card image may be referenced twice, except the intentionally repeated section sweep.
 card_images = [x for x in parser.images if "project-" in x or "/focus/" in x]
-assert len([x for x in parser.images if "project-" in x]) == 6, "Expected six distinct project image references."
+assert len([x for x in parser.images if re.search(r"project-\\d{2}-scan\\.gif$", x)]) == 6, "Expected six distinct project motion references."
 focus_live = [x for x in parser.images if "focus-" in x and "-live.gif" in x]
 assert len(focus_live) == len(set(focus_live)) == 6, "Expected six distinct animated Technical Focus card references."
 for required in ("education-path-live.gif", "analytics-snapshot-live.gif", "piston-crankshaft-cycle.gif",
