@@ -92,7 +92,7 @@ def render_markdown(items: list[dict], duplicates: list[list[str]]) -> str:
     lines.extend(["", "## Duplicate content", ""])
     if duplicates:
         for group in duplicates:
-            lines.append("- " + ", ".join(paths))
+            lines.append("- " + ", ".join(group))
     else:
         lines.append("No byte-identical duplicate files detected.")
     lines.extend([
