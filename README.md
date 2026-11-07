@@ -74,7 +74,7 @@ I work across connected disciplines rather than treating technology as isolated 
 
 <sub>Generated from GitHub's public API and committed to this repository. Language shares indicate code volume, not skill level. Dashboard refreshes automatically.</sub>
 
-[Dashboard workflow](https://github.com/shovo127/shovo127/actions/workflows/profile-dashboard.yml) · [Public repositories](https://github.com/shovo127?tab=repositories)
+[Dashboard workflow](https://github.com/shovo127/shovo127/actions/workflows/profile-dashboard.yml) · [Raw dashboard data](./assets/github-dashboard-data.json) · [Public repositories](https://github.com/shovo127?tab=repositories)
 
 ## 06 / Precision Engineering
 
