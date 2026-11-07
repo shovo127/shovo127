@@ -21,9 +21,9 @@ def recolor(im):
         for x in range(im.width):
             r,g,b=px[x,y]
             mx=max(r,g,b); mn=min(r,g,b)
-            if mx<55 or mx-mn<22: continue
-            # Only transform red-family accents; neutral metallics and skin-free UI remain intact.
-            if r>g*1.18 and r>b*1.15 and r>75:
+            if mx-mn<12: continue
+            # Re-map bright red accents and dark-red grid lines; preserve neutral metals.
+            if r>g*1.15 and r>b*1.10 and r>24:
                 v=mx/255
                 if g<r*.34: hue=0.49 # teal
                 else: hue=0.105 # restrained champagne
@@ -59,7 +59,7 @@ def typewriter(label,path,accent=TEAL,width=560,height=58,size=25):
         tw=dr.textbbox((28,0),label,font=f)[2]
         if j%2==0: dr.rounded_rectangle((tw+2,17,tw+5,height-17),radius=1,fill=accent)
         frames.append(frame)
-    save(frames,path,95,48)
+    save(frames,path,95,32)
 def title_assets():
     labels=[
       ("hero-name.gif","MOHAMMED THUHIDUL ISLAM SHOVO",GOLD,880,62,28),
@@ -192,7 +192,7 @@ def analytics_motion():
     save(frames,M/"analytics-data-v2.gif",120,32)
 def hero_motion():
     w,h=1200,420; frames=[]
-    for i in range(36):
+    for i in range(32):
         im=Image.new("RGB",(w,h),BG); d=ImageDraw.Draw(im)
         # Layered graphite blueprint field and restrained teal/brass accents.
         for x in range(0,w,32): d.line((x,0,x,h),fill=(17,34,47),width=1)
@@ -203,15 +203,15 @@ def hero_motion():
         d.ellipse((cx-124,cy-124,cx+124,cy+124),outline=TEAL,width=2)
         d.ellipse((cx-78,cy-78,cx+78,cy+78),outline=GOLD,width=3)
         for j in range(8):
-            a=2*math.pi*j/8+2*math.pi*i/36; x1=cx+int(96*math.cos(a)); y1=cy+int(96*math.sin(a))
+            a=2*math.pi*j/8+2*math.pi*i/32; x1=cx+int(96*math.cos(a)); y1=cy+int(96*math.sin(a))
             x2=cx+int(72*math.cos(a)); y2=cy+int(72*math.sin(a))
             d.polygon([(x1,y1),(x1+int(10*math.cos(a+1.57)),y1+int(10*math.sin(a+1.57))),(x2,y2)],fill=TEAL)
         d.ellipse((cx-28,cy-28,cx+28,cy+28),fill=(18,43,54),outline=GOLD,width=2)
         text(d,(70,82),"ENGINEERING / SOFTWARE / SYSTEMS",13,TEAL,True,True)
         text(d,(72,320),"PRECISION · SYSTEMS · PRACTICAL TECHNOLOGY",15,ICE)
         text(d,(72,372),"DHAKA, BANGLADESH",12,TEAL,True,True)
-        frames.append(im.resize((900,315),Image.Resampling.LANCZOS))
-    save(frames,M/"hero-engineering-v2.gif",120,48)
+        frames.append(im.resize((840,294),Image.Resampling.LANCZOS))
+    save(frames,M/"hero-engineering-v2.gif",120,32)
 def recolor_existing_gifs():
     # Convert unused-but-retained motion assets too; nothing is removed from the repository.
     for p in [M/"signal-sweep.gif", M/"focus-pulse.gif", M/"analytics-trace.gif", M/"piston-crankshaft-cycle.gif"]:
