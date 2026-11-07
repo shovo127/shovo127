@@ -8,6 +8,7 @@ on:
       - "scripts/generate_metrics_city.py"
       - "scripts/fetch_contribution_data.py"
       - "scripts/generate_contribution_snake.py"
+      - "scripts/audit_profile_assets.py"
       - ".github/workflows/profile-dashboard.yml"
   schedule:
     - cron: "11 18 * * *"
@@ -47,6 +48,7 @@ jobs:
           python scripts/generate_dashboard.py
           python scripts/generate_metrics_city.py
           python scripts/generate_contribution_snake.py
+          python scripts/audit_profile_assets.py
           python - <<'PY'
           from pathlib import Path
           p = Path("README.md")
@@ -68,7 +70,7 @@ jobs:
           REPOSITORY: ${{ github.repository }}
         run: |
           cd repo
-          git add assets/github-dashboard.svg assets/github-dashboard.png assets/github-dashboard-data.json assets/metrics-city.svg assets/contribution-calendar.json assets/contribution-city-data.svg assets/contribution-snake-live.gif README.md
+          git add assets/github-dashboard.svg assets/github-dashboard.png assets/github-dashboard-data.json assets/metrics-city.svg assets/contribution-calendar.json assets/contribution-city-data.svg assets/contribution-snake-live.gif docs/profile-audit/asset-inventory.json docs/profile-audit/asset-inventory.md README.md
           if git diff --cached --quiet; then
             echo "Dashboard is already up to date."
             exit 0
