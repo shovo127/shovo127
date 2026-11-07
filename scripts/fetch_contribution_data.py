@@ -7,7 +7,7 @@ from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
 
 USERNAME = os.environ.get("GITHUB_USERNAME", "shovo127")  # Keep this generator profile-owner scoped.
-TOKEN = (os.environ.get("PROFILE_READ_TOKEN") or os.environ.get("GITHUB_TOKEN", "")).strip()
+TOKEN = (os.environ.get("PROFILE_READ_TOKEN") or os.environ.get("GITHUB_TOKEN", "")).strip()  # User token adds read:user; Actions token can read public data.
 OUT_JSON = Path("assets/contribution-calendar.json")
 OUT_SVG = Path("assets/contribution-city-data.svg")
 
