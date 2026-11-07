@@ -1,37 +1,74 @@
-# Profile repository maintenance
+# Shovo127 profile repository — setup and maintenance
 
-The public profile README uses repository-owned media. Displayed animations are committed under `assets/`; the README does not depend on remote image hosts, animation services or icon CDNs.
+## Core principles
 
-## 3D rendering pipeline
+- Keep the repository public; it is the account's profile README repository.
+- All README images are stored in this repository and referenced with relative paths.
+- Never commit personal tokens, API keys or private account data.
+- The default workflows use GitHub's built-in GITHUB_TOKEN and repository-owned scripts.
+- A metric must be traceable to a public source. Unavailable data must stay unavailable, not be fabricated.
 
-- `.github/workflows/profile-assets.yml` builds the profile media automatically when the README or Blender scene scripts change.
-- `scripts/render_profile_3d.py` renders the product scenes with **Blender**, an open-source 3D renderer.
-- `scripts/pack_profile_3d.py` converts the rendered frames into self-hosted animated GIFs.
-- The resulting 3D animations are stored in `assets/3d/` and embedded directly in the README.
-- The previously approved `assets/section-08-contribution-snake.gif` is restored byte-for-byte from its earlier repository revision. The snake workflow only verifies it; it does not regenerate or replace it.
-- `.github/workflows/readme-check.yml` validates local image references, media file signatures, SVG integrity, Python syntax and workflow declarations.
+## Workflows
 
-The rendering workflow downloads the official Blender 4.5.15 Linux archive, verifies it against Blender's published SHA-256 checksum, and uses Pillow to package the rendered frames. GitHub Actions' built-in `GITHUB_TOKEN` is limited to repository contents. No personal access token, paid image service or third-party GitHub Action is required.
+| Workflow | Purpose | Trigger |
+|---|---|---|
+| profile-dashboard.yml | Refresh local SVG, PNG and JSON dashboard | Daily schedule, generator changes, manual |
+| profile-assets.yml | Render and validate Blender scenes, then update README image references | Renderer/packer changes, manual |
+| profile-3d.yml | Manual 3D render entry point | Manual |
+| readme-check.yml | Validate local image references, SVG, dashboard JSON, scripts and public leaks | PR, successful media workflow, manual |
+| snake.yml | Verify the preserved approved snake GIF | Manual |
+| blog-post-workflow.yml | Update latest posts from a user-supplied RSS/Atom feed | Daily schedule/manual, only if BLOG_FEED_URL is configured |
 
-## Other repository-owned media
+The old duplicate metrics.yml workflow has been removed; profile-dashboard.yml is the single dashboard entry point.
 
-- `.github/workflows/profile-dashboard.yml` builds the GitHub dashboard from public repository data.
-- `scripts/generate_dashboard.py` generates the dashboard SVG; a PNG copy is used for README compatibility.
-- `scripts/update_blog_feed.py` updates the writing section only when the optional `BLOG_FEED_URL` repository variable is configured.
-- Previous SVG artwork and earlier GIF iterations remain in `assets/` as preserved source/history; the current README uses the new 3D renders for its main visual sections.
+## Permissions and secrets
 
-## Security and maintenance
+No additional secret is required for the standard public dashboard and rendering pipeline. GitHub Actions supplies GITHUB_TOKEN automatically. Keep workflow permissions limited to contents: read or contents: write as declared in each workflow.
 
-- Never put credentials, private keys, recovery codes, personal access tokens or private data in README files, SVGs, GIFs, workflow logs or commits.
-- Do not add third-party image URLs to README `img`, `source` or Markdown image syntax. Add media to `assets/` and reference it with a relative path.
-- Keep workflow permissions minimal. Rendering and dashboard workflows need `contents: write`; validation needs only `contents: read`.
-- Prefer repository-owned scripts and GitHub's built-in token over third-party actions.
-- Contribution data must come from GitHub's public contribution calendar. If the data source is unavailable, do not invent contribution totals.
+Optional integrations:
+- BLOG_FEED_URL: repository variable containing a feed URL that belongs to you. Without it, the blog updater is dormant.
+- PROFILE_READ_TOKEN: not currently required or consumed. Do not create it unless a future contribution-calendar implementation explicitly documents its required scope.
+- WAKATIME_API_KEY, Spotify, Discord and LeetCode credentials: not implemented; do not add secrets for them until the integration has a verified data source and a repository-owned generator.
 
-## Motion and accessibility
+Never paste credentials into this document, README, issue, workflow log or commit.
 
-Animations are decorative and do not carry essential information. Keep motion subtle, slow, non-flashing and lightweight. GitHub profile README rendering does not provide a reliable custom pause control or a CSS `prefers-reduced-motion` switch for embedded GIFs, so avoid intense or large-area motion. Keep descriptive alt text.
+## Run manually
 
-## Repository visibility
+1. Open the repository's Actions tab.
+2. Select the workflow by its name.
+3. Choose Run workflow.
+4. Review the run logs and verify the generated files before accepting any README media changes.
 
-This repository must remain public for GitHub to display it as a public profile README. Do not store secrets here. GitHub Actions secrets and variables belong in repository Settings and must never be copied into tracked files.
+## 3D asset generation
+
+- scripts/render_profile_3d.py builds original Blender geometry, materials, lighting, camera framing and eased animation.
+- scripts/pack_profile_3d.py uses Pillow to create shared-palette animated GIFs.
+- Blender is downloaded from the official Blender release server and checked against the published SHA-256 checksum.
+- Intermediate PNG frames are temporary runner files; committed GIFs live in assets/3d/.
+- Current scene outputs are 900×225, 10 frames, 120 ms per frame.
+- Rendering uses Eevee Next with software rendering on GitHub-hosted Linux runners. The observed twelve-scene render took about 6 minutes 34 seconds, excluding setup and verification. Actual duration varies with runner load.
+- The profile workflow promotes the new scene GIFs only after every expected output passes validation.
+
+The engineering-city render is decorative architecture, not contribution analytics. Do not describe it as a contribution city until a verified contribution calendar data source drives the geometry.
+
+## Dashboard data
+
+scripts/generate_dashboard.py calls the GitHub public REST API and writes:
+- assets/github-dashboard.svg
+- assets/github-dashboard.png
+- assets/github-dashboard-data.json
+
+The JSON file records the source, UTC generation timestamp, public account metrics, language byte totals and public repository metadata. Language shares are code volume across non-fork, non-archived public repositories; they are not skill scores. If a language API request fails, generation fails rather than silently publishing a partial distribution.
+
+## Optional blog feed
+
+Set the repository variable BLOG_FEED_URL to an RSS or Atom feed you own. Remove or clear the variable to disable the integration. The script only accepts public HTTP(S) links from feed entries and leaves the README unchanged when no valid entries are returned.
+
+## Asset and profile maintenance
+
+- Keep existing approved assets unless a replacement has passed visual and technical checks.
+- Use descriptive alt text and avoid excessive full-width motion.
+- GitHub README cannot run arbitrary JavaScript; a GIF is not an interactive game.
+- The snake workflow only verifies the previously approved GIF; it does not regenerate it.
+- Check the generated JSON and workflow run before trusting dashboard values.
+- See assets/design-system.md and docs/profile-audit/ for design and audit decisions.
