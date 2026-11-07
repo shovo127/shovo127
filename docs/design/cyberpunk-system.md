@@ -1,4 +1,4 @@
-# Black and blood-red engineering portfolio system
+# Black and teal and champagne engineering portfolio system
 
 ## Protected identity
 
@@ -6,7 +6,7 @@ The approved README opening block and `assets/hero/engineering-hero.svg` are imm
 
 ## Visual direction
 
-Premium engineering editorial: pure-black fields, deep charcoal surfaces, blood-red technical accents, restrained crimson highlights, precise mono labels and clear accessible copy. No cyan, teal, purple or rainbow accent system. The README cannot force GitHub's page background; its own artwork is rendered in the target black/red palette.
+Premium engineering editorial: pure-black fields, deep charcoal surfaces, teal and champagne technical accents, restrained crimson highlights, precise mono labels and clear accessible copy. No cyan, teal, purple or rainbow accent system. The README cannot force GitHub's page background; artwork uses a graphite, deep-teal, champagne and ice palette.
 
 ## Palette
 
@@ -16,14 +16,14 @@ Premium engineering editorial: pure-black fields, deep charcoal surfaces, blood-
 | Deep surface | `#080808` | Card surfaces |
 | Secondary surface | `#101010` | UI panels |
 | Elevated surface | `#171113` | Emphasis panels |
-| Blood red | `#8F001A` | Structural accent |
-| Primary crimson | `#C8102E` | Borders and active details |
-| Signal red | `#FF304F` | Motion and focus highlights |
-| Soft red | `#FF5268` | Secondary highlight |
+| Deep teal | `#1F6472` | Structural accent |
+| Champagne | `#3EC6B5` | Borders and active details |
+| Signal red | `#DAB171` | Motion and focus highlights |
+| Soft red | `#BADCDF` | Secondary highlight |
 | Primary text | `#F5F5F5` | Main content |
 | Secondary text | `#B5B5B5` | Supporting copy |
 | Muted metadata | `#777777` | Metadata |
-| Border | `#32121A` | Card boundaries |
+| Border | `#243B4B` | Card boundaries |
 
 ## Card architecture
 
@@ -35,6 +35,8 @@ Premium engineering editorial: pure-black fields, deep charcoal surfaces, blood-
 - All project capabilities and limitations are described in text outside artwork. No unverified live demos or performance claims are added.
 
 ## Motion specification
+
+The profile uses distinct self-hosted motion per content type: route-node progression for browser automation, type-on chat for AI, notification ripples for Android, expanding reticles for Circle to Search, vertical document feed for scanner architecture, and playlist equaliser movement for IPTV. Technical Focus uses six separate motion grammars: terminal typing, neural-node activation, notification ripple, piston travel, page-turn/progress, and orbital wireframe. Section titles and key card labels use self-hosted letter-by-letter typewriter loops. The Hero combines typewriter identity text with a rotating rotor. Education uses a sequential timeline reveal; analytics animates the dated values into their fixed totals, not live data.
 
 | Asset family | Frames | Timing | Loop | Purpose |
 |---|---:|---:|---|---|
