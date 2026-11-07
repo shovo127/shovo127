@@ -75,8 +75,7 @@ jobs:
           expected = [
               "00-hero", "01-about", "02-engineering-focus", "03-featured-work",
               "04-technology", "05-command-center", "06-precision-tools",
-              "07-contribution-city", "09-coding-habits", "10-learning-loop",
-              "11-beyond-code", "12-connect",
+              "07-contribution-city", "12-connect",
           ]
           for name in expected:
               path = Path("assets/3d") / (name + ".gif")
