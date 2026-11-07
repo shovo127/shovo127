@@ -18,8 +18,8 @@
 - Final 3D media generation and publication after the precision-caliper and engineering-city scene changes.
 - Final visual review of every newly rendered GIF from the committed repository.
 - The README check workflow after the JSON schema validation change.
-- A true contribution city based on actual dated contribution data.
-- Complete contribution calendar coverage, including private contributions.
+- Final 3D render and publication of the new contribution city, including its neutral fallback if PROFILE_READ_TOKEN is not configured.
+- Contribution data retrieval with PROFILE_READ_TOKEN; private contribution counts depend on read:user scope and the account's profile setting.
 - Optional WakaTime, Spotify, Discord, RSS and LeetCode integrations; they remain disabled unless configured with authentic data and credentials.
 
 ## Known limitations
