@@ -98,6 +98,7 @@ jobs:
               "assets/section-11.gif",
               "assets/section-12.gif",
               "assets/github-dashboard.png",
+              "assets/github-dashboard-data.json",
               "assets/projects/kostenlos-ai.svg",
               "assets/projects/visaflowx.svg",
               "assets/projects/visaflowx-universal.svg",
@@ -120,6 +121,17 @@ jobs:
           import xml.etree.ElementTree as ET
           for svg in Path("assets").rglob("*.svg"):
               ET.parse(svg)
+
+          import json
+          dashboard = json.loads(Path("assets/github-dashboard-data.json").read_text(encoding="utf-8"))
+          assert dashboard.get("schema_version") == 1
+          assert dashboard.get("source") == "GitHub public REST API"
+          assert dashboard.get("generated_at")
+          metrics = dashboard.get("metrics", {})
+          assert all(key in metrics for key in ("public_repositories", "public_followers", "public_following", "public_repository_stars"))
+          for language in dashboard.get("language_bytes", []):
+              assert language["bytes"] >= 0 and 0 <= language["share"] <= 1
+          print("PASS: dashboard JSON schema and metric fields are valid.")
 
           assert "github-readme-stats.vercel.app" not in readme
           assert "github-readme-activity-graph.vercel.app" not in readme
