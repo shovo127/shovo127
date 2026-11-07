@@ -141,8 +141,8 @@ expected_gif_dimensions = {
     "assets/motion/signal-sweep.gif": (560, 84),
     "assets/motion/focus-pulse.gif": (560, 84),
     "assets/motion/analytics-trace.gif": (560, 84),
-    "assets/motion/education-path-live.gif": (900, 225),
-    "assets/motion/analytics-snapshot-live.gif": (900, 270),
+    "assets/motion/education-path-live.gif": (720, 180),
+    "assets/motion/analytics-snapshot-live.gif": (720, 216),
     "assets/motion/piston-crankshaft-cycle.gif": (720, 312),
 }
 expected_gif_dimensions.update({f"assets/motion/focus-{i:02d}-live.gif": (480, 225) for i in range(1, 7)})
@@ -150,7 +150,7 @@ expected_gif_dimensions.update({f"assets/motion/project-{i:02d}-scan.gif": (480,
 for rel in expected_gifs:
     path = ROOT / rel
     assert path.is_file(), f"Missing animated visual: {rel}"
-    assert path.stat().st_size <= GIF_ASSET_LIMIT, f"GIF exceeds 350 KiB: {rel}"
+    assert path.stat().st_size <= GIF_ASSET_LIMIT, f"GIF exceeds configured per-file budget: {rel}"
     with Image.open(path) as im:
         assert im.format == "GIF" and im.n_frames >= 12, f"Expected animated GIF with >=12 frames: {rel}"
         assert im.size == expected_gif_dimensions[rel], f"Unexpected GIF dimensions for {rel}: {im.size}"
