@@ -62,6 +62,8 @@ jobs:
           cd repo
           python3 -m py_compile scripts/render_profile_3d.py scripts/pack_profile_3d.py scripts/fetch_contribution_data.py
           python3 scripts/fetch_contribution_data.py
+          python3 scripts/generate_contribution_snake.py
+          python3 scripts/generate_metrics_city.py
           EGL_PLATFORM=surfaceless LIBGL_ALWAYS_SOFTWARE=1 "$BLENDER_BIN" --background --factory-startup --python scripts/render_profile_3d.py
           python3 scripts/pack_profile_3d.py
 
@@ -136,7 +138,7 @@ jobs:
           REPOSITORY: ${{ github.repository }}
         run: |
           cd repo
-          git add assets/3d/*.gif assets/contribution-calendar.json assets/contribution-city-data.svg README.md
+          git add assets/3d/*.gif assets/contribution-calendar.json assets/contribution-city-data.svg assets/contribution-snake-live.gif assets/metrics-city.svg assets/contribution-snake-live.gif assets/metrics-city.svg README.md
           if git diff --cached --quiet; then
             echo "No rendered 3D assets changed."
             exit 0
