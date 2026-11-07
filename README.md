@@ -75,7 +75,7 @@ I work across connected disciplines rather than treating technology as isolated 
 <p><b>VisaFlowX</b><br/>IVAC Bangladesh sign-in workflow helper with user-completed verification and OTP handoff.</p>
 </td>
 <td width="50%">
-<p><b>Other work</b><br/><a href="https://lernedeutschmittechnologie.tech">Lerne Deutsch Mit Technologie</a><br/><a href="https://mailmergebyshovo.qzz.io/">MailMerge by Shovo</a><br/><a href="https://github.com/shovo127/IPTV-By-Shovo">IPTV By Shovo</a></p>
+<p><b>Other work</b><br/><a href="https://lernedeutschmittechnologie.tech">Lerne Deutsch Mit Technologie</a> — free A1–C2 German learning and TELC/Goethe preparation platform.<br/><a href="https://mailmergebyshovo.qzz.io/">MailMerge by Shovo</a> — Gmail-native mail merge with CSV personalization, scheduling and campaign reporting.<br/><a href="https://github.com/shovo127/IPTV-By-Shovo">IPTV By Shovo</a></p>
 </td>
 </tr>
 </table>
