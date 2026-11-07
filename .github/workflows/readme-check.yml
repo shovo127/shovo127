@@ -159,7 +159,7 @@ jobs:
               assert len({day["date"] for day in days}) == len(days)
               assert all(day["count"] >= 0 and 0 <= day["weekday"] <= 6 for day in days)
               start, end = contribution["period_start"], contribution["period_end"]
-              counted = sum(day["count"] for day in days if start <= day["date"] <= end)
+              counted = sum(day["count"] for day in days)
               assert counted == contribution["total_contributions"], "Contribution calendar total does not match daily counts."
           else:
               assert contribution.get("total_contributions") is None
