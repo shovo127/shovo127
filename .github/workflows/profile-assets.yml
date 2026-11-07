@@ -141,7 +141,7 @@ jobs:
               text = text.replace(old, new)
           text = text.replace("## 07 / Engineering City Study", "## 07 / Contribution City")
           text = text.replace('alt="Decorative Blender-rendered isometric industrial campus; not a contribution-data visualization"', 'alt="Isometric 3D city generated from GitHub daily contribution counts"')
-          text = text.replace("*An original architectural scene. It is decorative artwork and is not mapped to GitHub contribution counts.*", "<sub>Generated from GitHub's contribution calendar. If data is unavailable, the city shows a neutral empty state. Private counts require the profile setting and read:user scope.</sub> [Static SVG city](./assets/contribution-city-data.svg) · [Contribution data snapshot](./assets/contribution-calendar.json)")
+          text = text.replace("*An original architectural scene. It is decorative artwork and is not mapped to GitHub contribution counts.*", "<sub>The animated 3D city is generated from the exact dated snapshot linked below. The static SVG and snake animation refresh daily from the latest calendar; unavailable data is shown neutrally.</sub> [Static SVG city](./assets/contribution-city-data.svg) · [3D city source snapshot](./assets/contribution-city-source.json) · [Live calendar](./assets/contribution-calendar.json)")
           p.write_text(text, encoding="utf-8")
           PY
 
