@@ -1,6 +1,7 @@
 import bpy
 import math
 import os
+import json
 from mathutils import Vector
 
 OUT=os.environ.get("PROFILE_RENDER_DIR","/tmp/profile-render")
@@ -33,6 +34,7 @@ GOLD=mat("Machined brass",(.62,.39,.14),.82,.23)
 WHITE=mat("Ceramic white",(.72,.77,.78),.18,.26)
 TEAL=mat("Signal teal",(.025,.32,.29),.45,.23,(.015,.20,.17))
 FLOOR=mat("Studio floor",(.012,.019,.025),.12,.42)
+CITY_LEVELS=[DARK,mat("Contribution teal 1",(.035,.16,.16),.35,.32),mat("Contribution teal 2",(.025,.29,.26),.42,.29),mat("Contribution cyan 3",(.025,.43,.40),.48,.25),mat("Contribution blue 4",(.12,.38,.68),.52,.23)]
 
 def assign(obj,material):
     obj.data.materials.append(material); return obj
@@ -172,36 +174,29 @@ def caliper():
         cube("Depth gauge detail",(x,.02,-.18),(.08,.1,.04),TEAL,.008)
 
 def city():
-    # Decorative industrial campus scene; deliberately not contribution data.
-    cube("City foundation",(2.4,.2,-1.24),(6.2,3.6,.22),DARK,.08)
-    cube("Main access road",(2.4,-.85,-1.105),(6.0,.48,.025),BLACK,.012)
-    cube("Cross street",(2.4,.45,-1.10),(.42,2.6,.025),BLACK,.012)
-    buildings=((.35,.45,1.15,.72,.8),(1.35,.85,2.15,.82,.8),
-               (2.55,.55,1.45,.78,.8),(3.55,1.0,2.75,.82,.8),
-               (4.65,.5,1.7,.76,.8),(1.0,-.05,.75,.9,.62),
-               (3.65,-.05,.92,.95,.62),(5.0,1.25,.9,.7,.7))
-    for i,(x,y,h,w,d) in enumerate(buildings):
-        cube("Architectural building",(x,y,-1.10+h/2),(w,d,h),STEEL if i%2 else DARK,.045)
-        for z in range(1,max(2,int(h*2))):
-            for side in (-1,1):
-                cube("Facade glazing",(x+side*(w/2+.008),y-d/2-.012,-1.08+z*.38),(.018,.025,.14),GLASS,.006)
-        cube("Roof service block",(x,y,-1.08+h+.06),(w*.38,d*.34,.12),DARK,.018)
-    for x in (.35,1.25,2.15,3.05,3.95,4.85):
-        cube("Road marking",(x,-.85,-1.08),(.42,.025,.012),GOLD,.004)
-    for x in (.45,1.45,2.45,3.45,4.45,5.15):
-        cube("Street light pole",(x,-1.22,-.62),(.025,.025,.9),GOLD,.01)
-        sphere("Street light",(x,-1.22,-.16),.05,WHITE)
-
-def city():
-    for i,(x,y,h,w) in enumerate(((.3,0,1.6,.65),(1.15,.2,2.5,.72),(2.05,0,1.9,.72),(2.9,.1,3.1,.75),(3.85,0,1.35,.62),(4.6,.15,2.1,.68))):
-        cube("Architectural tower",(x,y,h/2-1),(w,w,h),STEEL if i%2 else DARK,.035)
-        for z in range(1,int(h*2)):
-            for side in (-1,1):
-                cube("Window glazing",(x+side*(w/2+.006),y-.03,-1+z*.42),(.018,.28,.16),GLASS,.008)
-    cube("City plinth",(2.4,.15,-1.18),(5.4,1.5,.18),DARK,.06)
-    for x in (.4,1.3,2.2,3.1,4.0):
-        cube("Street light",(x,-.72,-.5),(.025,.025,1.1),GOLD,.01)
-        sphere("Street lamp",(x,-.72,.08),.055,WHITE)
+    # Isometric contribution calendar. Geometry comes only from GitHub counts.
+    # Missing API data produces a neutral empty grid, never invented activity.
+    try:
+        with open("assets/contribution-calendar.json", encoding="utf-8") as source:
+            data=json.load(source)
+    except (OSError, ValueError):
+        data={"status":"unavailable","weeks":[],"days":[]}
+    available=data.get("status")=="available" and bool(data.get("days"))
+    week_count=max(1,len(data.get("weeks",[]))) if available else 52
+    counts={(int(day["week"]),int(day["weekday"])):int(day["count"]) for day in data.get("days",[])} if available else {}
+    max_count=max(counts.values(),default=0)
+    cube("Calendar city foundation",(0,0,-1.34),(week_count*.13+.18,1.18,.16),DARK,.035)
+    for week in range(week_count):
+        for weekday in range(7):
+            count=counts.get((week,weekday),0)
+            level=min(4,math.ceil(count*4/max_count)) if count and max_count else 0
+            height=.035+(level*.105 if available else 0)
+            x=(week-(week_count-1)/2)*.13
+            y=(weekday-3)*.14
+            cube("Contribution building",(x,y,-1.25+height/2),(.095,.102,height),CITY_LEVELS[level],.004)
+    if available:
+        total=int(data.get("total_contributions",0))
+        text_obj(str(total)+" contributions",(-2.5,-.85,-.98),.16,WHITE)
 
 def keyboard():
     cube("Desk surface",(2,.3,-1.08),(5.5,2.4,.16),DARK,.08)
@@ -245,7 +240,7 @@ SCENES=[
  ("04-technology",phone),
  ("05-command-center",monitor_dashboard),
  ("06-precision-tools",caliper),
- ("07-engineering-city",city),
+ ("07-contribution-city",city),
  ("09-coding-habits",keyboard),
  ("10-learning-loop",book),
  ("11-beyond-code",wheel),
@@ -267,9 +262,9 @@ for slug,builder in SCENES:
             obj.parent=root
     # Product photography lighting: broad key, cool fill and warm rim.
     bpy.ops.object.camera_add(location=(2.1,-13.5,3.1))
-    camera=bpy.context.object; camera.data.type="ORTHO"; camera.data.ortho_scale=10.8 if slug=="07-engineering-city" else 12.2;
-    if slug=="07-engineering-city": camera.location=(9,-11,9)
-    aim(camera,(2.2,0,-.2) if slug=="07-engineering-city" else (2.0,0,0))
+    camera=bpy.context.object; camera.data.type="ORTHO"; camera.data.ortho_scale=9.8 if slug=="07-contribution-city" else 12.2
+    if slug=="07-contribution-city": camera.location=(8,-10,8)
+    aim(camera,(0,0,-.55) if slug=="07-contribution-city" else (2.0,0,0))
     scene=bpy.context.scene; scene.camera=camera
     for name,loc,power,size,color in (
       ("Large softbox key",(-1,-5,7),1500,7,(.78,.88,1)),
