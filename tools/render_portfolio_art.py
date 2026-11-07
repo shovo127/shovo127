@@ -589,18 +589,18 @@ def render_project_motion():
     for idx,name in enumerate(names):
         source=PROJECTS/(name+".jpg")
         if not source.exists(): continue
-        base=Image.open(source).convert("RGB").resize((600,260),Image.Resampling.LANCZOS)
+        base=Image.open(source).convert("RGB").resize((480,208),Image.Resampling.LANCZOS)
         frames=[]
-        for i in range(24):
+        for i in range(18):
             frame=base.copy()
             d=ImageDraw.Draw(frame)
-            x=int(i*600/24)
-            d.polygon([(x-16,0),(x-8,0),(x+20,260),(x+12,260)],fill=(200,16,46))
-            d.line((x,0,x+28,260),fill=(255,82,104),width=2)
+            x=int(i*480/18)
+            d.polygon([(x-13,0),(x-7,0),(x+16,208),(x+10,208)],fill=(200,16,46))
+            d.line((x,0,x+22,208),fill=(255,82,104),width=2)
             d.rectangle((0,0,600,4),fill=(143,0,26))
-            frames.append(frame.quantize(colors=64,method=Image.Quantize.FASTOCTREE,dither=Image.Dither.NONE))
+            frames.append(frame.quantize(colors=32,method=Image.Quantize.FASTOCTREE,dither=Image.Dither.NONE))
         out=MOTION/("project-"+str(idx+1).zfill(2)+"-scan.gif")
-        frames[0].save(out,save_all=True,append_images=frames[1:],duration=120,loop=0,optimize=True,disposal=2)
+        frames[0].save(out,save_all=True,append_images=frames[1:],duration=160,loop=0,optimize=True,disposal=2)
 
 
 
