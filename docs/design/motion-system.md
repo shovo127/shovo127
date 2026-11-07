@@ -1,62 +1,71 @@
-# Motion system
+# Motion and visual system
 
-**Scope:** GitHub profile README and repository-owned SVG media.  
+**Scope:** GitHub profile README and repository-owned media.  
 **Direction:** restrained engineering editorial; precise, calm and readable.
 
-## Principles
+## Protected identity layer
 
-1. Motion has one job: establish hierarchy or reinforce the engineering theme.
-2. Keep the name, role and project descriptions static. Essential information never depends on animation.
-3. Prefer one slow mechanical movement and short line reveals over decorative loops.
-4. Keep contrast and text legibility stable throughout every frame.
-5. A static SVG frame must remain a complete composition when animation is unsupported.
+- The approved Hero is the first README block: hero image, name, positioning line and contact line, ending at the first horizontal divider.
+- The Hero SVG is protected by a Git blob SHA check in CI. The README's approved opening block is also compared byte-for-byte.
+- Phase 2 work must not alter, reposition, restyle or rewrite this block.
 
-## Timing and easing
+## Visual language
 
-| Motion | Duration | Easing | Repeat |
-|---|---:|---|---|
-| Hero entrance | 700 ms | cubic-bezier(0.22, 1, 0.36, 1) | once |
-| Technical line reveal | 1,400 ms | ease-in-out | once / low-frequency |
-| Mechanical rotor | 24 s | linear | seamless |
-| Ambient highlight | 8 s | ease-in-out | alternate |
-| Section rule | 2.4 s | ease-in-out | low-frequency |
+| Token | Rule |
+|---|---|
+| Base | Deep slate / graphite with restrained desaturated green-metal accents |
+| Contrast | Light neutral text against dark illustration fields; all key copy remains normal README text |
+| Geometry | Fine rules, aligned technical grids and schematic connectors |
+| Typography | Native GitHub Markdown headings and restrained system typography inside SVGs |
+| Density | One clear idea per project visual; avoid decorative badges and redundant metrics |
+| Spacing | Native Markdown paragraph spacing and consistent section separators |
 
-## Hierarchy and density
+## Project visual system
 
-- Level 1: one hero composition at the top of the README.
-- Level 2: one thin section rule between major content groups.
-- Level 3: no animated project cards, text, counters or status indicators.
-- Maximum visible looping elements in the README: two.
-- No typing loops, flashing, bouncing, particle fields or continuous text movement.
+- Five self-hosted project illustrations use a shared 1120 px canvas, 300 px or 260 px height, rounded graphite field, thin technical grid and muted metal palette.
+- The illustrations are original schematic diagrams, not product screenshots or claims that a UI exists.
+- Each image has an explicit title, description and README alt text.
+- Project descriptions and stacks are sourced from each public repository's README or architecture documentation.
+- Smart Scanner Pro is explicitly described as architecture-first; its README labels its advertised feature set as planned.
 
-## GitHub compatibility
+## Motion policy
 
-GitHub profile READMEs are Markdown documents, not web applications. They do not provide arbitrary CSS, JavaScript, hover handlers or a guaranteed animation runtime for SVG. SVG is used because it scales cleanly and includes a useful static composition. The SVG contains native SMIL animation only; if GitHub sanitizes or pauses it, the still frame remains the intended fallback. Motion is not claimed to be verified on every GitHub client.
+| Element | Treatment | Status |
+|---|---|---|
+| Approved hero rotor | Existing 24 s SVG rotation | Preserved; playback on GitHub clients not independently verified |
+| Section rule | Existing low-frequency SVG line animation | Preserved; static line remains if SMIL is not played |
+| Project visuals | Static diagrams | Deliberate: no movement needed to understand the architecture |
+| Contribution data | GitHub native UI | No duplicate third-party widget or unverified animation |
 
-No external image hosts, fonts, scripts or runtime services are required.
+Motion is not used to carry information. GitHub README SVG is rendered in an image context; arbitrary CSS, JavaScript, hover behaviour and a reliable reduced-motion signal are unavailable. SVG SMIL may be sanitized, paused or rendered differently across clients. Therefore the static artwork remains complete and readable.
 
-## Accessibility
+## Responsiveness and compatibility
 
-- Provide descriptive alt text for meaningful images.
-- Use empty alt text for decorative section rules.
-- Keep all essential profile content as normal Markdown text.
-- Avoid rapid luminance changes, flashing and strobing.
-- Honour reduced-motion preferences in any future standalone web implementation. GitHub README SVG cannot reliably read the viewer OS preference, so the static frame must remain understandable.
-- Maintain a minimum 4.5:1 contrast target for normal text in future interactive web versions.
+- Project cards use a two-column HTML table with image widths set to 100%; GitHub clients may stack, shrink or horizontally scroll tables differently at narrow widths.
+- No custom CSS or JavaScript is embedded.
+- No external image hosts, web fonts, scripts or runtime statistics services are required.
+- The README uses relative, case-sensitive repository paths.
+- Actual GitHub mobile, desktop, dark-theme and light-theme screenshot checks remain a manual browser QA step.
 
 ## Asset budget
 
-- Hero SVG: target ≤ 20 KB.
-- Section rule SVG: target ≤ 4 KB.
-- No GIF or video in the README until a human-reviewed animation has been rendered, optimized and verified in GitHub Markdown.
-- Keep total README visual assets below 25 KB where practical.
+- Hero SVG: 3,984 bytes (existing, protected).
+- Project SVGs: self-hosted, vector and text-light.
+- Total repository assets budget enforced by CI: 200 KiB.
+- Individual SVG budget enforced by CI: 64 KiB.
+- No GIF or video is added without a human-reviewed rendered output and GitHub Markdown compatibility test.
 
-## Review checklist
+## Accessibility
 
-- [ ] Static frame communicates the full message.
-- [ ] No text is clipped at narrow widths.
-- [ ] Animation is subtle and does not affect readability.
-- [ ] SVG parses as XML.
-- [ ] README uses repository-relative image paths.
-- [ ] No remote image dependency or unverified statistic is introduced.
-- [ ] Actual GitHub rendering is checked after publication.
+- Essential information stays in Markdown text.
+- Meaningful images have descriptive alt text; decorative dividers use empty alt text.
+- No flashing, strobing, bouncing or animated text.
+- Static frames remain understandable if animation is disabled.
+- Colour is not the only carrier of meaning.
+
+## Quality gates
+
+- CI locks the approved Hero README block and Hero SVG blob.
+- CI parses every SVG as XML and rejects script/foreignObject and remote SVG references.
+- CI checks README-local image/link paths, case-sensitive existence and total asset size.
+- Browser rendering, animation playback and native profile layout require visual inspection on GitHub itself.
