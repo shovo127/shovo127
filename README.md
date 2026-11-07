@@ -159,7 +159,7 @@ I work iteratively: research a problem, build a small solution, test it, documen
 
 All previous artwork remains in the repository; the new 3D renders are additional assets, not destructive replacements.
 
-- [Original banner](./assets/banner.svg) · [Profile badges](./assets/profile-badges.svg) · [About portrait](./assets/about-portrait.svg)
+- [Original banner](./assets/3d/00-hero.gif) · [Profile badges](./assets/profile-badges.svg) · [About portrait](./assets/about-portrait.svg)
 - [Engineering focus](./assets/engineering-focus.svg) · [Technology stack](./assets/technology-stack.svg) · [Coding rhythm](./assets/coding-rhythm.svg) · [Learning loop](./assets/learning-loop.svg)
 - [Legacy contribution-city concept — illustrative only](./assets/contribution-city.svg) · [Static snake concept — not the animated GIF](./assets/contribution-snake.svg) · [Decorative milestone graphic — not an award record](./assets/profile-trophies.svg)
 - [About motion](./assets/about-motion.gif) · [Focus motion](./assets/focus-motion.gif) · [Projects motion](./assets/projects-motion.gif) · [Technology motion](./assets/technology-motion.gif) · [Dashboard motion](./assets/dashboard-motion.gif) · [Achievement motion](./assets/achievement-motion.gif) · [City motion](./assets/city-motion.gif) · [Coding habits motion](./assets/habits-motion.gif) · [Beyond code motion](./assets/beyond-code-motion.gif) · [Connect motion](./assets/connect-motion.gif)

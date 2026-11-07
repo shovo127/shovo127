@@ -2,24 +2,24 @@
 
 Generated deterministically by scripts/audit_profile_assets.py from every file under assets/.
 
-- Files: **64**
-- Combined asset size: **14.77 MB**
-- Types: gif: 37, json: 2, md: 2, png: 2, svg: 21
+- Files: **65**
+- Combined asset size: **14.80 MB**
+- Types: gif: 37, json: 3, md: 2, png: 2, svg: 21
 
 | Asset | Type | Size | Dimensions | Frames | Timing | Loop | SHA-256 |
 |---|---:|---:|---:|---:|---:|---:|---|
-| assets/3d/00-hero.gif | gif | 619.4 KB | 900 × 225 | 10 | 120 ms | 0 | d2b6c2a7cebf |
-| assets/3d/01-about.gif | gif | 578.0 KB | 900 × 225 | 10 | 120 ms | 0 | 8ec42ddcb709 |
-| assets/3d/02-engineering-focus.gif | gif | 554.0 KB | 900 × 225 | 10 | 120 ms | 0 | 8852e24a8efe |
-| assets/3d/03-featured-work.gif | gif | 577.8 KB | 900 × 225 | 10 | 120 ms | 0 | 1c87ad12fb68 |
-| assets/3d/04-technology.gif | gif | 583.5 KB | 900 × 225 | 10 | 120 ms | 0 | 3fa7f5a55983 |
-| assets/3d/05-command-center.gif | gif | 595.0 KB | 900 × 225 | 10 | 120 ms | 0 | 321be3917efc |
-| assets/3d/06-precision-tools.gif | gif | 571.4 KB | 900 × 225 | 10 | 120 ms | 0 | c6a3479f9bad |
-| assets/3d/07-contribution-city.gif | gif | 840.3 KB | 900 × 225 | 10 | 120 ms | 0 | 646730c14804 |
-| assets/3d/09-coding-habits.gif | gif | 641.1 KB | 900 × 225 | 10 | 120 ms | 0 | b3f5df91bcae |
-| assets/3d/10-learning-loop.gif | gif | 628.2 KB | 900 × 225 | 10 | 120 ms | 0 | 8f04d91b3397 |
-| assets/3d/11-beyond-code.gif | gif | 632.6 KB | 900 × 225 | 10 | 120 ms | 0 | 832b0b4cb97e |
-| assets/3d/12-connect.gif | gif | 582.8 KB | 900 × 225 | 10 | 120 ms | 0 | fa4c43ecdbb5 |
+| assets/3d/00-hero.gif | gif | 607.3 KB | 900 × 225 | 10 | 120 ms | 0 | 961a194a1d1c |
+| assets/3d/01-about.gif | gif | 574.1 KB | 900 × 225 | 10 | 120 ms | 0 | 87291ba0bedb |
+| assets/3d/02-engineering-focus.gif | gif | 568.5 KB | 900 × 225 | 10 | 120 ms | 0 | 9108d49a6eea |
+| assets/3d/03-featured-work.gif | gif | 579.3 KB | 900 × 225 | 10 | 120 ms | 0 | 5529e3c4ed71 |
+| assets/3d/04-technology.gif | gif | 568.4 KB | 900 × 225 | 10 | 120 ms | 0 | f35ba88f8e22 |
+| assets/3d/05-command-center.gif | gif | 598.7 KB | 900 × 225 | 10 | 120 ms | 0 | 6483302190b1 |
+| assets/3d/06-precision-tools.gif | gif | 577.0 KB | 900 × 225 | 10 | 120 ms | 0 | 7b3eea00ea37 |
+| assets/3d/07-contribution-city.gif | gif | 851.1 KB | 900 × 225 | 10 | 120 ms | 0 | 5497142cc220 |
+| assets/3d/09-coding-habits.gif | gif | 635.2 KB | 900 × 225 | 10 | 120 ms | 0 | 7b3fb28c8f7b |
+| assets/3d/10-learning-loop.gif | gif | 610.4 KB | 900 × 225 | 10 | 120 ms | 0 | 0b2fe088d777 |
+| assets/3d/11-beyond-code.gif | gif | 612.4 KB | 900 × 225 | 10 | 120 ms | 0 | 43593e0d2e03 |
+| assets/3d/12-connect.gif | gif | 575.2 KB | 900 × 225 | 10 | 120 ms | 0 | 9353573127b3 |
 | assets/about-motion.gif | gif | 89.3 KB | 1100 × 120 | 24 | 100 ms | 1 | 6cf392ac4f64 |
 | assets/about-portrait.svg | svg | 3.2 KB | 900 × 560 | — | — | — | 8dd19a414c3d |
 | assets/achievement-motion.gif | gif | 69.3 KB | 1100 × 120 | 24 | 100 ms | 1 | 6bf5d5f03287 |
@@ -29,10 +29,11 @@ Generated deterministically by scripts/audit_profile_assets.py from every file u
 | assets/city-motion.gif | gif | 129.3 KB | 1100 × 120 | 24 | 100 ms | 1 | b6e892e598d4 |
 | assets/coding-rhythm.svg | svg | 2.5 KB | 1100 × 220 | — | — | — | b7a2c6bf03ec |
 | assets/connect-motion.gif | gif | 12.6 KB | 1100 × 120 | 4 | 600 ms | 1 | a885fcc0c4a8 |
-| assets/contribution-calendar.json | json | 36.4 KB | — | — | — | — | 64adc3478980 |
-| assets/contribution-city-data.svg | svg | 117.9 KB | 1240 × 470 | — | — | — | 209373463b22 |
+| assets/contribution-calendar.json | json | 36.4 KB | — | — | — | — | 2dce56f527ba |
+| assets/contribution-city-data.svg | svg | 117.9 KB | 1240 × 470 | — | — | — | ad9e5e9c8a87 |
+| assets/contribution-city-source.json | json | 36.4 KB | — | — | — | — | 2dce56f527ba |
 | assets/contribution-city.svg | svg | 2.9 KB | 1100 × 360 | — | — | — | 82806c484952 |
-| assets/contribution-snake-live.gif | gif | 2.66 MB | 800 × 280 | 67 | 100 ms | 0 | e5558af1f4ec |
+| assets/contribution-snake-live.gif | gif | 2.70 MB | 800 × 280 | 67 | 100 ms | 0 | b1266d60363e |
 | assets/contribution-snake.gif | gif | 172.3 KB | 986 × 181 | 28 | 80 ms | 1 | 419e32423581 |
 | assets/contribution-snake.svg | svg | 3.6 KB | 1100 × 220 | — | — | — | 72d63f04d60d |
 | assets/dashboard-motion.gif | gif | 48.4 KB | 1100 × 120 | 15 | 100–200 ms | 1 | 533edfede2d1 |
@@ -45,7 +46,7 @@ Generated deterministically by scripts/audit_profile_assets.py from every file u
 | assets/github-dashboard.svg | svg | 7.7 KB | 1200 × 690 | — | — | — | 59415fa868a0 |
 | assets/habits-motion.gif | gif | 14.6 KB | 1100 × 120 | 4 | 600 ms | 1 | d81175f7a76f |
 | assets/learning-loop.svg | svg | 1.6 KB | 1100 × 250 | — | — | — | 9309718eaa6d |
-| assets/metrics-city.svg | svg | 10.2 KB | 1400 × 860 | — | — | — | 27315883ad2a |
+| assets/metrics-city.svg | svg | 10.2 KB | 1400 × 860 | — | — | — | 2d8981da42cc |
 | assets/profile-badges.svg | svg | 1.1 KB | 1100 × 100 | — | — | — | a1b41b99c146 |
 | assets/profile-motion.gif | gif | 670.8 KB | 1100 × 300 | 36 | 80 ms | 0 | ba247527e284 |
 | assets/profile-trophies.svg | svg | 2.4 KB | 1100 × 230 | — | — | — | c42e5ea6d4eb |
@@ -75,7 +76,7 @@ Generated deterministically by scripts/audit_profile_assets.py from every file u
 
 ## Duplicate content
 
-No byte-identical duplicate files detected.
+- assets/contribution-calendar.json, assets/contribution-city-source.json
 
 ## Interpretation
 

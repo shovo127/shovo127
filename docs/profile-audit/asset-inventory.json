@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "asset_count": 64,
-  "total_bytes": 15487166,
+  "asset_count": 65,
+  "total_bytes": 15521179,
   "assets": [
     {
       "path": "assets/3d/00-hero.gif",
       "kind": "gif",
-      "bytes": 634259,
-      "sha256": "d2b6c2a7cebf7c661a79acbee04a4ff28c88d1becf6a712ee9c7ed16d93274f6",
+      "bytes": 621892,
+      "sha256": "961a194a1d1c41880df04b7f152ca3eb39e2a47d5e8a6336cdbe85c37487d9a1",
       "format": "GIF",
       "width": 900,
       "height": 225,
@@ -19,8 +19,8 @@
     {
       "path": "assets/3d/01-about.gif",
       "kind": "gif",
-      "bytes": 591864,
-      "sha256": "8ec42ddcb70969d955a3701bb753ed3f433a6746d490666694642e45b3a1f3b6",
+      "bytes": 587890,
+      "sha256": "87291ba0bedb8204d44857ab1da568823f6754eb0013d1ca804162a854eb38f9",
       "format": "GIF",
       "width": 900,
       "height": 225,
@@ -32,8 +32,8 @@
     {
       "path": "assets/3d/02-engineering-focus.gif",
       "kind": "gif",
-      "bytes": 567333,
-      "sha256": "8852e24a8efe75525feea072ea6d636a7f19d1b2d500b4d06f52cad64999a41a",
+      "bytes": 582105,
+      "sha256": "9108d49a6eea59fbd38e6a068c12cb0b4371826ad7b9b56059f7b5d0a1a53113",
       "format": "GIF",
       "width": 900,
       "height": 225,
@@ -45,8 +45,8 @@
     {
       "path": "assets/3d/03-featured-work.gif",
       "kind": "gif",
-      "bytes": 591654,
-      "sha256": "1c87ad12fb686a3e89e03fdde4661e5504a13b3090d67ed3315fb18d38a10002",
+      "bytes": 593184,
+      "sha256": "5529e3c4ed71cd6e338a165ef426ba0eb65b920dcaed3f0c00b5401459fe193e",
       "format": "GIF",
       "width": 900,
       "height": 225,
@@ -58,8 +58,8 @@
     {
       "path": "assets/3d/04-technology.gif",
       "kind": "gif",
-      "bytes": 597478,
-      "sha256": "3fa7f5a559835892d1152e0e5b3c5895a7bd72a68f9944c4872d255b36d571b3",
+      "bytes": 582049,
+      "sha256": "f35ba88f8e220fd56d879e984ba904b5e1a1f2e778f3416638fbf85423f913f9",
       "format": "GIF",
       "width": 900,
       "height": 225,
@@ -71,8 +71,8 @@
     {
       "path": "assets/3d/05-command-center.gif",
       "kind": "gif",
-      "bytes": 609330,
-      "sha256": "321be3917efcff0b465c3e9f4a8321c0e9b806dfadc23168cd5b689fa9655f39",
+      "bytes": 613117,
+      "sha256": "6483302190b15857bad71709e1240960bfb9f2c1353ed3bf1949848e579b9fec",
       "format": "GIF",
       "width": 900,
       "height": 225,
@@ -84,8 +84,8 @@
     {
       "path": "assets/3d/06-precision-tools.gif",
       "kind": "gif",
-      "bytes": 585145,
-      "sha256": "c6a3479f9badef64d9c7d1cc7f38ed6022818096fffc6d4b176f7c1fb03a2112",
+      "bytes": 590840,
+      "sha256": "7b3eea00ea3753030b81c6a09c2ecf6a9c4be3e29392b86213b75022a88397e9",
       "format": "GIF",
       "width": 900,
       "height": 225,
@@ -97,8 +97,8 @@
     {
       "path": "assets/3d/07-contribution-city.gif",
       "kind": "gif",
-      "bytes": 860467,
-      "sha256": "646730c14804c36a24561b24cd582dbf8a9e84a7cecfb18d0c4f80bbb191db3d",
+      "bytes": 871560,
+      "sha256": "5497142cc220153c744108920020ce1cd1744d3abceb5097f2cb7c7073916148",
       "format": "GIF",
       "width": 900,
       "height": 225,
@@ -110,8 +110,8 @@
     {
       "path": "assets/3d/09-coding-habits.gif",
       "kind": "gif",
-      "bytes": 656447,
-      "sha256": "b3f5df91bcaea218ee689495857761c2e9b0c7d5f7da73db79afa265898f8826",
+      "bytes": 650400,
+      "sha256": "7b3fb28c8f7b4e4ec60423970733354fc8e0411303c756b89ef9683867ae5b77",
       "format": "GIF",
       "width": 900,
       "height": 225,
@@ -123,8 +123,8 @@
     {
       "path": "assets/3d/10-learning-loop.gif",
       "kind": "gif",
-      "bytes": 643284,
-      "sha256": "8f04d91b339760eef9f6543aeb883406291f092556b234baf571d5e9bacca635",
+      "bytes": 625085,
+      "sha256": "0b2fe088d777f32a60e4cbc1124f4da15b7bed78abe8ae76d980d3c77d7bb327",
       "format": "GIF",
       "width": 900,
       "height": 225,
@@ -136,8 +136,8 @@
     {
       "path": "assets/3d/11-beyond-code.gif",
       "kind": "gif",
-      "bytes": 647768,
-      "sha256": "832b0b4cb97e9d96820216e1c9c3c1ee15b2586de1d72580fa196a8ddc363af3",
+      "bytes": 627109,
+      "sha256": "43593e0d2e036a403996790ee8cc4e41a7fdc3c920a04917af53d8396499a02d",
       "format": "GIF",
       "width": 900,
       "height": 225,
@@ -149,8 +149,8 @@
     {
       "path": "assets/3d/12-connect.gif",
       "kind": "gif",
-      "bytes": 596750,
-      "sha256": "fa4c43ecdbb5052a54008eae1d977c6f91efd14e4cb395888862d407fefbc794",
+      "bytes": 589042,
+      "sha256": "9353573127b3288cacae17484251e8ecf561e2e4632f2cc3e4e169b06a6493d2",
       "format": "GIF",
       "width": 900,
       "height": 225,
@@ -261,17 +261,24 @@
       "path": "assets/contribution-calendar.json",
       "kind": "json",
       "bytes": 37238,
-      "sha256": "64adc3478980089322f2b0985ab71bfed3b433b4e1b0b5653df411c25ce2b5ca",
+      "sha256": "2dce56f527ba4e99386ffe4ab01ae45a290c7c97254be6fe0d8267f3ba46030f",
       "valid_json": true
     },
     {
       "path": "assets/contribution-city-data.svg",
       "kind": "svg",
       "bytes": 120684,
-      "sha256": "209373463b22d4c0095ceee9986b731fab25cf2999a68d4762235d8ff966cecd",
+      "sha256": "ad9e5e9c8a87a4a6cede4759eaada39ae37210c436f4114f02da6d10c5c22e8e",
       "width": "1240",
       "height": "470",
       "viewBox": "0 0 1240 470"
+    },
+    {
+      "path": "assets/contribution-city-source.json",
+      "kind": "json",
+      "bytes": 37238,
+      "sha256": "2dce56f527ba4e99386ffe4ab01ae45a290c7c97254be6fe0d8267f3ba46030f",
+      "valid_json": true
     },
     {
       "path": "assets/contribution-city.svg",
@@ -285,8 +292,8 @@
     {
       "path": "assets/contribution-snake-live.gif",
       "kind": "gif",
-      "bytes": 2787625,
-      "sha256": "e5558af1f4ecd28ac85ab99d67b4de4b9555027802a71f1c5e62e364d8bbe6fb",
+      "bytes": 2831907,
+      "sha256": "b1266d60363eead7a909d243d6ad2215a5fb75841f950d7fe527e8d68580eb31",
       "format": "GIF",
       "width": 800,
       "height": 280,
@@ -418,8 +425,8 @@
     {
       "path": "assets/metrics-city.svg",
       "kind": "svg",
-      "bytes": 10477,
-      "sha256": "27315883ad2ac8cafc085398cfc0909c6ca8ae35b89d2d6dd49029438770cb83",
+      "bytes": 10476,
+      "sha256": "2d8981da42cc188c49aadf8df97e25a1b39bee67a2e0ddf960943cbb8a743058",
       "width": "1400",
       "height": "860",
       "viewBox": "0 0 1400 860"
@@ -720,5 +727,10 @@
       "viewBox": "0 0 1200 420"
     }
   ],
-  "duplicate_groups": []
+  "duplicate_groups": [
+    [
+      "assets/contribution-calendar.json",
+      "assets/contribution-city-source.json"
+    ]
+  ]
 }
