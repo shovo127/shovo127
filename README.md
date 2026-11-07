@@ -66,6 +66,8 @@ An architecture-first Windows document-scanning project organised around Clean A
 
 <sub><strong>STACK</strong> · C# · .NET 9 · WPF · Clean Architecture</sub>
 
+<sub>Additional open-source work: <a href="https://github.com/shovo127/IPTV-By-Shovo">IPTV By Shovo</a> — a public M3U/M3U8 playlist collection, maintained separately from the engineering showcase.</sub>
+
 ---
 
 ## TECHNICAL FOCUS
