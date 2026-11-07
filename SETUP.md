@@ -62,11 +62,14 @@ scripts/generate_dashboard.py calls the GitHub public REST API and writes:
 - assets/contribution-calendar.json — latest daily contribution data.
 - assets/contribution-city-source.json — exact contribution data snapshot used by the current 3D city GIF.
 - assets/contribution-city-data.svg — static city from the latest contribution data.
-- assets/contribution-snake-live.gif — generated from the latest daily counts; not a playable game.
-- docs/profile-audit/asset-inventory.json and asset-inventory.md — dimensions, frame counts, timing, file sizes and SHA-256 for every file under assets/.
 - assets/contribution-snake-live.gif — generated from the same daily counts; not a playable game.
 
-The JSON file records the source, UTC generation timestamp, public account metrics, language byte totals and public repository metadata. Language shares are code volume across non-fork, non-archived public repositories; they are not skill scores. If a language API request fails, generation fails rather than silently publishing a partial distribution.
+The dashboard JSON records the source, UTC generation timestamp, public account metrics, language byte totals and public repository metadata. Language shares are code volume across non-fork, non-archived public repositories; they are not skill scores. If a language API request fails, generation fails rather than silently publishing a partial distribution.
+
+## Asset inventory
+
+- docs/profile-audit/asset-inventory.json and asset-inventory.md record every file under assets/, including exact dimensions, animation frame counts, frame timing, loop flags, file sizes and SHA-256 hashes.
+- scripts/audit_profile_assets.py regenerates the inventory deterministically. The README validation workflow runs it in --check mode to catch stale metadata.
 
 ## Optional blog feed
 
