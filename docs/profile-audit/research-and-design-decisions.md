@@ -29,7 +29,18 @@ GitHub renders a profile README as Markdown with supported HTML and images. It d
 4. One dashboard source of truth: use public REST API data and local SVG/PNG generation. Clearly label repository counts, stars and language byte shares.
 5. No fake achievements: do not render trophy claims without a source that confirms them.
 6. Contribution data is a separate engineering requirement: decorative Blender towers are not contribution data. A city must not be published as contribution analytics until actual contribution counts and dates are acquired and checked.
-7. WakaTime, Spotify, Discord, RSS and LeetCode remain opt-in until an authentic source and required permissions are configured.
+7. WakaTime, Spotify, Discord and LeetCode remain disabled until authentic data sources and required permissions are configured. RSS is dormant until BLOG_FEED_URL is supplied.
+
+## Optional integration evaluation
+
+| Integration | Official technical requirement | Decision |
+|---|---|---|
+| WakaTime | WakaTime documents OAuth 2.0 access tokens for reading account stats; read_stats.languages and related scopes can be limited to the data required. The plugin API key is write-only for sending heartbeats. | Not enabled. No account token or consent was supplied; no coding hours or language-time claims are shown. If added, use a least-scope OAuth token in a repository secret and never expose it in client-side code. |
+| Spotify | Recently played tracks require the user-read-recently-played scope and OAuth user authorization. Access tokens expire and need refresh handling. | Not enabled. No Spotify client credentials or user consent are available, and music status does not materially improve this engineering portfolio. |
+| Discord | Rich Presence is set by a registered app/game through Discord Social SDK or local RPC to a running Discord client. | Not enabled. A GitHub-hosted workflow cannot query arbitrary local Discord RPC presence; a live public widget would require a separate backend and explicit privacy/security design. |
+| RSS / blog | A public RSS/Atom feed is sufficient for a repository-owned updater. | Implemented as optional; BLOG_FEED_URL is not configured, so no blog feed is displayed. |
+| LeetCode | No official account identity or verifiable public profile source was supplied. | Not enabled; no profile link or ranking is invented. |
+| Weather / local time | Requires a live data source and adds information unrelated to the engineering portfolio. | Not included. |
 
 ## External research notes
 
@@ -53,3 +64,8 @@ GitHub renders a profile README as Markdown with supported HTML and images. It d
 - https://github.com/gautamkrishnar/blog-post-workflow
 - https://github.com/DenverCoder1/readme-typing-svg
 - https://github.com/ayyazzafar
+- https://docs.github.com/en/graphql/reference/users
+- https://wakatime.com/developers
+- https://developer.spotify.com/documentation/web-api/concepts/authorization
+- https://developer.spotify.com/documentation/web-api/reference/get-recently-played
+- https://discord.com/developers/docs/rich-presence/overview
