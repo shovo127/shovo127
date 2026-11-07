@@ -65,7 +65,10 @@ required = [
 ]
 for rel in required:
     assert (ROOT / rel).is_file(), f"Missing required asset: {rel}"
-assert readme.count("width=\"50%\"") >= 13, "Expected two-column project/technical/education/contact card cells."
+assert readme.count('width="50%"') >= 6, "Expected two-column project and education card cells."
+assert readme.count('width="33%"') >= 9, "Expected equal three-column technical focus and contact card cells."
+assert readme.count("## SELECTED PROJECTS") == 1 and readme.count("## TECHNICAL FOCUS") == 1
+assert readme.count("## EDUCATION & LEARNING") == 1 and readme.count("## CONNECT") == 1
 assert readme.count('src="./assets/projects/') == 5, "All five selected project images must be used exactly once."
 assert readme.count('src="./assets/motion/signal-sweep.gif"') == 3, "Expected existing signal loop in profile, divider and footer."
 assert "contact@lernedeutschmittechnologie.tech" in readme
