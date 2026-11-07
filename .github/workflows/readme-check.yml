@@ -162,5 +162,7 @@ jobs:
               if any(line.strip().startswith("uses:") for line in content.splitlines()):
                   external.append(str(path))
           assert not external, "Third-party GitHub Actions are still used: " + ", ".join(external)
+          import subprocess
+          subprocess.run(["ruby", "-e", 'require "yaml"; Dir.glob(".github/workflows/*.yml").each { |f| YAML.load_file(f, aliases: true); puts "PASS YAML " + f }'], check=True)
           print(f"PASS: {len(workflow_files)} workflows use repository-owned scripts; no third-party actions.")
           PY
