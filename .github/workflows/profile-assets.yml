@@ -54,9 +54,14 @@ jobs:
       - name: Render real 3D product scenes
         env:
           PROFILE_RENDER_DIR: ${{ runner.temp }}/profile-render
+          PROFILE_READ_TOKEN: ${{ secrets.PROFILE_READ_TOKEN }}
+          GITHUB_USERNAME: ${{ github.repository_owner }}
         run: |
           cd repo
-          python3 -m py_compile scripts/render_profile_3d.py scripts/pack_profile_3d.py
+          python3 -m py_compile scripts/render_profile_3d.py scripts/pack_profile_3d.py scripts/fetch_contribution_data.py
+          PROFILE_READ_TOKEN: ${{ secrets.PROFILE_READ_TOKEN }}
+          GITHUB_USERNAME: ${{ github.repository_owner }}
+          python3 scripts/fetch_contribution_data.py
           EGL_PLATFORM=surfaceless LIBGL_ALWAYS_SOFTWARE=1 "$BLENDER_BIN" --background --factory-startup --python scripts/render_profile_3d.py
           python3 scripts/pack_profile_3d.py
 
@@ -69,7 +74,7 @@ jobs:
           expected = [
               "00-hero", "01-about", "02-engineering-focus", "03-featured-work",
               "04-technology", "05-command-center", "06-precision-tools",
-              "07-engineering-city", "09-coding-habits", "10-learning-loop",
+              "07-contribution-city", "09-coding-habits", "10-learning-loop",
               "11-beyond-code", "12-connect",
           ]
           for name in expected:
@@ -99,7 +104,7 @@ jobs:
               "./assets/section-04.gif": "./assets/3d/04-technology.gif",
               "./assets/section-05.gif": "./assets/3d/05-command-center.gif",
               "./assets/section-06.gif": "./assets/3d/06-precision-tools.gif",
-              "./assets/section-07.gif": "./assets/3d/07-engineering-city.gif",
+              "./assets/section-07.gif": "./assets/3d/07-contribution-city.gif",
               "./assets/section-09.gif": "./assets/3d/09-coding-habits.gif",
               "./assets/section-10.gif": "./assets/3d/10-learning-loop.gif",
               "./assets/section-11.gif": "./assets/3d/11-beyond-code.gif",
@@ -107,6 +112,9 @@ jobs:
           }
           for old, new in replacements.items():
               text = text.replace(old, new)
+          text = text.replace("## 07 / Engineering City Study", "## 07 / Contribution City")
+          text = text.replace('alt="Decorative Blender-rendered isometric industrial campus; not a contribution-data visualization"', 'alt="Isometric 3D city generated from GitHub daily contribution counts"')
+          text = text.replace("*An original architectural scene. It is decorative artwork and is not mapped to GitHub contribution counts.*", "<sub>Generated from GitHub's contribution calendar. If contribution data is unavailable, the city shows a neutral empty state. Private counts appear only when GitHub account settings and token permissions allow them.</sub>")
           p.write_text(text, encoding="utf-8")
           PY
 
@@ -116,7 +124,7 @@ jobs:
           REPOSITORY: ${{ github.repository }}
         run: |
           cd repo
-          git add assets/3d/*.gif README.md
+          git add assets/3d/*.gif assets/contribution-calendar.json assets/contribution-city-data.svg README.md
           if git diff --cached --quiet; then
             echo "No rendered 3D assets changed."
             exit 0
