@@ -99,7 +99,8 @@ if not lang_rows:
 add('<rect x="620" y="350" width="526" height="280" rx="22" fill="#FFFFFF" fill-opacity=".045" stroke="#B8D3E8" stroke-opacity=".13"/>')
 add('<text x="650" y="395" font-family="Arial,sans-serif" font-size="21" font-weight="700" fill="#F8FAFC">Recently updated projects</text>')
 y=442
-for repo in sorted(public_repos,key=lambda r:r.get("updated_at",""),reverse=True)[:5]:
+featured_repos = [r for r in public_repos if r.get("name") != user]
+for repo in sorted(featured_repos,key=lambda r:r.get("updated_at",""),reverse=True)[:5]:
     name=html.escape(repo["name"])
     desc=html.escape((repo.get("description") or "Open repository").strip())
     if len(desc)>48: desc=desc[:45]+"..."
