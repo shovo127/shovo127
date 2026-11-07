@@ -16,7 +16,7 @@ The profile-assets.yml workflow downloads the official checksum-verified Blender
 - Colour management: AgX when available, Filmic fallback.
 - Materials: Principled BSDF with metallic/roughness values and fine noise bump.
 - Lighting: large cool key, cool edge strip, warm rim and front fill.
-- Motion: eased turntable rotation from −18° to +18° and back, with a small vertical bob. First and last keyframes match for a seamless loop.
+- Motion: eased turntable rotation from −18° to +18° and back, a small vertical bob, a camera dolly/orbit offset, and a warm rim-light intensity sweep. First and last keyframes match for a seamless loop.
 - GIF packaging: shared 96-colour palette across each scene's frames, Floyd–Steinberg dithering, Pillow.
 - Contribution city: 52/53-week isometric calendar grid driven by the same dated daily counts as assets/contribution-calendar.json. Missing data yields a neutral flat grid.
 
