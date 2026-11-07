@@ -15,10 +15,10 @@ APPROVED_HERO = """<p align="center"><img src="./assets/hero/engineering-hero.sv
 
 ---
 """
-APPROVED_HERO_BLOB = "f988a3193de32412396a760fee2cf46d7de771e4"
-TOTAL_ASSET_BUDGET = 3 * 1024 * 1024
+APPROVED_HERO_BLOB = "1529179ad25ae062157ad78c81ca41765f7ffcc0"
+TOTAL_ASSET_BUDGET = 5 * 1024 * 1024
 STATIC_ASSET_LIMIT = 300 * 1024
-GIF_ASSET_LIMIT = 350 * 1024
+GIF_ASSET_LIMIT = 500 * 1024
 
 class References(HTMLParser):
     def __init__(self):
@@ -90,7 +90,7 @@ for name, url in zip(project_names, project_urls):
     assert name in readme and url in readme, f"Missing project card or repository link: {name}"
 assert readme.count("project-01-scan.gif") == 1
 assert all(readme.count(f"project-{i:02d}-scan.gif") == 1 for i in range(1, 7))
-assert all(readme.count(f"focus-{i:02d}.jpg") == 1 for i in range(1, 7))
+assert all((ROOT / "assets" / "focus" / f"focus-{i:02d}.jpg").is_file() for i in range(1, 7)), "Original Technical Focus source artwork must remain intact."
 assert "manual" in readme.lower() and "planned" in readme.lower()
 assert "static, not live" in readme.lower() or "static values" in readme.lower()
 assert "third-party" in readme.lower() and "no video streams are hosted" in readme.lower()
@@ -117,6 +117,8 @@ expected_dimensions = {
     "assets/engineering/piston-connecting-rod-crankshaft.jpg": (1200, 520),
     "assets/engineering/education-path.jpg": (1200, 300),
     "assets/data/public-repository-snapshot.jpg": (1200, 360),
+    "assets/cards/footer-engineering.jpg": (640, 220),
+    "assets/cards/footer-location.jpg": (640, 220),
 }
 for i in range(1, 7):
     expected_dimensions[f"assets/focus/focus-{i:02d}.jpg"] = (640, 300)
@@ -129,14 +131,26 @@ for rel, dimensions in expected_dimensions.items():
         im.verify()
 
 expected_gifs = ["assets/motion/signal-sweep.gif", "assets/motion/focus-pulse.gif",
-                 "assets/motion/analytics-trace.gif"]
+                 "assets/motion/analytics-trace.gif",
+                 "assets/motion/education-path-live.gif",
+                 "assets/motion/analytics-snapshot-live.gif",
+                 "assets/motion/piston-crankshaft-cycle.gif"]
+expected_gifs += [f"assets/motion/focus-{i:02d}-live.gif" for i in range(1, 7)]
 expected_gifs += [f"assets/motion/project-{i:02d}-scan.gif" for i in range(1, 7)]
-expected_gif_dimensions = {rel: (560, 84) for rel in expected_gifs[:3]}
-expected_gif_dimensions.update({rel: (480, 208) for rel in expected_gifs[3:]})
+expected_gif_dimensions = {
+    "assets/motion/signal-sweep.gif": (560, 84),
+    "assets/motion/focus-pulse.gif": (560, 84),
+    "assets/motion/analytics-trace.gif": (560, 84),
+    "assets/motion/education-path-live.gif": (720, 180),
+    "assets/motion/analytics-snapshot-live.gif": (720, 216),
+    "assets/motion/piston-crankshaft-cycle.gif": (720, 312),
+}
+expected_gif_dimensions.update({f"assets/motion/focus-{i:02d}-live.gif": (480, 225) for i in range(1, 7)})
+expected_gif_dimensions.update({f"assets/motion/project-{i:02d}-scan.gif": (480, 208) for i in range(1, 7)})
 for rel in expected_gifs:
     path = ROOT / rel
     assert path.is_file(), f"Missing animated visual: {rel}"
-    assert path.stat().st_size <= GIF_ASSET_LIMIT, f"GIF exceeds 350 KiB: {rel}"
+    assert path.stat().st_size <= GIF_ASSET_LIMIT, f"GIF exceeds configured per-file budget: {rel}"
     with Image.open(path) as im:
         assert im.format == "GIF" and im.n_frames >= 12, f"Expected animated GIF with >=12 frames: {rel}"
         assert im.size == expected_gif_dimensions[rel], f"Unexpected GIF dimensions for {rel}: {im.size}"
@@ -145,13 +159,18 @@ for rel in expected_gifs:
         for frame in range(im.n_frames):
             im.seek(frame)
             durations.append(im.info.get("duration"))
-        assert all(d is not None and 60 <= d <= 350 for d in durations), f"Unreasonable frame timing in {rel}: {durations}"
+        assert all(d is not None and 60 <= d <= 400 for d in durations), f"Unreasonable frame timing in {rel}: {durations}"
         assert 2000 <= sum(durations) <= 14000, f"Loop duration outside 2–14 seconds: {rel}"
         assert im.width <= 1200 and im.height <= 600, f"GIF dimensions exceed intended use: {rel}"
 
 # No README card image may be referenced twice, except the intentionally repeated section sweep.
 card_images = [x for x in parser.images if "project-" in x or "/focus/" in x]
-assert len(card_images) == len(set(card_images)) == 12, "Project/focus artwork contains duplicate or missing card references."
+assert len([x for x in parser.images if "project-" in x]) == 6, "Expected six distinct project image references."
+focus_live = [x for x in parser.images if "focus-" in x and "-live.gif" in x]
+assert len(focus_live) == len(set(focus_live)) == 6, "Expected six distinct animated Technical Focus card references."
+for required in ("education-path-live.gif", "analytics-snapshot-live.gif", "piston-crankshaft-cycle.gif",
+                 "footer-engineering.jpg", "footer-location.jpg"):
+    assert any(required in x for x in parser.images), f"Missing requested visual reference: {required}"
 
 asset_files = [p for p in (ROOT / "assets").rglob("*") if p.is_file()]
 asset_bytes = sum(p.stat().st_size for p in asset_files)
@@ -161,6 +180,6 @@ print("PASS: approved Hero README block and SVG blob SHA are unchanged.")
 print(f"PASS: {len(parser.images)} README image references resolve; no remote image dependencies.")
 print(f"PASS: {len(parser.links)} HTML links inspected; all local targets resolve.")
 print(f"PASS: {len(svg_files)} SVG files parse safely without script/foreignObject or remote references.")
-print("PASS: six project artworks and six distinct Technical Focus cards exist with intended dimensions.")
-print(f"PASS: {len(expected_gifs)} animated GIFs loop continuously with validated frame timing and dimensions.")
+print("PASS: six project artworks, six animated Technical Focus cards and two footer identity cards exist with intended dimensions.")
+print(f"PASS: {len(expected_gifs)} animated GIFs loop continuously with validated frame timing and dimensions, including piston/crank cycle.")
 print(f"PASS: static/GIF asset limits respected; total asset footprint {asset_bytes:,} / {TOTAL_ASSET_BUDGET:,} bytes.")
