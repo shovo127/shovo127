@@ -25,7 +25,7 @@ def scan(src,out,kind,n=24):
         elif kind=="education":
             x=int(-80+(w+160)*i/n); d.polygon([(x-24,0),(x-8,0),(x+40,h),(x+18,h)],fill=(200,16,46,22)); d.line((x,0,x+25,h),fill=(255,48,79,105),width=2)
         else:
-            x=int(680+500*i/n); d.polygon([(x-30,0),(x-8,0),(x+36,h),(x+12,h)],fill=(200,16,46,22)); d.line((x,0,x+20,h),fill=(255,48,79,110),width=2)
+            x=int(-40+(w+80)*i/n); d.polygon([(x-30,0),(x-8,0),(x+36,h),(x+12,h)],fill=(200,16,46,22)); d.line((x,0,x+20,h),fill=(255,48,79,110),width=2)
         frames.append(Image.alpha_composite(im,ov).convert("RGB"))
     save_gif(frames,out,180,48)
 
