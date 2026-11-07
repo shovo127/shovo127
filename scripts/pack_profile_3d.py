@@ -4,7 +4,7 @@ import os
 
 src=Path(os.environ.get("PROFILE_RENDER_DIR","/tmp/profile-render"))
 dst=Path("assets/3d"); dst.mkdir(parents=True,exist_ok=True)
-scenes=("00-hero","01-about","02-engineering-focus","03-featured-work","04-technology","05-command-center","06-achievements","07-contribution-city","09-coding-habits","10-learning-loop","11-beyond-code","12-connect")
+scenes=("00-hero","01-about","02-engineering-focus","03-featured-work","04-technology","05-command-center","06-achievements","07-engineering-city","09-coding-habits","10-learning-loop","11-beyond-code","12-connect")
 for prefix in scenes:
     files=sorted(src.glob(prefix+"_*.png"))
     if len(files)!=10:
