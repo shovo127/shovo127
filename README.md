@@ -120,25 +120,13 @@ I work across connected disciplines rather than treating technology as isolated 
 
 <sub>Self-hosted in this repository. Contribution intensity is based on public GitHub data; unavailable data is shown neutrally, never fabricated.</sub>
 
-## 09 / Coding Habits
+## 09 / Learning & Interests
 
-<img src="./assets/section-09.gif" width="100%" alt="Animated coding habits artwork" />
+I work iteratively: research a problem, build a small solution, test it, document what failed and improve it.
 
-I prefer sustainable progress: plan clearly, build in small steps, test carefully and improve based on evidence. No coding-hour totals or productivity scores are invented.
-
-## 10 / Learning Loop
-
-<img src="./assets/section-10.gif" width="100%" alt="Animated learning loop artwork" />
-
-*Curiosity → Research → Experiment → Feedback → Improvement.*
-
-## 11 / Beyond Code
-
-<img src="./assets/section-11.gif" width="100%" alt="Animated beyond code artwork" />
-
-- **Automotive engineering:** connecting mechanical systems, electronics and software.
-- **Language learning:** German and tools that make structured learning more accessible.
-- **Technology exploration:** AI products, Android customization, PC hardware and practical automation.
+- **Automotive engineering:** mechanical systems, electronics, diagnostics and the connection between hardware and software.
+- **German:** preparing for TELC Deutsch B2.
+- **Technology exploration:** Android/HyperOS, PC hardware, AI applications and practical automation.
 
 ## 12 / Let's Connect
 
