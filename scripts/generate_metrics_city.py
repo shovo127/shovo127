@@ -85,7 +85,7 @@ for index,label in enumerate(categories):
 
 generated = dashboard.get("generated_at","timestamp unavailable")
 parts.append(f'<text x="64" y="735" fill="#8FA8BC" font-family="Arial,sans-serif" font-size="12">GitHub REST data generated {html.escape(generated)} · Contribution total shown only when GraphQL data is available.</text>')
-parts.append('<text x="64" y="835" fill="#8FA8BC" font-family="Arial,sans-serif" font-size="11">Language proportions represent repository bytes, not proficiency. Public metrics exclude no private account data.</text>')
+parts.append('<text x="64" y="835" fill="#8FA8BC" font-family="Arial,sans-serif" font-size="11">Language proportions represent repository bytes, not proficiency. Only public GitHub account and repository data is shown.</text>')
 parts.append('</svg>')
 OUTPUT.write_text("".join(parts), encoding="utf-8")
 print("Generated", OUTPUT, "from public repository metrics and verified project categories.")
