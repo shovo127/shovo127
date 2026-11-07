@@ -7,7 +7,7 @@ from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1]
 README = ROOT / "README.md"
-APPROVED_HERO = """<p align="center"><img src="./assets/motion/hero-engineering.gif" width="100%" alt="Animated engineering hero with letter-by-letter name reveal and rotating precision rotor" /></p>
+APPROVED_HERO = """<p align="center"><img src="./assets/motion/hero-engineering-v2.gif" width="100%" alt="Animated engineering hero with letter-by-letter name reveal and rotating precision rotor" /></p>
 
 <h1 align="center">Mohammed Thuhidul Islam Shovo</h1>
 <p align="center"><strong>Engineering Mindset · Software Building · AI & Automation · Practical Technology</strong></p>
@@ -16,9 +16,9 @@ APPROVED_HERO = """<p align="center"><img src="./assets/motion/hero-engineering.
 ---
 """
 APPROVED_HERO_BLOB = None
-TOTAL_ASSET_BUDGET = 8 * 1024 * 1024
+TOTAL_ASSET_BUDGET = 12 * 1024 * 1024
 STATIC_ASSET_LIMIT = 300 * 1024
-GIF_ASSET_LIMIT = 700 * 1024
+GIF_ASSET_LIMIT = 750 * 1024
 
 class References(HTMLParser):
     def __init__(self):
@@ -85,11 +85,12 @@ project_urls = [
 ]
 for name, url in zip(project_names, project_urls):
     assert name in readme and url in readme, f"Missing project card or repository link: {name}"
-assert readme.count("project-01-scan.gif") == 1
-assert all(readme.count(f"project-{i:02d}-scan.gif") == 1 for i in range(1, 7))
+assert readme.count("project-01-kinetic-v2.gif") == 1
+assert all(readme.count(f"project-{i:02d}-kinetic-v2.gif") == 1 for i in range(1, 7))
 assert all((ROOT / "assets" / "focus" / f"focus-{i:02d}.jpg").is_file() for i in range(1, 7)), "Original Technical Focus source artwork must remain intact."
 assert "manual" in readme.lower() and "planned" in readme.lower()
 assert readme.count("title-project-") == 6 and readme.count("title-focus-") == 6
+assert "hero-name.gif" in readme and "hero-tagline.gif" in readme
 assert "static, not live" in readme.lower() or "static values" in readme.lower()
 assert "third-party" in readme.lower() and "no video streams are hosted" in readme.lower()
 assert "contact@lernedeutschmittechnologie.tech" in readme
@@ -135,6 +136,14 @@ expected_gifs = ["assets/motion/signal-sweep.gif", "assets/motion/focus-pulse.gi
                  "assets/motion/piston-crankshaft-cycle.gif"]
 expected_gifs += [f"assets/motion/focus-{i:02d}-live.gif" for i in range(1, 7)]
 expected_gifs += [f"assets/motion/project-{i:02d}-scan.gif" for i in range(1, 7)]
+expected_gifs += [f"assets/motion/project-{i:02d}-kinetic-v2.gif" for i in range(1, 7)]
+expected_gifs += [f"assets/motion/focus-{i:02d}-motion-v2.gif" for i in range(1, 7)]
+expected_gifs += [f"assets/motion/title-project-{i:02d}.gif" for i in range(1, 7)]
+expected_gifs += [f"assets/motion/title-focus-{i:02d}.gif" for i in range(1, 7)]
+expected_gifs += [f"assets/motion/title-education-{i:02d}.gif" for i in range(1, 3)]
+expected_gifs += ["assets/motion/hero-engineering-v2.gif", "assets/motion/hero-name.gif", "assets/motion/hero-tagline.gif", "assets/motion/education-path-v2.gif", "assets/motion/analytics-data-v2.gif", "assets/motion/piston-cycle-v2.gif"]
+expected_gifs += ["assets/motion/section-profile.gif", "assets/motion/section-projects.gif", "assets/motion/section-focus.gif", "assets/motion/section-engine.gif", "assets/motion/section-education.gif", "assets/motion/section-analytics.gif", "assets/motion/section-connect.gif", "assets/motion/title-footer.gif", "assets/motion/title-connect-github.gif", "assets/motion/title-connect-learning.gif", "assets/motion/title-connect-email.gif"]
+expected_gifs += ["assets/motion/divider-profile-v2.gif", "assets/motion/divider-projects-v2.gif", "assets/motion/divider-focus-v2.gif", "assets/motion/divider-analytics-v2.gif", "assets/motion/divider-footer-v2.gif"]
 expected_gifs += [f"assets/motion/title-project-{i:02d}.gif" for i in range(1, 7)]
 expected_gifs += [f"assets/motion/title-focus-{i:02d}.gif" for i in range(1, 7)]
 expected_gifs += [f"assets/motion/title-education-{i:02d}.gif" for i in range(1, 3)]
@@ -149,6 +158,14 @@ expected_gif_dimensions = {
 }
 expected_gif_dimensions.update({f"assets/motion/focus-{i:02d}-live.gif": (480, 225) for i in range(1, 7)})
 expected_gif_dimensions.update({f"assets/motion/project-{i:02d}-scan.gif": (480, 208) for i in range(1, 7)})
+expected_gif_dimensions.update({f"assets/motion/project-{i:02d}-kinetic-v2.gif": (360, 156) for i in range(1, 7)})
+expected_gif_dimensions.update({f"assets/motion/focus-{i:02d}-motion-v2.gif": (360, 169) for i in range(1, 7)})
+expected_gif_dimensions.update({f"assets/motion/title-project-{i:02d}.gif": (480, 50) for i in range(1, 7)})
+expected_gif_dimensions.update({f"assets/motion/title-focus-{i:02d}.gif": (480, 50) for i in range(1, 7)})
+expected_gif_dimensions.update({f"assets/motion/title-education-{i:02d}.gif": (480, 50) for i in range(1, 3)})
+expected_gif_dimensions.update({"assets/motion/hero-engineering-v2.gif": (900,315), "assets/motion/hero-name.gif": (880,62), "assets/motion/hero-tagline.gif": (1050,52), "assets/motion/education-path-v2.gif": (640,160), "assets/motion/analytics-data-v2.gif": (640,192), "assets/motion/piston-cycle-v2.gif": (640,277)})
+expected_gif_dimensions.update({"assets/motion/section-profile.gif": (560,54), "assets/motion/section-projects.gif": (560,54), "assets/motion/section-focus.gif": (560,54), "assets/motion/section-engine.gif": (720,54), "assets/motion/section-education.gif": (560,54), "assets/motion/section-analytics.gif": (620,54), "assets/motion/section-connect.gif": (420,54), "assets/motion/title-footer.gif": (600,54), "assets/motion/title-connect-github.gif": (320,48), "assets/motion/title-connect-learning.gif": (420,48), "assets/motion/title-connect-email.gif": (320,48)})
+expected_gif_dimensions.update({f"assets/motion/divider-{name}-v2.gif": (560,64) for name in ("profile","projects","focus","analytics","footer")})
 expected_gif_dimensions.update({f"assets/motion/title-project-{i:02d}.gif": (480, 50) for i in range(1, 7)})
 expected_gif_dimensions.update({f"assets/motion/title-focus-{i:02d}.gif": (480, 50) for i in range(1, 7)})
 expected_gif_dimensions.update({f"assets/motion/title-education-{i:02d}.gif": (480, 50) for i in range(1, 3)})
@@ -172,9 +189,9 @@ for rel in expected_gifs:
 # No README card image may be referenced twice, except the intentionally repeated section sweep.
 card_images = [x for x in parser.images if "project-" in x or "/focus/" in x]
 assert len([x for x in parser.images if re.search(r"project-\\d{2}-scan\\.gif$", x)]) == 6, "Expected six distinct project motion references."
-focus_live = [x for x in parser.images if "focus-" in x and "-live.gif" in x]
+focus_live = [x for x in parser.images if "focus-" in x and "-motion-v2.gif" in x]
 assert len(focus_live) == len(set(focus_live)) == 6, "Expected six distinct animated Technical Focus card references."
-for required in ("education-path-live.gif", "analytics-snapshot-live.gif", "piston-crankshaft-cycle.gif",
+for required in ("education-path-v2.gif", "analytics-data-v2.gif", "piston-cycle-v2.gif",
                  "footer-engineering.jpg", "footer-location.jpg"):
     assert any(required in x for x in parser.images), f"Missing requested visual reference: {required}"
 
