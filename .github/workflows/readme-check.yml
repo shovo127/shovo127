@@ -15,9 +15,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Install artwork validation dependency
+        run: python -m pip install --disable-pip-version-check Pillow==11.3.0
       - name: Check common public-repository secret leaks
         run: python scripts/check_public_leaks.py
       - name: Test optional RSS and Atom feed updater
         run: python -m unittest discover -s tests -v
-      - name: Validate README references, SVG assets and approved Hero lock
+      - name: Validate README references, images, GIF and approved Hero lock
         run: python scripts/validate_profile_readme.py
