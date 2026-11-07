@@ -15,7 +15,7 @@ def save_gif(frames,path,delay=180,colors=64):
 
 def scan(src,out,kind,n=24):
     base=Image.open(src).convert("RGB")
-    target = (480,225) if kind=="focus" else (900,225) if kind=="education" else (900,270)
+    target = (480,225) if kind=="focus" else (720,180) if kind=="education" else (720,216)
     base=base.resize(target,Image.Resampling.LANCZOS); w,h=base.size; frames=[]
     for i in range(n):
         im=base.convert("RGBA"); ov=Image.new("RGBA",(w,h),(0,0,0,0)); d=ImageDraw.Draw(ov)
@@ -33,7 +33,7 @@ def scan(src,out,kind,n=24):
                 if xx is not None:
                     d.polygon([(xx-30,0),(xx-8,0),(xx+36,h),(xx+12,h)],fill=(200,16,46,22)); d.line((xx,0,xx+20,h),fill=(255,48,79,110),width=2)
         frames.append(Image.alpha_composite(im,ov).convert("RGB"))
-    save_gif(frames,out,180,48)
+    save_gif(frames,out,180,32)
 
 def footer(path,kicker,title,detail,mark):
     w,h=640,220; im=Image.new("RGB",(w,h),(3,3,3)); d=ImageDraw.Draw(im)
@@ -84,8 +84,8 @@ def engine_frame(a):
 
 def main():
     for i in range(1,7): scan(F/f"focus-{i:02d}.jpg",M/f"focus-{i:02d}-live.gif","focus",18)
-    scan(E/"education-path.jpg",M/"education-path-live.gif","education",30)
-    scan(D/"public-repository-snapshot.jpg",M/"analytics-snapshot-live.gif","analytics",30)
+    scan(E/"education-path.jpg",M/"education-path-live.gif","education",24)
+    scan(D/"public-repository-snapshot.jpg",M/"analytics-snapshot-live.gif","analytics",24)
     footer(C/"footer-engineering.jpg","PROFILE / ENGINEERING","ENGINEERING · SOFTWARE · SYSTEMS","Practical tools, careful implementation.","01")
     footer(C/"footer-location.jpg","INDEPENDENTLY MAINTAINED","DHAKA, BANGLADESH","Designed and maintained independently.","BD")
     save_gif([engine_frame(2*math.pi*i/24) for i in range(24)],M/"piston-crankshaft-cycle.gif",160,48)
