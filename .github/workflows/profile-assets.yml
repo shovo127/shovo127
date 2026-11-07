@@ -59,8 +59,6 @@ jobs:
         run: |
           cd repo
           python3 -m py_compile scripts/render_profile_3d.py scripts/pack_profile_3d.py scripts/fetch_contribution_data.py
-          PROFILE_READ_TOKEN: ${{ secrets.PROFILE_READ_TOKEN }}
-          GITHUB_USERNAME: ${{ github.repository_owner }}
           python3 scripts/fetch_contribution_data.py
           EGL_PLATFORM=surfaceless LIBGL_ALWAYS_SOFTWARE=1 "$BLENDER_BIN" --background --factory-startup --python scripts/render_profile_3d.py
           python3 scripts/pack_profile_3d.py
