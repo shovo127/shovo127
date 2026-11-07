@@ -75,7 +75,8 @@ jobs:
           expected = [
               "00-hero", "01-about", "02-engineering-focus", "03-featured-work",
               "04-technology", "05-command-center", "06-precision-tools",
-              "07-contribution-city", "12-connect",
+              "07-contribution-city", "09-coding-habits", "10-learning-loop",
+              "11-beyond-code", "12-connect",
           ]
           for name in expected:
               path = Path("assets/3d") / (name + ".gif")
@@ -95,7 +96,9 @@ jobs:
           print("PASS: contribution city data is genuine or explicitly unavailable; neutral SVG exists.")
           snake=Path("assets/section-08-contribution-snake.gif")
           assert snake.is_file() and snake.stat().st_size > 1000, "Previously approved contribution snake is missing."
-          print("PASS: previously approved contribution snake remains present and untouched.")
+          with Image.open(snake) as gif:
+              assert gif.format == "GIF" and gif.n_frames > 1, "Approved contribution snake must be a real multi-frame GIF."
+          print("PASS: previously approved contribution snake remains present and is a real multi-frame GIF.")
           PY
 
       - name: Switch README to 3D assets only after all renders pass
