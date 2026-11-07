@@ -75,5 +75,10 @@ jobs:
           fi
           git commit -m "chore: refresh self-hosted profile dashboard"
           git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${REPOSITORY}.git"
-          git pull --rebase origin main
-          git push origin HEAD:main
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then exit 0; fi
+            echo "Push race; retrying ($attempt/5)."
+          done
+          exit 1
