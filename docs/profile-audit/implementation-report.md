@@ -7,7 +7,7 @@
 - Added reference research and adoption decisions with an emphasis on GitHub README constraints and self-hosted media.
 - Corrected the Blender GIF verification contract to match the actual 900×225, 10-frame output.
 - Increased the 3D render job timeout from 8 to 15 minutes.
-- Renamed the decorative city render to engineering-city so it is not misrepresented as contribution analytics.
+- Replaced the decorative tower scene with a data-driven isometric contribution calendar city. It reads dated GitHub contribution counts and uses a neutral empty grid when data is unavailable.
 - Replaced the decorative trophy prop with a precision vernier-caliper model, avoiding an unsupported achievement implication.
 - Updated the README to describe verified public project functionality and distinguish decorative artwork from data visualizations.
 - Expanded the dashboard generator to paginate public repositories, fail rather than silently omit repository language data, and write an auditable JSON snapshot alongside SVG and PNG.
@@ -31,6 +31,6 @@ The industrial-campus scene is an original decorative architectural scene. It is
 
 ## Pending work
 
-- The current 3D workflow must complete successfully with the final scene names and validation before the new GIFs are promoted into the README.
-- A true contribution city requires a reliable source for dated contribution counts. The public REST repository list alone is insufficient; private contributions must not be assumed.
+- The current 3D workflow must complete successfully with the final contribution-city scene and validation before the new GIFs are promoted into the README.
+- PROFILE_READ_TOKEN is optional but required to fetch the GraphQL contribution calendar. Without it, the city renders a neutral empty state. Private counts require read:user scope and the user's GitHub profile setting.
 - The final verification report must be updated after the final workflow runs and the resulting GIFs are inspected.
