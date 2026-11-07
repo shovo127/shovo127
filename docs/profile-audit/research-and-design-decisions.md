@@ -68,4 +68,4 @@ GitHub renders a profile README as Markdown with supported HTML and images. It d
 - https://wakatime.com/developers
 - https://developer.spotify.com/documentation/web-api/concepts/authorization
 - https://developer.spotify.com/documentation/web-api/reference/get-recently-played
-- https://discord.com/developers/docs/rich-presence/overview
+- https://github.com/discord/discord-api-docs/blob/main/developers/rich-presence/overview.mdx
