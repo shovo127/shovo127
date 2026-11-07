@@ -73,7 +73,7 @@ Replaced them with:
 - Five RSS/Atom updater unit tests — passed.
 - Public-secret scan — passed.
 - README validator — passed: 21 image references resolve, 26 HTML links inspected, one SVG safely parsed, six project artworks, six Technical Focus cards, nine looping GIFs.
-- Tracked asset footprint at validated branch head: 2,105,390 bytes of the 3,145,728-byte budget.
+- Tracked asset footprint at validated branch head: 2,164,004 bytes of the 3,145,728-byte budget.
 
 ## Live rendering and platform limitations
 
