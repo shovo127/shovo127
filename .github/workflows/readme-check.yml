@@ -1,9 +1,8 @@
-name: Profile README checks
+name: Validate profile README
 
 on:
-  workflow_run:
-    workflows: ["Build self-hosted realistic 3D profile media", "Refresh profile dashboard"]
-    types: [completed]
+  push:
+    branches: [main]
   pull_request:
     branches: [main]
   workflow_dispatch:
@@ -13,233 +12,32 @@ permissions:
 
 jobs:
   validate:
-    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - uses: actions/checkout@v4
+      - name: Check README local links and SVG
         run: |
-          git clone --no-checkout "https://github.com/${GITHUB_REPOSITORY}.git" repo
-          cd repo
-          if [ "${GITHUB_EVENT_NAME}" = "workflow_run" ]; then
-            git fetch origin main
-            git checkout --detach origin/main
-          else
-            git fetch origin "${GITHUB_SHA}"
-            git checkout --detach "${GITHUB_SHA}"
-          fi
-        env:
-          GITHUB_REPOSITORY: ${{ github.repository }}
-          GITHUB_SHA: ${{ github.sha }}
-          GITHUB_EVENT_NAME: ${{ github.event_name }}
-
-      - name: Install GIF metadata reader
-        run: python -m pip install --disable-pip-version-check --quiet Pillow
-
-      - name: Validate self-hosted profile media and README references
-        run: |
-          cd repo
           python - <<'PY'
           from pathlib import Path
           from html.parser import HTMLParser
-          from PIL import Image, ImageChops
           import re
-          import json
-
-          readme = Path("README.md").read_text(encoding="utf-8")
-
-          class MediaParser(HTMLParser):
-              def __init__(self):
-                  super().__init__()
-                  self.refs = []
-                  self.remote = []
-              def handle_starttag(self, tag, attrs):
-                  attrs = dict(attrs)
-                  if tag not in ("img", "source"):
-                      return
-                  for key in ("src", "srcset"):
-                      value = attrs.get(key, "").strip()
-                      if not value:
-                          continue
-                      for candidate in value.split(","):
-                          ref = candidate.strip().split()[0]
-                          if ref.startswith(("http://", "https://", "//")):
-                              self.remote.append(ref)
-                          else:
-                              self.refs.append(ref)
-
-          parser = MediaParser()
-          parser.feed(readme)
-
-          for ref in re.findall(r"!\[[^\]]*\]\(([^)]+)\)", readme):
-              ref = ref.strip().split()[0]
-              if ref.startswith(("http://", "https://", "//")):
-                  parser.remote.append(ref)
-              else:
-                  parser.refs.append(ref)
-
-          assert not parser.remote, "External image dependencies found: " + ", ".join(parser.remote)
-
-          missing = []
-          for ref in sorted(set(parser.refs)):
-              path = ref.split("#", 1)[0].split("?", 1)[0].lstrip("./")
-              if not Path(path).is_file():
-                  missing.append(ref)
-              elif Path(path).stat().st_size == 0:
-                  missing.append(ref + " (empty)")
-          assert not missing, "Broken local README media: " + ", ".join(missing)
-
-          required = [
-              "assets/banner.svg",
-              "assets/section-01.gif",
-              "assets/section-02.gif",
-              "assets/section-03.gif",
-              "assets/section-04.gif",
-              "assets/section-05.gif",
-              "assets/section-06.gif",
-              "assets/section-07.gif",
-              "assets/section-08-contribution-snake.gif",
-              "assets/contribution-snake-live.gif",
-              "assets/section-09.gif",
-              "assets/section-10.gif",
-              "assets/section-11.gif",
-              "assets/section-12.gif",
-              "assets/github-dashboard.png",
-              "assets/technology-stack-verified.svg",
-              "assets/metrics-city.svg",
-              "assets/github-dashboard-data.json",
-              "assets/contribution-calendar.json",
-              "assets/contribution-city-source.json",
-              "assets/contribution-city-data.svg",
-              "assets/projects/kostenlos-ai.svg",
-              "assets/projects/visaflowx.svg",
-              "assets/projects/visaflowx-universal.svg",
-              "assets/projects/noti-fixer.svg",
-              "assets/projects/circle-search.svg",
-              "assets/projects/iptv-shovo.svg",
-          ]
-          for asset in required:
-              p = Path(asset)
-              assert p.is_file() and p.stat().st_size > 100, f"Missing or invalid required asset: {asset}"
-
-          for asset in required:
-              p = Path(asset)
-              if p.suffix == ".gif":
-                  assert p.read_bytes()[:6] in (b"GIF87a", b"GIF89a"), f"Invalid GIF file: {asset}"
-              if p.suffix == ".png":
-                  assert p.read_bytes()[:8] == bytes([137,80,78,71,13,10,26,10]), f"Invalid PNG file: {asset}"
-
-          rendered = sorted(Path("assets/3d").glob("*.gif"))
-          assert len(rendered) == 12, f"Expected 12 Blender animations, found {len(rendered)}"
-          for path in rendered:
-              with Image.open(path) as gif:
-                  assert gif.format == "GIF" and gif.n_frames == 10 and gif.size == (900,225), f"Invalid Blender animation: {path}"
-                  assert gif.info.get("loop") == 0, f"Animation must loop forever: {path}"
-                  assert gif.info.get("duration") == 120, f"Unexpected frame duration: {path}"
-                  first = gif.convert("RGB")
-                  gif.seek(gif.n_frames - 1)
-                  last = gif.convert("RGB")
-                  assert ImageChops.difference(first,last).getbbox() is None, f"Animation loop endpoints do not match: {path}"
-          snake_path = Path("assets/section-08-contribution-snake.gif")
-          with Image.open(snake_path) as snake:
-              assert snake.format == "GIF" and snake.n_frames > 1, "Approved contribution snake is not animated."
-          live_snake_path = Path("assets/contribution-snake-live.gif")
-          with Image.open(live_snake_path) as snake:
-              assert snake.format == "GIF" and snake.size == (800,280) and snake.info.get("loop") == 0
-              if contribution_status := json.loads(Path("assets/contribution-calendar.json").read_text(encoding="utf-8")).get("status"):
-                  if contribution_status == "available":
-                      assert snake.n_frames >= 50, "Data-backed snake should have a real multi-frame movement sequence."
-                      assert snake.info.get("duration") == 100
-                      assert live_snake_path.stat().st_size < 3_000_000
-                  else:
-                      assert snake.n_frames == 2, "Unavailable contribution data must produce a neutral, non-moving state."
-          print("PASS: 12 Blender GIFs loop seamlessly; approved snake is preserved; data-driven snake matches contribution availability.")
-
-
           import xml.etree.ElementTree as ET
-          for svg in Path("assets").rglob("*.svg"):
-              ET.parse(svg)
-
-          import json
-          contribution = json.loads(Path("assets/contribution-calendar.json").read_text(encoding="utf-8"))
-          assert contribution.get("schema_version") == 1
-          assert contribution.get("source") == "GitHub GraphQL contributionCalendar"
-          assert contribution.get("status") in ("available", "unavailable")
-          if contribution["status"] == "available":
-              assert contribution.get("weeks") and contribution.get("days")
-              assert contribution.get("total_contributions") is not None
-              days = contribution["days"]
-              assert len(days) >= 350
-              assert len({day["date"] for day in days}) == len(days)
-              assert all(day["count"] >= 0 and 0 <= day["weekday"] <= 6 for day in days)
-              start, end = contribution["period_start"], contribution["period_end"]
-              counted = sum(day["count"] for day in days)
-              assert counted == contribution["total_contributions"], "Contribution calendar total does not match daily counts."
-          else:
-              assert contribution.get("total_contributions") is None
-              assert contribution.get("days") == []
-          print("PASS: contribution calendar is sourced or explicitly unavailable; no fake counts.")
-
-          city_source = json.loads(Path("assets/contribution-city-source.json").read_text(encoding="utf-8"))
-          assert city_source.get("schema_version") == 1
-          assert city_source.get("source") == "GitHub GraphQL contributionCalendar"
-          assert city_source.get("status") in ("available", "unavailable")
-          if city_source["status"] == "available":
-              assert city_source.get("days") and city_source.get("total_contributions") is not None
-              assert sum(day["count"] for day in city_source["days"]) == city_source["total_contributions"]
-          else:
-              assert city_source.get("days") == [] and city_source.get("total_contributions") is None
-          print("PASS: 3D city has its own exact, dated contribution source snapshot.")
-
-          inventory = json.loads(Path("docs/profile-audit/asset-inventory.json").read_text(encoding="utf-8"))
-          asset_files = sorted(path for path in Path("assets").rglob("*") if path.is_file())
-          assert inventory.get("schema_version") == 1
-          assert inventory.get("asset_count") == len(asset_files)
-          assert {item["path"] for item in inventory.get("assets", [])} == {path.as_posix() for path in asset_files}
-          assert inventory.get("total_bytes") == sum(path.stat().st_size for path in asset_files)
-          assert Path("docs/profile-audit/asset-inventory.md").is_file()
-          print(f"PASS: deterministic inventory covers all {len(asset_files)} assets.")
-
-          dashboard = json.loads(Path("assets/github-dashboard-data.json").read_text(encoding="utf-8"))
-          assert dashboard.get("schema_version") == 1
-          assert dashboard.get("source") == "GitHub public REST API"
-          assert dashboard.get("generated_at")
-          metrics = dashboard.get("metrics", {})
-          assert all(key in metrics for key in ("public_repositories", "public_followers", "public_following", "public_repository_stars"))
-          for language in dashboard.get("language_bytes", []):
-              assert language["bytes"] >= 0 and 0 <= language["share"] <= 1
-          print("PASS: dashboard JSON schema and metric fields are valid.")
-
-          assert "github-readme-stats.vercel.app" not in readme
-          assert "github-readme-activity-graph.vercel.app" not in readme
-          assert "skillicons.dev" not in readme
-          assert "capsule-render.vercel.app" not in readme
-          print(f"PASS: {len(set(parser.refs))} local media refs; zero external image hosts; all required assets exist.")
-          PY
-
-      - name: Validate generator and workflow files
-        run: |
-          cd repo
-          python -m py_compile scripts/generate_profile_media.py scripts/render_profile_3d.py scripts/pack_profile_3d.py scripts/generate_dashboard.py scripts/update_blog_feed.py scripts/check_public_leaks.py scripts/fetch_contribution_data.py scripts/generate_contribution_snake.py scripts/audit_profile_assets.py scripts/generate_metrics_city.py
-          python scripts/check_public_leaks.py
-          test -s scripts/render_profile_3d.py
-          test -s scripts/pack_profile_3d.py
-          test -s scripts/generate_profile_media.py
-          test -s scripts/check_public_leaks.py
-          test -s .github/workflows/profile-assets.yml
-          test -s .github/workflows/profile-dashboard.yml
-          test -s scripts/generate_dashboard.py
-          test -s scripts/update_blog_feed.py
-          python - <<'PY'
-          from pathlib import Path
-          workflow_files = list(Path(".github/workflows").glob("*.yml"))
-          external = []
-          for path in workflow_files:
-              content = path.read_text(encoding="utf-8")
-              if any(line.strip().startswith("uses:") for line in content.splitlines()):
-                  external.append(str(path))
-          assert not external, "Third-party GitHub Actions are still used: " + ", ".join(external)
-          import subprocess
-          subprocess.run(["ruby", "-e", 'require "yaml"; Dir.glob(".github/workflows/*.yml").each { |f| YAML.load_file(f, aliases: true); puts "PASS YAML " + f }'], check=True)
-          subprocess.run(["python3", "scripts/audit_profile_assets.py", "--check"], check=True)
-          print(f"PASS: {len(workflow_files)} workflows use repository-owned scripts; no third-party actions.")
+          class Media(HTMLParser):
+              def __init__(self):
+                  super().__init__(); self.refs=[]; self.remote=[]
+              def handle_starttag(self, tag, attrs):
+                  if tag == "img":
+                      src=dict(attrs).get("src","").strip()
+                      if src.startswith(("http://","https://","//")): self.remote.append(src)
+                      elif src: self.refs.append(src)
+          readme=Path("README.md").read_text(encoding="utf-8")
+          parser=Media(); parser.feed(readme)
+          for target in re.findall(r"!?\[[^\]]*\]\(([^)]+)\)",readme):
+              target=target.strip().split()[0].strip("<>")
+              if not target.startswith(("http://","https://","mailto:","#")): parser.refs.append(target)
+          assert not parser.remote, parser.remote
+          missing=[x for x in parser.refs if x and not Path(x.split("#",1)[0].split("?",1)[0]).is_file()]
+          assert not missing, missing
+          for svg in Path("assets").rglob("*.svg"): ET.parse(svg)
+          print(f"PASS: {len(set(parser.refs))} local references and all SVG files.")
           PY

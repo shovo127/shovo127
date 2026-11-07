@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="28" viewBox="0 0 1200 28" role="img" aria-label="Decorative technical section divider">
+<path d="M0 14H1200" stroke="#9aa9a5" stroke-opacity=".35"/>
+<path d="M0 14H1200" stroke="#4f8278" stroke-width="1.5" stroke-dasharray="90 1110" stroke-linecap="round"><animate attributeName="stroke-dashoffset" from="0" to="-1200" dur="8s" repeatCount="indefinite"/></path>
+<circle cx="600" cy="14" r="3" fill="#8eaaa2"/>
+</svg>
