@@ -15,29 +15,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Check README local links and SVG
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-          from html.parser import HTMLParser
-          import re
-          import xml.etree.ElementTree as ET
-          class Media(HTMLParser):
-              def __init__(self):
-                  super().__init__(); self.refs=[]; self.remote=[]
-              def handle_starttag(self, tag, attrs):
-                  if tag == "img":
-                      src=dict(attrs).get("src","").strip()
-                      if src.startswith(("http://","https://","//")): self.remote.append(src)
-                      elif src: self.refs.append(src)
-          readme=Path("README.md").read_text(encoding="utf-8")
-          parser=Media(); parser.feed(readme)
-          for target in re.findall(r"!?\[[^\]]*\]\(([^)]+)\)",readme):
-              target=target.strip().split()[0].strip("<>")
-              if not target.startswith(("http://","https://","mailto:","#")): parser.refs.append(target)
-          assert not parser.remote, parser.remote
-          missing=[x for x in parser.refs if x and not Path(x.split("#",1)[0].split("?",1)[0]).is_file()]
-          assert not missing, missing
-          for svg in Path("assets").rglob("*.svg"): ET.parse(svg)
-          print(f"PASS: {len(set(parser.refs))} local references and all SVG files.")
-          PY
+      - name: Validate README references, SVG assets and approved Hero lock
+        run: python scripts/validate_profile_readme.py
