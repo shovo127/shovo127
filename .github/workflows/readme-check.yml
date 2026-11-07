@@ -126,7 +126,7 @@ jobs:
                   assert p.read_bytes()[:8] == bytes([137,80,78,71,13,10,26,10]), f"Invalid PNG file: {asset}"
 
           rendered = sorted(Path("assets/3d").glob("*.gif"))
-          assert len(rendered) == 9, f"Expected 9 selected Blender animations, found {len(rendered)}"
+          assert len(rendered) == 12, f"Expected 12 Blender animations, found {len(rendered)}"
           for path in rendered:
               with Image.open(path) as gif:
                   assert gif.format == "GIF" and gif.n_frames == 10 and gif.size == (900,225), f"Invalid Blender animation: {path}"
@@ -139,7 +139,7 @@ jobs:
           snake_path = Path("assets/section-08-contribution-snake.gif")
           with Image.open(snake_path) as snake:
               assert snake.format == "GIF" and snake.n_frames > 1, "Approved contribution snake is not animated."
-          print("PASS: 9 Blender GIFs are animated, seamless and infinitely looping; approved snake is multi-frame.")
+          print("PASS: 12 Blender GIFs are animated, seamless and infinitely looping; approved snake is multi-frame.")
 
 
           import xml.etree.ElementTree as ET
