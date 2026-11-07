@@ -45,11 +45,15 @@ jobs:
           ldconfig -p | grep -q "libEGL.so.1"
           python -m pip install --disable-pip-version-check --quiet --user Pillow
 
-      - name: Render and package all 3D scenes
+      - name: Fetch contribution data and render all 3D scenes
         env:
           PROFILE_RENDER_DIR: ${{ runner.temp }}/profile-render
+          PROFILE_READ_TOKEN: ${{ secrets.PROFILE_READ_TOKEN }}
+          GITHUB_USERNAME: ${{ github.repository_owner }}
         run: |
           cd repo
+          python3 -m py_compile scripts/render_profile_3d.py scripts/pack_profile_3d.py scripts/fetch_contribution_data.py
+          python3 scripts/fetch_contribution_data.py
           EGL_PLATFORM=surfaceless LIBGL_ALWAYS_SOFTWARE=1 "$BLENDER_BIN" --background --factory-startup --python scripts/render_profile_3d.py
           python scripts/pack_profile_3d.py
           python3 - <<'PY'
@@ -71,7 +75,7 @@ jobs:
           REPOSITORY: ${{ github.repository }}
         run: |
           cd repo
-          git add assets/3d/*.gif
+          git add assets/3d/*.gif assets/contribution-calendar.json assets/contribution-city-data.svg
           if git diff --cached --quiet; then exit 0; fi
           git commit -m "chore: re-render self-hosted 3D profile scenes"
           git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${REPOSITORY}.git"
