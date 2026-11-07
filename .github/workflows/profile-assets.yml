@@ -13,8 +13,8 @@ permissions:
   contents: write
 
 concurrency:
-  group: profile-3d-media
-  cancel-in-progress: true
+  group: profile-content-build
+  cancel-in-progress: false
 
 jobs:
   render:
