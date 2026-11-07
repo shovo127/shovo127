@@ -23,17 +23,17 @@ Generated deterministically by scripts/audit_profile_assets.py from every file u
 | assets/about-motion.gif | gif | 89.3 KB | 1100 × 120 | 24 | 100 ms | 1 | 6cf392ac4f64 |
 | assets/about-portrait.svg | svg | 3.2 KB | 900 × 560 | — | — | — | 8dd19a414c3d |
 | assets/achievement-motion.gif | gif | 69.3 KB | 1100 × 120 | 24 | 100 ms | 1 | 6bf5d5f03287 |
-| assets/animation-source/README.md | md | 2.5 KB | — | — | — | — | 037a4d99965d |
+| assets/animation-source/README.md | md | 2.9 KB | — | — | — | — | 157124159370 |
 | assets/banner.svg | svg | 1.9 KB | 1600 × 420 | — | — | — | 610d3b4f7f1d |
 | assets/beyond-code-motion.gif | gif | 15.2 KB | 1100 × 120 | 4 | 600 ms | 1 | e6a53cccd388 |
 | assets/city-motion.gif | gif | 129.3 KB | 1100 × 120 | 24 | 100 ms | 1 | b6e892e598d4 |
 | assets/coding-rhythm.svg | svg | 2.5 KB | 1100 × 220 | — | — | — | b7a2c6bf03ec |
 | assets/connect-motion.gif | gif | 12.6 KB | 1100 × 120 | 4 | 600 ms | 1 | a885fcc0c4a8 |
-| assets/contribution-calendar.json | json | 36.4 KB | — | — | — | — | 2dce56f527ba |
-| assets/contribution-city-data.svg | svg | 117.9 KB | 1240 × 470 | — | — | — | ad9e5e9c8a87 |
+| assets/contribution-calendar.json | json | 36.4 KB | — | — | — | — | c24456f23c17 |
+| assets/contribution-city-data.svg | svg | 117.9 KB | 1240 × 470 | — | — | — | fa7a3ca55672 |
 | assets/contribution-city-source.json | json | 36.4 KB | — | — | — | — | 2dce56f527ba |
 | assets/contribution-city.svg | svg | 2.9 KB | 1100 × 360 | — | — | — | 82806c484952 |
-| assets/contribution-snake-live.gif | gif | 2.70 MB | 800 × 280 | 67 | 100 ms | 0 | b1266d60363e |
+| assets/contribution-snake-live.gif | gif | 2.70 MB | 800 × 280 | 67 | 100 ms | 0 | 663b85f51895 |
 | assets/contribution-snake.gif | gif | 172.3 KB | 986 × 181 | 28 | 80 ms | 1 | 419e32423581 |
 | assets/contribution-snake.svg | svg | 3.6 KB | 1100 × 220 | — | — | — | 72d63f04d60d |
 | assets/dashboard-motion.gif | gif | 48.4 KB | 1100 × 120 | 15 | 100–200 ms | 1 | 533edfede2d1 |
@@ -41,12 +41,12 @@ Generated deterministically by scripts/audit_profile_assets.py from every file u
 | assets/engineering-focus.svg | svg | 2.8 KB | 1100 × 280 | — | — | — | cba88d6b8ff6 |
 | assets/focus-motion.gif | gif | 66.5 KB | 1100 × 120 | 16 | 100–200 ms | 1 | c360a543f9a5 |
 | assets/footer.svg | svg | 629 B | 1100 × 90 | — | — | — | 998ccc2e8ea6 |
-| assets/github-dashboard-data.json | json | 4.5 KB | — | — | — | — | c283d4a3a450 |
-| assets/github-dashboard.png | png | 159.2 KB | 1200 × 690 | 1 | — | — | 6e0f2135873e |
-| assets/github-dashboard.svg | svg | 7.7 KB | 1200 × 690 | — | — | — | 59415fa868a0 |
+| assets/github-dashboard-data.json | json | 4.5 KB | — | — | — | — | e3c1223c1633 |
+| assets/github-dashboard.png | png | 159.4 KB | 1200 × 690 | 1 | — | — | 044f96355155 |
+| assets/github-dashboard.svg | svg | 7.7 KB | 1200 × 690 | — | — | — | 9ac6c39ef203 |
 | assets/habits-motion.gif | gif | 14.6 KB | 1100 × 120 | 4 | 600 ms | 1 | d81175f7a76f |
 | assets/learning-loop.svg | svg | 1.6 KB | 1100 × 250 | — | — | — | 9309718eaa6d |
-| assets/metrics-city.svg | svg | 10.2 KB | 1400 × 860 | — | — | — | 2d8981da42cc |
+| assets/metrics-city.svg | svg | 10.2 KB | 1400 × 860 | — | — | — | 5e739d658923 |
 | assets/profile-badges.svg | svg | 1.1 KB | 1100 × 100 | — | — | — | a1b41b99c146 |
 | assets/profile-motion.gif | gif | 670.8 KB | 1100 × 300 | 36 | 80 ms | 0 | ba247527e284 |
 | assets/profile-trophies.svg | svg | 2.4 KB | 1100 × 230 | — | — | — | c42e5ea6d4eb |
@@ -76,7 +76,7 @@ Generated deterministically by scripts/audit_profile_assets.py from every file u
 
 ## Duplicate content
 
-- assets/contribution-calendar.json, assets/contribution-city-source.json
+No byte-identical duplicate files detected.
 
 ## Interpretation
 

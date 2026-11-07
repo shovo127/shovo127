@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "asset_count": 65,
-  "total_bytes": 15521179,
+  "total_bytes": 15516833,
   "assets": [
     {
       "path": "assets/3d/00-hero.gif",
@@ -197,8 +197,8 @@
     {
       "path": "assets/animation-source/README.md",
       "kind": "md",
-      "bytes": 2578,
-      "sha256": "037a4d99965d7bdb097ed08b743846d3d36203ef636aaf4e0bc389bb31b2bd6d"
+      "bytes": 2983,
+      "sha256": "1571241593704cfe658e1dcf372566c5186a4e2910501f928a5258dd78cdc9ea"
     },
     {
       "path": "assets/banner.svg",
@@ -261,14 +261,14 @@
       "path": "assets/contribution-calendar.json",
       "kind": "json",
       "bytes": 37238,
-      "sha256": "2dce56f527ba4e99386ffe4ab01ae45a290c7c97254be6fe0d8267f3ba46030f",
+      "sha256": "c24456f23c1777fdd247726606c3b23afa3d251b8b61d7404dfaa0cba8f8673e",
       "valid_json": true
     },
     {
       "path": "assets/contribution-city-data.svg",
       "kind": "svg",
       "bytes": 120684,
-      "sha256": "ad9e5e9c8a87a4a6cede4759eaada39ae37210c436f4114f02da6d10c5c22e8e",
+      "sha256": "fa7a3ca55672824a226df8cc42298cb19a9c3839748ab45e6d8df40e4ec4f6be",
       "width": "1240",
       "height": "470",
       "viewBox": "0 0 1240 470"
@@ -292,8 +292,8 @@
     {
       "path": "assets/contribution-snake-live.gif",
       "kind": "gif",
-      "bytes": 2831907,
-      "sha256": "b1266d60363eead7a909d243d6ad2215a5fb75841f950d7fe527e8d68580eb31",
+      "bytes": 2826941,
+      "sha256": "663b85f5189585f2867c5c5d96eb84920df15930e03c65c956fe02de49325acd",
       "format": "GIF",
       "width": 800,
       "height": 280,
@@ -378,14 +378,14 @@
       "path": "assets/github-dashboard-data.json",
       "kind": "json",
       "bytes": 4625,
-      "sha256": "c283d4a3a4508abed0ba9f904f4ce9a8b09fac174596861a25ecf9fc02d7b010",
+      "sha256": "e3c1223c1633ec1e1caa3300db21c1810b11542e175a8e5f72d1a3884d7bec50",
       "valid_json": true
     },
     {
       "path": "assets/github-dashboard.png",
       "kind": "png",
-      "bytes": 162999,
-      "sha256": "6e0f2135873eabbf5cd4db507d624e8d09cb4b1713fb15ddb40c62ea3fbc93ad",
+      "bytes": 163213,
+      "sha256": "044f963551550b8cf7bbacda4c458e2c091dedcab2d1d24cd2484a54781940bd",
       "format": "PNG",
       "width": 1200,
       "height": 690,
@@ -395,7 +395,7 @@
       "path": "assets/github-dashboard.svg",
       "kind": "svg",
       "bytes": 7931,
-      "sha256": "59415fa868a0ca89de65d6beef9629caff8de9bc0f1eb9d6f3403808367e2661",
+      "sha256": "9ac6c39ef2031473f09cecd946052b8559c7253e7504f8bc0a6ff8f779350a72",
       "width": "1200",
       "height": "690",
       "viewBox": "0 0 1200 690"
@@ -425,8 +425,8 @@
     {
       "path": "assets/metrics-city.svg",
       "kind": "svg",
-      "bytes": 10476,
-      "sha256": "2d8981da42cc188c49aadf8df97e25a1b39bee67a2e0ddf960943cbb8a743058",
+      "bytes": 10477,
+      "sha256": "5e739d658923e89ef681c6187d0b897449c34f66c40889baab93f5938a6a86dd",
       "width": "1400",
       "height": "860",
       "viewBox": "0 0 1400 860"
@@ -727,10 +727,5 @@
       "viewBox": "0 0 1200 420"
     }
   ],
-  "duplicate_groups": [
-    [
-      "assets/contribution-calendar.json",
-      "assets/contribution-city-source.json"
-    ]
-  ]
+  "duplicate_groups": []
 }
