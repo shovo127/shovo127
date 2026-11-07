@@ -97,7 +97,12 @@ def unique_project_motion():
                 for j,(x,y) in enumerate(pts):
                     rad=7 if j<=upto else 4; col=GOLD if j<=upto else (70,96,110)
                     d.ellipse((x-rad,y-rad,x+rad,y+rad),fill=col)
-                x,y=pts[min(3,int(t*4))]; d.ellipse((x-12,y-12,x+12,y+12),outline=TEAL,width=2)
+                seg=min(2,int(t*3)); frac=t*3-seg
+                x=int(pts[seg][0]+(pts[seg+1][0]-pts[seg][0])*frac)
+                y=int(pts[seg][1]+(pts[seg+1][1]-pts[seg][1])*frac)
+                pulse=9+int(4*(.5+.5*math.sin(2*math.pi*t*3)))
+                d.ellipse((x-pulse,y-pulse,x+pulse,y+pulse),outline=TEAL,width=2)
+                d.ellipse((x-4,y-4,x+4,y+4),fill=GOLD)
             elif idx==1: # AI chat: response text types in
                 msg="Routing to the best available model..."
                 k=min(len(msg),int(t*len(msg)*1.35))
