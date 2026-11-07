@@ -55,6 +55,8 @@ jobs:
           cd repo
           python3 -m py_compile scripts/render_profile_3d.py scripts/pack_profile_3d.py scripts/fetch_contribution_data.py
           python3 scripts/fetch_contribution_data.py
+          python3 scripts/generate_contribution_snake.py
+          python3 scripts/generate_metrics_city.py
           EGL_PLATFORM=surfaceless LIBGL_ALWAYS_SOFTWARE=1 "$BLENDER_BIN" --background --factory-startup --python scripts/render_profile_3d.py
           python scripts/pack_profile_3d.py
           python3 - <<'PY'
@@ -84,7 +86,7 @@ jobs:
           REPOSITORY: ${{ github.repository }}
         run: |
           cd repo
-          git add assets/3d/*.gif assets/contribution-calendar.json assets/contribution-city-data.svg
+          git add assets/3d/*.gif assets/contribution-calendar.json assets/contribution-city-data.svg assets/contribution-snake-live.gif assets/metrics-city.svg
           if git diff --cached --quiet; then exit 0; fi
           git commit -m "chore: re-render self-hosted 3D profile scenes"
           git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${REPOSITORY}.git"
