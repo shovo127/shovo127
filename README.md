@@ -3,7 +3,7 @@
 <img src="./assets/banner.svg" width="100%" alt="Original profile banner" />
 
 ### Mohammed Thuhidul Islam Shovo
-**Automobile Engineering Graduate · Independent Software Builder · Technology Enthusiast**
+**Diploma Engineer — Automobile · Independent Software Builder · Technology Explorer**
 
 *I turn curiosity into practical tools — combining engineering thinking with software, automation and AI.*
 
