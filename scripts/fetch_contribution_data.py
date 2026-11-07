@@ -7,7 +7,7 @@ from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
 
 USERNAME = os.environ.get("GITHUB_USERNAME", "shovo127")  # Keep this generator profile-owner scoped.
-TOKEN = os.environ.get("PROFILE_READ_TOKEN", "").strip()
+TOKEN = (os.environ.get("PROFILE_READ_TOKEN") or os.environ.get("GITHUB_TOKEN", "")).strip()
 OUT_JSON = Path("assets/contribution-calendar.json")
 OUT_SVG = Path("assets/contribution-city-data.svg")
 
@@ -28,7 +28,7 @@ def empty(reason):
 
 def fetch():
     if not TOKEN:
-        return empty("PROFILE_READ_TOKEN is not configured; neutral empty state.")
+        return empty("No GitHub GraphQL token is configured; neutral empty state.")
     end = dt.datetime.now(dt.timezone.utc).replace(hour=23, minute=59, second=59, microsecond=0)
     start = end - dt.timedelta(days=365)
     query = """
