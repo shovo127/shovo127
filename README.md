@@ -105,6 +105,7 @@ My interests connect software systems with practical engineering: web applicatio
 
 - **GitHub:** [github.com/shovo127](https://github.com/shovo127)
 - **Learning project:** [Lerne Deutsch Mit Technologie](https://lernedeutschmittechnologie.tech)
+- **Email:** [contact@lernedeutschmittechnologie.tech](mailto:contact@lernedeutschmittechnologie.tech)
 
 <p align="center"><sub>ENGINEERING · SOFTWARE · SYSTEMS</sub></p>
 <p align="center"><sub>Designed and maintained independently · Dhaka, Bangladesh</sub></p>
