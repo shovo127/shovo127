@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="./assets/3d/00-hero.gif" width="100%" alt="Original profile banner" />
+<img src="./assets/3d/00-hero.gif" width="100%" alt="Animated 3D turbocharger hero banner rendered in Blender" />
 
 ### Mohammed Thuhidul Islam Shovo
 **Diploma in Automobile Engineering · Independent Software Builder · Technology Explorer**
@@ -15,7 +15,7 @@
 
 ## 01 / About Me
 
-<img src="./assets/3d/01-about.gif" width="100%" alt="Animated about and identity artwork" />
+<img src="./assets/3d/01-about.gif" width="100%" alt="Blender-rendered animated piston assembly representing engineering background" />
 
 ### Engineer by training. Builder by curiosity.
 
@@ -31,7 +31,7 @@ I’m based in **Dhaka, Bangladesh**, with a Diploma in Automobile Engineering f
 
 ## 02 / Engineering Focus
 
-<img src="./assets/3d/02-engineering-focus.gif" width="100%" alt="Animated engineering focus artwork" />
+<img src="./assets/3d/02-engineering-focus.gif" width="100%" alt="Blender-rendered animated processor model representing AI and software exploration" />
 
 I work across connected disciplines rather than treating technology as isolated tools:
 
@@ -42,7 +42,7 @@ I work across connected disciplines rather than treating technology as isolated 
 
 ## 03 / Featured Work
 
-<img src="./assets/3d/03-featured-work.gif" width="100%" alt="Animated featured projects artwork" />
+<img src="./assets/3d/03-featured-work.gif" width="100%" alt="Blender-rendered animated laptop workstation representing featured software projects" />
 
 
 
@@ -84,7 +84,7 @@ I work across connected disciplines rather than treating technology as isolated 
 
 ## 04 / Technology & Tools
 
-<img src="./assets/3d/04-technology.gif" width="100%" alt="Animated technology stack artwork" />
+<img src="./assets/3d/04-technology.gif" width="100%" alt="Blender-rendered animated smartphone representing technology exploration" />
 
 <sub>These technologies appear in my public projects; this is not a proficiency ranking.</sub>
 
@@ -92,7 +92,7 @@ I work across connected disciplines rather than treating technology as isolated 
 
 ## 05 / GitHub Command Center
 
-<img src="./assets/3d/05-command-center.gif" width="100%" alt="Animated GitHub command center artwork" />
+<img src="./assets/3d/05-command-center.gif" width="100%" alt="Blender-rendered animated engineering command-center monitor" />
 
 <img src="./assets/github-dashboard.png" width="100%" alt="Factual self-hosted GitHub dashboard built from public repository data" />
 
@@ -114,7 +114,7 @@ I work across connected disciplines rather than treating technology as isolated 
 
 <img src="./assets/3d/07-contribution-city.gif" width="100%" alt="Isometric 3D city generated from GitHub daily contribution counts" />
 
-<sub>Generated from GitHub's contribution calendar. If data is unavailable, the city shows a neutral empty state. Private counts require the profile setting and read:user scope.</sub> [Contribution data snapshot](./assets/contribution-calendar.json)
+<sub>Generated from GitHub's contribution calendar. If data is unavailable, the city shows a neutral empty state. Private counts require the profile setting and read:user scope.</sub> [Static SVG city](./assets/contribution-city-data.svg) · [Contribution data snapshot](./assets/contribution-calendar.json)
 
 ## 08 / Contribution Snake
 
@@ -148,7 +148,7 @@ I work iteratively: research a problem, build a small solution, test it, documen
 
 *Build with curiosity. Engineer with care. Improve through iteration.*
 
-<img src="./assets/3d/12-connect.gif" width="100%" alt="Animated connection artwork" />
+<img src="./assets/3d/12-connect.gif" width="100%" alt="Blender-rendered animated industrial electrical connector" />
 
 <sub>Blender-rendered 3D media · Self-hosted in this repository · Dhaka, Bangladesh</sub>
 
@@ -157,7 +157,7 @@ I work iteratively: research a problem, build a small solution, test it, documen
 
 All previous artwork remains in the repository; the new 3D renders are additional assets, not destructive replacements.
 
-- [Original banner](./assets/3d/00-hero.gif) · [Profile badges](./assets/profile-badges.svg) · [About portrait](./assets/about-portrait.svg)
+- [Original banner](./assets/banner.svg) · [Profile badges](./assets/profile-badges.svg) · [About portrait](./assets/about-portrait.svg)
 - [Engineering focus](./assets/engineering-focus.svg) · [Technology stack](./assets/technology-stack.svg) · [Coding rhythm](./assets/coding-rhythm.svg) · [Learning loop](./assets/learning-loop.svg)
 - [Legacy contribution-city concept — illustrative only](./assets/contribution-city.svg) · [Static snake concept — not the animated GIF](./assets/contribution-snake.svg) · [Decorative milestone graphic — not an award record](./assets/profile-trophies.svg)
 - [About motion](./assets/about-motion.gif) · [Focus motion](./assets/focus-motion.gif) · [Projects motion](./assets/projects-motion.gif) · [Technology motion](./assets/technology-motion.gif) · [Dashboard motion](./assets/dashboard-motion.gif) · [Achievement motion](./assets/achievement-motion.gif) · [City motion](./assets/city-motion.gif) · [Coding habits motion](./assets/habits-motion.gif) · [Beyond code motion](./assets/beyond-code-motion.gif) · [Connect motion](./assets/connect-motion.gif)
