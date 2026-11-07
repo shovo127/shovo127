@@ -80,8 +80,6 @@ I work across connected disciplines rather than treating technology as isolated 
 </tr>
 </table>
 
-**Other work:** [Lerne Deutsch Mit Technologie](https://lernedeutschmittechnologie.tech) · [MailMerge by Shovo](https://mailmergebyshovo.qzz.io/) · [IPTV By Shovo](https://github.com/shovo127/IPTV-By-Shovo)
-
 [Browse all public repositories](https://github.com/shovo127?tab=repositories)
 
 ## 04 / Technology & Tools
@@ -98,6 +96,10 @@ I work across connected disciplines rather than treating technology as isolated 
 
 <img src="./assets/github-dashboard.png" width="100%" alt="Factual self-hosted GitHub dashboard built from public repository data" />
 
+<img src="./assets/metrics-city.svg" width="100%" alt="Isometric metrics city based on public repositories, repository stars, followers and language code volume" />
+
+<sub>City structures represent verified counts; language districts represent code bytes, not proficiency. Contribution totals appear only when GitHub returns them.</sub>
+
 <sub>Generated from GitHub's public API and committed to this repository. Language shares indicate code volume, not skill level. Dashboard refreshes automatically.</sub>
 
 [Dashboard workflow](https://github.com/shovo127/shovo127/actions/workflows/profile-dashboard.yml) · [Raw dashboard data](./assets/github-dashboard-data.json) · [Public repositories](https://github.com/shovo127?tab=repositories)
@@ -106,7 +108,7 @@ I work across connected disciplines rather than treating technology as isolated 
 
 <img src="./assets/section-06.gif" width="100%" alt="Animated precision vernier caliper model rendered in Blender" />
 
-*A visual nod to measurement, tolerances and careful engineering. This is illustrative artwork, not an award or achievement claim.*
+*A visual nod to measurement, tolerances and careful engineering.*
 
 ## 07 / Engineering City Study
 
