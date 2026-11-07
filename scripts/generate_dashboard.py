@@ -43,6 +43,14 @@ dashboard_data = {
     "username": user,
     "source": "GitHub public REST API",
     "generated_at": generated_at,
+    "definitions": {
+        "public_repositories": "GitHub users.public_repos field.",
+        "public_followers": "GitHub users.followers field.",
+        "public_following": "GitHub users.following field.",
+        "public_repository_stars": "Sum of stargazers_count across all public repositories returned by the users repositories endpoint.",
+        "language_bytes": "Sum of GitHub language API byte counts across public repositories excluding forks and archived repositories.",
+        "recently_updated_projects": "Non-fork, non-archived public repositories sorted by repository updated_at metadata.",
+    },
     "metrics": {
         "public_repositories": profile.get("public_repos"),
         "public_followers": profile.get("followers"),
