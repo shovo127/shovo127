@@ -16,7 +16,7 @@ My current interests include software products, AI integrations, browser automat
 
 ## Selected work
 
-A selection of public projects spanning browser automation, AI applications and Android tooling.
+A selection of public projects spanning browser automation, AI applications, Android tooling and engineering-oriented software architecture.
 
 <table>
   <tr>
@@ -51,6 +51,15 @@ A selection of public projects spanning browser automation, AI applications and 
       <p><sub><a href="https://github.com/shovo127/Circle-to-Search-for-Xiaomi">Repository ↗</a></sub></p>
     </td>
   </tr>
+  <tr>
+    <td colspan="2" valign="top">
+      <img src="./assets/projects/smart-scanner-architecture.svg" width="100%" alt="Smart Scanner Pro documented Windows scanning architecture concept" />
+      <h3><a href="https://github.com/shovo127/Smart-Scanner-Pro">Smart Scanner Pro</a></h3>
+      <p>An architecture-first Windows document-scanning project. Its README labels scanner drivers, OCR, image processing, PDF workflows and plugin support as planned capabilities; this showcase does not present them as shipped features.</p>
+      <p><sub><strong>Documented platform</strong> · Windows · .NET 9 SDK · WPF</sub></p>
+      <p><sub><a href="https://github.com/shovo127/Smart-Scanner-Pro">Repository ↗</a></sub></p>
+    </td>
+  </tr>
 </table>
 
 <p align="right"><sub><a href="https://github.com/shovo127?tab=repositories">Browse all public repositories ↗</a></sub></p>
@@ -68,6 +77,8 @@ A selection of public projects spanning browser automation, AI applications and 
 | **Learning technology** | Multilingual learning experiences and German exam preparation |
 
 <sub>Technologies are listed where they are documented in the featured projects. They indicate project usage, not a proficiency ranking.</sub>
+
+GitHub's native contribution graph, activity timeline and pinned repository cards remain the source of truth. I do not duplicate them with third-party counters or unverified contribution statistics.
 
 ---
 
