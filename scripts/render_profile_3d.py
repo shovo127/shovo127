@@ -222,6 +222,65 @@ def wheel():
         rod("Forged spoke",(2,-.16,0),(x,-.16,z),.055,WHITE)
         cyl("Wheel bolt",(x,-.19,z),.035,.035,GOLD,bev=.008)
 
+def coding_habits():
+    # Three meshing precision gears represent iterative research, testing and improvement.
+    for name,x,y,radius,teeth,material in [
+        ("Research gear",.9,.05,.78,12,STEEL),
+        ("Build gear",2.45,.05,.56,10,GOLD),
+        ("Test gear",3.72,.05,.42,9,TEAL),
+    ]:
+        torus(name+" outer ring",(x,y,0),radius*.78,.10,material)
+        cyl(name+" hub",(x,y,0),radius*.25,.26,material)
+        for i in range(teeth):
+            angle=2*math.pi*i/teeth
+            tx=x+radius*math.cos(angle); tz=radius*math.sin(angle)
+            tooth=cube(name+" tooth",(tx,y,tz),(.18,.24,.19),material,.025)
+            tooth.rotation_euler[1]=-angle
+        for i in range(6):
+            angle=2*math.pi*i/6
+            rod(name+" spoke",(x,y-.02,0),(x+radius*.68*math.cos(angle),y-.02,radius*.68*math.sin(angle)),.045,WHITE)
+    cube("Machined gear base",(2.3,.45,-.68),(4.7,1.15,.18),DARK,.07)
+    text_obj("RESEARCH  /  BUILD  /  TEST",(1.0,-.18,-.82),.16,WHITE)
+
+def learning_loop():
+    # An open engineering notebook, stacked reference books and a drafting pen.
+    cube("Notebook lower cover",(2,0,-.46),(3.4,2.2,.16),DARK,.045)
+    cube("Notebook page block",(2,0,-.34),(3.28,2.08,.08),WHITE,.025)
+    cube("Notebook upper cover",(2,0,-.25),(3.4,2.2,.10),STEEL,.035)
+    cube("Notebook spine",(2,0,-.16),(.18,2.22,.16),GOLD,.035)
+    for x in (1.1,1.55,2.0,2.45,2.9):
+        cube("Notebook ruled line",(x,0,-.195),(.012,1.72,.008),TEAL,.002)
+    for i in range(5):
+        y=-.42+i*.19
+        rod("Technical sketch line",(.75,y,-.14),(1.65,y+.08,-.14),.012,DARK)
+    cube("Reference book one",(3.65,.38,-.12),(1.35,1.7,.34),TEAL,.045)
+    cube("Reference book pages",(3.65,.38,.06),(1.28,1.62,.08),WHITE,.015)
+    cube("Reference book two",(3.65,.38,.20),(1.42,1.76,.18),GOLD,.035)
+    rod("Drafting pen",(1.0,-.82,-.02),(3.1,-.82,-.02),.055,STEEL)
+    sphere("Pen tip",(.94,-.82,-.02),.07,GOLD)
+    cyl("Desk lamp base",(.35,.7,-.13),.34,.12,DARK)
+    rod("Desk lamp arm",(.35,.7,0),(.68,.7,1.05),.055,STEEL)
+    sphere("Desk lamp joint",(.68,.7,1.05),.10,GOLD)
+    cube("Desk lamp shade",(.95,.7,1.0),(.62,.55,.26),GOLD,.10)
+
+def beyond_code():
+    # A physical systems bridge: a forged wheel, controller board and machined link.
+    torus("Automotive tyre",(.9,.05,.0),.78,.20,BLACK,(math.pi/2,0,0))
+    cyl("Alloy wheel centre",(.9,-.02,0),.54,.18,STEEL)
+    cyl("Wheel hub",(.9,-.14,0),.24,.08,GOLD)
+    for i in range(8):
+        angle=2*math.pi*i/8
+        rod("Alloy spoke",(.9,-.12,0),(.9+.47*math.cos(angle),-.12,.47*math.sin(angle)),.045,WHITE)
+    cube("Controller board",(3.35,.15,-.25),(1.8,1.45,.22),DARK,.06)
+    for x in (2.75,3.1,3.45,3.8):
+        cube("Controller chip",(x,.15,-.06),(.25,.34,.16),TEAL,.025)
+    for i in range(6):
+        x=2.65+i*.26
+        rod("Circuit trace",(x,-.52,-.12),(x,.72,-.12),.018,GOLD)
+    rod("Mechanical digital bridge",(1.55,-.08,.05),(2.45,-.08,.05),.10,STEEL)
+    cyl("Bridge coupling",(2.0,-.08,.05),.18,.22,GOLD,bev=.025)
+    text_obj("MECHANICAL  +  DIGITAL",(2.15,-.68,-.58),.14,WHITE)
+
 def connector():
     cyl("Industrial connector shell",(2,0,0),.56,1.25,STEEL,bev=.08).rotation_euler[0]=math.pi/2
     torus("Connector locking ring",(2,-.42,0),.56,.08,GOLD,(math.pi/2,0,0))
@@ -241,6 +300,9 @@ SCENES=[
  ("05-command-center",monitor_dashboard),
  ("06-precision-tools",caliper),
  ("07-contribution-city",city),
+ ("09-coding-habits",coding_habits),
+ ("10-learning-loop",learning_loop),
+ ("11-beyond-code",beyond_code),
  ("12-connect",connector),
 ]
 
