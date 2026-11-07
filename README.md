@@ -48,13 +48,37 @@ I work across connected disciplines rather than treating technology as isolated 
 
 ### Selected public repositories
 
-| Project | Verified scope |
-|---|---|
-| [VisaFlowX Universal](https://github.com/shovo127/visaflowx-universal) | Manifest V3 browser workflow assistant with site profiles, DOM monitoring, retries, schedules and notifications. Protected verification is completed manually. |
-| [Kostenlos AI](https://github.com/shovo127/kostenlos-ai) | Bring-your-own-key AI chat app with Appwrite accounts and provider failover across Groq, Gemini, OpenAI and Mistral. |
-| [Noti-Fixer for Chinese Devices](https://github.com/shovo127/Noti-Fixer-for-Chinese-Devices) | Android/ADB toolkit focused on notification reliability and reversible background-app configuration for Chinese ROMs. Check its repository licence before reuse. |
-| [Circle to Search for Xiaomi](https://github.com/shovo127/Circle-to-Search-for-Xiaomi) | Small native Android trigger for Google's Circle to Search on supported Xiaomi/HyperOS configurations. |
-| [VisaFlowX](https://github.com/shovo127/visaflowx) | IVAC Bangladesh sign-in workflow helper with user-completed verification and OTP handoff. |
+<table>
+<tr>
+<td width="50%">
+<a href="https://github.com/shovo127/visaflowx-universal"><img src="./assets/projects/visaflowx-universal.svg" width="100%" alt="VisaFlowX Universal project card" /></a>
+<p><b>VisaFlowX Universal</b><br/>Manifest V3 workflow assistant with site profiles, DOM monitoring, retries, schedules and notifications. Protected verification stays user-controlled.</p>
+</td>
+<td width="50%">
+<a href="https://github.com/shovo127/kostenlos-ai"><img src="./assets/projects/kostenlos-ai.svg" width="100%" alt="Kostenlos AI project card" /></a>
+<p><b>Kostenlos AI</b><br/>Bring-your-own-key AI chat with Appwrite accounts and provider failover across Groq, Gemini, OpenAI and Mistral.</p>
+</td>
+</tr>
+<tr>
+<td width="50%">
+<a href="https://github.com/shovo127/Noti-Fixer-for-Chinese-Devices"><img src="./assets/projects/noti-fixer.svg" width="100%" alt="Noti-Fixer project card" /></a>
+<p><b>Noti-Fixer</b><br/>Android/ADB toolkit for notification reliability and reversible background-app configuration on Chinese ROMs. Check its repository licence before reuse.</p>
+</td>
+<td width="50%">
+<a href="https://github.com/shovo127/Circle-to-Search-for-Xiaomi"><img src="./assets/projects/circle-search.svg" width="100%" alt="Circle to Search for Xiaomi project card" /></a>
+<p><b>Circle to Search for Xiaomi</b><br/>Native Android trigger for Google's Circle to Search on supported Xiaomi/HyperOS configurations.</p>
+</td>
+</tr>
+<tr>
+<td width="50%">
+<a href="https://github.com/shovo127/visaflowx"><img src="./assets/projects/visaflowx.svg" width="100%" alt="VisaFlowX project card" /></a>
+<p><b>VisaFlowX</b><br/>IVAC Bangladesh sign-in workflow helper with user-completed verification and OTP handoff.</p>
+</td>
+<td width="50%">
+<p><b>Other work</b><br/><a href="https://lernedeutschmittechnologie.tech">Lerne Deutsch Mit Technologie</a><br/><a href="https://mailmergebyshovo.qzz.io/">MailMerge by Shovo</a><br/><a href="https://github.com/shovo127/IPTV-By-Shovo">IPTV By Shovo</a></p>
+</td>
+</tr>
+</table>
 
 **Other work:** [Lerne Deutsch Mit Technologie](https://lernedeutschmittechnologie.tech) · [MailMerge by Shovo](https://mailmergebyshovo.qzz.io/) · [IPTV By Shovo](https://github.com/shovo127/IPTV-By-Shovo)
 
@@ -64,7 +88,9 @@ I work across connected disciplines rather than treating technology as isolated 
 
 <img src="./assets/section-04.gif" width="100%" alt="Animated technology stack artwork" />
 
-<sub>These are technologies I work with or explore — not claims of equal proficiency.</sub>
+<sub>These technologies appear in my public projects; this is not a proficiency ranking.</sub>
+
+<img src="./assets/technology-stack-verified.svg" width="100%" alt="Verified technology toolkit based on public repository source code" />
 
 ## 05 / GitHub Command Center
 
