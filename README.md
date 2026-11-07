@@ -16,7 +16,7 @@ I approach engineering by understanding the system, defining safety boundaries, 
 
 <h2><img src="./assets/motion/section-projects.gif" alt="Selected Projects" /></h2>
 
-Six project studies. Project titles reveal character by character; each visual uses a different motion language tied to its documented workflow. The artwork is a rendered interpretation, not a screenshot of a live application.
+Six project studies. Project titles reveal character by character; each visual uses a separate motion treatment tied to its documented workflow, with no shared left-to-right scan. The artwork is a rendered interpretation, not a screenshot of a live application.
 
 <table>
   <tr>
