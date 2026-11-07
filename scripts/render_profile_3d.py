@@ -7,7 +7,7 @@ from mathutils import Vector
 OUT=os.environ.get("PROFILE_RENDER_DIR","/tmp/profile-render")
 os.makedirs(OUT,exist_ok=True)
 W,H=900,225
-FRAMES=10
+FRAMES=10  # Ten eased keyframes; endpoints match for a seamless GIF loop.
 
 def mat(name,color,metal=0.0,rough=.35,emission=None):
     m=bpy.data.materials.new(name); m.diffuse_color=(*color,1); m.use_nodes=True
