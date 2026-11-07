@@ -325,6 +325,7 @@ for slug,builder in SCENES:
     if slug=="07-contribution-city": camera.location=(8,-10,8)
     aim(camera,(0,0,-.55) if slug=="07-contribution-city" else (2.0,0,0))
     scene=bpy.context.scene; scene.camera=camera
+    light_objects=[]
     for name,loc,power,size,color in (
       ("Large softbox key",(-1,-5,7),1500,7,(.78,.88,1)),
       ("Cool edge strip",(6,2,4),1900,5,(.38,.72,.82)),
@@ -332,6 +333,7 @@ for slug,builder in SCENES:
       ("Front fill",(4,-6,1),500,5,(.72,.82,1))):
         bpy.ops.object.light_add(type="AREA",location=loc)
         light=bpy.context.object; light.name=name; light.data.energy=power; light.data.shape="DISK"; light.data.size=size; light.data.color=color; aim(light,(2,0,0))
+        light_objects.append((name,light,power))
     # Eevee Next is substantially faster than CPU Cycles for these clean studio scenes.
     # Keep real geometry, PBR materials, area lights and shadows; render 10 eased frames.
     scene.render.engine="BLENDER_EEVEE_NEXT"
@@ -346,15 +348,32 @@ for slug,builder in SCENES:
         scene.view_settings.view_transform="Filmic"
     scene.render.image_settings.color_mode="RGB"
     scene.frame_start=1; scene.frame_end=FRAMES
-    # A restrained product turn, not a fast decorative loop.
+    # Object turntable plus a small camera orbit/dolly: visible, eased motion.
+    camera_base=camera.location.copy()
+    camera_scale=camera.data.ortho_scale
     for frame,angle,height in ((1,-18,-.10),(5,18,.10),(FRAMES,-18,-.10)):
         root.rotation_euler[2]=math.radians(angle)
         root.location.z=height
         root.keyframe_insert(data_path="rotation_euler",frame=frame)
         root.keyframe_insert(data_path="location",frame=frame)
-    if root.animation_data and root.animation_data.action:
-        for fc in root.animation_data.action.fcurves:
-            for key in fc.keyframe_points: key.interpolation="BEZIER"
+        camera.location=camera_base+Vector((angle/18*.22,0,angle/18*.06))
+        camera.data.ortho_scale=camera_scale+(0.10 if frame==5 else 0)
+        camera.keyframe_insert(data_path="location",frame=frame)
+        camera.data.keyframe_insert(data_path="ortho_scale",frame=frame)
+    # A warm rim-light sweep changes the metal highlights across the loop.
+    for name,light,base_power in light_objects:
+        if name=="Warm rim":
+            for frame,multiplier in ((1,.78),(5,1.28),(FRAMES,.78)):
+                light.data.energy=base_power*multiplier
+                light.data.keyframe_insert(data_path="energy",frame=frame)
+    # Smooth all object, camera and light animation curves.
+    animated_blocks=[root,camera,camera.data]
+    animated_blocks.extend(light for _,light,_ in light_objects)
+    animated_blocks.extend(light.data for _,light,_ in light_objects)
+    for block in animated_blocks:
+        if block.animation_data and block.animation_data.action:
+            for fc in block.animation_data.action.fcurves:
+                for key in fc.keyframe_points: key.interpolation="BEZIER"
     scene.render.filepath=os.path.join(OUT,slug+"_")
     for frame in range(1,FRAMES+1):
         scene.frame_set(frame)
