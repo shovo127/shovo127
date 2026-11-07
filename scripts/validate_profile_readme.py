@@ -83,7 +83,6 @@ for svg in svg_files:
                 assert not value.strip().startswith(("http://", "https://", "//")), f"Remote SVG dependency in {svg}"
 
 expected_images = {
-    "assets/hero/engineering-hero.svg": None,
     "assets/projects/visaflowx-interface.jpg": (1200, 520),
     "assets/projects/kostenlos-ai-workspace.jpg": (1200, 520),
     "assets/projects/noti-fixer-diagnostics.jpg": (1200, 520),
@@ -119,6 +118,6 @@ assert asset_bytes <= 800 * 1024, f"Profile assets exceed 800 KiB: {asset_bytes}
 print("PASS: approved Hero README block + original SVG Git blob locked.")
 print(f"PASS: {len(parser.images)} README images and {len(parser.links)} HTML links resolve locally.")
 print(f"PASS: {len(svg_files)} SVG files parse; no active embedded content or remote SVG references.")
-print(f"PASS: {len(expected_images)-1} generated raster/animation assets have verified formats and dimensions.")
+print(f"PASS: {len(expected_images)} generated raster/animation assets have verified formats and dimensions.")
 print("PASS: 24-frame, 220 ms/frame looping GIF verified.")
 print(f"PASS: total assets {asset_bytes:,} bytes (budget 819,200 bytes).")
