@@ -68,7 +68,7 @@ jobs:
           from PIL import Image
           expected = [
               "00-hero", "01-about", "02-engineering-focus", "03-featured-work",
-              "04-technology", "05-command-center", "06-achievements",
+              "04-technology", "05-command-center", "06-precision-tools",
               "07-engineering-city", "09-coding-habits", "10-learning-loop",
               "11-beyond-code", "12-connect",
           ]
@@ -98,7 +98,7 @@ jobs:
               "./assets/section-03.gif": "./assets/3d/03-featured-work.gif",
               "./assets/section-04.gif": "./assets/3d/04-technology.gif",
               "./assets/section-05.gif": "./assets/3d/05-command-center.gif",
-              "./assets/section-06.gif": "./assets/3d/06-achievements.gif",
+              "./assets/section-06.gif": "./assets/3d/06-precision-tools.gif",
               "./assets/section-07.gif": "./assets/3d/07-engineering-city.gif",
               "./assets/section-09.gif": "./assets/3d/09-coding-habits.gif",
               "./assets/section-10.gif": "./assets/3d/10-learning-loop.gif",
