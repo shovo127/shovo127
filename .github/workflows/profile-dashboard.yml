@@ -63,6 +63,14 @@ jobs:
           )
           p.write_text(text, encoding="utf-8")
           PY
+          python - <<'PY'
+          from pathlib import Path
+          p = Path("README.md")
+          text = p.read_text(encoding="utf-8")
+          old = "<sub>Generated from GitHub's contribution calendar. If data is unavailable, the city shows a neutral empty state. Private counts require the profile setting and read:user scope.</sub> [Static SVG city](./assets/contribution-city-data.svg) · [Contribution data snapshot](./assets/contribution-calendar.json)"
+          new = "<sub>The animated 3D city is a dated contribution snapshot. The static SVG and snake animation refresh daily from the latest calendar; unavailable data is shown neutrally.</sub> [Static SVG city](./assets/contribution-city-data.svg) · [3D city source snapshot](./assets/contribution-calendar.json) · [Live calendar](./assets/contribution-calendar.json)"
+          p.write_text(text.replace(old, new), encoding="utf-8")
+          PY
 
       - name: Commit and push the generated dashboard
         env:
