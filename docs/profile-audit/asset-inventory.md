@@ -3,7 +3,7 @@
 Generated deterministically by scripts/audit_profile_assets.py from every file under assets/.
 
 - Files: **64**
-- Combined asset size: **14.81 MB**
+- Combined asset size: **14.77 MB**
 - Types: gif: 37, json: 2, md: 2, png: 2, svg: 21
 
 | Asset | Type | Size | Dimensions | Frames | Timing | Loop | SHA-256 |
@@ -29,10 +29,10 @@ Generated deterministically by scripts/audit_profile_assets.py from every file u
 | assets/city-motion.gif | gif | 129.3 KB | 1100 × 120 | 24 | 100 ms | 1 | b6e892e598d4 |
 | assets/coding-rhythm.svg | svg | 2.5 KB | 1100 × 220 | — | — | — | b7a2c6bf03ec |
 | assets/connect-motion.gif | gif | 12.6 KB | 1100 × 120 | 4 | 600 ms | 1 | a885fcc0c4a8 |
-| assets/contribution-calendar.json | json | 36.4 KB | — | — | — | — | 8ec8b06bc7f1 |
-| assets/contribution-city-data.svg | svg | 117.9 KB | 1240 × 470 | — | — | — | d068c84ac72b |
+| assets/contribution-calendar.json | json | 36.4 KB | — | — | — | — | 64adc3478980 |
+| assets/contribution-city-data.svg | svg | 117.9 KB | 1240 × 470 | — | — | — | 209373463b22 |
 | assets/contribution-city.svg | svg | 2.9 KB | 1100 × 360 | — | — | — | 82806c484952 |
-| assets/contribution-snake-live.gif | gif | 2.70 MB | 800 × 280 | 67 | 100 ms | 0 | 05bb93d1ef64 |
+| assets/contribution-snake-live.gif | gif | 2.66 MB | 800 × 280 | 67 | 100 ms | 0 | e5558af1f4ec |
 | assets/contribution-snake.gif | gif | 172.3 KB | 986 × 181 | 28 | 80 ms | 1 | 419e32423581 |
 | assets/contribution-snake.svg | svg | 3.6 KB | 1100 × 220 | — | — | — | 72d63f04d60d |
 | assets/dashboard-motion.gif | gif | 48.4 KB | 1100 × 120 | 15 | 100–200 ms | 1 | 533edfede2d1 |
@@ -40,12 +40,12 @@ Generated deterministically by scripts/audit_profile_assets.py from every file u
 | assets/engineering-focus.svg | svg | 2.8 KB | 1100 × 280 | — | — | — | cba88d6b8ff6 |
 | assets/focus-motion.gif | gif | 66.5 KB | 1100 × 120 | 16 | 100–200 ms | 1 | c360a543f9a5 |
 | assets/footer.svg | svg | 629 B | 1100 × 90 | — | — | — | 998ccc2e8ea6 |
-| assets/github-dashboard-data.json | json | 4.5 KB | — | — | — | — | f39e291058c2 |
+| assets/github-dashboard-data.json | json | 4.5 KB | — | — | — | — | c283d4a3a450 |
 | assets/github-dashboard.png | png | 159.2 KB | 1200 × 690 | 1 | — | — | 6e0f2135873e |
 | assets/github-dashboard.svg | svg | 7.7 KB | 1200 × 690 | — | — | — | 59415fa868a0 |
 | assets/habits-motion.gif | gif | 14.6 KB | 1100 × 120 | 4 | 600 ms | 1 | d81175f7a76f |
 | assets/learning-loop.svg | svg | 1.6 KB | 1100 × 250 | — | — | — | 9309718eaa6d |
-| assets/metrics-city.svg | svg | 10.2 KB | 1400 × 860 | — | — | — | 7c5bffbd62eb |
+| assets/metrics-city.svg | svg | 10.2 KB | 1400 × 860 | — | — | — | 27315883ad2a |
 | assets/profile-badges.svg | svg | 1.1 KB | 1100 × 100 | — | — | — | a1b41b99c146 |
 | assets/profile-motion.gif | gif | 670.8 KB | 1100 × 300 | 36 | 80 ms | 0 | ba247527e284 |
 | assets/profile-trophies.svg | svg | 2.4 KB | 1100 × 230 | — | — | — | c42e5ea6d4eb |

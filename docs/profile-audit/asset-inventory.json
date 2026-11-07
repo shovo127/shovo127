@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "asset_count": 64,
-  "total_bytes": 15526740,
+  "total_bytes": 15487166,
   "assets": [
     {
       "path": "assets/3d/00-hero.gif",
@@ -261,14 +261,14 @@
       "path": "assets/contribution-calendar.json",
       "kind": "json",
       "bytes": 37238,
-      "sha256": "8ec8b06bc7f1b23956f18851986180164bbf8800d6e8c79718a1b53ee12c9bd6",
+      "sha256": "64adc3478980089322f2b0985ab71bfed3b433b4e1b0b5653df411c25ce2b5ca",
       "valid_json": true
     },
     {
       "path": "assets/contribution-city-data.svg",
       "kind": "svg",
       "bytes": 120684,
-      "sha256": "d068c84ac72be757cd2e721f510e1cacb0c699c696caa7b18baee13ca6833468",
+      "sha256": "209373463b22d4c0095ceee9986b731fab25cf2999a68d4762235d8ff966cecd",
       "width": "1240",
       "height": "470",
       "viewBox": "0 0 1240 470"
@@ -285,8 +285,8 @@
     {
       "path": "assets/contribution-snake-live.gif",
       "kind": "gif",
-      "bytes": 2827201,
-      "sha256": "05bb93d1ef642986fb0df7a99d207a9aac5c6f36b8fe6d8c2dd16852e3703ac6",
+      "bytes": 2787625,
+      "sha256": "e5558af1f4ecd28ac85ab99d67b4de4b9555027802a71f1c5e62e364d8bbe6fb",
       "format": "GIF",
       "width": 800,
       "height": 280,
@@ -371,7 +371,7 @@
       "path": "assets/github-dashboard-data.json",
       "kind": "json",
       "bytes": 4625,
-      "sha256": "f39e291058c2a63639920e8ada21de41bffedbb47c5e8f3bd314f3fdfad616ae",
+      "sha256": "c283d4a3a4508abed0ba9f904f4ce9a8b09fac174596861a25ecf9fc02d7b010",
       "valid_json": true
     },
     {
@@ -418,8 +418,8 @@
     {
       "path": "assets/metrics-city.svg",
       "kind": "svg",
-      "bytes": 10475,
-      "sha256": "7c5bffbd62eb5584cecccf5df83eb0d6120386af3c629226b2cf30319ef048d9",
+      "bytes": 10477,
+      "sha256": "27315883ad2ac8cafc085398cfc0909c6ca8ae35b89d2d6dd49029438770cb83",
       "width": "1400",
       "height": "860",
       "viewBox": "0 0 1400 860"

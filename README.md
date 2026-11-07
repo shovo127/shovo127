@@ -114,7 +114,7 @@ I work across connected disciplines rather than treating technology as isolated 
 
 <img src="./assets/3d/07-contribution-city.gif" width="100%" alt="Isometric 3D city generated from GitHub daily contribution counts" />
 
-<sub>Generated from GitHub's contribution calendar. If data is unavailable, the city shows a neutral empty state. Private counts require the profile setting and read:user scope.</sub> [Static SVG city](./assets/contribution-city-data.svg) · [Contribution data snapshot](./assets/contribution-calendar.json)
+<sub>The animated 3D city is a dated contribution snapshot. The static SVG and snake animation refresh daily from the latest calendar; unavailable data is shown neutrally.</sub> [Static SVG city](./assets/contribution-city-data.svg) · [3D city source snapshot](./assets/contribution-calendar.json) · [Live calendar](./assets/contribution-calendar.json)
 
 ## 08 / Contribution Snake
 
