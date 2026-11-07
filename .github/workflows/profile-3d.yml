@@ -13,7 +13,7 @@ concurrency:
 jobs:
   render:
     runs-on: ubuntu-latest
-    timeout-minutes: 8
+    timeout-minutes: 15
     steps:
       - name: Clone repository
         env:
@@ -52,6 +52,18 @@ jobs:
           cd repo
           EGL_PLATFORM=surfaceless LIBGL_ALWAYS_SOFTWARE=1 "$BLENDER_BIN" --background --factory-startup --python scripts/render_profile_3d.py
           python scripts/pack_profile_3d.py
+          python3 - <<'PY'
+          from pathlib import Path
+          from PIL import Image
+          for path in sorted(Path('assets/3d').glob('*.gif')):
+              with Image.open(path) as gif:
+                  assert gif.format == 'GIF' and gif.n_frames == 10 and gif.size == (900, 225), f'Invalid animation: {path}'
+                  print(f'PASS {path}: {gif.size[0]}x{gif.size[1]}, {gif.n_frames} frames, {path.stat().st_size} bytes')
+          snake=Path('assets/section-08-contribution-snake.gif')
+          with Image.open(snake) as gif:
+              assert gif.format == 'GIF' and gif.n_frames > 1
+          print('PASS: approved contribution snake preserved.')
+          PY
 
       - name: Commit only self-hosted 3D renders
         env:
