@@ -42,10 +42,18 @@ Source: GitHub REST API public owner repository list and repository metadata, ca
 - Primary language per repository: JavaScript 2, TypeScript 2, C# 1, PowerShell 1, Python 1.
 - These language counts are repository labels, not code-byte share or proficiency.
 
-## Platform limitations and visual QA status
+## Local rendering and visual QA
+
+- Rendered the full README-style page in Chromium at 1440 px desktop and 390 px mobile widths.
+- Inspected dark and light theme simulations. All 11 referenced images loaded in all four previews.
+- Compared two Chromium captures of the signal GIF 900 ms apart; rendered pixels changed, confirming local GIF playback.
+- The five project visuals, Technical Focus, 3D engineering study, Education and analytics image were inspected individually.
+- The four profile reference screenshots were not available as readable image attachments, so no direct screenshot-to-screenshot comparison was possible.
+
+## Platform limitations and live visual QA status
 
 - GitHub controls the overall page background, native contribution graph, activity timeline and pinned repository cards. README markup cannot force the page-wide background to pure black or restyle native profile components.
 - GitHub profile README does not support arbitrary CSS, JavaScript or true hover interactions. The animation is a GIF, not an interactive effect.
 - The four profile reference screenshots were not available as readable image attachments in the current conversation context. Screenshot-by-screenshot comparison cannot be claimed.
-- Actual live GitHub desktop/mobile and dark/light theme rendering must be checked in a browser after deployment. A local Chromium preview and passing CI are supporting evidence, not proof of GitHub's live rendering.
+- The live GitHub profile page could not be fetched through the available browser/web route (GitHub returned a cache miss); actual GitHub desktop/mobile and dark/light theme rendering therefore remain unverified. Local Chromium previews and passing CI are supporting evidence, not proof of GitHub's live rendering.
 - No new contribution chart was fabricated or duplicated; GitHub's native contribution graph remains authoritative.
