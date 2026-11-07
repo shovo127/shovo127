@@ -2,7 +2,7 @@
 
 ## Public profile repository
 
-This repository is intentionally public because GitHub requires a public username-matching repository to display a public profile README. Treat every committed file, image, workflow, issue and log as public.
+This repository is public because GitHub uses the username-matching repository to display the profile README. Treat every committed file, image, workflow, issue and log as public.
 
 ## Never commit
 
@@ -11,12 +11,18 @@ This repository is intentionally public because GitHub requires a public usernam
 - Private user information, medical documents or confidential correspondence
 - Local environment files or unredacted diagnostic logs
 
-Use GitHub Actions secrets for credentials required by automation. The profile workflows use only the repository-scoped built-in `GITHUB_TOKEN`; no personal access token is required.
+Use GitHub Actions secrets only for integrations that genuinely require credentials. The profile validation workflow uses the built-in GITHUB_TOKEN with contents: read. The optional RSS updater uses the built-in token for its README commit; no personal access token is required.
 
 ## Reporting a vulnerability
 
-Do not publish credentials or sensitive exploit details in a public issue. Use GitHub's private vulnerability reporting feature if it is enabled for this repository, or contact the repository owner privately.
+Do not publish credentials or sensitive exploit details in a public issue. Use GitHub's private vulnerability reporting feature if enabled, or contact the repository owner privately.
 
 ## Automated safeguards
 
-The profile validation workflow checks repository-tracked text files for common credential patterns, rejects local secret/config files, validates local image paths, and rejects external image hosts in the README.
+The profile validation workflow:
+- Checks tracked files for common high-confidence credential patterns and forbidden secret filenames.
+- Runs unit tests for the optional RSS/Atom updater.
+- Locks the approved Hero README block and Hero SVG blob.
+- Validates local README image/link references, SVG XML, embedded active content, external SVG dependencies and asset budgets.
+
+These checks reduce risk but cannot guarantee detection of every possible secret. Review every change before publishing.

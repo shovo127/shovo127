@@ -1,87 +1,50 @@
-# Shovo127 profile repository — setup and maintenance
+# Profile repository — setup and maintenance
 
-## Core principles
+## Repository purpose
 
-- Keep the repository public; it is the account's profile README repository.
-- All README images are stored in this repository and referenced with relative paths.
-- Never commit personal tokens, API keys or private account data.
-- The default workflows use GitHub's built-in GITHUB_TOKEN and repository-owned scripts.
-- A metric must be traceable to a public source. Unavailable data must stay unavailable, not be fabricated.
+This is the public profile repository for the GitHub account. Its README is a concise engineering and software portfolio. The approved Hero is protected by automated checks; project visuals are self-hosted SVG diagrams.
+
+## Current repository structure
+
+- README.md — profile content and project showcase.
+- assets/hero/ — approved Hero artwork (do not modify without explicit approval).
+- assets/motion/ — restrained section divider.
+- assets/projects/ — five project-specific schematic illustrations.
+- docs/design/motion-system.md — visual, motion and compatibility rules.
+- docs/profile-audit/phase-2.md — evidence and known platform limitations.
+- scripts/check_public_leaks.py — high-confidence credential-pattern and forbidden-filename checks.
+- scripts/validate_profile_readme.py — Hero lock, local references, SVG validity and asset budgets.
+- scripts/update_blog_feed.py — optional RSS/Atom list updater, activated only by BLOG_FEED_URL.
+- tests/ — standard-library tests for the feed updater.
 
 ## Workflows
 
 | Workflow | Purpose | Trigger |
 |---|---|---|
-| profile-dashboard.yml | Refresh dashboard SVG/PNG/JSON, live contribution calendar, metrics city, data-driven snake GIF and asset inventory | Daily schedule, generator or contribution-data changes, manual |
-| profile-assets.yml | Snapshot contribution data, render and validate all Blender scenes, refresh snake/metrics media and update the asset inventory | Renderer/packer/contribution-data generator changes, manual |
-| profile-3d.yml | Manual 3D render entry point | Manual |
-| readme-check.yml | Validate local image references, SVGs, dashboard/contribution JSON, all asset metadata, scripts and public leaks | PR, successful media workflow, manual |
-| snake.yml | Verify the preserved classic snake GIF | Manual |
-| blog-post-workflow.yml | Update latest posts from a user-supplied RSS/Atom feed | Daily schedule/manual, only if BLOG_FEED_URL is configured |
+| Validate profile README | Secret-pattern scan, feed updater tests, Hero lock, local image/link paths, SVG parsing and asset budget | Push, pull request, manual |
+| Update latest blog posts | Optional RSS/Atom feed update; runs only when BLOG_FEED_URL is configured | Daily schedule, manual |
 
-The old duplicate metrics.yml workflow has been removed; profile-dashboard.yml is the single dashboard entry point.
-
-## Permissions and secrets
-
-No additional secret is required for the standard public dashboard and rendering pipeline. GitHub Actions supplies GITHUB_TOKEN automatically. Keep workflow permissions limited to contents: read or contents: write as declared in each workflow.
-
-Optional integrations:
-- PROFILE_READ_TOKEN: optional classic GitHub personal access token with only the read:user scope. The workflow first uses its built-in GITHUB_TOKEN to request public contribution data. Add PROFILE_READ_TOKEN as a repository Actions secret only if you want GitHub to include private/internal contribution counts. It does not need repository write access; GITHUB_TOKEN handles repository commits. To include private counts, also enable the GitHub profile setting that displays private contribution counts. GitHub's GraphQL documentation notes that private/internal contribution records require read:user scope. If GitHub rejects the available token, the city is rendered as a neutral empty calendar and no counts are invented.
-- BLOG_FEED_URL: repository variable containing an RSS/Atom feed URL that belongs to you. Without it, the blog updater is dormant.
-- WAKATIME_API_KEY, Spotify, Discord and LeetCode credentials: not implemented; do not add secrets for them until the integration has a verified data source and a repository-owned generator.
-
-Never paste credentials into this document, README, issue, workflow log or commit.
-
-## Run manually
-
-1. Open the repository's Actions tab.
-2. Select the workflow by its name.
-3. Choose Run workflow.
-4. Review the run logs and verify the generated files before accepting any README media changes.
-
-## 3D asset generation
-
-- scripts/render_profile_3d.py builds original Blender geometry, materials, lighting, camera framing and eased animation.
-- scripts/pack_profile_3d.py uses Pillow to create shared-palette animated GIFs. scripts/generate_contribution_snake.py simulates a collision-free route through the actual 53-week calendar, places food only on days with recorded contributions, and grows the snake as it reaches those days.
-- Blender is downloaded from the official Blender release server and checked against the published SHA-256 checksum.
-- Intermediate PNG frames are temporary runner files; committed GIFs live in assets/3d/.
-- Current scene outputs are 900×225, 10 frames, 120 ms per frame, with matching first/last poses for seamless infinite looping.
-- The profile build renders all 12 selected Blender scenes at six Eevee TAA samples. All 12 outputs are self-hosted in assets/3d/; the approved classic contribution snake remains preserved separately from the new data-driven snake.
-- Rendering uses Eevee Next with software rendering on GitHub-hosted Linux runners. The first verified twelve-scene render took about 6 minutes from job start through commit. The final render adds camera dolly/orbit movement and a warm rim-light sweep; actual duration varies with runner load.
-- The profile workflow promotes the new scene GIFs only after every expected output passes validation.
-
-The contribution city is built from the GitHub GraphQL contributionCalendar. scripts/fetch_contribution_data.py writes assets/contribution-calendar.json and assets/contribution-city-data.svg. Before rendering, profile-assets.yml copies that dated data to assets/contribution-city-source.json; Blender reads this immutable render snapshot to build the 3D isometric calendar city. The daily dashboard refresh may update the live calendar, static SVG and snake without silently changing the data snapshot behind the 3D GIF. scripts/generate_metrics_city.py writes assets/metrics-city.svg from the public repository metrics, language byte totals, verified project categories and contribution total when available. If PROFILE_READ_TOKEN and the built-in GITHUB_TOKEN are both absent or rejected, the JSON records status=unavailable and the city uses a neutral empty grid. The built-in token may provide public contribution data; PROFILE_READ_TOKEN is optional for read:user/private contribution visibility. It never invents activity. Private counts appear only when the account setting and token scope permit them.
-
-## Dashboard data
-
-scripts/generate_dashboard.py calls the GitHub public REST API and writes:
-- assets/github-dashboard.svg
-- assets/github-dashboard.png
-- assets/github-dashboard-data.json
-- assets/metrics-city.svg — generated from the same verified public metrics, repository language bytes, project categories and contribution data when available.
-- assets/contribution-calendar.json — latest daily contribution data.
-- assets/contribution-city-source.json — exact contribution data snapshot used by the current 3D city GIF.
-- assets/contribution-city-data.svg — static city from the latest contribution data.
-- assets/contribution-snake-live.gif — generated from the same daily counts; not a playable game.
-
-The dashboard JSON records the source, UTC generation timestamp, public account metrics, language byte totals and public repository metadata. Language shares are code volume across non-fork, non-archived public repositories; they are not skill scores. If a language API request fails, generation fails rather than silently publishing a partial distribution.
-
-## Asset inventory
-
-- docs/profile-audit/asset-inventory.json and asset-inventory.md record every file under assets/, including exact dimensions, animation frame counts, frame timing, loop flags, file sizes and SHA-256 hashes.
-- scripts/audit_profile_assets.py regenerates the inventory deterministically. The README validation workflow runs it in --check mode to catch stale metadata.
+The validation workflow uses actions/checkout v7 (Node.js 24 runtime) and only contents: read. The optional feed workflow needs contents: write to commit its generated README change. Both use GitHub's built-in GITHUB_TOKEN; no personal access token or API secret is required.
 
 ## Optional blog feed
 
-Set the repository variable BLOG_FEED_URL to an RSS or Atom feed you own. Remove or clear the variable to disable the integration. The script only accepts public HTTP(S) links from feed entries and leaves the README unchanged when no valid entries are returned.
+Set the repository variable BLOG_FEED_URL to a public RSS or Atom feed URL that belongs to you. The workflow is dormant when the variable is empty. When enabled, it fetches at most 2 MiB, accepts only HTTP(S) post links, selects up to five newest valid entries and inserts or updates a compact “Latest writing” section immediately before Connect. If no valid entries are returned, the README is left unchanged.
 
-## Asset and profile maintenance
+The updater uses only the Python standard library. Its RSS/Atom parsing and README insertion behaviour are covered by automated unit tests. Clear BLOG_FEED_URL to disable the integration.
 
-- Keep existing approved assets unless a replacement has passed visual and technical checks.
-- Use descriptive alt text and avoid excessive full-width motion.
-- GitHub README cannot run arbitrary JavaScript; a GIF is not an interactive game.
-- The snake.yml workflow verifies the preserved classic GIF; the daily profile-dashboard.yml workflow generates the data-driven contribution-snake-live.gif.
-- The contribution-city generator uses GITHUB_TOKEN for public data; PROFILE_READ_TOKEN is optional for private counts. If GitHub GraphQL data is unavailable, the neutral empty state is intentional.
-- scripts/audit_profile_assets.py regenerates the deterministic asset inventory; readme-check.yml runs it in --check mode to catch stale metadata.
-- Check the generated JSON and workflow run before trusting dashboard values.
-- See assets/design-system.md and docs/profile-audit/ for design and audit decisions.
+## Security
+
+- Never commit API keys, access tokens, passwords, cookies, private keys, certificates, recovery codes, private user information or unredacted diagnostic logs.
+- Keep environment files, credential exports and key stores out of Git.
+- scripts/check_public_leaks.py checks tracked files for common high-confidence credential patterns and forbidden secret filenames. It is a safeguard, not a guarantee that every possible secret can be detected.
+- Use GitHub Actions secrets only when an integration genuinely requires a credential. Do not add secrets for unimplemented integrations.
+- Keep workflow permissions at the minimum needed.
+
+## Design and compatibility
+
+- Keep all README images self-hosted and use case-correct relative paths.
+- Preserve the approved Hero and its asset; CI fails if the opening block or Hero SVG changes.
+- Do not add custom CSS, JavaScript, remote image widgets or unverified metrics.
+- GitHub owns the native contribution graph, activity timeline and pinned repository cards.
+- SVG motion playback, narrow-screen table behaviour and theme rendering require visual inspection on GitHub; source validation does not prove browser rendering.
+- See docs/design/motion-system.md and docs/profile-audit/phase-2.md for the current system and known limitations.
