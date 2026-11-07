@@ -71,6 +71,7 @@ jobs:
           python3 - <<'PY'
           from pathlib import Path
           from PIL import Image
+          import json
           expected = [
               "00-hero", "01-about", "02-engineering-focus", "03-featured-work",
               "04-technology", "05-command-center", "06-precision-tools",
