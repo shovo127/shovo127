@@ -3,7 +3,7 @@ name: Render cyberpunk portfolio assets
 on:
   push:
     branches:
-      - redesign/cyberpunk-engineering-portfolio
+      - redesign/blood-red-engineering-portfolio
   workflow_dispatch:
 
 permissions:

@@ -8,130 +8,135 @@
 
 ## ENGINEERING PROFILE
 
-Diploma graduate in **Automobile Engineering** from Dhaka Polytechnic Institute, building practical software around real workflows and system behaviour. My work spans browser automation, AI integrations, Android diagnostics and engineering-oriented software architecture.
+Diploma graduate in **Automobile Engineering** from Dhaka Polytechnic Institute, building practical software around real workflows and system behaviour. My work spans browser automation, multi-provider AI, Android diagnostics, desktop architecture and learning technology.
 
-I approach projects with an engineering mindset: understand the system, define its safety boundaries, build the smallest useful solution, and verify what it actually does. Current learning focus: **TELC Deutsch B2**.
+I approach engineering by understanding the system, defining safety boundaries, building useful tools and verifying actual behaviour. Current learning focus: **TELC Deutsch B2**.
 
-<p align="center"><img src="./assets/motion/signal-sweep.gif" width="560" alt="Animated cyan signal sweep crossing a technical grid." /></p>
+<p align="center"><img src="./assets/motion/signal-sweep.gif" width="560" alt="Blood-red signal sweep across a black technical grid." /></p>
 
 ## SELECTED PROJECTS
 
-Five public projects across automation, AI, Android and desktop engineering. Each image is an original interface study based on that project's public README and source, not a screenshot of a running application.
+Six project studies. The animated artwork is a rendered visual interpretation of each repository's documented workflow, not a screenshot of a live application.
 
 <table>
   <tr>
-    <td width="50%" valign="top" align="left">
-      <a href="https://github.com/shovo127/visaflowx-universal"><img src="./assets/projects/visaflowx-interface.jpg" width="100%" alt="VisaFlowX browser extension interface study, showing workflow status, monitor rules and a manual protected-verification gate." /></a>
-      <p><strong><sub>01 / BROWSER AUTOMATION</sub></strong></p>
+    <td width="50%" valign="top">
+      <a href="https://github.com/shovo127/visaflowx-universal"><img src="./assets/motion/project-01-scan.gif" width="100%" alt="Animated VisaFlowX browser automation workflow panel with site profiles, DOM monitoring, retry rules and a manual verification boundary." /></a>
+      <p><strong><sub>01 / BROWSER AUTOMATION · MANIFEST V3</sub></strong></p>
       <h3><a href="https://github.com/shovo127/visaflowx-universal">VisaFlowX Universal</a></h3>
-      <p>Manifest V3 workflow assistant with site profiles, DOM monitoring, configurable rules, retries, recovery, scheduling and notifications. Protected verification is handed back for the user to complete; no CAPTCHA or anti-bot bypass.</p>
-      <p><sub><strong>STACK</strong> · JavaScript · Chrome Extension APIs · Manifest V3 · MutationObserver</sub></p>
+      <p>Profile-driven browser workflow assistant with DOM monitoring, configurable rules, retries, scheduling and notifications. Protected verification is handed back to the user; no CAPTCHA or anti-bot bypass.</p>
+      <p><sub><strong>STACK</strong> · JavaScript · Chrome Extension APIs · MutationObserver</sub></p>
       <p><a href="https://github.com/shovo127/visaflowx-universal">VIEW REPOSITORY ↗</a></p>
     </td>
-    <td width="50%" valign="top" align="left">
-      <a href="https://github.com/shovo127/kostenlos-ai"><img src="./assets/projects/kostenlos-ai-workspace.jpg" width="100%" alt="Kostenlos AI chat workspace study with bring-your-own-key setup and provider route labels." /></a>
-      <p><strong><sub>02 / MULTI-MODEL AI</sub></strong></p>
+    <td width="50%" valign="top">
+      <a href="https://github.com/shovo127/kostenlos-ai"><img src="./assets/motion/project-02-scan.gif" width="100%" alt="Animated Kostenlos AI multi-provider chat workspace with user-managed keys and provider failover." /></a>
+      <p><strong><sub>02 / MULTI-PROVIDER AI</sub></strong></p>
       <h3><a href="https://github.com/shovo127/kostenlos-ai">Kostenlos AI</a></h3>
-      <p>Bring-your-own-key AI chat app. Appwrite stores user-managed provider keys; the chat function can fail over across Groq, Gemini, OpenAI and Mistral, with optional Tavily search context.</p>
-      <p><sub><strong>STACK</strong> · React · TypeScript · Tailwind CSS · Appwrite · Cloudflare Pages Functions</sub></p>
+      <p>Bring-your-own-key AI chat application. Appwrite stores user-managed provider keys; the chat function supports failover across Groq, Gemini, OpenAI and Mistral, with optional Tavily search context.</p>
+      <p><sub><strong>STACK</strong> · React · TypeScript · Appwrite · Cloudflare Pages Functions</sub></p>
       <p><a href="https://github.com/shovo127/kostenlos-ai">VIEW REPOSITORY ↗</a></p>
     </td>
   </tr>
   <tr>
-    <td width="50%" valign="top" align="left">
-      <a href="https://github.com/shovo127/Noti-Fixer-for-Chinese-Devices"><img src="./assets/projects/noti-fixer-diagnostics.jpg" width="100%" alt="Noti-Fixer Android wireless debugging and ADB diagnostic study with a read-only review and approval gate." /></a>
+    <td width="50%" valign="top">
+      <a href="https://github.com/shovo127/Noti-Fixer-for-Chinese-Devices"><img src="./assets/motion/project-03-scan.gif" width="100%" alt="Animated Noti-Fixer Android diagnostics panel showing ADB pairing, notification checks and user approval before reversible changes." /></a>
       <p><strong><sub>03 / ANDROID DIAGNOSTICS</sub></strong></p>
       <h3><a href="https://github.com/shovo127/Noti-Fixer-for-Chinese-Devices">Noti-Fixer for Chinese Devices</a></h3>
-      <p>Python and ADB toolkit for wireless pairing, notification/background diagnostics and reversible settings changes on selected Android ROMs. Findings are reviewed before any changes; root is not required.</p>
-      <p><sub><strong>STACK</strong> · Python · Android Debug Bridge · Shell / PowerShell · Android</sub></p>
+      <p>Python and ADB toolkit for wireless pairing, notification/background diagnostics and reversible settings on selected Android ROMs. Findings are reviewed and changes require user approval.</p>
+      <p><sub><strong>STACK</strong> · Python · ADB · Shell / PowerShell · Android</sub></p>
       <p><a href="https://github.com/shovo127/Noti-Fixer-for-Chinese-Devices">VIEW REPOSITORY ↗</a></p>
     </td>
-    <td width="50%" valign="top" align="left">
-      <a href="https://github.com/shovo127/Circle-to-Search-for-Xiaomi"><img src="./assets/projects/circle-search-native.jpg" width="100%" alt="Circle to Search for Xiaomi trigger study showing HyperOS double-back-tap and native Google invocation." /></a>
+    <td width="50%" valign="top">
+      <a href="https://github.com/shovo127/Circle-to-Search-for-Xiaomi"><img src="./assets/motion/project-04-scan.gif" width="100%" alt="Animated Circle to Search for Xiaomi HyperOS gesture trigger and native Google invocation flow." /></a>
       <p><strong><sub>04 / ANDROID INTEGRATION</sub></strong></p>
       <h3><a href="https://github.com/shovo127/Circle-to-Search-for-Xiaomi">Circle to Search for Xiaomi</a></h3>
-      <p>Minimal Android trigger for Google's native Circle to Search on supported Xiaomi/HyperOS configurations. HyperOS Back Tap launches a transparent activity and invokes Android's Voice Interaction Manager. Google default-assistant and device-eligibility requirements still apply.</p>
+      <p>Minimal Android trigger for Google's native Circle to Search on supported Xiaomi/HyperOS configurations. A transparent activity invokes Android's Voice Interaction Manager. Google default-assistant and device-eligibility requirements apply.</p>
       <p><sub><strong>STACK</strong> · Kotlin · Android SDK · HyperOS Back Tap · Voice Interaction Manager</sub></p>
       <p><a href="https://github.com/shovo127/Circle-to-Search-for-Xiaomi">VIEW REPOSITORY ↗</a></p>
     </td>
   </tr>
   <tr>
-    <td width="50%" valign="top" align="left">
-      <a href="https://github.com/shovo127/Smart-Scanner-Pro"><img src="./assets/projects/smart-scanner-architecture.jpg" width="100%" alt="Smart Scanner Pro architecture concept, with planned components clearly labelled." /></a>
+    <td width="50%" valign="top">
+      <a href="https://github.com/shovo127/Smart-Scanner-Pro"><img src="./assets/motion/project-05-scan.gif" width="100%" alt="Animated Smart Scanner Pro Windows architecture concept with C sharp and .NET system layers." /></a>
       <p><strong><sub>05 / WINDOWS ARCHITECTURE</sub></strong></p>
       <h3><a href="https://github.com/shovo127/Smart-Scanner-Pro">Smart Scanner Pro</a></h3>
-      <p>Architecture-first Windows scanning project organised around Clean Architecture and domain/application boundaries. TWAIN/WIA/eSCL drivers, OCR, image processing, PDF workflows and plugins are documented as planned features, not shipped functionality.</p>
-      <p><sub><strong>STACK</strong> · C# · .NET 9 · WPF · Clean Architecture</sub></p>
+      <p>Windows scanning architecture organised around C#/.NET and Clean Architecture boundaries. TWAIN/WIA/eSCL integration, OCR, image processing, PDF workflows and plugins are treated as planned scope unless implemented in the repository.</p>
+      <p><sub><strong>STACK</strong> · C# · .NET · WPF · Clean Architecture</sub></p>
       <p><a href="https://github.com/shovo127/Smart-Scanner-Pro">VIEW REPOSITORY ↗</a></p>
     </td>
-    <td width="50%" valign="top" align="left">
-      <p><strong><sub>OPEN-SOURCE MAINTENANCE</sub></strong></p>
+    <td width="50%" valign="top">
+      <a href="https://github.com/shovo127/IPTV-By-Shovo"><img src="./assets/motion/project-06-scan.gif" width="100%" alt="Animated IPTV By Shovo public playlist index illustrating M3U and M3U8 playlist maintenance." /></a>
+      <p><strong><sub>06 / OPEN PLAYLIST MAINTENANCE</sub></strong></p>
       <h3><a href="https://github.com/shovo127/IPTV-By-Shovo">IPTV By Shovo</a></h3>
-      <p>Separate public collection of publicly available IPTV channel links and M3U/M3U8 playlists for compatible media players. Stream availability and legality depend on the original source and local rules.</p>
-      <p><sub><strong>FORMAT</strong> · M3U · M3U8 · Public playlist data</sub></p>
+      <p>Public collection of third-party channel links and M3U/M3U8 playlists for compatible media players. No video streams are hosted by this repository; source availability and rights remain with original providers.</p>
+      <p><sub><strong>FORMAT</strong> · M3U · M3U8 · Playlist data</sub></p>
       <p><a href="https://github.com/shovo127/IPTV-By-Shovo">VIEW REPOSITORY ↗</a></p>
     </td>
   </tr>
 </table>
 
----
+<p align="center"><img src="./assets/motion/signal-sweep.gif" width="560" alt="Blood-red scanning line separating project work from technical disciplines." /></p>
 
 ## TECHNICAL FOCUS
 
+Six distinct engineering disciplines, presented as separate visual cards.
+
 <table>
   <tr>
-    <td width="33%" valign="top">
-      <p><strong><sub>01 / SOFTWARE</sub></strong></p>
-      <h3>Software Engineering</h3>
-      <p>Web applications, browser extensions, structured interfaces and practical system architecture.</p>
+    <td width="50%" valign="top">
+      <img src="./assets/focus/focus-01.jpg" width="100%" alt="Software Engineering card: web applications, browser extensions and structured systems." />
+      <h3>01 — Software Engineering</h3>
+      <p>Web applications, browser extensions, structured interfaces and practical architecture.</p>
     </td>
-    <td width="33%" valign="top">
-      <p><strong><sub>02 / INTELLIGENCE</sub></strong></p>
-      <h3>AI & Automation</h3>
-      <p>Provider routing, API integrations, workflow rules, retries and user-controlled automation.</p>
-    </td>
-    <td width="33%" valign="top">
-      <p><strong><sub>03 / MOBILE</sub></strong></p>
-      <h3>Android Systems</h3>
-      <p>ADB workflows, HyperOS behaviour, notification delivery diagnostics and native integrations.</p>
+    <td width="50%" valign="top">
+      <img src="./assets/focus/focus-02.jpg" width="100%" alt="AI and Automation card: provider routing, workflow rules and failover." />
+      <h3>02 — AI & Automation</h3>
+      <p>Multi-provider integrations, routing, retries and user-controlled workflows.</p>
     </td>
   </tr>
   <tr>
-    <td width="33%" valign="top">
-      <p><strong><sub>04 / MECHANICAL</sub></strong></p>
-      <h3>Automotive Engineering</h3>
+    <td width="50%" valign="top">
+      <img src="./assets/focus/focus-03.jpg" width="100%" alt="Android Systems card: ADB, HyperOS and device diagnostics." />
+      <h3>03 — Android Systems</h3>
+      <p>ADB workflows, HyperOS behaviour, notification diagnostics and native integrations.</p>
+    </td>
+    <td width="50%" valign="top">
+      <img src="./assets/focus/focus-04.jpg" width="100%" alt="Automotive Engineering card: mechanical systems and diagnostic thinking." />
+      <h3>04 — Automotive Engineering</h3>
       <p>Mechanical assemblies, automotive systems and diagnostic thinking grounded in diploma study.</p>
     </td>
-    <td width="33%" valign="top">
-      <p><strong><sub>05 / LANGUAGE + TECH</sub></strong></p>
-      <h3>Learning Technology</h3>
-      <p>Multilingual learning experiences and German study resources, with current TELC B2 preparation.</p>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <img src="./assets/focus/focus-05.jpg" width="100%" alt="Learning Technology card: multilingual learning tools and German study." />
+      <h3>05 — Learning Technology</h3>
+      <p>Multilingual learning experiences and German study resources, including current TELC B2 preparation.</p>
     </td>
-    <td width="33%" valign="top">
-      <p><strong><sub>ENGINEERING STUDY</sub></strong></p>
-      <h3>Mechanical Visualisation</h3>
-      <p>CAD-inspired assembly thinking and technical visualisation alongside software work.</p>
+    <td width="50%" valign="top">
+      <img src="./assets/focus/focus-06.jpg" width="100%" alt="Mechanical Visualisation card: parametric geometry and assembly studies." />
+      <h3>06 — Mechanical Visualisation</h3>
+      <p>Parametric geometry, assembly studies and technical visualisation alongside software work.</p>
     </td>
   </tr>
 </table>
 
-### Automotive engineering / 3D study
+<p align="center"><img src="./assets/motion/focus-pulse.gif" width="560" alt="Subtle blood-red signal pulse representing the six technical focus areas." /></p>
 
-<img src="./assets/engineering/piston-connecting-rod-crankshaft.jpg" width="100%" alt="Original parametric 3D mesh study of a piston, rings, connecting rod and crankshaft." />
+## AUTOMOTIVE ENGINEERING / 3D STUDY
 
-<sub>Original parametric mesh study; not a representation of a specific production engine.</sub>
+<img src="./assets/engineering/piston-connecting-rod-crankshaft.jpg" width="100%" alt="Parametric 3D mesh study of a piston, rings, connecting rod and crankshaft." />
 
----
+<sub>Original parametric mesh study rendered from generated geometry; not a production engine model. The available source is a rendered study, not an editable CAD assembly.</sub>
 
 ## EDUCATION & LEARNING
 
 <table>
   <tr>
     <td width="50%" valign="top">
-      <p><strong><sub>01 / COMPLETED EDUCATION</sub></strong></p>
+      <p><strong><sub>01 / COMPLETED</sub></strong></p>
       <h3>Diploma in Automobile Engineering</h3>
       <p><strong>Dhaka Polytechnic Institute</strong></p>
-      <p>Technical foundation in automobile engineering.</p>
+      <p>Technical education in automobile engineering.</p>
     </td>
     <td width="50%" valign="top">
       <p><strong><sub>02 / CURRENT LEARNING</sub></strong></p>
@@ -142,23 +147,21 @@ Five public projects across automation, AI, Android and desktop engineering. Eac
   </tr>
 </table>
 
-<img src="./assets/engineering/education-path.jpg" width="100%" alt="Existing education timeline artwork for automobile engineering diploma and current German B2 preparation." />
+<img src="./assets/engineering/education-path.jpg" width="100%" alt="Education timeline showing completed automobile engineering diploma and current TELC Deutsch B2 preparation." />
 
----
-
-## PUBLIC REPOSITORY SIGNAL
+## PUBLIC REPOSITORY ANALYTICS
 
 <table>
   <tr>
     <td width="100%" valign="top">
-      <p><strong><sub>GITHUB DATA / SNAPSHOT 2026-11-07</sub></strong></p>
-      <img src="./assets/data/public-repository-snapshot.jpg" width="100%" alt="Static chart of public repository count, stars, forks and repository primary language counts." />
-      <p><sub>Seven public project repositories · 13 stars · 4 forks. Primary-language labels count repositories, not code-byte share or personal proficiency. Excludes this profile repository and private repositories. Snapshot is static, not a live counter.</sub></p>
+      <p><strong><sub>GITHUB PUBLIC DATA / SNAPSHOT 2026-11-07</sub></strong></p>
+      <img src="./assets/data/public-repository-snapshot.jpg" width="100%" alt="Dated chart of seven public project repositories, 13 stars, four forks and primary-language repository counts." />
+      <p><sub>Seven public project repositories · 13 stars · 4 forks. Language counts represent each repository's primary language, not code-byte share or personal proficiency. The snapshot excludes this profile repository and private repositories. Values are static, not live.</sub></p>
     </td>
   </tr>
 </table>
 
-<p align="center"><img src="./assets/motion/signal-sweep.gif" width="560" alt="Animated cyan signal sweep used as a consistent transition between portfolio sections." /></p>
+<p align="center"><img src="./assets/motion/analytics-trace.gif" width="560" alt="Animated red chart trace; underlying repository snapshot values remain static." /></p>
 
 ---
 
@@ -184,6 +187,6 @@ Five public projects across automation, AI, Android and desktop engineering. Eac
   </tr>
 </table>
 
-<p align="center"><img src="./assets/motion/signal-sweep.gif" width="560" alt="Animated cyan signal line closing the engineering portfolio." /></p>
+<p align="center"><img src="./assets/motion/signal-sweep.gif" width="560" alt="Blood-red signal sweep closing the engineering portfolio." /></p>
 <p align="center"><sub>ENGINEERING · SOFTWARE · SYSTEMS</sub></p>
 <p align="center"><sub>Designed and maintained independently · Dhaka, Bangladesh</sub></p>
