@@ -60,10 +60,18 @@ jobs:
           python3 - <<'PY'
           from pathlib import Path
           from PIL import Image
+          import json
           for path in sorted(Path('assets/3d').glob('*.gif')):
               with Image.open(path) as gif:
                   assert gif.format == 'GIF' and gif.n_frames == 10 and gif.size == (900, 225), f'Invalid animation: {path}'
                   print(f'PASS {path}: {gif.size[0]}x{gif.size[1]}, {gif.n_frames} frames, {path.stat().st_size} bytes')
+          calendar=json.loads(Path('assets/contribution-calendar.json').read_text(encoding='utf-8'))
+          assert calendar.get('status') in ('available','unavailable')
+          if calendar['status']=='available':
+              assert calendar.get('days') and calendar.get('total_contributions') is not None
+          else:
+              assert calendar.get('days')==[] and calendar.get('total_contributions') is None
+          assert Path('assets/contribution-city-data.svg').is_file()
           snake=Path('assets/section-08-contribution-snake.gif')
           with Image.open(snake) as gif:
               assert gif.format == 'GIF' and gif.n_frames > 1
