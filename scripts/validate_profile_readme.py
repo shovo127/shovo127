@@ -131,12 +131,15 @@ for rel, dimensions in expected_dimensions.items():
 expected_gifs = ["assets/motion/signal-sweep.gif", "assets/motion/focus-pulse.gif",
                  "assets/motion/analytics-trace.gif"]
 expected_gifs += [f"assets/motion/project-{i:02d}-scan.gif" for i in range(1, 7)]
+expected_gif_dimensions = {rel: (560, 84) for rel in expected_gifs[:3]}
+expected_gif_dimensions.update({rel: (480, 208) for rel in expected_gifs[3:]})
 for rel in expected_gifs:
     path = ROOT / rel
     assert path.is_file(), f"Missing animated visual: {rel}"
     assert path.stat().st_size <= GIF_ASSET_LIMIT, f"GIF exceeds 350 KiB: {rel}"
     with Image.open(path) as im:
         assert im.format == "GIF" and im.n_frames >= 12, f"Expected animated GIF with >=12 frames: {rel}"
+        assert im.size == expected_gif_dimensions[rel], f"Unexpected GIF dimensions for {rel}: {im.size}"
         assert im.info.get("loop") == 0, f"GIF must loop continuously: {rel}"
         durations = []
         for frame in range(im.n_frames):
