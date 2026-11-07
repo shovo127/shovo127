@@ -17,7 +17,7 @@
 
 ## Current 3D scene inventory
 
-The selected renderer defines nine product/engineering scenes: hero turbocharger, piston assembly, processor, laptop, phone, dashboard monitor, precision caliper, contribution city, and industrial connector. Each scene is rendered as 10 eased frames at 900×225 and packed to a shared-palette GIF. Three older section animations remain preserved in the repository but are no longer repeated in the README.
+The selected renderer defines nine product/engineering scenes: hero turbocharger, piston assembly, processor, laptop, phone, dashboard monitor, precision caliper, contribution city, and industrial connector. Each scene is rendered as 10 eased frames at 900×225, with visible object rotation, camera dolly/orbit and warm rim-light sweep, then packed to a shared-palette GIF. Three older section animations remain preserved in the repository but are no longer repeated in the README.
 
 The industrial-campus scene is an original decorative architectural scene. It is not a contribution heatmap and is not driven by contribution counts.
 
