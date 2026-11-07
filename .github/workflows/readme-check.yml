@@ -43,6 +43,7 @@ jobs:
           from html.parser import HTMLParser
           from PIL import Image, ImageChops
           import re
+          import json
 
           readme = Path("README.md").read_text(encoding="utf-8")
 
