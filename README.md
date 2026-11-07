@@ -3,7 +3,7 @@
 <img src="./assets/banner.svg" width="100%" alt="Original profile banner" />
 
 ### Mohammed Thuhidul Islam Shovo
-**Diploma Engineer — Automobile · Independent Software Builder · Technology Explorer**
+**Diploma in Automobile Engineering · Independent Software Builder · Technology Explorer**
 
 *I turn curiosity into practical tools — combining engineering thinking with software, automation and AI.*
 
@@ -19,7 +19,7 @@
 
 ### Engineer by training. Builder by curiosity.
 
-I’m based in **Dhaka, Bangladesh**, with a Diploma in Automobile Engineering from **Dhaka Polytechnic Institute**. My interests connect mechanical systems, software, digital products and practical problem-solving.
+I’m based in **Dhaka, Bangladesh**, with a Diploma in Automobile Engineering from **Dhaka Polytechnic Institute**. My interests connect mechanical systems, software, digital products and practical problem-solving. I also build [Lerne Deutsch Mit Technologie](https://lernedeutschmittechnologie.tech), a free A1–C2 German learning platform with interactive practice and TELC/Goethe preparation.
 
 - 🎓 Diploma in Engineering — Automobile
 - 🇩🇪 Learning German; preparing for TELC Deutsch B2
