@@ -23,10 +23,10 @@ W, H = 1200, 520
 TEXT = (242, 245, 250)
 MUTED = (165, 176, 192)
 DIM = (105, 121, 143)
-CYAN = (0, 229, 255)
-VIOLET = (157, 92, 255)
-MAGENTA = (255, 60, 172)
-LIME = (199, 255, 74)
+CYAN = (200, 16, 46)
+VIOLET = (143, 0, 26)
+MAGENTA = (255, 48, 79)
+LIME = (255, 82, 104)
 FONT_DIR = Path("/usr/share/fonts/truetype/dejavu")
 
 
@@ -45,7 +45,7 @@ def rounded(draw, box, radius=12, fill=(11, 15, 22), outline=(37, 51, 68), width
 
 
 def base_canvas(kicker, accent=CYAN, seed=0):
-    im = Image.new("RGB", (W, H), (5, 6, 8))
+    im = Image.new("RGB", (W, H), (3, 3, 3))
     p = im.load()
     for y in range(H):
         for x in range(W):
@@ -54,9 +54,9 @@ def base_canvas(kicker, accent=CYAN, seed=0):
     overlay = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     d = ImageDraw.Draw(overlay)
     for x in range(0, W, 40):
-        d.line((x, 0, x, H), fill=(35, 58, 78, 25), width=1)
+        d.line((x, 0, x, H), fill=(80, 18, 30, 24), width=1)
     for y in range(0, H, 40):
-        d.line((0, y, W, y), fill=(35, 58, 78, 25), width=1)
+        d.line((0, y, W, y), fill=(80, 18, 30, 24), width=1)
     d.line((44, 78, 1156, 78), fill=(*accent, 110), width=1)
     d.line((44, 476, 1156, 476), fill=(*accent, 75), width=1)
     d.rectangle((44, 102, 48, 442), fill=(*accent, 230))
@@ -80,40 +80,40 @@ def save(im, name):
 def visa():
     im = base_canvas("01 / browser automation / manifest v3", CYAN, 1)
     d = ImageDraw.Draw(im)
-    rounded(d, (82, 105, 1116, 435), 18, (8, 12, 18), (45, 67, 85), 2)
-    d.rounded_rectangle((82, 105, 1116, 147), radius=18, fill=(16, 22, 31), outline=(45, 67, 85), width=1)
-    d.rectangle((82, 130, 1116, 147), fill=(16, 22, 31))
+    rounded(d, (82, 105, 1116, 435), 18, (8, 12, 18), (55, 18, 25), 2)
+    d.rounded_rectangle((82, 105, 1116, 147), radius=18, fill=(20, 10, 13), outline=(55, 18, 25), width=1)
+    d.rectangle((82, 130, 1116, 147), fill=(20, 10, 13))
     for i, c in enumerate(((255, 95, 86), (255, 189, 46), (39, 201, 63))):
         d.ellipse((102 + i * 19, 121, 111 + i * 19, 130), fill=c)
     rounded(d, (190, 114, 660, 138), 8, (7, 11, 17), (34, 49, 64))
     txt(d, (210, 120), "chrome-extension://visaflowx/popup.html", 10, DIM, False, True)
-    d.rectangle((83, 148, 285, 434), fill=(10, 15, 22))
+    d.rectangle((83, 148, 285, 434), fill=(8, 7, 8))
     txt(d, (105, 169), "VFX / UNIVERSAL", 13, CYAN, True, True)
     for y, label, active in [(207, "Overview", True), (248, "Site profiles", False), (289, "Monitor rules", False), (330, "Scheduler", False), (371, "Activity log", False)]:
         if active:
-            rounded(d, (96, y-8, 270, y+23), 7, (14, 38, 48), (0, 110, 130))
+            rounded(d, (96, y-8, 270, y+23), 7, (48, 8, 18), (150, 10, 35))
         d.ellipse((110, y+1, 117, y+8), fill=CYAN if active else (72, 89, 106))
         txt(d, (128, y-2), label, 13, TEXT if active else MUTED)
     txt(d, (316, 169), "Workflow overview", 22, TEXT, True)
     txt(d, (316, 199), "Profile-driven monitoring · user-controlled actions", 12, MUTED)
-    rounded(d, (916, 165, 1088, 198), 8, (13, 43, 37), (32, 111, 85))
+    rounded(d, (916, 165, 1088, 198), 8, (45, 8, 18), (145, 12, 35))
     d.ellipse((931, 177, 940, 186), fill=LIME)
     txt(d, (950, 174), "MONITORING", 11, LIME, True, True)
     cards = [("ACTIVE SITE", "IVAC profile", CYAN), ("WORKFLOW", "Monitoring", VIOLET), ("RETRY TIMER", "Backoff ready", MAGENTA)]
     for i, (label, value, accent) in enumerate(cards):
         x = 316 + i * 250
-        rounded(d, (x, 220, x+232, 292), 10, (15, 21, 30), (40, 55, 73))
+        rounded(d, (x, 220, x+232, 292), 10, (15, 21, 30), (50, 18, 24))
         txt(d, (x+16, 236), label, 10, DIM, True, True)
         txt(d, (x+16, 260), value, 16, TEXT, True)
         d.rectangle((x+16, 282, x+65, 284), fill=accent)
-    rounded(d, (316, 308, 820, 415), 10, (13, 19, 27), (40, 55, 73))
+    rounded(d, (316, 308, 820, 415), 10, (13, 19, 27), (50, 18, 24))
     txt(d, (336, 324), "MONITOR RULES", 11, CYAN, True, True)
     for i, (label, detail) in enumerate([("Text appears", "Availability signal"), ("Selector exists", "Target control"), ("Wait / retry", "Backoff with recovery")]):
         y = 352 + i * 21
         d.ellipse((337, y+2, 344, y+9), fill=(64, 198, 177))
         txt(d, (356, y), label, 12, TEXT, True)
         txt(d, (540, y), detail, 11, MUTED)
-    rounded(d, (842, 308, 1088, 415), 10, (26, 19, 29), (114, 48, 105))
+    rounded(d, (842, 308, 1088, 415), 10, (35, 8, 13), (145, 12, 35))
     txt(d, (862, 325), "HUMAN VERIFICATION", 10, MAGENTA, True, True)
     txt(d, (862, 351), "Detected → wait", 15, TEXT, True)
     txt(d, (862, 376), "Complete protected checks", 10, MUTED)
@@ -169,8 +169,8 @@ def noti():
     txt(d, (162, 279), "Pair with code", 11, TEXT, True)
     txt(d, (162, 299), "Pairing port is temporary", 9, MUTED)
     d.ellipse((218, 388, 255, 425), outline=(62, 83, 101), width=2)
-    rounded(d, (395, 111, 1088, 435), 14, (8, 12, 18), (45, 67, 85), 2)
-    d.rectangle((396, 112, 1087, 147), fill=(16, 22, 31))
+    rounded(d, (395, 111, 1088, 435), 14, (8, 12, 18), (55, 18, 25), 2)
+    d.rectangle((396, 112, 1087, 147), fill=(20, 10, 13))
     txt(d, (420, 124), "ADB SESSION  /  NOTI-FIXER", 11, CYAN, True, True)
     d.ellipse((1040, 124, 1049, 133), fill=LIME)
     txt(d, (1060, 121), "PAIRED", 10, LIME, True, True)
@@ -408,21 +408,21 @@ def render_engine():
 
 
 def render_focus():
-    im = Image.new("RGB", (1200, 360), (5, 7, 11))
+    im = Image.new("RGB", (1200, 360), (3, 3, 3))
     d = ImageDraw.Draw(im)
-    for x in range(0, 1200, 40): d.line((x, 0, x, 360), fill=(20, 38, 52), width=1)
-    for y in range(0, 360, 40): d.line((0, y, 1200, y), fill=(20, 38, 52), width=1)
+    for x in range(0, 1200, 40): d.line((x, 0, x, 360), fill=(55, 15, 24), width=1)
+    for y in range(0, 360, 40): d.line((0, y, 1200, y), fill=(55, 15, 24), width=1)
     txt(d, (48, 28), "TECHNICAL FOCUS / FIVE CONNECTED DISCIPLINES", 13, CYAN, True, True)
     items = [
         ("01", "SOFTWARE", "Web apps · browser extensions", CYAN, "</>"),
         ("02", "AI + AUTOMATION", "Provider routing · workflow rules", VIOLET, "AI"),
         ("03", "ANDROID SYSTEMS", "ADB · HyperOS · diagnostics", MAGENTA, "ADB"),
         ("04", "AUTOMOTIVE", "Mechanical systems · diagnostics", LIME, "ENG"),
-        ("05", "LEARNING TECH", "Multilingual · German learning", (125, 163, 196), "DE"),
+        ("05", "LEARNING TECH", "Multilingual · German learning", (181, 181, 181), "DE"),
     ]
     for i, (num, title, desc, col, mark) in enumerate(items):
         x, y = 48+i*224, 84
-        d.rounded_rectangle((x, y, x+202, y+224), radius=10, fill=(11, 16, 24), outline=(39, 53, 71), width=1)
+        d.rounded_rectangle((x, y, x+202, y+224), radius=10, fill=(12, 8, 9), outline=(50, 18, 24), width=1)
         d.rectangle((x, y, x+202, y+3), fill=col)
         txt(d, (x+16, y+18), num, 10, col, True, True)
         d.ellipse((x+16, y+50, x+66, y+100), outline=col, width=2)
@@ -442,15 +442,15 @@ def render_focus():
 
 
 def render_education():
-    im = Image.new("RGB", (1200, 300), (5, 7, 11))
+    im = Image.new("RGB", (1200, 300), (3, 3, 3))
     d = ImageDraw.Draw(im)
-    for x in range(0, 1200, 40): d.line((x, 0, x, 300), fill=(20, 38, 52), width=1)
-    for y in range(0, 300, 40): d.line((0, y, 1200, y), fill=(20, 38, 52), width=1)
+    for x in range(0, 1200, 40): d.line((x, 0, x, 300), fill=(55, 15, 24), width=1)
+    for y in range(0, 300, 40): d.line((0, y, 1200, y), fill=(55, 15, 24), width=1)
     txt(d, (48, 26), "EDUCATION / CONTINUOUS LEARNING", 13, CYAN, True, True)
     panels = [(48, "01 / COMPLETED", "DIPLOMA IN AUTOMOBILE ENGINEERING", "Dhaka Polytechnic Institute", CYAN),
               (618, "02 / CURRENT", "TELC DEUTSCH B2", "German language preparation", VIOLET)]
     for x, kicker, title, detail, col in panels:
-        d.rounded_rectangle((x, 76, x+534, 258), radius=12, fill=(11, 16, 24), outline=(42, 56, 75), width=1)
+        d.rounded_rectangle((x, 76, x+534, 258), radius=12, fill=(12, 8, 9), outline=(50, 18, 24), width=1)
         d.rectangle((x, 76, x+4, 258), fill=col)
         txt(d, (x+24, 98), kicker, 10, col, True, True)
         txt(d, (x+24, 139), title, 19, TEXT, True)
@@ -481,22 +481,22 @@ SNAPSHOT = {
 
 def render_analytics():
     (DATA / "public-repositories.json").write_text(json.dumps(SNAPSHOT, indent=2)+"\n", encoding="utf-8")
-    im = Image.new("RGB", (1200, 360), (5, 7, 11))
+    im = Image.new("RGB", (1200, 360), (3, 3, 3))
     d = ImageDraw.Draw(im)
-    for x in range(0, 1200, 40): d.line((x, 0, x, 360), fill=(22, 39, 54), width=1)
-    for y in range(0, 360, 40): d.line((0, y, 1200, y), fill=(22, 39, 54), width=1)
+    for x in range(0, 1200, 40): d.line((x, 0, x, 360), fill=(55, 15, 24), width=1)
+    for y in range(0, 360, 40): d.line((0, y, 1200, y), fill=(55, 15, 24), width=1)
     txt(d, (48, 32), "PUBLIC REPOSITORY SNAPSHOT", 14, CYAN, True, True)
     txt(d, (48, 69), "7", 48, TEXT, True); txt(d, (48, 124), "PUBLIC PROJECT REPOS", 10, MUTED, True, True)
     txt(d, (280, 69), "13", 48, TEXT, True); txt(d, (280, 124), "STARS", 10, MUTED, True, True)
     txt(d, (480, 69), "4", 48, TEXT, True); txt(d, (480, 124), "FORKS", 10, MUTED, True, True)
-    d.line((680, 30, 680, 320), fill=(50, 67, 85), width=1)
+    d.line((680, 30, 680, 320), fill=(75, 24, 34), width=1)
     txt(d, (720, 34), "PRIMARY LANGUAGE BY REPOSITORY", 12, VIOLET, True, True)
     langs = list(SNAPSHOT["primary_languages"].items())
-    colors = [CYAN, VIOLET, MAGENTA, LIME, (125, 163, 196)]
+    colors = [CYAN, VIOLET, MAGENTA, LIME, (181, 181, 181)]
     y = 82
     for (name, count), color in zip(langs, colors):
         txt(d, (720, y), name, 12, TEXT, True)
-        d.rounded_rectangle((860, y+1, 1095, y+15), radius=6, fill=(25, 35, 48))
+        d.rounded_rectangle((860, y+1, 1095, y+15), radius=6, fill=(35, 12, 17))
         d.rounded_rectangle((860, y+1, 860+235*count/2, y+15), radius=6, fill=color)
         txt(d, (1120, y), str(count), 11, MUTED, False, True, "ra")
         y += 42
@@ -511,19 +511,19 @@ def render_analytics():
 def render_motion():
     frames = []
     fw, fh = 560, 84
-    for i in range(24):
-        im = Image.new("RGB", (fw, fh), (5, 7, 11))
+    for i in range(36):
+        im = Image.new("RGB", (fw, fh), (3, 3, 3))
         d = ImageDraw.Draw(im)
-        for x in range(0, fw, 32): d.line((x, 0, x, fh), fill=(18, 35, 49), width=1)
-        for y in range(0, fh, 21): d.line((0, y, fw, y), fill=(18, 35, 49), width=1)
-        d.line((0, fh//2, fw, fh//2), fill=(39, 60, 76), width=1)
-        cx = int(i*fw/24)
+        for x in range(0, fw, 32): d.line((x, 0, x, fh), fill=(55, 15, 24), width=1)
+        for y in range(0, fh, 21): d.line((0, y, fw, y), fill=(55, 15, 24), width=1)
+        d.line((0, fh//2, fw, fh//2), fill=(90, 24, 38), width=1)
+        cx = int(i*fw/36)
         glow = Image.new("RGBA", (fw, fh), (0, 0, 0, 0))
         gd = ImageDraw.Draw(glow)
-        gd.polygon([(cx-30, 0), (cx-5, 0), (cx+30, fh), (cx+5, fh)], fill=(0, 210, 255, 45))
-        gd.line((cx, 0, cx+30, fh), fill=(0, 229, 255, 190), width=2)
-        if cx < 40: gd.line((cx+fw, 0, cx+fw+30, fh), fill=(0, 229, 255, 55), width=1)
-        elif cx > fw-40: gd.line((cx-fw, 0, cx-fw+30, fh), fill=(0, 229, 255, 55), width=1)
+        gd.polygon([(cx-30, 0), (cx-5, 0), (cx+30, fh), (cx+5, fh)], fill=(200, 16, 46, 45))
+        gd.line((cx, 0, cx+30, fh), fill=(255, 48, 79, 190), width=2)
+        if cx < 40: gd.line((cx+fw, 0, cx+fw+30, fh), fill=(255, 48, 79, 55), width=1)
+        elif cx > fw-40: gd.line((cx-fw, 0, cx-fw+30, fh), fill=(255, 48, 79, 55), width=1)
         glow = glow.filter(ImageFilter.GaussianBlur(4))
         im = Image.alpha_composite(im.convert("RGBA"), glow).convert("RGB")
         d = ImageDraw.Draw(im)
@@ -533,13 +533,79 @@ def render_motion():
         txt(d, (fw-18, 48), "MONITOR → VERIFY → ACT", 9, MUTED, False, True, "ra")
         frames.append(im.quantize(colors=32, method=Image.Quantize.FASTOCTREE, dither=Image.Dither.NONE))
     path = MOTION / "signal-sweep.gif"
-    frames[0].save(path, save_all=True, append_images=frames[1:], duration=220, loop=0, optimize=True, disposal=2)
+    frames[0].save(path, save_all=True, append_images=frames[1:], duration=160, loop=0, optimize=True, disposal=2)
     return path
 
 
+
+def render_focus_cards():
+    items = [
+        ("01", "SOFTWARE ENGINEERING", "Web applications · browser extensions", "API", "STRUCTURE / SYSTEMS"),
+        ("02", "AI & AUTOMATION", "Provider routing · workflow rules", "AI", "ROUTING / FAILOVER"),
+        ("03", "ANDROID SYSTEMS", "ADB · HyperOS · notification diagnostics", "ADB", "DEVICE / CONTROL"),
+        ("04", "AUTOMOTIVE ENGINEERING", "Mechanical systems · diagnostic thinking", "ENG", "MECHANICAL / TEST"),
+        ("05", "LEARNING TECHNOLOGY", "Multilingual tools · German learning", "DE", "LEARN / BUILD"),
+        ("06", "MECHANICAL VISUALISATION", "Parametric geometry · assembly studies", "3D", "MODEL / RENDER"),
+    ]
+    for num, title, desc, mark, foot in items:
+        im = Image.new("RGB", (640, 300), (3, 3, 3))
+        d = ImageDraw.Draw(im)
+        for x in range(0, 640, 32): d.line((x,0,x,300), fill=(30,10,14), width=1)
+        for y in range(0, 300, 32): d.line((0,y,640,y), fill=(30,10,14), width=1)
+        d.rounded_rectangle((10,10,630,290), radius=12, fill=(8,8,8), outline=(65,18,28), width=2)
+        d.rectangle((10,10,630,14), fill=(200,16,46))
+        d.rectangle((10,10,15,290), fill=(143,0,26))
+        txt(d,(34,32),num+" / SHOVO127",12,(255,48,79),True,True)
+        d.ellipse((40,80,180,220), outline=(143,0,26), width=3)
+        d.ellipse((58,98,162,202), outline=(200,16,46), width=1)
+        d.line((110,68,110,232), fill=(90,24,38), width=2)
+        d.line((28,150,192,150), fill=(90,24,38), width=2)
+        txt(d,(110,150),mark,22,(245,245,245),True,True,"mm")
+        txt(d,(220,95),title,20,(245,245,245),True,True)
+        txt(d,(220,137),desc,13,(181,181,181))
+        d.line((220,180,570,180), fill=(65,18,28), width=1)
+        txt(d,(220,202),foot,11,(255,82,104),True,True)
+        txt(d,(590,258),"ENGINEERING / "+num,9,(119,119,119),False,True,"ra")
+        out = ROOT/"assets"/"focus"/("focus-"+num+".jpg")
+        out.parent.mkdir(parents=True,exist_ok=True)
+        im.save(out,"JPEG",quality=88,optimize=True,progressive=True,subsampling=1)
+
+def render_iptv():
+    im = base_canvas("06 / PUBLIC PLAYLIST MAINTENANCE / M3U + M3U8", CYAN, 6)
+    d = ImageDraw.Draw(im)
+    rounded(d,(90,110,1110,420),16,(8,8,8),(65,18,28),2)
+    txt(d,(125,142),"PLAYLIST INDEX",15,TEXT,True,True)
+    rows=[("SPORTS","M3U8 / PUBLIC SOURCE"),("NEWS","REGIONAL CHANNEL INDEX"),("ENTERTAINMENT","PLAYER-COMPATIBLE PLAYLIST"),("EPG","EXTERNAL PROGRAMME DATA")]
+    for i,(a,b) in enumerate(rows):
+        y=195+i*48
+        d.rectangle((126,y,132,y+25),fill=CYAN)
+        txt(d,(150,y+2),a,14,TEXT,True,True)
+        txt(d,(430,y+4),b,12,MUTED,False,True)
+    txt(d,(126,390),"LINK COLLECTION ONLY  /  THIRD-PARTY STREAMS",11,(255,82,104),True,True)
+    return save(im,"iptv-by-shovo.jpg")
+
+def render_project_motion():
+    names=["visaflowx-interface","kostenlos-ai-workspace","noti-fixer-diagnostics","circle-search-native","smart-scanner-architecture","iptv-by-shovo"]
+    for idx,name in enumerate(names):
+        source=PROJECTS/(name+".jpg")
+        if not source.exists(): continue
+        base=Image.open(source).convert("RGB").resize((600,260),Image.Resampling.LANCZOS)
+        frames=[]
+        for i in range(24):
+            frame=base.copy()
+            d=ImageDraw.Draw(frame)
+            x=int(i*600/24)
+            d.polygon([(x-16,0),(x-8,0),(x+20,260),(x+12,260)],fill=(200,16,46))
+            d.line((x,0,x+28,260),fill=(255,82,104),width=2)
+            d.rectangle((0,0,600,4),fill=(143,0,26))
+            frames.append(frame.quantize(colors=64,method=Image.Quantize.FASTOCTREE,dither=Image.Dither.NONE))
+        out=MOTION/("project-"+str(idx+1).zfill(2)+"-scan.gif")
+        frames[0].save(out,save_all=True,append_images=frames[1:],duration=120,loop=0,optimize=True,disposal=2)
+
+
 def main():
-    created = [visa(), kostenlos(), noti(), circle(), scanner(), render_engine(),
-               render_focus(), render_education(), render_analytics(), render_motion()]
+    created = [visa(), kostenlos(), noti(), circle(), scanner(), render_iptv(), render_engine(),
+               render_focus(), render_focus_cards(), render_education(), render_analytics(), render_motion(), render_project_motion()]
     for path in created:
         print(f"{path.relative_to(ROOT)}\t{path.stat().st_size}")
     total = sum(p.stat().st_size for folder in (PROJECTS, ENGINEERING, MOTION, DATA)
