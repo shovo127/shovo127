@@ -34,7 +34,7 @@ A Python and ADB toolkit for diagnosing notification delivery and managing rever
 ### [Circle to Search for Xiaomi](https://github.com/shovo127/Circle-to-Search-for-Xiaomi)
 A minimal native Android trigger intended to invoke Google Circle to Search on supported Xiaomi/HyperOS configurations. Availability depends on Google device eligibility and firmware Back Tap options.
 
-**Documented stack:** Android · Kotlin · Android system APIs
+**Documented stack:** Android · Android system APIs
 
 [Browse all public repositories →](https://github.com/shovo127?tab=repositories)
 
