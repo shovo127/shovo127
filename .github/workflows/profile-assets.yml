@@ -6,6 +6,7 @@ on:
     paths:
       - "scripts/render_profile_3d.py"
       - "scripts/pack_profile_3d.py"
+      - "scripts/fetch_contribution_data.py"
   workflow_dispatch:
 
 permissions:
@@ -82,6 +83,15 @@ jobs:
                   assert gif.format == "GIF" and gif.n_frames == 10, f"Invalid animation: {path}"
                   assert gif.size == (900, 225), f"Unexpected dimensions: {path} {gif.size}"
               print(f"PASS {path}: 900x225, 10 frames, {path.stat().st_size} bytes")
+          calendar=json.loads(Path("assets/contribution-calendar.json").read_text(encoding="utf-8"))
+          assert calendar.get("status") in ("available", "unavailable")
+          if calendar["status"] == "available":
+              assert calendar.get("days") and calendar.get("total_contributions") is not None
+          else:
+              assert calendar.get("days") == [] and calendar.get("total_contributions") is None
+          city_svg=Path("assets/contribution-city-data.svg")
+          assert city_svg.is_file() and city_svg.stat().st_size > 1000
+          print("PASS: contribution city data is genuine or explicitly unavailable; neutral SVG exists.")
           snake=Path("assets/section-08-contribution-snake.gif")
           assert snake.is_file() and snake.stat().st_size > 1000, "Previously approved contribution snake is missing."
           print("PASS: previously approved contribution snake remains present and untouched.")
