@@ -110,7 +110,7 @@ def visa():
     txt(d, (336, 324), "MONITOR RULES", 11, CYAN, True, True)
     for i, (label, detail) in enumerate([("Text appears", "Availability signal"), ("Selector exists", "Target control"), ("Wait / retry", "Backoff with recovery")]):
         y = 352 + i * 21
-        d.ellipse((337, y+2, 344, y+9), fill=(64, 198, 177))
+        d.ellipse((337, y+2, 344, y+9), fill=(200, 16, 46))
         txt(d, (356, y), label, 12, TEXT, True)
         txt(d, (540, y), detail, 11, MUTED)
     rounded(d, (842, 308, 1088, 415), 10, (35, 8, 13), (145, 12, 35))
@@ -286,7 +286,7 @@ def cylinder(mesh, center, radius, length, axis=(0, 0, 1), color=(120, 145, 164)
     mesh.add(verts, faces, color)
 
 
-def torus(mesh, center, major, minor, color=(0, 210, 240), axis=(0, 0, 1), seg1=72, seg2=12):
+def torus(mesh, center, major, minor, color=(200, 16, 46), axis=(0, 0, 1), seg1=72, seg2=12):
     axis = norm(axis)
     helper = (0, 1, 0) if abs(axis[1]) < .9 else (1, 0, 0)
     u = norm(cross(axis, helper))
@@ -337,14 +337,14 @@ def render_engine():
     cylinder(mesh, (0, 0, 1.20), .70, 1.02, (0, 0, 1), (112, 133, 153))
     cylinder(mesh, (0, 0, 1.77), .75, .26, (0, 0, 1), (166, 178, 190))
     for z in (1.36, 1.48, 1.60):
-        torus(mesh, (0, 0, z), .705, .025, (0, 205, 240))
+        torus(mesh, (0, 0, z), .705, .025, (200, 16, 46))
     torus(mesh, (0, 0, 1.91), .59, .035, (175, 190, 204))
     cylinder(mesh, (0, 0, 1.12), .18, 1.55, (1, 0, 0), (73, 91, 110))
     cylinder(mesh, (-.57, 0, 1.12), .25, .22, (1, 0, 0), (147, 162, 177))
     cylinder(mesh, (.57, 0, 1.12), .25, .22, (1, 0, 0), (147, 162, 177))
     rod(mesh, (0, 0, .92), (.10, 0, -1.13), .26, .24, (86, 108, 130))
-    torus(mesh, (0, 0, .92), .23, .055, (0, 205, 240))
-    torus(mesh, (.10, 0, -1.13), .38, .07, (0, 205, 240))
+    torus(mesh, (0, 0, .92), .23, .055, (200, 16, 46))
+    torus(mesh, (.10, 0, -1.13), .38, .07, (200, 16, 46))
     cylinder(mesh, (.10, 0, -1.13), .30, .50, (0, 1, 0), (102, 121, 141))
     sphere(mesh, (.10, 0, -1.13), .18, (151, 165, 178))
     cylinder(mesh, (-.40, 0, -1.58), .48, .25, (0, 1, 0), (65, 82, 101))
@@ -389,8 +389,8 @@ def render_engine():
     gd = ImageDraw.Draw(grid)
     for x in range(0, W, 40): gd.line((x, 0, x, H), fill=(29, 55, 73, 30), width=1)
     for y in range(0, H, 40): gd.line((0, y, W, y), fill=(29, 55, 73, 30), width=1)
-    gd.line((44, 88, 1156, 88), fill=(0, 229, 255, 100), width=1)
-    gd.line((44, 475, 1156, 475), fill=(0, 229, 255, 65), width=1)
+    gd.line((44, 88, 1156, 88), fill=(200, 16, 46, 100), width=1)
+    gd.line((44, 475, 1156, 475), fill=(200, 16, 46, 65), width=1)
     canvas = Image.alpha_composite(canvas, grid)
     canvas.alpha_composite(im, (0, 0))
     d = ImageDraw.Draw(canvas)
