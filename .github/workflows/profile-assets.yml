@@ -60,12 +60,14 @@ jobs:
           GITHUB_USERNAME: ${{ github.repository_owner }}
         run: |
           cd repo
-          python3 -m py_compile scripts/render_profile_3d.py scripts/pack_profile_3d.py scripts/fetch_contribution_data.py
+          python3 -m py_compile scripts/render_profile_3d.py scripts/pack_profile_3d.py scripts/fetch_contribution_data.py scripts/generate_contribution_snake.py scripts/audit_profile_assets.py
           python3 scripts/fetch_contribution_data.py
+          cp assets/contribution-calendar.json assets/contribution-city-source.json
           python3 scripts/generate_contribution_snake.py
           python3 scripts/generate_metrics_city.py
           EGL_PLATFORM=surfaceless LIBGL_ALWAYS_SOFTWARE=1 "$BLENDER_BIN" --background --factory-startup --python scripts/render_profile_3d.py
           python3 scripts/pack_profile_3d.py
+          python3 scripts/audit_profile_assets.py
 
       - name: Verify every rendered animation and preserve the approved snake
         run: |
@@ -88,19 +90,30 @@ jobs:
                   assert gif.size == (900, 225), f"Unexpected dimensions: {path} {gif.size}"
               print(f"PASS {path}: 900x225, 10 frames, {path.stat().st_size} bytes")
           calendar=json.loads(Path("assets/contribution-calendar.json").read_text(encoding="utf-8"))
-          assert calendar.get("status") in ("available", "unavailable")
-          if calendar["status"] == "available":
-              assert calendar.get("days") and calendar.get("total_contributions") is not None
-          else:
-              assert calendar.get("days") == [] and calendar.get("total_contributions") is None
+          city_source=json.loads(Path("assets/contribution-city-source.json").read_text(encoding="utf-8"))
+          for label,data in (("live calendar",calendar),("3D city source snapshot",city_source)):
+              assert data.get("status") in ("available", "unavailable"), label
+              if data["status"] == "available":
+                  assert data.get("days") and data.get("total_contributions") is not None, label
+              else:
+                  assert data.get("days") == [] and data.get("total_contributions") is None, label
           city_svg=Path("assets/contribution-city-data.svg")
           assert city_svg.is_file() and city_svg.stat().st_size > 1000
-          print("PASS: contribution city data is genuine or explicitly unavailable; neutral SVG exists.")
+          print("PASS: live contribution calendar, dated 3D city source and static SVG are present.")
           snake=Path("assets/section-08-contribution-snake.gif")
           assert snake.is_file() and snake.stat().st_size > 1000, "Previously approved contribution snake is missing."
           with Image.open(snake) as gif:
               assert gif.format == "GIF" and gif.n_frames > 1, "Approved contribution snake must be a real multi-frame GIF."
           print("PASS: previously approved contribution snake remains present and is a real multi-frame GIF.")
+          live_snake=Path("assets/contribution-snake-live.gif")
+          with Image.open(live_snake) as gif:
+              assert gif.format == "GIF" and gif.size == (800,280) and gif.info.get("loop") == 0
+              if calendar["status"] == "available":
+                  assert gif.n_frames >= 50 and gif.info.get("duration") == 100
+                  assert live_snake.stat().st_size < 3_000_000
+              else:
+                  assert gif.n_frames == 2
+          print("PASS: data-driven snake animation matches the real calendar state.")
           PY
 
       - name: Switch README to 3D assets only after all renders pass
@@ -138,7 +151,7 @@ jobs:
           REPOSITORY: ${{ github.repository }}
         run: |
           cd repo
-          git add assets/3d/*.gif assets/contribution-calendar.json assets/contribution-city-data.svg assets/contribution-snake-live.gif assets/metrics-city.svg assets/contribution-snake-live.gif assets/metrics-city.svg README.md
+          git add assets/3d/*.gif assets/contribution-calendar.json assets/contribution-city-source.json assets/contribution-city-data.svg assets/contribution-snake-live.gif assets/metrics-city.svg docs/profile-audit/asset-inventory.json docs/profile-audit/asset-inventory.md README.md
           if git diff --cached --quiet; then
             echo "No rendered 3D assets changed."
             exit 0
