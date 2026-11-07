@@ -49,7 +49,7 @@ Never paste credentials into this document, README, issue, workflow log or commi
 - Rendering uses Eevee Next with software rendering on GitHub-hosted Linux runners. The observed twelve-scene render took about 6 minutes 34 seconds, excluding setup and verification. Actual duration varies with runner load.
 - The profile workflow promotes the new scene GIFs only after every expected output passes validation.
 
-The contribution city is built from the GitHub GraphQL contributionCalendar. scripts/fetch_contribution_data.py writes assets/contribution-calendar.json and assets/contribution-city-data.svg. Blender reads that same dated daily-count data to build the 3D isometric calendar city. If PROFILE_READ_TOKEN is absent or rejected, the JSON records status=unavailable and the city uses a neutral empty grid. It never invents activity. Private counts appear only when the account setting and token scope permit them.
+The contribution city is built from the GitHub GraphQL contributionCalendar. scripts/fetch_contribution_data.py writes assets/contribution-calendar.json, assets/contribution-city-data.svg and assets/metrics-city.svg. Blender reads that same dated daily-count data to build the 3D isometric calendar city. If PROFILE_READ_TOKEN is absent or rejected, the JSON records status=unavailable and the city uses a neutral empty grid. It never invents activity. Private counts appear only when the account setting and token scope permit them.
 
 ## Dashboard data
 
@@ -57,6 +57,7 @@ scripts/generate_dashboard.py calls the GitHub public REST API and writes:
 - assets/github-dashboard.svg
 - assets/github-dashboard.png
 - assets/github-dashboard-data.json
+- assets/metrics-city.svg — generated from the same verified public metrics, repository language bytes, project categories and contribution data when available.
 - assets/contribution-calendar.json and assets/contribution-city-data.svg
 
 The JSON file records the source, UTC generation timestamp, public account metrics, language byte totals and public repository metadata. Language shares are code volume across non-fork, non-archived public repositories; they are not skill scores. If a language API request fails, generation fails rather than silently publishing a partial distribution.
