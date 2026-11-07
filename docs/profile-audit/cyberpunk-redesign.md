@@ -1,59 +1,84 @@
-# Cyberpunk engineering portfolio — implementation audit
+# Black and blood-red engineering portfolio — implementation audit
 
-## Safety and rollback
+## Baseline and rollback
 
 - Repository: `shovo127/shovo127`.
-- Base main commit before this redesign: `48ca056993f4ce20516f3c88fb7138dca43df3e3`.
-- User-specified Phase 2 baseline: `398f2047ef182ae3832d5ce9120307cb35b6e481`.
-- Rollback branch created before edits: `backup/pre-cyberpunk-redesign-2026-11-07`.
-- Working branch: `redesign/cyberpunk-engineering-portfolio`.
-- Approved Hero README block and Hero SVG source were read before edits. Hero blob: `f988a3193de32412396a760fee2cf46d7de771e4`.
-- The validator retains the same exact Hero block and blob checks; no weakening or bypass was introduced.
+- Main baseline: `3db0c4944ac663560bfd246f66c1a63babbe878f`.
+- Rollback branch: `backup/pre-blood-red-redesign-2026-11-07`.
+- Implementation branch: `redesign/blood-red-engineering-portfolio`.
+- Approved Hero README opening block was recorded before edits.
+- Approved Hero SVG blob SHA: `f988a3193de32412396a760fee2cf46d7de771e4`.
 
-## Rejected Phase 2 work identified
+## Initial findings and root causes
 
-Compared the user-specified baseline with current main. The Phase 2-only presentation additions were five schematic project SVGs, the section-rule SVG, the generic Selected Work/Technical Focus/Education/Connect/footer README body, and the Phase 2 design/audit documents. These are the only presentation items targeted for replacement.
+The previous profile was not aligned with the new brief:
+- The design documentation and generated assets used a cyan/teal-led palette with violet/magenta/lime accents.
+- The project section used static interface studies, and the sixth IPTV project had no project artwork.
+- Technical Focus used plain table text and one composite image rather than six separate discipline cards.
+- The page reused one small 24-frame/220 ms cyan sweep three times. Project art, technical cards and analytics had no dedicated motion treatments.
+- The validator enforced fixed image dimensions, 150 KiB per asset, 800 KiB total, exact 24-frame/220 ms GIF metadata, fixed project image counts and fixed table-width assumptions. These constraints encoded the previous artwork implementation, not reusable security requirements.
 
-## Preserved
+## Implementation
 
-- `assets/hero/engineering-hero.svg` and the approved README opening block.
-- `scripts/check_public_leaks.py`, `scripts/validate_profile_readme.py`, `scripts/update_blog_feed.py` and `tests/test_update_blog_feed.py`.
-- Existing README validation and optional RSS/Atom workflow functionality.
-- `SECURITY.md`, `SETUP.md`, `docs/SETUP.md`, unrelated project sources, repository history and account settings.
+- Recoloured the generated portfolio artwork into a black, deep-charcoal and blood-red palette.
+- Created six separate 640×300 Technical Focus card images.
+- Added IPTV By Shovo artwork based on the public playlist repository.
+- Created six project-specific animated scan GIFs from each project's generated visual study.
+- Added separate section sweep, Technical Focus pulse and analytics trace GIFs.
+- Re-rendered the existing parametric piston/connecting-rod/crankshaft mesh study in the revised palette; no unrelated machinery or source CAD model was introduced.
+- Re-rendered the education timeline and dated public repository analytics chart.
+- Replaced the README project layout with six two-column project cards, six distinct Technical Focus cards, the engineering study, education, analytics, Connect and animated footer.
+- All key descriptions, stacks, safety boundaries, planned-feature qualifications and links remain readable HTML text rather than rasterised artwork.
 
-## New presentation assets
+## Project-source verification
 
-- Five original, project-specific JPEG interface/architecture studies.
-- A parametric 3D mesh render of a piston, connecting rod and crankshaft.
-- A five-discipline Technical Focus visual.
-- An Education / Continuous Learning visual.
-- A dated GitHub public repository analytics chart and JSON source.
-- One seamless 24-frame cyan signal-sweep GIF.
-- Reproducible generator: `tools/render_portfolio_art.py` (Python + Pillow; no network calls).
+- VisaFlowX Universal README: Manifest V3 browser workflow assistant, profile-driven rules, DOM monitoring, retry/backoff, scheduling and notifications. Protected verification is explicitly user-completed; bypass behaviour is prohibited.
+- Kostenlos AI README: React/TypeScript BYOK chat app, Appwrite-managed provider keys, Groq/Gemini/OpenAI/Mistral failover and optional Tavily context.
+- Noti-Fixer README: Python/ADB wireless pairing, diagnostics and proposed changes requiring explicit user review/approval; claims are kept bounded to documented workflows.
+- Circle to Search README: Xiaomi/HyperOS double-back-tap trigger invoking Google's native surface through Android Voice Interaction Manager; Google default-assistant and device eligibility remain constraints.
+- Smart Scanner Pro README is at `SmartScan/README.md` (not repository root). It documents C#/.NET 9 Windows architecture and Clean Architecture; TWAIN/WIA/eSCL, OCR, duplex, plugin and related features are explicitly marked planned.
+- IPTV By Shovo README: public third-party channel links and M3U/M3U8 playlist collection; no video streams are hosted by this repository.
 
-The project visuals are labelled as original studies, not actual screenshots. The Smart Scanner artwork distinguishes planned features from implemented architecture. VisaFlowX preserves its manual verification boundary; Noti-Fixer preserves read-only review and explicit user approval; Circle to Search preserves Google's default-assistant and device-eligibility requirements.
+## Analytics
 
-## Verified public repository snapshot
-
-Source: GitHub REST API public owner repository list and repository metadata, captured 2026-11-07. Scope excludes the profile repository and all private repositories.
+Source: `assets/data/public-repositories.json`, captured from GitHub public repository metadata on 2026-11-07. Scope excludes the profile repository and private repositories.
 
 - Seven public project repositories.
 - Thirteen stars and four forks.
-- Primary language per repository: JavaScript 2, TypeScript 2, C# 1, PowerShell 1, Python 1.
-- These language counts are repository labels, not code-byte share or proficiency.
+- Primary-language repository labels: JavaScript 2, TypeScript 2, C# 1, PowerShell 1, Python 1.
+- Counts are dated static values. The analytics GIF is a decorative signal trace and does not change the data.
 
-## Local rendering and visual QA
+## Validation changes
 
-- Rendered the full README-style page in Chromium at 1440 px desktop and 390 px mobile widths.
-- Inspected dark and light theme simulations. All 11 referenced images loaded in all four previews.
-- Compared two Chromium captures of the signal GIF 900 ms apart; rendered pixels changed, confirming local GIF playback.
-- The five project visuals, Technical Focus, 3D engineering study, Education and analytics image were inspected individually.
-- The four profile reference screenshots were not available as readable image attachments, so no direct screenshot-to-screenshot comparison was possible.
+Removed obsolete assumptions:
+- Fixed old raster dimensions for every image.
+- 150 KiB per-raster limit and 800 KiB total asset limit.
+- Exact 24-frame/220 ms GIF rule.
+- Previous exact project image count and HTML table-width counts.
 
-## Platform limitations and live visual QA status
+Replaced them with:
+- Exact Hero README block and SVG Git blob lock.
+- Local image/link resolution and rejection of remote image dependencies.
+- SVG XML, script, foreignObject and remote-reference checks.
+- Expected image formats and intended dimensions.
+- Nine animated GIF checks: expected dimensions, animation, infinite loop, frame timing and total loop duration.
+- Six distinct project card and six distinct Technical Focus asset references.
+- 300 KiB static raster, 350 KiB GIF and 3 MiB total asset budgets.
+- Existing public-secret scanner and feed updater tests retained in CI.
 
-- GitHub controls the overall page background, native contribution graph, activity timeline and pinned repository cards. README markup cannot force the page-wide background to pure black or restyle native profile components.
-- GitHub profile README does not support arbitrary CSS, JavaScript or true hover interactions. The animation is a GIF, not an interactive effect.
-- The four profile reference screenshots were not available as readable image attachments in the current conversation context. Screenshot-by-screenshot comparison cannot be claimed.
-- The live GitHub profile page could not be fetched through the available browser/web route (GitHub returned a cache miss); actual GitHub desktop/mobile and dark/light theme rendering therefore remain unverified. Local Chromium previews and passing CI are supporting evidence, not proof of GitHub's live rendering.
-- No new contribution chart was fabricated or duplicated; GitHub's native contribution graph remains authoritative.
+## Verified CI and asset footprint
+
+- Renderer workflow: `42347170210` — success.
+- README validation workflow: `42347242157` — success.
+- Five RSS/Atom updater unit tests — passed.
+- Public-secret scan — passed.
+- README validator — passed: 21 image references resolve, 26 HTML links inspected, one SVG safely parsed, six project artworks, six Technical Focus cards, nine looping GIFs.
+- Tracked asset footprint at validated branch head: 2,105,390 bytes of the 3,145,728-byte budget.
+
+## Live rendering and platform limitations
+
+- The actual profile page URL was requested through the available web route, but GitHub returned a cache miss. This environment did not provide a controllable browser session or profile-page screenshots, so actual live GitHub desktop/mobile rendering and dark/light theme inspection cannot be claimed.
+- GitHub controls the page background and sanitises README HTML. The README cannot force a page-wide black background, custom CSS, JavaScript, hover behaviour or a guaranteed mobile one-column breakpoint.
+- Animated artwork uses self-hosted GIFs; the validator verifies file metadata and CI generation, not GitHub's end-user playback or perceived smoothness.
+- The two-column HTML table may remain side-by-side on narrow screens. A GitHub profile browser/device screenshot pass is still required to confirm how the rendered profile behaves at phone widths.
+- The original engineering asset is a generated parametric mesh render; no editable CAD source or production-engine model was available.
