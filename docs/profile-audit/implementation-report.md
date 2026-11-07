@@ -3,14 +3,17 @@
 ## Completed changes
 
 - Created recovery branch backup/profile-before-master-rebuild-2026-11-07 from the audited baseline commit.
-- Added a baseline repository audit and a visual design-system document.
+- Added a baseline repository audit, a deterministic inventory of every asset (dimensions, frames, timing, file size and SHA-256), and a visual design-system document.
 - Added reference research and adoption decisions with an emphasis on GitHub README constraints and self-hosted media.
 - Corrected the Blender GIF verification contract to match the actual 900×225, 10-frame output.
 - Increased the 3D render job timeout from 8 to 15 minutes.
-- Replaced the decorative tower scene with a data-driven isometric contribution calendar city. It reads dated GitHub contribution counts and uses a neutral empty grid when data is unavailable.
+- Replaced the decorative tower scene with a data-driven isometric contribution calendar city. It reads a dedicated, immutable dated JSON snapshot and uses a neutral empty grid when data is unavailable.
 - Replaced the decorative trophy prop with a precision vernier-caliper model, avoiding an unsupported achievement implication.
 - Updated the README to describe verified public project functionality and distinguish decorative artwork from data visualizations.
 - Expanded the dashboard generator to paginate public repositories, fail rather than silently omit repository language data, and write an auditable JSON snapshot alongside SVG and PNG.
+- Added a real contribution-calendar snake simulation: a collision-free continuous path through the actual dated grid, food markers only on active contribution days, and snake growth as active days are reached. It is a generated GIF visualization, not a playable game. The previously approved classic snake remains preserved byte-for-byte.
+- Added daily refresh of the contribution calendar, static city SVG, data-driven snake and full asset inventory. Workflow concurrency is serialized to prevent conflicting generated-data commits.
+- Added camera dolly/orbit and a warm rim-light sweep to the Blender scene loops; the 12 scenes have eased object motion and matching loop endpoints.
 - Updated the dashboard workflow and README validator to include and validate the JSON data file.
 - Removed the duplicate legacy metrics workflow; profile-dashboard.yml is now the only dashboard refresh workflow.
 - Updated SETUP.md and added an animation-source guide.
