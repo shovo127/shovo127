@@ -9,13 +9,13 @@ from PIL import Image, ImageDraw, ImageFont
 
 DATA = Path("assets/contribution-calendar.json")
 OUTPUT = Path("assets/contribution-snake-live.gif")
-WIDTH, HEIGHT = 1280, 430
-CELL, GAP = 12, 4
+WIDTH, HEIGHT = 800, 280
+CELL, GAP = 7, 3
 STEP = CELL + GAP
-GRID_X, GRID_Y = 190, 205
+GRID_X, GRID_Y = 140, 150
 INITIAL_LENGTH = 5
-ADVANCE_PER_FRAME = 4
-DURATION_MS = 90
+ADVANCE_PER_FRAME = 6
+DURATION_MS = 100
 PALETTE = ["#1B2A38", "#155A54", "#1C8276", "#28AE9B", "#55D8C2"]
 GOLD = "#F7C66A"
 BODY = "#0F887B"
@@ -39,9 +39,9 @@ def font(size: int, bold: bool = False):
     return ImageFont.load_default()
 
 
-FONT_TITLE = font(28, True)
-FONT_LABEL = font(13, True)
-FONT_SMALL = font(11)
+FONT_TITLE = font(21, True)
+FONT_LABEL = font(10, True)
+FONT_SMALL = font(9)
 
 
 def base_calendar(data: dict) -> tuple[Image.Image, dict, list, dict]:
@@ -59,15 +59,15 @@ def base_calendar(data: dict) -> tuple[Image.Image, dict, list, dict]:
         for x in range(WIDTH):
             pixels[x, y] = col
     draw = ImageDraw.Draw(image, "RGBA")
-    draw.rounded_rectangle((28, 24, WIDTH-28, HEIGHT-24), radius=22, outline=(105,151,177,50), width=1)
-    draw.text((58, 49), "CONTRIBUTION SNAKE", font=FONT_LABEL, fill="#5EEAD4")
-    draw.text((58, 77), "A moving path through real GitHub activity", font=FONT_TITLE, fill=TEXT)
+    draw.rounded_rectangle((18, 14, WIDTH-18, HEIGHT-14), radius=22, outline=(105,151,177,50), width=1)
+    draw.text((40, 30), "CONTRIBUTION SNAKE", font=FONT_LABEL, fill="#5EEAD4")
+    draw.text((40, 53), "A moving path through real GitHub activity", font=FONT_TITLE, fill=TEXT)
     total = data.get("total_contributions")
     if total is not None:
         subtitle = f"{int(total):,} contributions  ·  {data.get('period_start','')} — {data.get('period_end','')}"
     else:
         subtitle = "Contribution data unavailable — neutral empty state"
-    draw.text((60, 119), subtitle, font=FONT_SMALL, fill=MUTED)
+    draw.text((42, 82), subtitle, font=FONT_SMALL, fill=MUTED)
 
     # Month labels are derived from actual dates in the returned contribution grid.
     seen_months = set()
@@ -93,8 +93,8 @@ def base_calendar(data: dict) -> tuple[Image.Image, dict, list, dict]:
                 # A small inset glint makes active calendar cells readable at profile size.
                 draw.ellipse((x+3, y+3, x+5, y+5), fill=(220,255,247,150))
 
-    draw.text((60, 365), "Food markers = days with recorded contributions  ·  Snake grows when it reaches an active day", font=FONT_SMALL, fill=MUTED)
-    draw.text((60, 388), "Data source: GitHub GraphQL contributionCalendar  ·  GIF animation, not a playable game", font=FONT_SMALL, fill="#7F9AAF")
+    draw.text((42, 242), "Food markers = days with recorded contributions  ·  Snake grows when it reaches an active day", font=FONT_SMALL, fill=MUTED)
+    draw.text((42, 258), "Data source: GitHub GraphQL contributionCalendar  ·  GIF animation, not a playable game", font=FONT_SMALL, fill="#7F9AAF")
     return image, counts, dates, {"weeks": week_count, "max_count": max_count}
 
 
@@ -127,7 +127,7 @@ def draw_frame(base: Image.Image, path: list[tuple[int, int]], counts: dict, hea
         cx = GRID_X + week*STEP + CELL//2
         cy = GRID_Y + weekday*STEP + CELL//2
         count = counts.get((week,weekday), 0)
-        radius = 2.5 + min(2.8, math.log2(count+1)*.55)
+        radius = 1.8 + min(1.8, math.log2(count+1)*.35)
         draw.ellipse((cx-radius-3,cy-radius-3,cx+radius+3,cy+radius+3), fill=(247,198,106,35))
         draw.ellipse((cx-radius,cy-radius,cx+radius,cy+radius), fill=(247,198,106,alpha), outline=(255,235,187,alpha), width=1)
 
@@ -142,11 +142,11 @@ def draw_frame(base: Image.Image, path: list[tuple[int, int]], counts: dict, hea
     if points:
         # Draw a dark outline first, then a teal inner body with bright dorsal highlights.
         if len(points) > 1:
-            draw.line(points, fill=(3,35,42,alpha), width=12, joint="curve")
-            draw.line(points, fill=(15,136,123,alpha), width=8, joint="curve")
-            draw.line(points, fill=(114,232,207,alpha//2), width=2, joint="curve")
+            draw.line(points, fill=(3,35,42,alpha), width=8, joint="curve")
+            draw.line(points, fill=(15,136,123,alpha), width=6, joint="curve")
+            draw.line(points, fill=(114,232,207,alpha//2), width=1, joint="curve")
         for i, (cx,cy) in enumerate(points[:-1]):
-            radius = 4.2
+            radius = 3.0
             draw.ellipse((cx-radius,cy-radius,cx+radius,cy+radius), fill=(15,136,123,alpha), outline=(3,35,42,alpha), width=1)
             if i % 3 == 0:
                 draw.ellipse((cx-1.8,cy-2.7,cx+.2,cy-.7), fill=(183,255,239,alpha//2))
@@ -157,12 +157,12 @@ def draw_frame(base: Image.Image, path: list[tuple[int, int]], counts: dict, hea
         magnitude = max(1, math.hypot(dx,dy))
         dx,dy = dx/magnitude,dy/magnitude
         px,py = -dy,dx
-        radius = 7
+        radius = 5.2
         draw.ellipse((hx-radius-2,hy-radius-2,hx+radius+2,hy+radius+2), fill=(3,35,42,alpha))
         draw.ellipse((hx-radius,hy-radius,hx+radius,hy+radius), fill=(92,225,193,alpha), outline=(183,255,239,alpha), width=1)
         for sign in (-1,1):
-            ex = hx + dx*2.5 + px*sign*3.2
-            ey = hy + dy*2.5 + py*sign*3.2
+            ex = hx + dx*1.8 + px*sign*2.5
+            ey = hy + dy*1.8 + py*sign*2.5
             draw.ellipse((ex-2,ey-2,ex+2,ey+2), fill=(255,255,255,alpha))
             draw.ellipse((ex-.8,ey-.8,ex+.8,ey+.8), fill=(7,19,33,alpha))
         tx,ty = hx + dx*10, hy + dy*10
@@ -203,17 +203,18 @@ def main():
             print(f"Contribution snake: {len(path)} calendar cells, {len(active_indices)} food cells, {len(frames)} frames.")
 
     # One shared palette prevents flicker between the many moving frames.
-    sample_w, sample_h = 192, 65
+    sample_w, sample_h = 128, 45
     sheet = Image.new("RGB", (sample_w, sample_h*len(frames)))
     for i, frame in enumerate(frames):
         sheet.paste(frame.resize((sample_w,sample_h),Image.Resampling.LANCZOS),(0,i*sample_h))
-    palette = sheet.quantize(colors=128,method=Image.Quantize.MEDIANCUT)
+    palette = sheet.quantize(colors=64,method=Image.Quantize.MEDIANCUT)
     quantized = [frame.quantize(palette=palette,dither=Image.Dither.FLOYDSTEINBERG) for frame in frames]
     quantized[0].save(OUTPUT,save_all=True,append_images=quantized[1:],duration=DURATION_MS,loop=0,optimize=True,disposal=2)
     with Image.open(OUTPUT) as result:
         assert result.format=="GIF" and result.size==(WIDTH,HEIGHT)
         assert result.n_frames==len(frames)
         assert result.info.get("loop")==0
+        assert OUTPUT.stat().st_size < 3_000_000, f"Snake GIF exceeds 3 MB budget: {OUTPUT.stat().st_size}"
     print(f"Generated {OUTPUT}: {len(frames)} frames, {OUTPUT.stat().st_size} bytes.")
 
 
