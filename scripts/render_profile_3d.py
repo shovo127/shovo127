@@ -267,7 +267,9 @@ for slug,builder in SCENES:
             obj.parent=root
     # Product photography lighting: broad key, cool fill and warm rim.
     bpy.ops.object.camera_add(location=(2.1,-13.5,3.1))
-    camera=bpy.context.object; camera.data.type="ORTHO"; camera.data.ortho_scale=10.8 if slug=="07-engineering-city" else 12.2;\n    if slug=="07-engineering-city": camera.location=(9,-11,9)\n    aim(camera,(2.2,0,-.2) if slug=="07-engineering-city" else (2.0,0,0))
+    camera=bpy.context.object; camera.data.type="ORTHO"; camera.data.ortho_scale=10.8 if slug=="07-engineering-city" else 12.2;
+    if slug=="07-engineering-city": camera.location=(9,-11,9)
+    aim(camera,(2.2,0,-.2) if slug=="07-engineering-city" else (2.0,0,0))
     scene=bpy.context.scene; scene.camera=camera
     for name,loc,power,size,color in (
       ("Large softbox key",(-1,-5,7),1500,7,(.78,.88,1)),
