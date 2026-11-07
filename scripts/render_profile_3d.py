@@ -218,7 +218,7 @@ SCENES=[
  ("04-technology",phone),
  ("05-command-center",monitor_dashboard),
  ("06-achievements",trophy),
- ("07-contribution-city",city),
+ ("07-engineering-city",city),
  ("09-coding-habits",keyboard),
  ("10-learning-loop",book),
  ("11-beyond-code",wheel),
@@ -250,7 +250,7 @@ for slug,builder in SCENES:
         bpy.ops.object.light_add(type="AREA",location=loc)
         light=bpy.context.object; light.name=name; light.data.energy=power; light.data.shape="DISK"; light.data.size=size; light.data.color=color; aim(light,(2,0,0))
     # Eevee Next is substantially faster than CPU Cycles for these clean studio scenes.
-    # Keep real geometry, PBR materials, area lights and shadows; render 12 eased frames.
+    # Keep real geometry, PBR materials, area lights and shadows; render 10 eased frames.
     scene.render.engine="BLENDER_EEVEE_NEXT"
     scene.eevee.taa_render_samples=8
     scene.render.resolution_percentage=100
