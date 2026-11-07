@@ -90,7 +90,7 @@ for name, url in zip(project_names, project_urls):
     assert name in readme and url in readme, f"Missing project card or repository link: {name}"
 assert readme.count("project-01-scan.gif") == 1
 assert all(readme.count(f"project-{i:02d}-scan.gif") == 1 for i in range(1, 7))
-assert all(readme.count(f"focus-{i:02d}.jpg") == 1 for i in range(1, 7))
+assert all((ROOT / "assets" / "focus" / f"focus-{i:02d}.jpg").is_file() for i in range(1, 7)), "Original Technical Focus source artwork must remain intact."
 assert "manual" in readme.lower() and "planned" in readme.lower()
 assert "static, not live" in readme.lower() or "static values" in readme.lower()
 assert "third-party" in readme.lower() and "no video streams are hosted" in readme.lower()
