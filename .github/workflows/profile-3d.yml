@@ -7,7 +7,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: profile-3d-media
+  group: profile-content-build
   cancel-in-progress: false
 
 jobs:
