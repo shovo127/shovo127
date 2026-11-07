@@ -174,10 +174,10 @@ def caliper():
         cube("Depth gauge detail",(x,.02,-.18),(.08,.1,.04),TEAL,.008)
 
 def city():
-    # Isometric contribution calendar. Geometry comes only from GitHub counts.
+    # Isometric contribution calendar. Geometry comes only from the committed render snapshot.
     # Missing API data produces a neutral empty grid, never invented activity.
     try:
-        with open("assets/contribution-calendar.json", encoding="utf-8") as source:
+        with open("assets/contribution-city-source.json", encoding="utf-8") as source:
             data=json.load(source)
     except (OSError, ValueError):
         data={"status":"unavailable","weeks":[],"days":[]}
