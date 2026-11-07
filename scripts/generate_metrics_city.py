@@ -18,7 +18,7 @@ metrics = dashboard.get("metrics", {})
 languages = dashboard.get("language_bytes", [])[:5]
 contribution_available = contributions.get("status") == "available" and contributions.get("total_contributions") is not None
 
-W, H = 1400, 800
+W, H = 1400, 860
 parts = [
     f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-labelledby="title desc">',
     '<title id="title">Shovo127 isometric engineering metrics city</title>',
@@ -72,20 +72,20 @@ if languages:
         height = 26 + share/max_share*74
         label = str(item.get("name","Unknown"))
         pct = f"{share*100:.1f}%"
-        parts.append(building(cx,660,78,36,height,("#167F78","#235F9B","#62529C","#946B36","#287C8A")[index%5],label,pct))
+        parts.append(building(cx,630,78,36,height,("#167F78","#235F9B","#62529C","#946B36","#287C8A")[index%5],label,pct))
 else:
     parts.append('<text x="70" y="570" fill="#AFC4D8" font-family="Arial,sans-serif" font-size="18">Language data unavailable</text>')
 
-parts.append('<text x="64" y="735" fill="#5EEAD4" font-family="Arial,sans-serif" font-size="13" letter-spacing="3">VERIFIED PROJECT CATEGORIES</text>')
+parts.append('<text x="64" y="755" fill="#5EEAD4" font-family="Arial,sans-serif" font-size="13" letter-spacing="3">VERIFIED PROJECT CATEGORIES</text>')
 categories = ["AI applications","Browser automation","Android tooling","German learning","Gmail productivity"]
 for index,label in enumerate(categories):
     x = 64 + index*260
-    parts.append(f'<rect x="{x}" y="752" width="236" height="34" rx="12" fill="#FFFFFF" fill-opacity=".055" stroke="#8BB5C8" stroke-opacity=".22"/>')
-    parts.append(f'<text x="{x+118}" y="774" text-anchor="middle" fill="#DCEAF5" font-family="Arial,sans-serif" font-size="13">{html.escape(label)}</text>')
+    parts.append(f'<rect x="{x}" y="773" width="236" height="34" rx="12" fill="#FFFFFF" fill-opacity=".055" stroke="#8BB5C8" stroke-opacity=".22"/>')
+    parts.append(f'<text x="{x+118}" y="795" text-anchor="middle" fill="#DCEAF5" font-family="Arial,sans-serif" font-size="13">{html.escape(label)}</text>')
 
 generated = dashboard.get("generated_at","timestamp unavailable")
-parts.append(f'<text x="64" y="690" fill="#8FA8BC" font-family="Arial,sans-serif" font-size="12">GitHub REST data generated {html.escape(generated)} · Contribution total shown only when GraphQL data is available.</text>')
-parts.append('<text x="64" y="795" fill="#8FA8BC" font-family="Arial,sans-serif" font-size="11">Language proportions represent repository bytes, not proficiency. Public metrics exclude no private account data.</text>')
+parts.append(f'<text x="64" y="735" fill="#8FA8BC" font-family="Arial,sans-serif" font-size="12">GitHub REST data generated {html.escape(generated)} · Contribution total shown only when GraphQL data is available.</text>')
+parts.append('<text x="64" y="835" fill="#8FA8BC" font-family="Arial,sans-serif" font-size="11">Language proportions represent repository bytes, not proficiency. Public metrics exclude no private account data.</text>')
 parts.append('</svg>')
 OUTPUT.write_text("".join(parts), encoding="utf-8")
 print("Generated", OUTPUT, "from public repository metrics and verified project categories.")
