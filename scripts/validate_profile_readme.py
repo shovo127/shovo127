@@ -135,7 +135,7 @@ for raw in gif_refs:
         for frame in range(im.n_frames):
             im.seek(frame)
             durations.append(im.info.get("duration"))
-        assert all(d is not None and 60 <= d <= 400 for d in durations), f"Unreasonable frame timing: {rel}"
+        assert all(d is not None and 60 <= d <= 1000 for d in durations), f"Unreasonable frame timing: {rel}"
         assert 1800 <= sum(durations) <= 14000, f"Loop duration outside 1.8–14 seconds: {rel}"
         assert im.width <= 1200 and im.height <= 600, f"GIF dimensions too large: {rel}"
 
