@@ -141,11 +141,11 @@ expected_gif_dimensions = {
     "assets/motion/signal-sweep.gif": (560, 84),
     "assets/motion/focus-pulse.gif": (560, 84),
     "assets/motion/analytics-trace.gif": (560, 84),
-    "assets/motion/education-path-live.gif": (1200, 300),
-    "assets/motion/analytics-snapshot-live.gif": (1200, 360),
-    "assets/motion/piston-crankshaft-cycle.gif": (900, 390),
+    "assets/motion/education-path-live.gif": (900, 225),
+    "assets/motion/analytics-snapshot-live.gif": (900, 270),
+    "assets/motion/piston-crankshaft-cycle.gif": (720, 312),
 }
-expected_gif_dimensions.update({f"assets/motion/focus-{i:02d}-live.gif": (640, 300) for i in range(1, 7)})
+expected_gif_dimensions.update({f"assets/motion/focus-{i:02d}-live.gif": (480, 225) for i in range(1, 7)})
 expected_gif_dimensions.update({f"assets/motion/project-{i:02d}-scan.gif": (480, 208) for i in range(1, 7)})
 for rel in expected_gifs:
     path = ROOT / rel
