@@ -26,8 +26,8 @@ The old duplicate metrics.yml workflow has been removed; profile-dashboard.yml i
 No additional secret is required for the standard public dashboard and rendering pipeline. GitHub Actions supplies GITHUB_TOKEN automatically. Keep workflow permissions limited to contents: read or contents: write as declared in each workflow.
 
 Optional integrations:
-- BLOG_FEED_URL: repository variable containing a feed URL that belongs to you. Without it, the blog updater is dormant.
-- PROFILE_READ_TOKEN: not currently required or consumed. Do not create it unless a future contribution-calendar implementation explicitly documents its required scope.
+- PROFILE_READ_TOKEN: optional classic GitHub personal access token with only the read:user scope. It is used only for the GitHub GraphQL contribution calendar. Add it as a repository Actions secret. It does not need repository write access; GITHUB_TOKEN handles repository commits. If it is absent or rejected, the city is rendered as a neutral empty calendar and no counts are invented. To include private contribution counts, also enable the GitHub profile setting that displays private contribution counts. GitHub's GraphQL documentation notes that private/internal contribution records require read:user scope.
+- BLOG_FEED_URL: repository variable containing an RSS/Atom feed URL that belongs to you. Without it, the blog updater is dormant.
 - WAKATIME_API_KEY, Spotify, Discord and LeetCode credentials: not implemented; do not add secrets for them until the integration has a verified data source and a repository-owned generator.
 
 Never paste credentials into this document, README, issue, workflow log or commit.
@@ -49,7 +49,7 @@ Never paste credentials into this document, README, issue, workflow log or commi
 - Rendering uses Eevee Next with software rendering on GitHub-hosted Linux runners. The observed twelve-scene render took about 6 minutes 34 seconds, excluding setup and verification. Actual duration varies with runner load.
 - The profile workflow promotes the new scene GIFs only after every expected output passes validation.
 
-The engineering-city render is decorative architecture, not contribution analytics. Do not describe it as a contribution city until a verified contribution calendar data source drives the geometry.
+The contribution city is built from the GitHub GraphQL contributionCalendar. scripts/fetch_contribution_data.py writes assets/contribution-calendar.json and assets/contribution-city-data.svg. Blender reads that same dated daily-count data to build the 3D isometric calendar city. If PROFILE_READ_TOKEN is absent or rejected, the JSON records status=unavailable and the city uses a neutral empty grid. It never invents activity. Private counts appear only when the account setting and token scope permit them.
 
 ## Dashboard data
 
@@ -57,6 +57,7 @@ scripts/generate_dashboard.py calls the GitHub public REST API and writes:
 - assets/github-dashboard.svg
 - assets/github-dashboard.png
 - assets/github-dashboard-data.json
+- assets/contribution-calendar.json and assets/contribution-city-data.svg
 
 The JSON file records the source, UTC generation timestamp, public account metrics, language byte totals and public repository metadata. Language shares are code volume across non-fork, non-archived public repositories; they are not skill scores. If a language API request fails, generation fails rather than silently publishing a partial distribution.
 
@@ -70,5 +71,6 @@ Set the repository variable BLOG_FEED_URL to an RSS or Atom feed you own. Remove
 - Use descriptive alt text and avoid excessive full-width motion.
 - GitHub README cannot run arbitrary JavaScript; a GIF is not an interactive game.
 - The snake workflow only verifies the previously approved GIF; it does not regenerate it.
+- The contribution-city generator uses the optional PROFILE_READ_TOKEN secret. Without it, the generated empty state is intentional.
 - Check the generated JSON and workflow run before trusting dashboard values.
 - See assets/design-system.md and docs/profile-audit/ for design and audit decisions.
