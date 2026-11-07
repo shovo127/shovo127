@@ -79,6 +79,9 @@ def title_assets():
     typewriter("Diploma in Automobile Engineering",M/"title-education-01.gif",GOLD,480,50,18)
     typewriter("TELC Deutsch B2",M/"title-education-02.gif",TEAL,480,50,18)
     typewriter("ENGINEERING · SOFTWARE · SYSTEMS",M/"title-footer.gif",GOLD,600,54,20)
+    typewriter("GITHUB",M/"title-connect-github.gif",TEAL,320,48,18)
+    typewriter("LEARNING PROJECT",M/"title-connect-learning.gif",GOLD,420,48,18)
+    typewriter("EMAIL",M/"title-connect-email.gif",TEAL,320,48,18)
 def unique_project_motion():
     names=["visaflowx-interface","kostenlos-ai-workspace","noti-fixer-diagnostics","circle-search-native","smart-scanner-architecture","iptv-by-shovo"]
     for idx,name in enumerate(names):
