@@ -12,8 +12,8 @@
 
 | Workflow | Purpose | Trigger |
 |---|---|---|
-| profile-dashboard.yml | Refresh local SVG, PNG and JSON dashboard | Daily schedule, generator changes, manual |
-| profile-assets.yml | Render and validate Blender scenes, then update README image references | Renderer/packer changes, manual |
+| profile-dashboard.yml | Refresh dashboard SVG/PNG/JSON and the isometric metrics city | Daily schedule, generator or contribution-data changes, manual |
+| profile-assets.yml | Fetch contribution data, render and validate Blender scenes, then update README image references | Renderer/packer/contribution-data generator changes, manual |
 | profile-3d.yml | Manual 3D render entry point | Manual |
 | readme-check.yml | Validate local image references, SVG, dashboard JSON, scripts and public leaks | PR, successful media workflow, manual |
 | snake.yml | Verify the preserved approved snake GIF | Manual |
@@ -49,7 +49,7 @@ Never paste credentials into this document, README, issue, workflow log or commi
 - Rendering uses Eevee Next with software rendering on GitHub-hosted Linux runners. The observed twelve-scene render took about 6 minutes 34 seconds, excluding setup and verification. Actual duration varies with runner load.
 - The profile workflow promotes the new scene GIFs only after every expected output passes validation.
 
-The contribution city is built from the GitHub GraphQL contributionCalendar. scripts/fetch_contribution_data.py writes assets/contribution-calendar.json, assets/contribution-city-data.svg and assets/metrics-city.svg. Blender reads that same dated daily-count data to build the 3D isometric calendar city. If PROFILE_READ_TOKEN is absent or rejected, the JSON records status=unavailable and the city uses a neutral empty grid. It never invents activity. Private counts appear only when the account setting and token scope permit them.
+The contribution city is built from the GitHub GraphQL contributionCalendar. scripts/fetch_contribution_data.py writes assets/contribution-calendar.json and assets/contribution-city-data.svg. Blender reads that same dated daily-count data to build the 3D isometric calendar city. scripts/generate_metrics_city.py writes assets/metrics-city.svg from the public repository metrics, language byte totals, verified project categories and contribution total when available. If PROFILE_READ_TOKEN is absent or rejected, the JSON records status=unavailable and the city uses a neutral empty grid. It never invents activity. Private counts appear only when the account setting and token scope permit them.
 
 ## Dashboard data
 
@@ -72,6 +72,6 @@ Set the repository variable BLOG_FEED_URL to an RSS or Atom feed you own. Remove
 - Use descriptive alt text and avoid excessive full-width motion.
 - GitHub README cannot run arbitrary JavaScript; a GIF is not an interactive game.
 - The snake workflow only verifies the previously approved GIF; it does not regenerate it.
-- The contribution-city generator uses the optional PROFILE_READ_TOKEN secret. Without it, the generated empty state is intentional.
+- The contribution-city generator uses GITHUB_TOKEN for public data; PROFILE_READ_TOKEN is optional for private counts. If GitHub GraphQL data is unavailable, the neutral empty state is intentional.
 - Check the generated JSON and workflow run before trusting dashboard values.
 - See assets/design-system.md and docs/profile-audit/ for design and audit decisions.
