@@ -153,17 +153,44 @@ def monitor_dashboard():
         cube("Metric panel",(.95+j*.66,-.12,.62),(.48,.025,.22),DARK,.025)
     torus("Metric ring",(2.9,-.13,.58),.2,.035,GOLD,(math.pi/2,0,0))
 
-def trophy():
-    cyl("Award plinth",(2,0,-1.05),.92,.2,DARK)
-    cyl("Engraved brass ring",(2,0,-.91),.86,.045,GOLD)
-    cyl("Trophy stem",(2,0,-.42),.14,.9,STEEL)
-    torus("Trophy collar",(2,0,-.05),.28,.055,GOLD)
-    # A machined cup assembled from a bowl, flared rim and handles.
-    cyl("Trophy bowl",(2,0,.38),.52,.72,GOLD)
-    torus("Trophy lip",(2,0,.76),.53,.055,STEEL)
-    torus("Left handle",(1.42,0,.42),.3,.065,GOLD,(0,math.pi/2,0))
-    torus("Right handle",(2.58,0,.42),.3,.065,GOLD,(0,math.pi/2,0))
-    sphere("Award crest",(2,-.29,.42),.13,WHITE)
+def caliper():
+    # A precision vernier caliper: a real engineering measuring instrument.
+    cube("Caliper beam",(2,0,0),(4.8,.18,.18),STEEL,.035)
+    cube("Graduated scale",(2,-.105,.0),(4.25,.018,.08),DARK,.012)
+    for i in range(33):
+        x=-.05+i*.128
+        height=.075 if i%5==0 else .042
+        cube("Scale graduation",(x,-.12,.045),(0.012,.012,height),GOLD,.003)
+    cube("Fixed jaw",(4.15,0,.55),(.18,.18,1.12),STEEL,.035)
+    cube("Fixed inside jaw",(3.86,0,.34),(.62,.18,.14),STEEL,.025)
+    cube("Sliding carriage",(1.35,-.02,0),(.62,.34,.52),DARK,.06)
+    cube("Sliding jaw",(1.35,0,.54),(.18,.18,1.08),STEEL,.035)
+    cube("Sliding inside jaw",(1.62,0,.32),(.62,.18,.14),STEEL,.025)
+    cyl("Thumb roller",(1.35,-.23,-.02),.19,.12,GOLD,bev=.025).rotation_euler[0]=math.pi/2
+    cube("Locking screw",(1.35,.22,.02),(.3,.12,.12),GOLD,.025)
+    for x in (.4,.65,.9):
+        cube("Depth gauge detail",(x,.02,-.18),(.08,.1,.04),TEAL,.008)
+
+def city():
+    # Decorative industrial campus scene; deliberately not contribution data.
+    cube("City foundation",(2.4,.2,-1.24),(6.2,3.6,.22),DARK,.08)
+    cube("Main access road",(2.4,-.85,-1.105),(6.0,.48,.025),BLACK,.012)
+    cube("Cross street",(2.4,.45,-1.10),(.42,2.6,.025),BLACK,.012)
+    buildings=((.35,.45,1.15,.72,.8),(1.35,.85,2.15,.82,.8),
+               (2.55,.55,1.45,.78,.8),(3.55,1.0,2.75,.82,.8),
+               (4.65,.5,1.7,.76,.8),(1.0,-.05,.75,.9,.62),
+               (3.65,-.05,.92,.95,.62),(5.0,1.25,.9,.7,.7))
+    for i,(x,y,h,w,d) in enumerate(buildings):
+        cube("Architectural building",(x,y,-1.10+h/2),(w,d,h),STEEL if i%2 else DARK,.045)
+        for z in range(1,max(2,int(h*2))):
+            for side in (-1,1):
+                cube("Facade glazing",(x+side*(w/2+.008),y-d/2-.012,-1.08+z*.38),(.018,.025,.14),GLASS,.006)
+        cube("Roof service block",(x,y,-1.08+h+.06),(w*.38,d*.34,.12),DARK,.018)
+    for x in (.35,1.25,2.15,3.05,3.95,4.85):
+        cube("Road marking",(x,-.85,-1.08),(.42,.025,.012),GOLD,.004)
+    for x in (.45,1.45,2.45,3.45,4.45,5.15):
+        cube("Street light pole",(x,-1.22,-.62),(.025,.025,.9),GOLD,.01)
+        sphere("Street light",(x,-1.22,-.16),.05,WHITE)
 
 def city():
     for i,(x,y,h,w) in enumerate(((.3,0,1.6,.65),(1.15,.2,2.5,.72),(2.05,0,1.9,.72),(2.9,.1,3.1,.75),(3.85,0,1.35,.62),(4.6,.15,2.1,.68))):
@@ -217,7 +244,7 @@ SCENES=[
  ("03-featured-work",laptop),
  ("04-technology",phone),
  ("05-command-center",monitor_dashboard),
- ("06-achievements",trophy),
+ ("06-precision-tools",caliper),
  ("07-engineering-city",city),
  ("09-coding-habits",keyboard),
  ("10-learning-loop",book),
@@ -240,7 +267,7 @@ for slug,builder in SCENES:
             obj.parent=root
     # Product photography lighting: broad key, cool fill and warm rim.
     bpy.ops.object.camera_add(location=(2.1,-13.5,3.1))
-    camera=bpy.context.object; camera.data.type="ORTHO"; camera.data.ortho_scale=12.2; aim(camera,(2.0,0,0))
+    camera=bpy.context.object; camera.data.type="ORTHO"; camera.data.ortho_scale=10.8 if slug=="07-engineering-city" else 12.2;\n    if slug=="07-engineering-city": camera.location=(9,-11,9)\n    aim(camera,(2.2,0,-.2) if slug=="07-engineering-city" else (2.0,0,0))
     scene=bpy.context.scene; scene.camera=camera
     for name,loc,power,size,color in (
       ("Large softbox key",(-1,-5,7),1500,7,(.78,.88,1)),
