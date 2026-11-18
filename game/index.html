@@ -112,7 +112,7 @@ const missions = [
 ];
 const world=document.getElementById('world'),ctx=world.getContext('2d'),logEl=document.getElementById('log');
 const W=2200,H=1450,player={x:1090,y:700,speed:3.5,dir:0},keys=new Set(),completed=new Set();
-let xp=0,started=false,activeMission=null,bossHits=0,bossDefeated=false,lastTime=0,cam={x:0,y:0},dpr=1,viewW=960,viewH=560;
+let xp=0,started=false,activeMission=null,sourceVisited=false,bossHits=0,bossDefeated=false,lastTime=0,cam={x:0,y:0},dpr=1,viewW=960,viewH=560;
 const $=id=>document.getElementById(id);
 function save(){try{localStorage.setItem('shovo-system-quest',JSON.stringify({xp,completed:[...completed],bossDefeated}));}catch(e){}}
 function load(){try{const s=JSON.parse(localStorage.getItem('shovo-system-quest')||'{}');xp=Number.isFinite(s.xp)?s.xp:0;(s.completed||[]).forEach(id=>{if(missions.some(m=>m.id===id))completed.add(id)});bossDefeated=!!s.bossDefeated;}catch(e){}}
@@ -137,12 +137,13 @@ $('coords').textContent='X: '+String(Math.round(player.x)).padStart(4,'0')+' / Y
 }
 function nearest(){let best=null,dist=Infinity;missions.forEach(m=>{const d=Math.hypot(player.x-m.x,player.y-m.y);if(d<dist){dist=d;best=m}});const bossDist=Math.hypot(player.x-1090,player.y-700);if(completed.size===6&&!bossDefeated&&bossDist<dist){return bossDist<110?{boss:true,zone:'CORE GUARDIAN'}:null;}return dist<105?best:null;}
 function enter(){started=true;$('welcome').classList.add('hidden');say('Player entered the Systems Frontier. Explore the marked stations.');$('connection').textContent='● PLAYER ACTIVE';}
-function openMission(m){if(completed.has(m.id)){say(m.name+' core already secured.');return;}activeMission=m;$('dialogKicker').textContent='MISSION '+String(missions.indexOf(m)+1).padStart(2,'0')+' // '+m.zone;$('dialogTitle').textContent=m.name;$('dialogText').textContent=m.desc;$('dialogObjective').textContent=m.objective;$('repoLink').href=m.repo;$('completeBtn').disabled=false;$('missionDialog').classList.remove('hidden');}
+function openMission(m){if(completed.has(m.id)){say(m.name+' core already secured.');return;}activeMission=m;$('dialogKicker').textContent='MISSION '+String(missions.indexOf(m)+1).padStart(2,'0')+' // '+m.zone;$('dialogTitle').textContent=m.name;$('dialogText').textContent=m.desc;$('dialogObjective').textContent=m.objective;$('repoLink').href=m.repo;$('completeBtn').disabled=true;sourceVisited=false;$('repoLink').setAttribute('aria-label','Open '+m.name+' source repository in a new tab. Return here to complete the objective.');$('missionDialog').classList.remove('hidden');}
 function openBoss(){if(bossDefeated){return;}bossHits=0;$('bossCount').textContent='Guardian integrity: 3 / 3';$('bossBar').style.width='0%';$('bossDialog').classList.remove('hidden');}
 function interact(){if(!started)return;const n=nearest();if(!n){say('No station in range. Follow the illuminated route.');return;}if(n.boss){openBoss();return;}openMission(n);}
 function closeDialogs(){$('missionDialog').classList.add('hidden');$('bossDialog').classList.add('hidden');}
 $('enterBtn').addEventListener('click',enter);$('startBtn').addEventListener('click',enter);$('closeDialog').addEventListener('click',closeDialogs);$('leaveBoss').addEventListener('click',closeDialogs);
-$('completeBtn').addEventListener('click',()=>{if(!activeMission)return;completed.add(activeMission.id);xp+=120;save();say('MISSION CLEAR: '+activeMission.name+' / +120 XP / DATA CORE SECURED.');activeMission=null;closeDialogs();updateHud();if(completed.size===6)say('ALL SIX CORES ASSEMBLED. Return to the central hub to challenge the guardian.');});
+$('repoLink').addEventListener('click',()=>{sourceVisited=true;$('completeBtn').disabled=false;$('dialogObjective').textContent='SOURCE OPENED. Return from the repository and complete the objective to secure this data core.';});
+$('completeBtn').addEventListener('click',()=>{if(!activeMission||!sourceVisited)return;completed.add(activeMission.id);xp+=120;save();say('MISSION CLEAR: '+activeMission.name+' / +120 XP / DATA CORE SECURED.');activeMission=null;closeDialogs();updateHud();if(completed.size===6)say('ALL SIX CORES ASSEMBLED. Return to the central hub to challenge the guardian.');});
 $('strikeBtn').addEventListener('click',()=>{bossHits++;$('bossBar').style.width=(bossHits/3*100)+'%';$('bossCount').textContent='Guardian integrity: '+(3-bossHits)+' / 3';if(bossHits>=3){bossDefeated=true;xp+=240;save();updateHud();$('bossDialog').classList.add('hidden');$('victory').classList.remove('hidden');say('CORE GUARDIAN DEFEATED. +240 XP. FRONTIER CONQUERED.');}});
 $('victoryClose').addEventListener('click',()=>$('victory').classList.add('hidden'));
 $('resetBtn').addEventListener('click',()=>{if(!confirm('Erase this browser save and restart the game?'))return;xp=0;completed.clear();bossDefeated=false;player.x=1090;player.y=700;save();updateHud();say('Save data reset. A new run begins.');});
