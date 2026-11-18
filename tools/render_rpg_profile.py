@@ -108,7 +108,7 @@ def render_world():
     base=world_base()
     frames=[]
     route=[(160,345),(340,305),(510,370),(690,310),(870,360),(1040,300)]
-    for f in range(20):
+    for f in range(16):
         im=base.convert("RGBA")
         overlay=Image.new("RGBA",im.size,(0,0,0,0))
         d=ImageDraw.Draw(overlay)
@@ -121,7 +121,8 @@ def render_world():
         py=int(route[idx][1]*(1-frac)+route[idx+1][1]*frac)
         d.ellipse((px-10,py-10,px+10,py+10),fill=(255,51,82,120),outline=(255,170,183,255),width=2)
         frames.append(Image.alpha_composite(im,overlay).convert("RGB"))
-    frames[0].save(OUT/"quest-world.gif",save_all=True,append_images=frames[1:],duration=120,loop=0,optimize=True,disposal=2)
+    palette_frames = [frame.quantize(colors=96, method=Image.Quantize.MEDIANCUT, dither=Image.Dither.NONE) for frame in frames]
+    palette_frames[0].save(OUT/"quest-world.gif",save_all=True,append_images=palette_frames[1:],duration=120,loop=0,optimize=True,disposal=2)
 
 def save_card(name,title,subtitle,draw_fn,height):
     im=gradient((W,height),(8,9,14),(18,8,14))
