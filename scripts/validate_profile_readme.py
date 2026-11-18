@@ -75,6 +75,17 @@ required_sections = [
 ]
 for section in required_sections:
     assert readme.count(section) == 1, f"Missing or duplicate game section: {section}"
+
+# Keep the rendered map in one-to-one agreement with the six project missions.
+renderer = (ROOT / "tools" / "render_rpg_profile.py").read_text(encoding="utf-8")
+map_labels = (
+    "BROWSER OUTPOST", "AI LAB", "ANDROID TOWER",
+    "SYSTEMS GATE", "SCANNER WORKSHOP", "PLAYLIST ARCHIVE",
+)
+for label in map_labels:
+    assert f'"{label}"' in renderer, f"Quest map is missing mission location: {label}"
+for obsolete in ("WINDOWS WORKSHOP", "AUTOMOTIVE GARAGE", "LEARNING CAMP"):
+    assert obsolete not in renderer, f"Obsolete quest-map location remains: {obsolete}"
 for stale in (
     "PUBLIC REPOSITORY ANALYTICS", "PROGRESS LOG / VERIFIED MILESTONES",
     "FIELD GUIDE / FAQ", "TECHNICAL FOCUS /", "ENGINEERING PROFILE / PLAYER PROFILE",
