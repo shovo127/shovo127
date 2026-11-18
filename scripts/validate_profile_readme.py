@@ -52,6 +52,9 @@ parser = References()
 parser.feed(readme)
 assert "<details>" not in readme.lower(), "Core game visuals/content must not be hidden inside collapsed details."
 assert readme.count("assets/game/quest-world.gif") == 1, "The animated quest world must be visible exactly once."
+assert "Static portfolio illustration" in readme, "Project artwork must be identified as illustrative."
+assert "Animated VisaFlowX mission artwork" not in readme, "Static project artwork must not be described as animated."
+assert "## 07 / CHARACTER FILE" in readme and "## 08 / SAVE POINT" in readme, "Character and save-point sections must be numbered consistently."
 assert not parser.remote_images, f"External image dependencies: {parser.remote_images}"
 targets = set(parser.images) | set(parser.links)
 targets.update(re.findall(r"!??\[[^\]]*\]\(([^)]+)\)", readme))
@@ -68,7 +71,7 @@ assert not missing, f"Broken or case-mismatched local references: {sorted(missin
 required_sections = [
     "## 01 / QUEST WORLD", "## 02 / MISSION SELECT", "## 03 / SKILL TREE",
     "## 04 / WORKSHOP LOADOUT", "## 05 / BOSS FIGHT",
-    "## 06 / AUTOMOTIVE GARAGE", "## 07 / SAVE POINT"
+    "## 06 / AUTOMOTIVE GARAGE", "## 07 / CHARACTER FILE", "## 08 / SAVE POINT"
 ]
 for section in required_sections:
     assert readme.count(section) == 1, f"Missing or duplicate game section: {section}"
