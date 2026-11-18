@@ -1,8 +1,10 @@
 <p align="center"><img src="./assets/hero/engineering-hero.svg" width="100%" alt="Engineering mindset, software building and practical technology with a precision mechanical rotor illustration" /></p>
 
-<h1 align="center">MOHAMMED THUHIDUL ISLAM SHOVO</h1>
-<p align="center"><strong>AUTOMOBILE ENGINEER · SOFTWARE BUILDER · SYSTEMS EXPLORER</strong></p>
-<p align="center">DHAKA, BANGLADESH · <a href="https://github.com/shovo127">GITHUB</a> · <a href="https://lernedeutschmittechnologie.tech">LEARNING PROJECT</a></p>
+<h1 align="center">Mohammed Thuhidul Islam Shovo</h1>
+<p align="center"><strong>Engineering Mindset · Software Building · AI & Automation · Practical Technology</strong></p>
+<p align="center">Dhaka, Bangladesh · <a href="https://github.com/shovo127">GitHub</a> · <a href="https://lernedeutschmittechnologie.tech">Lerne Deutsch Mit Technologie</a></p>
+
+---
 
 <p align="center">
   <a href="#quest-world">WORLD MAP</a> ·
