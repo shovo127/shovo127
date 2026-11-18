@@ -1,102 +1,101 @@
 <p align="center"><img src="./assets/hero/engineering-hero.svg" width="100%" alt="Engineering mindset, software building and practical technology with a precision mechanical rotor illustration" /></p>
 
 <h1 align="center">Mohammed Thuhidul Islam Shovo</h1>
-<p align="center"><strong>Engineering Mindset · Software Building · AI & Automation · Practical Technology</strong></p>
+<p align="center"><strong>Engineering Mindset · Software Building · AI &amp; Automation · Practical Technology</strong></p>
 <p align="center">Dhaka, Bangladesh · <a href="https://github.com/shovo127">GitHub</a> · <a href="https://lernedeutschmittechnologie.tech">Lerne Deutsch Mit Technologie</a></p>
 
 ---
 
 <p align="center">
-  <a href="#selected-projects">Projects</a> ·
-  <a href="#systems-at-a-glance">Systems</a> ·
-  <a href="#technical-focus">Technical Focus</a> ·
-  <a href="#education--learning">Education</a> ·
-  <a href="#public-repository-analytics">Analytics</a> ·
-  <a href="#connect">Connect</a>
+  <a href="#quest-board">🗺️ Quest Board</a> ·
+  <a href="#skill-tree">🌳 Skill Tree</a> ·
+  <a href="#loot-room">🎒 Inventory</a> ·
+  <a href="#boss-arena">⚙️ Boss Arena</a> ·
+  <a href="#training-ground">📚 Training Ground</a> ·
+  <a href="#save-point">💾 Save Point</a>
 </p>
 
-## ENGINEERING PROFILE
+<p align="center"><img src="./assets/game/world-map.svg" width="100%" alt="Pixel-art inspired engineering frontier with a workshop, mechanical gear, central campfire and glowing computer workstation." /></p>
 
-Diploma graduate in **Automobile Engineering** from Dhaka Polytechnic Institute, building practical software around real workflows and system behaviour. My work spans browser automation, multi-provider AI, Android diagnostics, desktop architecture and learning technology.
+## PLAYER PROFILE / FIELD NOTES
 
-I approach engineering by understanding the system, defining safety boundaries, building useful tools and verifying actual behaviour. Current learning focus: **TELC Deutsch B2**.
+**PLAYER:** Mohammed Thuhidul Islam Shovo  
+**CLASS:** Automobile Engineering · Software Builder  
+**HOME BASE:** Dhaka, Bangladesh  
+**CURRENT MAIN QUEST:** Building practical technology and improving systems through careful investigation, implementation and verification.
 
-## SYSTEMS AT A GLANCE
+Diploma graduate in **Automobile Engineering** from Dhaka Polytechnic Institute. My projects explore browser automation, multi-provider AI, Android diagnostics, desktop architecture and learning technology. I approach each build by understanding the system, defining its boundaries and checking what actually works.
 
-A map of the disciplines behind my projects. The connections represent a shared engineering approach—not a claim that every project uses every technology.
+<sub>Not a game account: the RPG theme is a visual way to organise real projects, learning and engineering interests. No fictional XP, rankings or achievements are used.</sub>
 
-<p align="center"><img src="./assets/diagrams/engineering-systems-map.svg" width="100%" alt="Engineering systems map connecting software engineering, AI and automation, Android systems, automotive engineering, learning technology and technical visualisation to a common engineering approach." /></p>
+## <a name="quest-board"></a>🗺️ QUEST BOARD / SELECT A PROJECT
 
-## SELECTED PROJECTS
+Six real repositories. Choose a quest to inspect its source, implementation and current scope. The animated artwork is an original visual interpretation of documented workflows—not a screenshot of a live application.
 
-Six selected project studies. Each visual is an original, rendered interpretation of the repository's documented workflow—not a screenshot of a live application. Project status and technical limitations are described in text.
+<p align="center"><img src="./assets/game/quest-route.svg" width="100%" alt="A game-style route connecting six engineering project checkpoints." /></p>
 
 <table>
   <tr>
     <td width="50%" valign="top">
       <a href="https://github.com/shovo127/visaflowx-universal"><img src="./assets/motion/project-01-scan.gif" width="100%" alt="Animated VisaFlowX browser automation workflow panel with site profiles, DOM monitoring, retry rules and a manual verification boundary." /></a>
-      <p><strong><sub>01 / BROWSER AUTOMATION · MANIFEST V3</sub></strong></p>
+      <p><strong><sub>QUEST 01 / BROWSER AUTOMATION · MANIFEST V3</sub></strong></p>
       <h3><a href="https://github.com/shovo127/visaflowx-universal">VisaFlowX Universal</a></h3>
       <p>Profile-driven browser workflow assistant with DOM monitoring, configurable rules, retries, scheduling and notifications. Protected verification is handed back to the user; no CAPTCHA or anti-bot bypass.</p>
-      <p><sub><strong>STACK</strong> · JavaScript · Chrome Extension APIs · MutationObserver</sub></p>
-      <p><a href="https://github.com/shovo127/visaflowx-universal">VIEW REPOSITORY ↗</a></p>
+      <p><sub><strong>TOOLS</strong> · JavaScript · Chrome Extension APIs · MutationObserver</sub></p>
+      <p><a href="https://github.com/shovo127/visaflowx-universal">OPEN QUEST ↗</a></p>
     </td>
     <td width="50%" valign="top">
       <a href="https://github.com/shovo127/kostenlos-ai"><img src="./assets/motion/project-02-scan.gif" width="100%" alt="Animated Kostenlos AI multi-provider chat workspace with user-managed keys and provider failover." /></a>
-      <p><strong><sub>02 / MULTI-PROVIDER AI</sub></strong></p>
+      <p><strong><sub>QUEST 02 / MULTI-PROVIDER AI</sub></strong></p>
       <h3><a href="https://github.com/shovo127/kostenlos-ai">Kostenlos AI</a></h3>
       <p>Bring-your-own-key AI chat application. Appwrite stores user-managed provider keys; the chat function supports failover across Groq, Gemini, OpenAI and Mistral, with optional Tavily search context.</p>
-      <p><sub><strong>STACK</strong> · React · TypeScript · Appwrite · Cloudflare Pages Functions</sub></p>
-      <p><a href="https://github.com/shovo127/kostenlos-ai">VIEW REPOSITORY ↗</a></p>
+      <p><sub><strong>TOOLS</strong> · React · TypeScript · Appwrite · Cloudflare Pages Functions</sub></p>
+      <p><a href="https://github.com/shovo127/kostenlos-ai">OPEN QUEST ↗</a></p>
     </td>
   </tr>
   <tr>
     <td width="50%" valign="top">
       <a href="https://github.com/shovo127/Noti-Fixer-for-Chinese-Devices"><img src="./assets/motion/project-03-scan.gif" width="100%" alt="Animated Noti-Fixer Android diagnostics panel showing ADB pairing, notification checks and user approval before reversible changes." /></a>
-      <p><strong><sub>03 / ANDROID DIAGNOSTICS</sub></strong></p>
+      <p><strong><sub>QUEST 03 / ANDROID DIAGNOSTICS</sub></strong></p>
       <h3><a href="https://github.com/shovo127/Noti-Fixer-for-Chinese-Devices">Noti-Fixer for Chinese Devices</a></h3>
       <p>Python and ADB toolkit for wireless pairing, notification/background diagnostics and reversible settings on selected Android ROMs. Findings are reviewed and changes require user approval.</p>
-      <p><sub><strong>STACK</strong> · Python · ADB · Shell / PowerShell · Android</sub></p>
-      <p><a href="https://github.com/shovo127/Noti-Fixer-for-Chinese-Devices">VIEW REPOSITORY ↗</a></p>
+      <p><sub><strong>TOOLS</strong> · Python · ADB · Shell / PowerShell · Android</sub></p>
+      <p><a href="https://github.com/shovo127/Noti-Fixer-for-Chinese-Devices">OPEN QUEST ↗</a></p>
     </td>
     <td width="50%" valign="top">
       <a href="https://github.com/shovo127/Circle-to-Search-for-Xiaomi"><img src="./assets/motion/project-04-scan.gif" width="100%" alt="Animated Circle to Search for Xiaomi HyperOS gesture trigger and native Google invocation flow." /></a>
-      <p><strong><sub>04 / ANDROID INTEGRATION</sub></strong></p>
+      <p><strong><sub>QUEST 04 / ANDROID INTEGRATION</sub></strong></p>
       <h3><a href="https://github.com/shovo127/Circle-to-Search-for-Xiaomi">Circle to Search for Xiaomi</a></h3>
       <p>Minimal Android trigger for Google's native Circle to Search on supported Xiaomi/HyperOS configurations. A transparent activity invokes Android's Voice Interaction Manager. Google default-assistant and device-eligibility requirements apply.</p>
-      <p><sub><strong>STACK</strong> · Kotlin · Android SDK · HyperOS Back Tap · Voice Interaction Manager</sub></p>
-      <p><a href="https://github.com/shovo127/Circle-to-Search-for-Xiaomi">VIEW REPOSITORY ↗</a></p>
+      <p><sub><strong>TOOLS</strong> · Kotlin · Android SDK · HyperOS Back Tap · Voice Interaction Manager</sub></p>
+      <p><a href="https://github.com/shovo127/Circle-to-Search-for-Xiaomi">OPEN QUEST ↗</a></p>
     </td>
   </tr>
   <tr>
     <td width="50%" valign="top">
       <a href="https://github.com/shovo127/Smart-Scanner-Pro"><img src="./assets/motion/project-05-scan.gif" width="100%" alt="Animated Smart Scanner Pro Windows architecture concept with C sharp and .NET system layers." /></a>
-      <p><strong><sub>05 / WINDOWS ARCHITECTURE</sub></strong></p>
+      <p><strong><sub>QUEST 05 / WINDOWS ARCHITECTURE</sub></strong></p>
       <h3><a href="https://github.com/shovo127/Smart-Scanner-Pro">Smart Scanner Pro</a></h3>
       <p>Windows scanning architecture organised around C#/.NET and Clean Architecture boundaries. TWAIN/WIA/eSCL integration, OCR, image processing, PDF workflows and plugins are treated as planned scope unless implemented in the repository.</p>
-      <p><sub><strong>STACK</strong> · C# · .NET · WPF · Clean Architecture</sub></p>
-      <p><a href="https://github.com/shovo127/Smart-Scanner-Pro">VIEW REPOSITORY ↗</a></p>
+      <p><sub><strong>TOOLS</strong> · C# · .NET · WPF · Clean Architecture</sub></p>
+      <p><a href="https://github.com/shovo127/Smart-Scanner-Pro">OPEN QUEST ↗</a></p>
     </td>
     <td width="50%" valign="top">
       <a href="https://github.com/shovo127/IPTV-By-Shovo"><img src="./assets/motion/project-06-scan.gif" width="100%" alt="Animated IPTV By Shovo public playlist index illustrating M3U and M3U8 playlist maintenance." /></a>
-      <p><strong><sub>06 / OPEN PLAYLIST MAINTENANCE</sub></strong></p>
+      <p><strong><sub>QUEST 06 / OPEN PLAYLIST MAINTENANCE</sub></strong></p>
       <h3><a href="https://github.com/shovo127/IPTV-By-Shovo">IPTV By Shovo</a></h3>
       <p>Public collection of third-party channel links and M3U/M3U8 playlists for compatible media players. No video streams are hosted by this repository; source availability and rights remain with original providers.</p>
       <p><sub><strong>FORMAT</strong> · M3U · M3U8 · Playlist data</sub></p>
-      <p><a href="https://github.com/shovo127/IPTV-By-Shovo">VIEW REPOSITORY ↗</a></p>
+      <p><a href="https://github.com/shovo127/IPTV-By-Shovo">OPEN QUEST ↗</a></p>
     </td>
   </tr>
 </table>
 
-## HOW I APPROACH A BUILD
+## <a name="skill-tree"></a>🌳 SKILL TREE / ENGINEERING PATHS
 
-A repeatable workflow keeps the work grounded in requirements and evidence—from the first investigation to regression checks.
+These are the areas explored through study and projects—not a claim of expert-level mastery in every branch.
 
-<p align="center"><img src="./assets/diagrams/engineering-build-loop.svg" width="100%" alt="Four-stage engineering workflow: observe requirements and user behaviour, model architecture and failure boundaries, build maintainable changes, and verify with tests and regression checks; then learn and repeat." /></p>
-
-## TECHNICAL FOCUS
-
-Six engineering disciplines. The visual cards are illustrations; the descriptions remain the source of truth.
+<p align="center"><img src="./assets/game/skill-tree.svg" width="100%" alt="Six-branch engineering skill tree connecting software, AI and automation, Android, automotive engineering, learning technology and mechanical visualisation." /></p>
 
 <table>
   <tr>
@@ -137,24 +136,39 @@ Six engineering disciplines. The visual cards are illustrations; the description
   </tr>
 </table>
 
-## AUTOMOTIVE ENGINEERING / 3D STUDY
+## <a name="loot-room"></a>🎒 LOOT ROOM / WORKSHOP INVENTORY
 
-<img src="./assets/motion/piston-crankshaft-cycle.gif" width="100%" alt="Animated slider-crank study: piston reciprocates while the connecting rod pivots and crankshaft rotates." />
+<p align="center"><img src="./assets/game/loot-room.svg" width="100%" alt="Game-style inventory of technologies used across the selected projects." /></p>
 
-<sub>Original parametric mesh study rendered from generated geometry; not a production engine model. The available source is a rendered study, not an editable CAD assembly.</sub>
+<details>
+<summary><strong>Open the inventory — additional tools and platforms</strong></summary>
 
-## EDUCATION & LEARNING
+- **Web &amp; browser:** JavaScript, Chrome Extension APIs, React, TypeScript.
+- **AI &amp; backend:** Appwrite, Cloudflare Pages Functions, Groq, Gemini, OpenAI, Mistral and optional Tavily search context.
+- **Android &amp; diagnostics:** Kotlin, Android SDK, ADB, Python, Shell and PowerShell.
+- **Desktop architecture study:** C#, .NET and WPF are listed for Smart Scanner Pro; integrations and features remain planned unless implemented in its repository.
+- **Playlist formats:** M3U and M3U8.
+
+</details>
+
+## <a name="boss-arena"></a>⚙️ BOSS ARENA / THE REAL CHALLENGE
+
+<p align="center"><img src="./assets/game/boss-arena.svg" width="100%" alt="A mechanical boss representing real-world complexity, with a four-stage process: observe, model, build and verify." /></p>
+
+Complex problems rarely yield to flashy claims. My approach is to understand requirements, map system boundaries, implement focused changes and verify actual behaviour. The goal is useful software—not a decorative demo that pretends to be production-ready.
+
+## <a name="training-ground"></a>📚 TRAINING GROUND / EDUCATION &amp; PRACTICE
 
 <table>
   <tr>
     <td width="50%" valign="top">
-      <p><strong><sub>01 / COMPLETED</sub></strong></p>
+      <p><strong><sub>COMPLETED STUDY</sub></strong></p>
       <h3>Diploma in Automobile Engineering</h3>
       <p><strong>Dhaka Polytechnic Institute</strong></p>
       <p>Technical education in automobile engineering.</p>
     </td>
     <td width="50%" valign="top">
-      <p><strong><sub>02 / CURRENT LEARNING</sub></strong></p>
+      <p><strong><sub>CURRENT LEARNING QUEST</sub></strong></p>
       <h3>TELC Deutsch B2</h3>
       <p><strong>German language preparation</strong></p>
       <p>Currently preparing for the TELC B2 examination.</p>
@@ -162,16 +176,22 @@ Six engineering disciplines. The visual cards are illustrations; the description
   </tr>
 </table>
 
+### Mechanical workshop / 3D study
+
+<img src="./assets/motion/piston-crankshaft-cycle.gif" width="100%" alt="Animated slider-crank study: piston reciprocates while the connecting rod pivots and crankshaft rotates." />
+
+<sub>Original parametric mesh study rendered from generated geometry; not a production engine model. The available source is a rendered study, not an editable CAD assembly.</sub>
+
 <img src="./assets/motion/education-path-live.gif" width="100%" alt="Education timeline with a continuous red scanning highlight; education details remain unchanged." />
 
-## PUBLIC REPOSITORY ANALYTICS
+## 📊 FIELD RECORD / PUBLIC REPOSITORY SNAPSHOT
 
 <p><strong><sub>GITHUB PUBLIC DATA / SNAPSHOT 2026-11-07</sub></strong></p>
 <img src="./assets/motion/analytics-snapshot-live.gif" width="100%" alt="Dated repository chart with a moving red scan overlay; all displayed metrics remain static." />
 
 <sub>Seven public project repositories · 13 stars · 4 forks. Language counts represent each repository's primary language, not code-byte share or personal proficiency. The snapshot excludes this profile repository and private repositories. Values are static, not live.</sub>
 
-## CONNECT
+## <a name="save-point"></a>💾 SAVE POINT / CONNECT
 
 <table>
   <tr>
@@ -193,17 +213,6 @@ Six engineering disciplines. The visual cards are illustrations; the description
   </tr>
 </table>
 
-<table>
-  <tr>
-    <td width="50%" valign="top" align="center">
-      <img src="./assets/cards/footer-engineering.jpg" width="100%" alt="Black and blood-red engineering identity card." />
-      <p><strong>ENGINEERING · SOFTWARE · SYSTEMS</strong></p>
-      <p><sub>Practical tools, careful implementation.</sub></p>
-    </td>
-    <td width="50%" valign="top" align="center">
-      <img src="./assets/cards/footer-location.jpg" width="100%" alt="Black and blood-red independent creator location card." />
-      <p><strong>DHAKA, BANGLADESH</strong></p>
-      <p><sub>Designed and maintained independently.</sub></p>
-    </td>
-  </tr>
-</table>
+<p align="center"><img src="./assets/game/end-screen.svg" width="100%" alt="Game-inspired closing screen: thanks for exploring my work, quest log saved." /></p>
+
+<sub>All game-inspired artwork is original portfolio artwork. Project descriptions link to their repositories for implementation details and current status.</sub>
