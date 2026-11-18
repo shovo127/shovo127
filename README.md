@@ -16,7 +16,7 @@
   <a href="#save-point">SAVE POINT</a>
 </p>
 
-<p align="center"><a href="https://shovo127.github.io/shovo127/"><strong>▶ PLAY THE RPG — ENTER THE SYSTEMS FRONTIER</strong></a></p>
+<p align="center"><a href="https://shovo-system-quest.vercel.app/"><strong>▶ PLAY THE RPG — ENTER THE SYSTEMS FRONTIER</strong></a></p>
 
 ## PLAYER PROFILE / BUILD PHILOSOPHY
 
