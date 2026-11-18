@@ -114,6 +114,21 @@ for i in range(1, 7):
 assert "planned" in readme.lower() and "does not host video streams" in readme.lower()
 assert "contact@lernedeutschmittechnologie.tech" in readme
 
+# Validate the real, standalone game rather than treating README artwork as gameplay.
+game_file = ROOT / "game" / "index.html"
+assert game_file.is_file(), "Playable RPG entry point is missing."
+game_html = game_file.read_text(encoding="utf-8")
+for feature in (
+    '<canvas id="world"', 'id="questList"', 'id="xpBar"',
+    "requestAnimationFrame(tick)", "localStorage.setItem('shovo-system-quest'",
+    "sourceVisited", "bossDefeated", "data-dir=", "keydown",
+):
+    assert feature in game_html, f"Playable RPG feature is missing: {feature}"
+for project_url in projects.values():
+    assert project_url in game_html, f"Game mission is missing its real source link: {project_url}"
+assert "PLAY THE RPG — ENTER THE SYSTEMS FRONTIER" in readme, "README must prominently link to the playable game."
+assert "https://shovo127.github.io/shovo127/" in readme, "README game link must target the GitHub Pages site."
+
 required_game = {
     "assets/game/quest-world.gif": ("GIF", (1200, 520)),
     "assets/game/skill-tree.png": ("PNG", (1200, 340)),
