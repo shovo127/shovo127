@@ -54,6 +54,8 @@ canvas{display:block;width:100%;height:min(62vw,590px);min-height:340px;image-re
 .dialog .kicker{margin-bottom:8px}.dialog h2{font-size:23px;margin:0 0 10px}.dialog p{color:#c2b6bf;font-size:13px;line-height:1.7}
 .dialog-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
 .primary{background:var(--red);border-color:#ff8298;color:#16070c}.primary:hover{background:#ff5473}
+.repo-link{display:inline-block;text-decoration:none;color:var(--text);background:#25141c;border:1px solid #7e2940;padding:10px 14px;text-transform:uppercase;letter-spacing:.07em;font-weight:800}
+.repo-link:hover,.repo-link:focus-visible{background:#4b1a2b;border-color:var(--red);outline:2px solid #ed315466;outline-offset:2px}
 .hidden{display:none!important}
 @media(max-width:700px){body{padding:0}.shell{border-left:0;border-right:0}.hero{align-items:start;flex-direction:column}.hud{grid-template-columns:1fr 1fr 1fr;padding-left:10px;padding-right:10px}.hud-value{font-size:13px}.world-wrap{margin:0 10px}canvas{height:68vw;min-height:310px}.zone-panel{grid-template-columns:1fr;padding:10px}.controls{padding:0 10px 12px}.mobile-pad{display:grid}.footer{padding:12px 10px}.quest-list{grid-template-columns:repeat(2,1fr)}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}
@@ -91,13 +93,13 @@ canvas{display:block;width:100%;height:min(62vw,590px);min-height:340px;image-re
   <div class="dialog"><div class="kicker">NEW GAME // SAVE DATA FOUND LOCALLY</div><h2>WELCOME TO THE FRONTIER</h2><p>You are entering a compact RPG built around Shovo's engineering portfolio. Walk between six stations, inspect each mission, complete its field objective and earn XP. Complete all six to open the Core Guardian arena.</p><p><b>Objective:</b> collect 6 data cores. <b>Controls:</b> WASD / arrows + E. Your progress stays in this browser.</p><div class="dialog-actions"><button class="primary" id="enterBtn">ENTER WORLD</button><button id="wipeBtn">NEW SAVE</button></div></div>
 </div>
 <div class="overlay hidden" id="missionDialog" role="dialog" aria-modal="true" aria-labelledby="dialogTitle">
-  <div class="dialog"><div class="kicker" id="dialogKicker">MISSION // DISCOVERY</div><h2 id="dialogTitle">MISSION NAME</h2><p id="dialogText"></p><p id="dialogObjective"></p><div class="dialog-actions"><a id="repoLink" href="#" target="_blank" rel="noopener noreferrer"><button>OPEN SOURCE REPOSITORY ↗</button></a><button class="primary" id="completeBtn">COMPLETE OBJECTIVE</button><button id="closeDialog">RETURN TO WORLD</button></div></div>
+  <div class="dialog"><div class="kicker" id="dialogKicker">MISSION // DISCOVERY</div><h2 id="dialogTitle">MISSION NAME</h2><p id="dialogText"></p><p id="dialogObjective"></p><div class="dialog-actions"><a id="repoLink" class="repo-link" href="#" target="_blank" rel="noopener noreferrer">OPEN SOURCE REPOSITORY ↗</a><button class="primary" id="completeBtn">COMPLETE OBJECTIVE</button><button id="closeDialog">RETURN TO WORLD</button></div></div>
 </div>
 <div class="overlay hidden" id="bossDialog" role="dialog" aria-modal="true" aria-labelledby="bossTitle">
   <div class="dialog"><div class="kicker">FINAL ENCOUNTER // ALL CORES ASSEMBLED</div><h2 id="bossTitle">THE COMPLEXITY CORE</h2><p id="bossText">The guardian represents the hardest part of engineering: turning an unclear problem into a verified system. Your six collected cores power the arena.</p><div class="bar"><span id="bossBar" style="width:0%"></span></div><p id="bossCount">Guardian integrity: 3 / 3</p><div class="dialog-actions"><button class="primary" id="strikeBtn">⚔ STRIKE THE CORE</button><button id="leaveBoss">RETREAT</button></div></div>
 </div>
 <div class="overlay hidden" id="victory" role="dialog" aria-modal="true">
-  <div class="dialog"><div class="kicker">QUEST CLEAR // SAVE POINT UPDATED</div><h2>FRONTIER CONQUERED</h2><p>All six data cores recovered. The final guardian is defeated. The real work continues in the linked repositories.</p><div class="dialog-actions"><a href="https://github.com/shovo127"><button class="primary">VIEW ALL BUILDS ↗</button></a><button id="victoryClose">BACK TO WORLD</button></div></div>
+  <div class="dialog"><div class="kicker">QUEST CLEAR // SAVE POINT UPDATED</div><h2>FRONTIER CONQUERED</h2><p>All six data cores recovered. The final guardian is defeated. The real work continues in the linked repositories.</p><div class="dialog-actions"><a class="repo-link primary" href="https://github.com/shovo127">VIEW ALL BUILDS ↗</a><button id="victoryClose">BACK TO WORLD</button></div></div>
 </div>
 <script>
 (() => {
@@ -147,7 +149,7 @@ $('completeBtn').addEventListener('click',()=>{if(!activeMission||!sourceVisited
 $('strikeBtn').addEventListener('click',()=>{bossHits++;$('bossBar').style.width=(bossHits/3*100)+'%';$('bossCount').textContent='Guardian integrity: '+(3-bossHits)+' / 3';if(bossHits>=3){bossDefeated=true;xp+=240;save();updateHud();$('bossDialog').classList.add('hidden');$('victory').classList.remove('hidden');say('CORE GUARDIAN DEFEATED. +240 XP. FRONTIER CONQUERED.');}});
 $('victoryClose').addEventListener('click',()=>$('victory').classList.add('hidden'));
 $('resetBtn').addEventListener('click',()=>{if(!confirm('Erase this browser save and restart the game?'))return;xp=0;completed.clear();bossDefeated=false;player.x=1090;player.y=700;save();updateHud();say('Save data reset. A new run begins.');});
-$('wipeBtn').addEventListener('click',()=>{$('resetBtn').click();enter();});
+$('wipeBtn').addEventListener('click',()=>{if(!confirm('Start a new game and erase the saved progress in this browser?'))return;xp=0;completed.clear();bossDefeated=false;player.x=1090;player.y=700;save();updateHud();say('New save created. Welcome to the frontier.');enter();});
 window.addEventListener('keydown',e=>{const k=e.key.toLowerCase();if(['arrowup','arrowdown','arrowleft','arrowright',' '].includes(k))e.preventDefault();if(k==='escape'){closeDialogs();$('victory').classList.add('hidden');return;}if(k==='e'||k===' '){interact();return;}if(['w','a','s','d','arrowup','arrowdown','arrowleft','arrowright'].includes(k))keys.add(k);});
 window.addEventListener('keyup',e=>keys.delete(e.key.toLowerCase()));window.addEventListener('blur',()=>keys.clear());
 document.querySelectorAll('[data-dir]').forEach(b=>{const d=b.dataset.dir,map={up:'arrowup',down:'arrowdown',left:'arrowleft',right:'arrowright'};const down=e=>{e.preventDefault();keys.add(map[d])},up=e=>{e.preventDefault();keys.delete(map[d])};b.addEventListener('pointerdown',down);b.addEventListener('pointerup',up);b.addEventListener('pointerleave',up);b.addEventListener('pointercancel',up);});
