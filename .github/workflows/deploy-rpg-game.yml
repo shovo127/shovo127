@@ -50,9 +50,9 @@ jobs:
           assert match, "Inline game script is missing"
           Path("/tmp/shovo-system-quest.js").write_text(match.group(1), encoding="utf-8")
           print("PASS: standalone RPG entry point and interactive game systems found.")
+          PY
       - name: Check JavaScript syntax
         run: node --check /tmp/shovo-system-quest.js
-          PY
 
   deploy:
     if: github.event_name != 'pull_request'
