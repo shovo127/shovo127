@@ -121,13 +121,15 @@ game_html = game_file.read_text(encoding="utf-8")
 for feature in (
     '<canvas id="world"', 'id="questList"', 'id="xpBar"',
     "requestAnimationFrame(tick)", "localStorage.setItem('shovo-system-quest'",
-    "sourceVisited", "bossDefeated", "data-dir=", "keydown",
+    "sourceVisited", "bossDefeated", "data-dir=", "keydown", 'class="repo-link"',
 ):
     assert feature in game_html, f"Playable RPG feature is missing: {feature}"
 for project_url in projects.values():
     assert project_url in game_html, f"Game mission is missing its real source link: {project_url}"
 assert "PLAY THE RPG — ENTER THE SYSTEMS FRONTIER" in readme, "README must prominently link to the playable game."
 assert "https://shovo127.github.io/shovo127/" in readme, "README game link must target the GitHub Pages site."
+assert "Windows architecture, automotive garage and learning camp" not in readme, "Quest-map alt text must match the six current locations."
+assert '<a id="repoLink" class="repo-link"' in game_html, "Mission source action must be a semantic link."
 
 required_game = {
     "assets/game/quest-world.gif": ("GIF", (1200, 520)),
