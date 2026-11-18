@@ -2,7 +2,7 @@ name: Render RPG profile artwork
 
 on:
   push:
-    branches: [rebuild/actual-rpg-profile]
+    branches: [rebuild/actual-rpg-profile, refine/rpg-profile-reference-parity]
     paths:
       - "tools/render_rpg_profile.py"
       - ".github/workflows/render-rpg-profile.yml"
