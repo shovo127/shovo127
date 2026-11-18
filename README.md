@@ -1,8 +1,10 @@
 <p align="center"><img src="./assets/hero/engineering-hero.svg" width="100%" alt="Engineering mindset, software building and practical technology with a precision mechanical rotor illustration" /></p>
 
 <h1 align="center">Mohammed Thuhidul Islam Shovo</h1>
-<p align="center"><strong>Engineering Mindset · Software Building · AI &amp; Automation · Practical Technology</strong></p>
+<p align="center"><strong>Engineering Mindset · Software Building · AI & Automation · Practical Technology</strong></p>
 <p align="center">Dhaka, Bangladesh · <a href="https://github.com/shovo127">GitHub</a> · <a href="https://lernedeutschmittechnologie.tech">Lerne Deutsch Mit Technologie</a></p>
+
+---
 
 <p align="center">
   <a href="#selected-projects">Projects</a> ·
@@ -12,8 +14,6 @@
   <a href="#public-repository-analytics">Analytics</a> ·
   <a href="#connect">Connect</a>
 </p>
-
----
 
 ## ENGINEERING PROFILE
 
