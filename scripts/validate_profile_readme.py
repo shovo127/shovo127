@@ -52,6 +52,9 @@ parser = References()
 parser.feed(readme)
 assert "<details>" not in readme.lower(), "Core game visuals/content must not be hidden inside collapsed details."
 assert readme.count("assets/game/quest-world.gif") == 1, "The animated quest world must be visible exactly once."
+assert "Static portfolio illustration" in readme, "Project artwork must be identified as illustrative."
+assert "Animated VisaFlowX mission artwork" not in readme, "Static project artwork must not be described as animated."
+assert "## 07 / CHARACTER FILE" in readme and "## 08 / SAVE POINT" in readme, "Character and save-point sections must be numbered consistently."
 assert not parser.remote_images, f"External image dependencies: {parser.remote_images}"
 targets = set(parser.images) | set(parser.links)
 targets.update(re.findall(r"!??\[[^\]]*\]\(([^)]+)\)", readme))
@@ -68,10 +71,21 @@ assert not missing, f"Broken or case-mismatched local references: {sorted(missin
 required_sections = [
     "## 01 / QUEST WORLD", "## 02 / MISSION SELECT", "## 03 / SKILL TREE",
     "## 04 / WORKSHOP LOADOUT", "## 05 / BOSS FIGHT",
-    "## 06 / AUTOMOTIVE GARAGE", "## 07 / SAVE POINT"
+    "## 06 / AUTOMOTIVE GARAGE", "## 07 / CHARACTER FILE", "## 08 / SAVE POINT"
 ]
 for section in required_sections:
     assert readme.count(section) == 1, f"Missing or duplicate game section: {section}"
+
+# Keep the rendered map in one-to-one agreement with the six project missions.
+renderer = (ROOT / "tools" / "render_rpg_profile.py").read_text(encoding="utf-8")
+map_labels = (
+    "BROWSER OUTPOST", "AI LAB", "ANDROID TOWER",
+    "SYSTEMS GATE", "SCANNER WORKSHOP", "PLAYLIST ARCHIVE",
+)
+for label in map_labels:
+    assert f'"{label}"' in renderer, f"Quest map is missing mission location: {label}"
+for obsolete in ("WINDOWS WORKSHOP", "AUTOMOTIVE GARAGE", "LEARNING CAMP"):
+    assert obsolete not in renderer, f"Obsolete quest-map location remains: {obsolete}"
 for stale in (
     "PUBLIC REPOSITORY ANALYTICS", "PROGRESS LOG / VERIFIED MILESTONES",
     "FIELD GUIDE / FAQ", "TECHNICAL FOCUS /", "ENGINEERING PROFILE / PLAYER PROFILE",
@@ -99,6 +113,23 @@ for i in range(1, 7):
         im.verify()
 assert "planned" in readme.lower() and "does not host video streams" in readme.lower()
 assert "contact@lernedeutschmittechnologie.tech" in readme
+
+# Validate the real, standalone game rather than treating README artwork as gameplay.
+game_file = ROOT / "game" / "index.html"
+assert game_file.is_file(), "Playable RPG entry point is missing."
+game_html = game_file.read_text(encoding="utf-8")
+for feature in (
+    '<canvas id="world"', 'id="questList"', 'id="xpBar"',
+    "requestAnimationFrame(tick)", "localStorage.setItem('shovo-system-quest'",
+    "sourceVisited", "bossDefeated", "data-dir=", "keydown", 'class="repo-link"',
+):
+    assert feature in game_html, f"Playable RPG feature is missing: {feature}"
+for project_url in projects.values():
+    assert project_url in game_html, f"Game mission is missing its real source link: {project_url}"
+assert "PLAY THE RPG — ENTER THE SYSTEMS FRONTIER" in readme, "README must prominently link to the playable game."
+assert "https://shovo127.github.io/shovo127/" in readme, "README game link must target the GitHub Pages site."
+assert "Windows architecture, automotive garage and learning camp" not in readme, "Quest-map alt text must match the six current locations."
+assert '<a id="repoLink" class="repo-link"' in game_html, "Mission source action must be a semantic link."
 
 required_game = {
     "assets/game/quest-world.gif": ("GIF", (1200, 520)),
