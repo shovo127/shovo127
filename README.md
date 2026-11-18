@@ -1,7 +1,7 @@
 <p align="center"><img src="./assets/hero/engineering-hero.svg" width="100%" alt="Engineering mindset, software building and practical technology with a precision mechanical rotor illustration" /></p>
 
 <h1 align="center">Mohammed Thuhidul Islam Shovo</h1>
-<p align="center"><strong>Engineering Mindset · Software Building · AI &amp; Automation · Practical Technology</strong></p>
+<p align="center"><strong>Engineering Mindset · Software Building · AI & Automation · Practical Technology</strong></p>
 <p align="center">Dhaka, Bangladesh · <a href="https://github.com/shovo127">GitHub</a> · <a href="https://lernedeutschmittechnologie.tech">Lerne Deutsch Mit Technologie</a></p>
 
 ---
@@ -30,7 +30,7 @@
 
 </details>
 
-## PLAYER PROFILE / FIELD NOTES
+## ENGINEERING PROFILE / PLAYER PROFILE
 
 **PLAYER:** Mohammed Thuhidul Islam Shovo  
 **CLASS:** Automobile Engineering · Software Builder  
@@ -43,7 +43,8 @@ Diploma graduate in **Automobile Engineering** from Dhaka Polytechnic Institute.
 
 <p align="center"><img src="./assets/motion/signal-sweep.gif" width="560" alt="A blood-red scanning line crossing a dark technical grid." /></p>
 
-## <a name="quest-board"></a>🗺️ QUEST BOARD / SELECT A PROJECT
+<a name="quest-board"></a>
+## SELECTED PROJECTS / 🗺️ QUEST BOARD
 
 Six real repositories. Choose a quest to inspect its source, implementation and current scope. The animated artwork is an original visual interpretation of documented workflows—not a screenshot of a live application.
 
@@ -106,7 +107,8 @@ Six real repositories. Choose a quest to inspect its source, implementation and 
   </tr>
 </table>
 
-## <a name="skill-tree"></a>🌳 SKILL TREE / ENGINEERING PATHS
+<a name="skill-tree"></a>
+## TECHNICAL FOCUS / 🌳 SKILL TREE
 
 These are the areas explored through study and projects—not a claim of expert-level mastery in every branch.
 
@@ -185,7 +187,8 @@ Complex problems rarely yield to flashy claims. The goal is useful software—no
 
 </details>
 
-## <a name="training-ground"></a>📚 TRAINING GROUND / EDUCATION &amp; PRACTICE
+<a name="training-ground"></a>
+## EDUCATION & LEARNING / 📚 TRAINING GROUND
 
 <table>
   <tr>
@@ -204,7 +207,7 @@ Complex problems rarely yield to flashy claims. The goal is useful software—no
   </tr>
 </table>
 
-### Mechanical workshop / 3D study
+## AUTOMOTIVE ENGINEERING / 3D STUDY
 
 <img src="./assets/motion/piston-crankshaft-cycle.gif" width="100%" alt="Animated slider-crank study: piston reciprocates while the connecting rod pivots and crankshaft rotates." />
 
@@ -212,7 +215,7 @@ Complex problems rarely yield to flashy claims. The goal is useful software—no
 
 <img src="./assets/motion/education-path-live.gif" width="100%" alt="Education timeline with a continuous red scanning highlight; education details remain unchanged." />
 
-## 📊 FIELD RECORD / PUBLIC REPOSITORY SNAPSHOT
+## PUBLIC REPOSITORY ANALYTICS / 📊 FIELD RECORD
 
 <p><strong><sub>GITHUB PUBLIC DATA / SNAPSHOT 2026-11-07</sub></strong></p>
 <img src="./assets/motion/analytics-snapshot-live.gif" width="100%" alt="Dated repository chart with a moving red scan overlay; all displayed metrics remain static." />
@@ -260,7 +263,8 @@ Start with the quest board, open a repository, and check its README and source f
 
 </details>
 
-## <a name="save-point"></a>💾 SAVE POINT / CONNECT
+<a name="save-point"></a>
+## CONNECT / 💾 SAVE POINT
 
 <table>
   <tr>
@@ -278,6 +282,21 @@ Start with the quest board, open a repository, and check its README and source f
       <p><strong><sub>DIRECT CONTACT</sub></strong></p>
       <h3><a href="mailto:contact@lernedeutschmittechnologie.tech">Email</a></h3>
       <p><a href="mailto:contact@lernedeutschmittechnologie.tech">contact@lernedeutschmittechnologie.tech</a></p>
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width="50%" valign="top" align="center">
+      <img src="./assets/cards/footer-engineering.jpg" width="100%" alt="Black and blood-red engineering identity card." />
+      <p><strong>ENGINEERING · SOFTWARE · SYSTEMS</strong></p>
+      <p><sub>Practical tools, careful implementation.</sub></p>
+    </td>
+    <td width="50%" valign="top" align="center">
+      <img src="./assets/cards/footer-location.jpg" width="100%" alt="Black and blood-red independent creator location card." />
+      <p><strong>DHAKA, BANGLADESH</strong></p>
+      <p><sub>Designed and maintained independently.</sub></p>
     </td>
   </tr>
 </table>
