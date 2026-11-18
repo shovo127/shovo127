@@ -89,8 +89,12 @@ projects = {
 for name, url in projects.items():
     assert name in readme and url in readme, f"Missing real project: {name}"
 for i in range(1, 7):
-    path = f"project-{i:02d}-scan.gif"
-    assert readme.count(path) == 1, f"Project animation must appear once: {path}"
+    path = f"assets/projects/{['visaflowx-interface.jpg','kostenlos-ai-workspace.jpg','noti-fixer-diagnostics.jpg','circle-search-native.jpg','smart-scanner-architecture.jpg','iptv-by-shovo.jpg'][i-1]}"
+    assert readme.count(path) == 1, f"Static project artwork must appear once: {path}"
+    image_path = ROOT / path
+    with Image.open(image_path) as im:
+        assert im.format == "JPEG" and im.size == (1200, 520), f"Wrong project art format or dimensions: {path}"
+        im.verify()
 assert "planned" in readme.lower() and "no video streams" in readme.lower()
 assert "contact@lernedeutschmittechnologie.tech" in readme
 
@@ -128,20 +132,12 @@ for rel in (ROOT / "assets").rglob("*.svg"):
             if key.rsplit("}", 1)[-1].lower() in {"href", "src"}:
                 assert not value.strip().startswith(("http://", "https://", "//"))
 
-for i in range(1, 7):
-    p = ROOT / "assets" / "motion" / f"project-{i:02d}-scan.gif"
-    assert p.is_file()
-    with Image.open(p) as im:
-        assert im.format == "GIF" and im.n_frames >= 12 and im.info.get("loop") == 0
-        assert im.size == (480, 208)
-        im.verify()
-
 asset_bytes = sum(p.stat().st_size for p in (ROOT / "assets").rglob("*") if p.is_file())
 assert asset_bytes <= TOTAL_ASSET_BUDGET, f"Asset budget exceeded: {asset_bytes:,}"
 print("PASS: approved hero and SVG blob lock preserved.")
 print(f"PASS: {len(parser.images)} local image references resolve; no remote image dependencies.")
 print(f"PASS: {len(parser.links)} links inspected; all local targets resolve.")
 print("PASS: stale analytics, old focus cards, duplicated FAQ and layered portfolio sections are absent.")
-print("PASS: six real projects and six existing project animations remain exactly once.")
+print("PASS: six real projects use six optimized static artwork panels; no looping project-card GIFs remain.")
 print("PASS: six original game assets exist; the quest map is an animated looping GIF.")
 print("PASS: SVG safety, image dimensions, GIF timing and total asset budget verified.")

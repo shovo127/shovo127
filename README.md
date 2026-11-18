@@ -43,7 +43,7 @@ Six projects. Each card is a mission briefing; open the repository to inspect im
   <tr>
     <td width="50%" valign="top">
       <a name="mission-01"></a>
-      <a href="https://github.com/shovo127/visaflowx-universal"><img src="./assets/motion/project-01-scan.gif" width="100%" alt="Animated VisaFlowX mission artwork showing a browser automation control panel." /></a>
+      <a href="https://github.com/shovo127/visaflowx-universal"><img src="./assets/projects/visaflowx-interface.jpg" width="100%" alt="Animated VisaFlowX mission artwork showing a browser automation control panel." /></a>
       <p><strong>MISSION 01 / BROWSER OUTPOST</strong></p>
       <h3><a href="https://github.com/shovo127/visaflowx-universal">VisaFlowX Universal</a></h3>
       <p>Profile-driven Manifest V3 browser workflow assistant with DOM monitoring, configurable rules, retries, scheduling and notifications. Protected verification remains user-controlled; no CAPTCHA or anti-bot bypass.</p>
@@ -52,7 +52,7 @@ Six projects. Each card is a mission briefing; open the repository to inspect im
     </td>
     <td width="50%" valign="top">
       <a name="mission-02"></a>
-      <a href="https://github.com/shovo127/kostenlos-ai"><img src="./assets/motion/project-02-scan.gif" width="100%" alt="Animated Kostenlos AI mission artwork showing a multi-provider AI chat workspace." /></a>
+      <a href="https://github.com/shovo127/kostenlos-ai"><img src="./assets/projects/kostenlos-ai-workspace.jpg" width="100%" alt="Animated Kostenlos AI mission artwork showing a multi-provider AI chat workspace." /></a>
       <p><strong>MISSION 02 / AI LAB</strong></p>
       <h3><a href="https://github.com/shovo127/kostenlos-ai">Kostenlos AI</a></h3>
       <p>Bring-your-own-key AI chat application. Appwrite stores user-managed provider keys; the chat function supports failover across Groq, Gemini, OpenAI and Mistral, with optional Tavily search context.</p>
@@ -63,7 +63,7 @@ Six projects. Each card is a mission briefing; open the repository to inspect im
   <tr>
     <td width="50%" valign="top">
       <a name="mission-03"></a>
-      <a href="https://github.com/shovo127/Noti-Fixer-for-Chinese-Devices"><img src="./assets/motion/project-03-scan.gif" width="100%" alt="Animated Noti-Fixer mission artwork showing Android diagnostics and ADB pairing." /></a>
+      <a href="https://github.com/shovo127/Noti-Fixer-for-Chinese-Devices"><img src="./assets/projects/noti-fixer-diagnostics.jpg" width="100%" alt="Animated Noti-Fixer mission artwork showing Android diagnostics and ADB pairing." /></a>
       <p><strong>MISSION 03 / ANDROID TOWER</strong></p>
       <h3><a href="https://github.com/shovo127/Noti-Fixer-for-Chinese-Devices">Noti-Fixer for Chinese Devices</a></h3>
       <p>Python and ADB toolkit for wireless pairing, notification/background diagnostics and reversible settings on selected Android ROMs. Findings are reviewed and changes require user approval.</p>
@@ -72,7 +72,7 @@ Six projects. Each card is a mission briefing; open the repository to inspect im
     </td>
     <td width="50%" valign="top">
       <a name="mission-04"></a>
-      <a href="https://github.com/shovo127/Circle-to-Search-for-Xiaomi"><img src="./assets/motion/project-04-scan.gif" width="100%" alt="Animated Circle to Search for Xiaomi mission artwork showing a native Android gesture trigger." /></a>
+      <a href="https://github.com/shovo127/Circle-to-Search-for-Xiaomi"><img src="./assets/projects/circle-search-native.jpg" width="100%" alt="Animated Circle to Search for Xiaomi mission artwork showing a native Android gesture trigger." /></a>
       <p><strong>MISSION 04 / SYSTEMS GATE</strong></p>
       <h3><a href="https://github.com/shovo127/Circle-to-Search-for-Xiaomi">Circle to Search for Xiaomi</a></h3>
       <p>Minimal Android trigger for Google's native Circle to Search on supported Xiaomi/HyperOS configurations. A transparent activity invokes Android's Voice Interaction Manager. Google default-assistant and device-eligibility requirements apply.</p>
@@ -83,7 +83,7 @@ Six projects. Each card is a mission briefing; open the repository to inspect im
   <tr>
     <td width="50%" valign="top">
       <a name="mission-05"></a>
-      <a href="https://github.com/shovo127/Smart-Scanner-Pro"><img src="./assets/motion/project-05-scan.gif" width="100%" alt="Animated Smart Scanner Pro mission artwork showing a Windows scanning architecture concept." /></a>
+      <a href="https://github.com/shovo127/Smart-Scanner-Pro"><img src="./assets/projects/smart-scanner-architecture.jpg" width="100%" alt="Animated Smart Scanner Pro mission artwork showing a Windows scanning architecture concept." /></a>
       <p><strong>MISSION 05 / SCANNER WORKSHOP</strong></p>
       <h3><a href="https://github.com/shovo127/Smart-Scanner-Pro">Smart Scanner Pro</a></h3>
       <p>Windows scanning architecture organised around C#/.NET and Clean Architecture boundaries. TWAIN/WIA/eSCL integration, OCR, image processing, PDF workflows and plugins are planned scope unless implemented in the repository.</p>
@@ -92,7 +92,7 @@ Six projects. Each card is a mission briefing; open the repository to inspect im
     </td>
     <td width="50%" valign="top">
       <a name="mission-06"></a>
-      <a href="https://github.com/shovo127/IPTV-By-Shovo"><img src="./assets/motion/project-06-scan.gif" width="100%" alt="Animated IPTV By Shovo mission artwork showing an M3U and M3U8 playlist archive." /></a>
+      <a href="https://github.com/shovo127/IPTV-By-Shovo"><img src="./assets/projects/iptv-by-shovo.jpg" width="100%" alt="Animated IPTV By Shovo mission artwork showing an M3U and M3U8 playlist archive." /></a>
       <p><strong>MISSION 06 / PLAYLIST ARCHIVE</strong></p>
       <h3><a href="https://github.com/shovo127/IPTV-By-Shovo">IPTV By Shovo</a></h3>
       <p>Public collection of third-party channel links and M3U/M3U8 playlists for compatible media players. This repository does not host video streams; source availability and rights remain with original providers.</p>
