@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#09090d">
+<meta name="description" content="Explore Shovo's engineering world, complete six project quests and challenge the final boss.">
+<title>SHOVO // SYSTEM QUEST</title>
+<style>
+:root{color-scheme:dark;--bg:#09090d;--panel:#111118;--panel2:#181820;--line:#39313a;--red:#ed3154;--red2:#8d1835;--gold:#f4c76b;--mint:#7de0b0;--text:#f4edf0;--muted:#a99da5}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:radial-gradient(ellipse at 50% -20%,#32111f 0,#100d13 42%,#08080c 100%);color:var(--text);font-family:ui-monospace,SFMono-Regular,Consolas,monospace}
+body{padding:18px}
+button,a{font:inherit}
+a{color:var(--gold)}
+button{cursor:pointer;color:var(--text);background:#25141c;border:1px solid #7e2940;padding:10px 14px;text-transform:uppercase;letter-spacing:.07em;font-weight:800}
+button:hover,button:focus-visible{background:#4b1a2b;border-color:var(--red);outline:2px solid #ed315466;outline-offset:2px}
+button:disabled{opacity:.45;cursor:not-allowed}
+.shell{max-width:1240px;margin:auto;border:1px solid #563040;background:#0c0b10;box-shadow:0 0 0 5px #09090d,0 22px 80px #000b}
+.topline{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line);background:#111017}
+.brand{font-weight:1000;letter-spacing:.13em;color:#fff}.brand b{color:var(--red)}
+.status{font-size:11px;color:var(--mint);letter-spacing:.12em}
+.hero{padding:18px 20px 14px;display:flex;justify-content:space-between;align-items:end;gap:20px}
+.kicker{font-size:10px;letter-spacing:.2em;color:var(--red);font-weight:900}
+h1{font-size:clamp(23px,4vw,38px);line-height:1.05;margin:7px 0 5px;letter-spacing:-.06em}
+.subtitle{color:var(--muted);font-size:12px;line-height:1.6;max-width:680px}
+.hero-actions{display:flex;gap:8px;flex-wrap:wrap}
+.hud{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:8px;padding:0 20px 14px}
+.hud-card{background:var(--panel);border:1px solid var(--line);padding:10px 12px;min-width:0}
+.hud-label{font-size:9px;color:var(--muted);letter-spacing:.15em}
+.hud-value{font-size:16px;font-weight:900;margin-top:5px}
+.bar{height:7px;background:#29242c;margin-top:8px;overflow:hidden}
+.bar span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--red2),var(--red));transition:width .25s}
+.world-wrap{position:relative;margin:0 20px;border:1px solid #55303c;background:#101b18;overflow:hidden}
+canvas{display:block;width:100%;height:min(62vw,590px);min-height:340px;image-rendering:pixelated;touch-action:none}
+.world-tag{position:absolute;top:12px;left:12px;padding:7px 10px;background:#09090ddc;border:1px solid #64404c;font-size:10px;letter-spacing:.1em;pointer-events:none}
+.world-coords{position:absolute;right:12px;top:12px;background:#09090ddc;padding:7px 10px;color:var(--gold);font-size:10px;pointer-events:none}
+.zone-panel{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:14px 20px 18px}
+.panel{background:var(--panel);border:1px solid var(--line);padding:13px}
+.panel h2{font-size:12px;letter-spacing:.14em;margin:0 0 10px;color:var(--gold)}
+.quest-list{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.quest{font-size:10px;text-align:left;padding:9px 8px;min-height:52px;line-height:1.4;background:#15131a;border-color:#3c303b}
+.quest.done{border-color:#286e54;color:var(--mint);background:#102018}
+.quest small{display:block;color:var(--muted);font-size:9px;margin-top:4px}
+.log{height:150px;overflow:auto;font-size:11px;line-height:1.65;color:#c9bdc5}
+.log p{margin:0 0 5px}.log time{color:var(--red);margin-right:7px}
+.controls{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:0 20px 16px;color:var(--muted);font-size:10px;flex-wrap:wrap}
+.key{display:inline-block;border:1px solid #5a4b55;background:#19161d;padding:3px 6px;color:#fff;margin:0 2px}
+.mobile-pad{display:none;gap:6px;grid-template-columns:repeat(3,42px);grid-template-rows:repeat(2,38px)}
+.mobile-pad button{padding:0;font-size:15px}
+.footer{border-top:1px solid var(--line);padding:12px 20px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;color:#827780;font-size:9px;letter-spacing:.1em}
+.overlay{position:fixed;inset:0;z-index:5;background:#050509df;display:grid;place-items:center;padding:18px}
+.dialog{width:min(540px,100%);background:#111017;border:1px solid #a02b49;box-shadow:0 0 0 5px #09090d,0 20px 80px #000;padding:24px}
+.dialog .kicker{margin-bottom:8px}.dialog h2{font-size:23px;margin:0 0 10px}.dialog p{color:#c2b6bf;font-size:13px;line-height:1.7}
+.dialog-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+.primary{background:var(--red);border-color:#ff8298;color:#16070c}.primary:hover{background:#ff5473}
+.hidden{display:none!important}
+@media(max-width:700px){body{padding:0}.shell{border-left:0;border-right:0}.hero{align-items:start;flex-direction:column}.hud{grid-template-columns:1fr 1fr 1fr;padding-left:10px;padding-right:10px}.hud-value{font-size:13px}.world-wrap{margin:0 10px}canvas{height:68vw;min-height:310px}.zone-panel{grid-template-columns:1fr;padding:10px}.controls{padding:0 10px 12px}.mobile-pad{display:grid}.footer{padding:12px 10px}.quest-list{grid-template-columns:repeat(2,1fr)}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="shell">
+  <header class="topline"><div class="brand">SHOVO <b>///</b> SYSTEM QUEST</div><div class="status" id="connection">● WORLD READY</div></header>
+  <section class="hero">
+    <div><div class="kicker">ENGINEERING RPG // PLAYER ONE</div><h1>THE SYSTEMS FRONTIER</h1><div class="subtitle">Explore the world, discover six real project missions, collect their data cores and unlock the final challenge. Every station leads to source code—not fictional project claims.</div></div>
+    <div class="hero-actions"><button class="primary" id="startBtn">▶ Start / Continue</button><button id="resetBtn">Reset Save</button></div>
+  </section>
+  <section class="hud" aria-label="Player status">
+    <div class="hud-card"><div class="hud-label">PLAYER / LEVEL</div><div class="hud-value"><span id="level">LV 01</span> · <span id="playerName">SHOVO</span></div><div class="bar"><span id="xpBar"></span></div></div>
+    <div class="hud-card"><div class="hud-label">EXPERIENCE</div><div class="hud-value" id="xp">000 XP</div><div class="hud-label" id="nextLevel">120 XP TO NEXT LEVEL</div></div>
+    <div class="hud-card"><div class="hud-label">DATA CORES</div><div class="hud-value" id="cores">0 / 6</div><div class="hud-label" id="bossStatus">FINAL GATE LOCKED</div></div>
+  </section>
+  <main>
+    <div class="world-wrap">
+      <canvas id="world" aria-label="Top-down game map. Move with WASD or arrow keys. Approach a marked station and press E to interact."></canvas>
+      <div class="world-tag">WORLD MAP // SECTOR 01</div><div class="world-coords" id="coords">X: 000 / Y: 000</div>
+    </div>
+    <section class="zone-panel">
+      <div class="panel"><h2>QUEST BOARD / SIX MISSIONS</h2><div class="quest-list" id="questList"></div></div>
+      <div class="panel"><h2>FIELD LOG / SYSTEM EVENTS</h2><div class="log" id="log" aria-live="polite"><p><time>BOOT</time>System online. Press Start / Continue to enter the frontier.</p></div></div>
+    </section>
+    <div class="controls">
+      <div><span class="key">W A S D</span> / <span class="key">↑ ↓ ← →</span> MOVE &nbsp; <span class="key">E</span> INTERACT &nbsp; <span class="key">ESC</span> CLOSE</div>
+      <div class="mobile-pad" aria-label="Touch movement controls"><button data-dir="up">▲</button><span></span><span></span><button data-dir="left">◀</button><button data-dir="down">▼</button><button data-dir="right">▶</button></div>
+    </div>
+  </main>
+  <footer class="footer"><span>SHOVO / INDEPENDENT BUILDER</span><span>NO TRACKERS · LOCAL SAVE · VANILLA HTML / CSS / JS</span><a href="https://github.com/shovo127/shovo127">SOURCE REPOSITORY ↗</a></footer>
+</div>
+<div class="overlay" id="welcome">
+  <div class="dialog"><div class="kicker">NEW GAME // SAVE DATA FOUND LOCALLY</div><h2>WELCOME TO THE FRONTIER</h2><p>You are entering a compact RPG built around Shovo's engineering portfolio. Walk between six stations, inspect each mission, complete its field objective and earn XP. Complete all six to open the Core Guardian arena.</p><p><b>Objective:</b> collect 6 data cores. <b>Controls:</b> WASD / arrows + E. Your progress stays in this browser.</p><div class="dialog-actions"><button class="primary" id="enterBtn">ENTER WORLD</button><button id="wipeBtn">NEW SAVE</button></div></div>
+</div>
+<div class="overlay hidden" id="missionDialog" role="dialog" aria-modal="true" aria-labelledby="dialogTitle">
+  <div class="dialog"><div class="kicker" id="dialogKicker">MISSION // DISCOVERY</div><h2 id="dialogTitle">MISSION NAME</h2><p id="dialogText"></p><p id="dialogObjective"></p><div class="dialog-actions"><a id="repoLink" href="#" target="_blank" rel="noopener noreferrer"><button>OPEN SOURCE REPOSITORY ↗</button></a><button class="primary" id="completeBtn">COMPLETE OBJECTIVE</button><button id="closeDialog">RETURN TO WORLD</button></div></div>
+</div>
+<div class="overlay hidden" id="bossDialog" role="dialog" aria-modal="true" aria-labelledby="bossTitle">
+  <div class="dialog"><div class="kicker">FINAL ENCOUNTER // ALL CORES ASSEMBLED</div><h2 id="bossTitle">THE COMPLEXITY CORE</h2><p id="bossText">The guardian represents the hardest part of engineering: turning an unclear problem into a verified system. Your six collected cores power the arena.</p><div class="bar"><span id="bossBar" style="width:0%"></span></div><p id="bossCount">Guardian integrity: 3 / 3</p><div class="dialog-actions"><button class="primary" id="strikeBtn">⚔ STRIKE THE CORE</button><button id="leaveBoss">RETREAT</button></div></div>
+</div>
+<div class="overlay hidden" id="victory" role="dialog" aria-modal="true">
+  <div class="dialog"><div class="kicker">QUEST CLEAR // SAVE POINT UPDATED</div><h2>FRONTIER CONQUERED</h2><p>All six data cores recovered. The final guardian is defeated. The real work continues in the linked repositories.</p><div class="dialog-actions"><a href="https://github.com/shovo127"><button class="primary">VIEW ALL BUILDS ↗</button></a><button id="victoryClose">BACK TO WORLD</button></div></div>
+</div>
+<script>
+(() => {
+'use strict';
+const missions = [
+ {id:'visa',name:'VisaFlowX Universal',zone:'BROWSER OUTPOST',short:'BROWSER AUTOMATION',x:330,y:310,color:'#e65b72',repo:'https://github.com/shovo127/visaflowx-universal',desc:'A profile-driven Manifest V3 browser workflow assistant with DOM monitoring, configurable rules, retries, scheduling and notifications. Protected verification remains user-controlled.',objective:'FIELD OBJECTIVE: Inspect the workflow architecture in the source repository. Then return here and secure the data core.'},
+ {id:'ai',name:'Kostenlos AI',zone:'AI LAB',short:'MULTI-PROVIDER AI',x:800,y:240,color:'#d78aff',repo:'https://github.com/shovo127/kostenlos-ai',desc:'A bring-your-own-key AI chat application. Its chat function supports provider failover across Groq, Gemini, OpenAI and Mistral, with optional search context.',objective:'FIELD OBJECTIVE: Discover how provider routing and failover are organised. Then secure the data core.'},
+ {id:'noti',name:'Noti-Fixer',zone:'ANDROID TOWER',short:'ANDROID DIAGNOSTICS',x:1290,y:320,color:'#70d7b2',repo:'https://github.com/shovo127/Noti-Fixer-for-Chinese-Devices',desc:'A Python and ADB toolkit for wireless pairing, notification/background diagnostics and reversible settings on selected Android ROMs. Changes require user approval.',objective:'FIELD OBJECTIVE: Inspect the diagnostic flow and user-approved actions. Then secure the data core.'},
+ {id:'circle',name:'Circle to Search',zone:'SYSTEMS GATE',short:'NATIVE ANDROID',x:1770,y:480,color:'#f1c66d',repo:'https://github.com/shovo127/Circle-to-Search-for-Xiaomi',desc:'A minimal Android trigger for Google’s native Circle to Search on supported Xiaomi/HyperOS configurations, using Android’s Voice Interaction Manager.',objective:'FIELD OBJECTIVE: Review the native Android integration and device requirements. Then secure the data core.'},
+ {id:'scanner',name:'Smart Scanner Pro',zone:'SCANNER WORKSHOP',short:'DESKTOP ARCHITECTURE',x:1430,y:970,color:'#70b8ef',repo:'https://github.com/shovo127/Smart-Scanner-Pro',desc:'A Windows scanning architecture organised around C#/.NET and Clean Architecture boundaries. Scanner integrations, OCR and PDF workflows remain planned where not implemented.',objective:'FIELD OBJECTIVE: Examine the current architecture and distinguish implemented work from planned scope. Then secure the data core.'},
+ {id:'iptv',name:'IPTV By Shovo',zone:'PLAYLIST ARCHIVE',short:'M3U / M3U8',x:560,y:1000,color:'#f39b62',repo:'https://github.com/shovo127/IPTV-By-Shovo',desc:'A public collection of third-party channel links and M3U/M3U8 playlists for compatible media players. The repository does not host video streams.',objective:'FIELD OBJECTIVE: Inspect the playlist structure and source attribution. Then secure the data core.'}
+];
+const world=document.getElementById('world'),ctx=world.getContext('2d'),logEl=document.getElementById('log');
+const W=2200,H=1450,player={x:1090,y:700,speed:3.5,dir:0},keys=new Set(),completed=new Set();
+let xp=0,started=false,activeMission=null,bossHits=0,bossDefeated=false,lastTime=0,cam={x:0,y:0},dpr=1,viewW=960,viewH=560;
+const $=id=>document.getElementById(id);
+function save(){try{localStorage.setItem('shovo-system-quest',JSON.stringify({xp,completed:[...completed],bossDefeated}));}catch(e){}}
+function load(){try{const s=JSON.parse(localStorage.getItem('shovo-system-quest')||'{}');xp=Number.isFinite(s.xp)?s.xp:0;(s.completed||[]).forEach(id=>{if(missions.some(m=>m.id===id))completed.add(id)});bossDefeated=!!s.bossDefeated;}catch(e){}}
+function say(message){const p=document.createElement('p'),t=document.createElement('time');t.textContent='LOG';p.append(t,document.createTextNode(message));logEl.prepend(p);while(logEl.children.length>30)logEl.lastChild.remove();}
+function updateHud(){const level=Math.floor(xp/240)+1,progress=(xp%240)/240*100;$('level').textContent='LV '+String(level).padStart(2,'0');$('xp').textContent=String(xp).padStart(3,'0')+' XP';$('xpBar').style.width=progress+'%';$('nextLevel').textContent=(240-(xp%240))+' XP TO NEXT LEVEL';$('cores').textContent=completed.size+' / 6';$('bossStatus').textContent=bossDefeated?'GUARDIAN DEFEATED':completed.size===6?'FINAL GATE OPEN':'FINAL GATE LOCKED';$('questList').innerHTML='';missions.forEach((m,i)=>{const b=document.createElement('button');b.className='quest'+(completed.has(m.id)?' done':'');b.innerHTML=(completed.has(m.id)?'✓ ':'['+(i+1)+'] ')+m.zone+'<small>'+(completed.has(m.id)?'CORE SECURED':m.short)+'</small>';b.addEventListener('click',()=>{if(!started)enter();openMission(m)});$('questList').append(b)});}
+function resize(){const r=world.getBoundingClientRect();dpr=Math.min(devicePixelRatio||1,2);viewW=r.width;viewH=r.height;world.width=Math.round(viewW*dpr);world.height=Math.round(viewH*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);}
+function rect(x,y,w,h,c){ctx.fillStyle=c;ctx.fillRect(x,y,w,h)}
+function pathLine(){ctx.save();ctx.strokeStyle='#9a79534c';ctx.lineWidth=58;ctx.lineCap='round';ctx.setLineDash([]);ctx.beginPath();ctx.moveTo(1090,700);ctx.bezierCurveTo(700,560,450,540,330,310);ctx.moveTo(1090,700);ctx.bezierCurveTo(920,460,840,370,800,240);ctx.moveTo(1090,700);ctx.bezierCurveTo(1170,520,1220,420,1290,320);ctx.moveTo(1090,700);ctx.bezierCurveTo(1410,650,1600,560,1770,480);ctx.moveTo(1090,700);ctx.bezierCurveTo(1230,850,1350,900,1430,970);ctx.moveTo(1090,700);ctx.bezierCurveTo(850,830,680,910,560,1000);ctx.stroke();ctx.strokeStyle='#e6c58b28';ctx.lineWidth=3;ctx.setLineDash([14,18]);ctx.stroke();ctx.restore();}
+function drawTree(x,y,s=1){rect(x-9*s,y-2*s,18*s,25*s,'#483329');rect(x-22*s,y-28*s,44*s,30*s,'#183e32');rect(x-16*s,y-40*s,32*s,20*s,'#24533d');rect(x-8*s,y-48*s,16*s,14*s,'#2d6949');rect(x-15*s,y-25*s,8*s,7*s,'#3b7950');}
+function drawBuilding(m,index){const x=m.x,y=m.y,done=completed.has(m.id);ctx.save();ctx.translate(x,y);ctx.fillStyle=m.color+'33';ctx.beginPath();ctx.arc(0,0,78,0,Math.PI*2);ctx.fill();ctx.strokeStyle=done?'#7de0b0':m.color;ctx.lineWidth=4;ctx.beginPath();ctx.arc(0,0,62,0,Math.PI*2);ctx.stroke();rect(-38,-26,76,54,'#1b1820');rect(-30,-48,60,23,'#332331');rect(-25,-18,50,39,'#5a3340');rect(-17,-9,13,17,'#f5c66c');rect(5,-9,13,17,'#f5c66c');rect(-8,8,16,18,'#17141a');rect(-44,24,88,8,'#100e13');rect(-40,31,80,7,done?'#286e54':m.color);ctx.fillStyle='#fff';ctx.font='bold 12px monospace';ctx.textAlign='center';ctx.fillText(done?'CORE SECURED':'QUEST '+String(index+1).padStart(2,'0'),0,-60);ctx.font='bold 13px monospace';ctx.fillStyle='#f6eaf0';ctx.fillText(m.zone,0,91);ctx.font='10px monospace';ctx.fillStyle='#c6b5bf';ctx.fillText(m.short,0,106);ctx.restore();}
+function drawPlayer(){const x=player.x,y=player.y;ctx.save();ctx.translate(x,y);rect(-12,-3,24,19,'#08080c');rect(-10,-19,20,21,'#c52a4c');rect(-9,-32,18,15,'#d7a58c');rect(-10,-35,20,7,'#26212a');rect(-7,-25,4,4,'#101018');rect(4,-25,4,4,'#101018');rect(-13,0,9,15,'#30313a');rect(4,0,9,15,'#30313a');rect(-12,12,9,5,'#e9c66e');rect(4,12,9,5,'#e9c66e');ctx.restore();}
+function draw(){ctx.clearRect(0,0,viewW,viewH);cam.x=Math.max(0,Math.min(W-viewW,player.x-viewW/2));cam.y=Math.max(0,Math.min(H-viewH,player.y-viewH/2));ctx.save();ctx.translate(-cam.x,-cam.y);
+rect(0,0,W,H,'#193a2d');for(let y=0;y<H;y+=48)for(let x=0;x<W;x+=48){if(((x/48+y/48)%3)===0)rect(x+5,y+7,3,3,'#28513a');}
+ctx.fillStyle='#173c54';ctx.beginPath();ctx.ellipse(1900,1180,230,125,-.3,0,Math.PI*2);ctx.fill();ctx.fillStyle='#24536a';ctx.beginPath();ctx.ellipse(1900,1180,180,80,-.3,0,Math.PI*2);ctx.fill();
+pathLine();for(let i=0;i<44;i++){const x=(i*173+71)%W,y=(i*257+93)%H;if(!missions.some(m=>Math.hypot(m.x-x,m.y-y)<100))drawTree(x,y,.7+(i%4)*.12);}
+missions.forEach((m,i)=>drawBuilding(m,i));
+ctx.strokeStyle='#ed3154';ctx.lineWidth=3;ctx.beginPath();ctx.arc(1090,700,92,0,Math.PI*2);ctx.stroke();ctx.fillStyle='#ed315422';ctx.fill();ctx.fillStyle='#f4c76b';ctx.font='bold 13px monospace';ctx.textAlign='center';ctx.fillText(completed.size===6?'FINAL GATE / OPEN':'CENTRAL HUB',1090,570);
+if(completed.size===6&&!bossDefeated){ctx.strokeStyle='#f4c76b';ctx.lineWidth=4;ctx.beginPath();ctx.arc(1090,700,118,0,Math.PI*2);ctx.stroke();}
+drawPlayer();ctx.restore();
+const near=nearest();if(near){ctx.fillStyle='#08080de8';ctx.fillRect(12,viewH-42,Math.min(viewW-24,390),30);ctx.fillStyle='#f4c76b';ctx.font='bold 11px monospace';ctx.textAlign='left';ctx.fillText('E  INTERACT  /  '+near.zone,22,viewH-22);}
+$('coords').textContent='X: '+String(Math.round(player.x)).padStart(4,'0')+' / Y: '+String(Math.round(player.y)).padStart(4,'0');
+}
+function nearest(){let best=null,dist=Infinity;missions.forEach(m=>{const d=Math.hypot(player.x-m.x,player.y-m.y);if(d<dist){dist=d;best=m}});const bossDist=Math.hypot(player.x-1090,player.y-700);if(completed.size===6&&!bossDefeated&&bossDist<dist){return bossDist<110?{boss:true,zone:'CORE GUARDIAN'}:null;}return dist<105?best:null;}
+function enter(){started=true;$('welcome').classList.add('hidden');say('Player entered the Systems Frontier. Explore the marked stations.');$('connection').textContent='● PLAYER ACTIVE';}
+function openMission(m){if(completed.has(m.id)){say(m.name+' core already secured.');return;}activeMission=m;$('dialogKicker').textContent='MISSION '+String(missions.indexOf(m)+1).padStart(2,'0')+' // '+m.zone;$('dialogTitle').textContent=m.name;$('dialogText').textContent=m.desc;$('dialogObjective').textContent=m.objective;$('repoLink').href=m.repo;$('completeBtn').disabled=false;$('missionDialog').classList.remove('hidden');}
+function openBoss(){if(bossDefeated){return;}bossHits=0;$('bossCount').textContent='Guardian integrity: 3 / 3';$('bossBar').style.width='0%';$('bossDialog').classList.remove('hidden');}
+function interact(){if(!started)return;const n=nearest();if(!n){say('No station in range. Follow the illuminated route.');return;}if(n.boss){openBoss();return;}openMission(n);}
+function closeDialogs(){$('missionDialog').classList.add('hidden');$('bossDialog').classList.add('hidden');}
+$('enterBtn').addEventListener('click',enter);$('startBtn').addEventListener('click',enter);$('closeDialog').addEventListener('click',closeDialogs);$('leaveBoss').addEventListener('click',closeDialogs);
+$('completeBtn').addEventListener('click',()=>{if(!activeMission)return;completed.add(activeMission.id);xp+=120;save();say('MISSION CLEAR: '+activeMission.name+' / +120 XP / DATA CORE SECURED.');activeMission=null;closeDialogs();updateHud();if(completed.size===6)say('ALL SIX CORES ASSEMBLED. Return to the central hub to challenge the guardian.');});
+$('strikeBtn').addEventListener('click',()=>{bossHits++;$('bossBar').style.width=(bossHits/3*100)+'%';$('bossCount').textContent='Guardian integrity: '+(3-bossHits)+' / 3';if(bossHits>=3){bossDefeated=true;xp+=240;save();updateHud();$('bossDialog').classList.add('hidden');$('victory').classList.remove('hidden');say('CORE GUARDIAN DEFEATED. +240 XP. FRONTIER CONQUERED.');}});
+$('victoryClose').addEventListener('click',()=>$('victory').classList.add('hidden'));
+$('resetBtn').addEventListener('click',()=>{if(!confirm('Erase this browser save and restart the game?'))return;xp=0;completed.clear();bossDefeated=false;player.x=1090;player.y=700;save();updateHud();say('Save data reset. A new run begins.');});
+$('wipeBtn').addEventListener('click',()=>{$('resetBtn').click();enter();});
+window.addEventListener('keydown',e=>{const k=e.key.toLowerCase();if(['arrowup','arrowdown','arrowleft','arrowright',' '].includes(k))e.preventDefault();if(k==='escape'){closeDialogs();$('victory').classList.add('hidden');return;}if(k==='e'||k===' '){interact();return;}if(['w','a','s','d','arrowup','arrowdown','arrowleft','arrowright'].includes(k))keys.add(k);});
+window.addEventListener('keyup',e=>keys.delete(e.key.toLowerCase()));window.addEventListener('blur',()=>keys.clear());
+document.querySelectorAll('[data-dir]').forEach(b=>{const d=b.dataset.dir,map={up:'arrowup',down:'arrowdown',left:'arrowleft',right:'arrowright'};const down=e=>{e.preventDefault();keys.add(map[d])},up=e=>{e.preventDefault();keys.delete(map[d])};b.addEventListener('pointerdown',down);b.addEventListener('pointerup',up);b.addEventListener('pointerleave',up);b.addEventListener('pointercancel',up);});
+function tick(t){const dt=Math.min(32,t-lastTime||16)/16;lastTime=t;if(started&&$('missionDialog').classList.contains('hidden')&&$('bossDialog').classList.contains('hidden')&&$('victory').classList.contains('hidden')){let dx=0,dy=0;if(keys.has('w')||keys.has('arrowup'))dy--;if(keys.has('s')||keys.has('arrowdown'))dy++;if(keys.has('a')||keys.has('arrowleft'))dx--;if(keys.has('d')||keys.has('arrowright'))dx++;if(dx&&dy){dx*=.707;dy*=.707;}player.x=Math.max(35,Math.min(W-35,player.x+dx*player.speed*dt));player.y=Math.max(35,Math.min(H-35,player.y+dy*player.speed*dt));}draw();requestAnimationFrame(tick);}
+load();resize();window.addEventListener('resize',resize);updateHud();requestAnimationFrame(tick);
+})();
+</script>
+</body>
+</html>
