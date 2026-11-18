@@ -97,7 +97,7 @@ for i in range(1, 7):
     with Image.open(image_path) as im:
         assert im.format == "JPEG" and im.size == (1200, 520), f"Wrong project art format or dimensions: {path}"
         im.verify()
-assert "planned" in readme.lower() and "no video streams" in readme.lower()
+assert "planned" in readme.lower() and "does not host video streams" in readme.lower()
 assert "contact@lernedeutschmittechnologie.tech" in readme
 
 required_game = {
