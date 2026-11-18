@@ -84,10 +84,10 @@ def world_base():
     for x,y in route: d.ellipse((x-7,y-7,x+7,y+7),fill=(255,74,97),outline=(255,180,188),width=2)
     draw_building(d,160,210,"BROWSER OUTPOST","01 / AUTOMATION","screen")
     draw_building(d,340,185,"AI LAB","02 / INTELLIGENCE","screen")
-    draw_building(d,510,225,"ANDROID TOWER","03 / SYSTEMS","tower")
-    draw_building(d,690,185,"WINDOWS WORKSHOP","04 / ARCHITECTURE","gear")
-    draw_building(d,870,225,"AUTOMOTIVE GARAGE","05 / MECHANICAL","garage")
-    draw_building(d,1040,185,"LEARNING CAMP","06 / STUDY","book")
+    draw_building(d,510,225,"ANDROID TOWER","03 / DIAGNOSTICS","tower")
+    draw_building(d,690,185,"SYSTEMS GATE","04 / NATIVE ANDROID","gear")
+    draw_building(d,870,225,"SCANNER WORKSHOP","05 / DESKTOP","garage")
+    draw_building(d,1040,185,"PLAYLIST ARCHIVE","06 / M3U / M3U8","book")
     d.ellipse((548,390,652,494),fill=(30,12,22),outline=(157,31,56),width=3)
     d.rounded_rectangle((582,414,618,463),radius=7,fill=(28,28,34),outline=HOT,width=3)
     d.ellipse((586,390,614,420),fill=(202,147,138),outline=(250,192,186),width=2)
@@ -101,7 +101,7 @@ def world_base():
     label(d,(914,57),"QUEST LOG  /  OPEN",12,HOT,True)
     panel(d,(26,465,1174,505),fill=(8,9,14),outline=(91,30,48),radius=8)
     label(d,(48,478),"MISSION ROUTE",10,MUTED)
-    label(d,(210,478),"AUTOMATION  →  AI  →  ANDROID  →  SYSTEMS  →  GARAGE  →  STUDY",10,PALE)
+    label(d,(210,478),"AUTOMATION  →  AI  →  DIAGNOSTICS  →  NATIVE ANDROID  →  SCANNER  →  PLAYLIST",10,PALE)
     return im
 
 def render_world():
