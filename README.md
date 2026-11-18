@@ -15,7 +15,20 @@
   <a href="#save-point">💾 Save Point</a>
 </p>
 
-<p align="center"><img src="./assets/game/world-map.svg" width="100%" alt="Pixel-art inspired engineering frontier with a workshop, mechanical gear, central campfire and glowing computer workstation." /></p>
+<details>
+<summary><img src="./assets/game/world-map.svg" width="100%" alt="Game-inspired engineering frontier with a workshop, mechanical gear, campfire and glowing computer station. Expand to open the campfire menu." /></summary>
+<br />
+
+**CAMPFIRE MENU / CHOOSE YOUR ROUTE**
+
+- 🗺️ **Start a quest:** jump to the [project board](#quest-board).
+- 🌳 **Study the skill tree:** explore the [engineering paths](#skill-tree).
+- 🎒 **Check the inventory:** open the [workshop inventory](#loot-room).
+- ⚙️ **Enter the arena:** read the [engineering challenge](#boss-arena).
+- 📚 **Visit the training ground:** see [education and practice](#training-ground).
+- 💾 **Save your progress:** [connect](#save-point).
+
+</details>
 
 ## PLAYER PROFILE / FIELD NOTES
 
@@ -26,7 +39,9 @@
 
 Diploma graduate in **Automobile Engineering** from Dhaka Polytechnic Institute. My projects explore browser automation, multi-provider AI, Android diagnostics, desktop architecture and learning technology. I approach each build by understanding the system, defining its boundaries and checking what actually works.
 
-<sub>Not a game account: the RPG theme is a visual way to organise real projects, learning and engineering interests. No fictional XP, rankings or achievements are used.</sub>
+<sub>The RPG presentation is a creative interface for real projects and learning. It does not represent a game account, fictional XP, rankings or invented achievements.</sub>
+
+<p align="center"><img src="./assets/motion/signal-sweep.gif" width="560" alt="A blood-red scanning line crossing a dark technical grid." /></p>
 
 ## <a name="quest-board"></a>🗺️ QUEST BOARD / SELECT A PROJECT
 
@@ -136,6 +151,8 @@ These are the areas explored through study and projects—not a claim of expert-
   </tr>
 </table>
 
+<p align="center"><img src="./assets/motion/focus-pulse.gif" width="560" alt="A restrained red pulse marking the skill-tree transition." /></p>
+
 ## <a name="loot-room"></a>🎒 LOOT ROOM / WORKSHOP INVENTORY
 
 <p align="center"><img src="./assets/game/loot-room.svg" width="100%" alt="Game-style inventory of technologies used across the selected projects." /></p>
@@ -153,9 +170,20 @@ These are the areas explored through study and projects—not a claim of expert-
 
 ## <a name="boss-arena"></a>⚙️ BOSS ARENA / THE REAL CHALLENGE
 
-<p align="center"><img src="./assets/game/boss-arena.svg" width="100%" alt="A mechanical boss representing real-world complexity, with a four-stage process: observe, model, build and verify." /></p>
+<details>
+<summary><img src="./assets/game/boss-arena.svg" width="100%" alt="A mechanical boss representing real-world complexity. Expand the arena to see the four-stage challenge." /></summary>
+<br />
 
-Complex problems rarely yield to flashy claims. My approach is to understand requirements, map system boundaries, implement focused changes and verify actual behaviour. The goal is useful software—not a decorative demo that pretends to be production-ready.
+**BOSS MECHANIC / DEFEAT COMPLEXITY WITH A PROCESS**
+
+1. **Observe** — understand the actual requirement and user behaviour.
+2. **Model** — map architecture, dependencies and failure boundaries.
+3. **Build** — implement a focused, maintainable solution.
+4. **Verify** — test the behaviour and check for regressions.
+
+Complex problems rarely yield to flashy claims. The goal is useful software—not a decorative demo that pretends to be production-ready.
+
+</details>
 
 ## <a name="training-ground"></a>📚 TRAINING GROUND / EDUCATION &amp; PRACTICE
 
@@ -190,6 +218,47 @@ Complex problems rarely yield to flashy claims. My approach is to understand req
 <img src="./assets/motion/analytics-snapshot-live.gif" width="100%" alt="Dated repository chart with a moving red scan overlay; all displayed metrics remain static." />
 
 <sub>Seven public project repositories · 13 stars · 4 forks. Language counts represent each repository's primary language, not code-byte share or personal proficiency. The snapshot excludes this profile repository and private repositories. Values are static, not live.</sub>
+
+## 🏅 PROGRESS LOG / VERIFIED MILESTONES
+
+<details>
+<summary><strong>Open the progress log</strong></summary>
+
+- **Completed:** Diploma in Automobile Engineering — Dhaka Polytechnic Institute.
+- **In progress:** TELC Deutsch B2 preparation.
+- **Ongoing practice:** browser automation, AI integrations, Android diagnostics, software architecture and mechanical visualisation through the repositories linked above.
+
+</details>
+
+## ❔ FIELD GUIDE / FAQ
+
+<details>
+<summary><strong>Are the project animations screenshots of working applications?</strong></summary>
+
+No. They are original visual interpretations of repository workflows. Open each linked repository for source code, implementation details and current status.
+
+</details>
+
+<details>
+<summary><strong>Are all features shown in Smart Scanner Pro already implemented?</strong></summary>
+
+No. The README explicitly distinguishes planned scanning integrations and workflows from features implemented in the repository.
+
+</details>
+
+<details>
+<summary><strong>Does the IPTV repository host video streams?</strong></summary>
+
+No. It maintains third-party playlist links and M3U/M3U8 data. It does not host video streams.
+
+</details>
+
+<details>
+<summary><strong>What is the best way to explore the work?</strong></summary>
+
+Start with the quest board, open a repository, and check its README and source files for the current implementation.
+
+</details>
 
 ## <a name="save-point"></a>💾 SAVE POINT / CONNECT
 
