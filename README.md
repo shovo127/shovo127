@@ -8,6 +8,7 @@
   <a href="#quest-world">WORLD MAP</a> ·
   <a href="#mission-select">MISSIONS</a> ·
   <a href="#skill-tree">SKILL TREE</a> ·
+  <a href="#loadout">LOADOUT</a> ·
   <a href="#boss-fight">BOSS FIGHT</a> ·
   <a href="#garage">GARAGE</a> ·
   <a href="#save-point">SAVE POINT</a>
@@ -115,8 +116,15 @@ These are fields I explore through diploma study, projects and ongoing practice�
 - **Learning technology:** multilingual learning experiences and German study resources.
 - **Mechanical visualisation:** parametric geometry, assembly studies and technical visualisation.
 
+<a name="loadout"></a>
+## 04 / WORKSHOP LOADOUT
+
+<p align="center"><img src="./assets/game/inventory.png" width="100%" alt="Game-style workshop inventory showing the technologies used in real repositories, including web, AI, Android, automation, desktop study and playlist formats." /></p>
+
+<sub>C#/.NET/WPF are associated with Smart Scanner Pro's architecture; integrations remain planned where they are not implemented.</sub>
+
 <a name="boss-fight"></a>
-## 04 / BOSS FIGHT — DEBUG THE SYSTEM
+## 05 / BOSS FIGHT — DEBUG THE SYSTEM
 
 <p align="center"><img src="./assets/game/boss-arena.png" width="100%" alt="Game boss battle interface showing a mechanical complexity engine and the four real engineering stages: observe, model, build and verify." /></p>
 
@@ -128,7 +136,7 @@ These are fields I explore through diploma study, projects and ongoing practice�
 4. **Verify:** test behaviour, inspect edge cases and check regressions.
 
 <a name="garage"></a>
-## 05 / AUTOMOTIVE GARAGE
+## 06 / AUTOMOTIVE GARAGE
 
 <p align="center"><img src="./assets/motion/piston-crankshaft-cycle.gif" width="100%" alt="Animated slider-crank mechanical study: piston reciprocates while the connecting rod pivots and crankshaft rotates." /></p>
 
@@ -140,7 +148,7 @@ A parametric piston–connecting rod–crankshaft mesh study connected to my Aut
 <p align="center"><img src="./assets/game/character-sheet.png" width="100%" alt="Engineering character dossier showing automobile engineering diploma graduate, software builder, Dhaka base and current TELC Deutsch B2 learning quest." /></p>
 
 <a name="save-point"></a>
-## 06 / SAVE POINT
+## 07 / SAVE POINT
 
 <p align="center"><img src="./assets/game/save-point.png" width="100%" alt="Crimson pixel-art save point terminal inviting visitors to explore repositories and connect." /></p>
 

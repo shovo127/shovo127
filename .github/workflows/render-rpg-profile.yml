@@ -1,0 +1,41 @@
+name: Render RPG profile artwork
+
+on:
+  push:
+    branches: [rebuild/actual-rpg-profile]
+    paths:
+      - "tools/render_rpg_profile.py"
+      - ".github/workflows/render-rpg-profile.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: rpg-profile-art
+  cancel-in-progress: true
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Install fonts and renderer dependency
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y fonts-dejavu-core
+          python -m pip install --disable-pip-version-check Pillow==11.3.0
+      - name: Render original game artwork
+        run: python tools/render_rpg_profile.py
+      - name: Commit generated artwork
+        run: |
+          git add assets/game/
+          if ! git diff --cached --quiet; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "Render original RPG profile artwork"
+            git push
+          fi
