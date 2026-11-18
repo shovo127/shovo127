@@ -127,7 +127,7 @@ for feature in (
 for project_url in projects.values():
     assert project_url in game_html, f"Game mission is missing its real source link: {project_url}"
 assert "PLAY THE RPG — ENTER THE SYSTEMS FRONTIER" in readme, "README must prominently link to the playable game."
-assert "https://shovo-system-quest.vercel.app/" in readme, "README game link must target the GitHub Pages site."
+assert "https://shovo-system-quest.vercel.app/" in readme, "README game link must target the Vercel production deployment."
 assert "Windows architecture, automotive garage and learning camp" not in readme, "Quest-map alt text must match the six current locations."
 assert '<a id="repoLink" class="repo-link"' in game_html, "Mission source action must be a semantic link."
 
