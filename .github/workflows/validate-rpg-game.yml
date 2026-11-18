@@ -1,0 +1,49 @@
+name: Validate RPG game
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "game/**"
+      - ".github/workflows/validate-rpg-game.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "game/**"
+      - "scripts/validate_profile_readme.py"
+      - ".github/workflows/validate-rpg-game.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Validate game entry point and controls
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          game = Path("game/index.html")
+          assert game.is_file(), "game/index.html is missing"
+          source = game.read_text(encoding="utf-8")
+          required = (
+              '<canvas id="world"', 'id="questList"', 'id="xpBar"',
+              "requestAnimationFrame(tick)", "sourceVisited",
+              "bossDefeated", "localStorage.setItem('shovo-system-quest'",
+              "data-dir=", "keydown"
+          )
+          missing = [item for item in required if item not in source]
+          assert not missing, f"Missing game features: {missing}"
+          assert source.count("<script>") == 1 and source.count("</script>") == 1
+          match = re.search(r"<script>(.*?)</script>", source, re.S)
+          assert match, "Inline game script is missing"
+          Path("/tmp/shovo-system-quest.js").write_text(match.group(1), encoding="utf-8")
+          print("PASS: standalone RPG entry point and interactive game systems found.")
+          PY
+      - name: Check JavaScript syntax
+        run: node --check /tmp/shovo-system-quest.js
