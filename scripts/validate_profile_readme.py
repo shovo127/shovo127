@@ -50,6 +50,8 @@ assert hero_blob == APPROVED_HERO_BLOB, "Approved Hero SVG blob changed."
 
 parser = References()
 parser.feed(readme)
+assert "<details>" not in readme.lower(), "Core game visuals/content must not be hidden inside collapsed details."
+assert readme.count("assets/game/quest-world.gif") == 1, "The animated quest world must be visible exactly once."
 assert not parser.remote_images, f"External image dependencies: {parser.remote_images}"
 targets = set(parser.images) | set(parser.links)
 targets.update(re.findall(r"!??\[[^\]]*\]\(([^)]+)\)", readme))
