@@ -1,8 +1,17 @@
 <p align="center"><img src="./assets/hero/engineering-hero.svg" width="100%" alt="Engineering mindset, software building and practical technology with a precision mechanical rotor illustration" /></p>
 
 <h1 align="center">Mohammed Thuhidul Islam Shovo</h1>
-<p align="center"><strong>Engineering Mindset · Software Building · AI & Automation · Practical Technology</strong></p>
+<p align="center"><strong>Engineering Mindset · Software Building · AI &amp; Automation · Practical Technology</strong></p>
 <p align="center">Dhaka, Bangladesh · <a href="https://github.com/shovo127">GitHub</a> · <a href="https://lernedeutschmittechnologie.tech">Lerne Deutsch Mit Technologie</a></p>
+
+<p align="center">
+  <a href="#selected-projects">Projects</a> ·
+  <a href="#systems-at-a-glance">Systems</a> ·
+  <a href="#technical-focus">Technical Focus</a> ·
+  <a href="#education--learning">Education</a> ·
+  <a href="#public-repository-analytics">Analytics</a> ·
+  <a href="#connect">Connect</a>
+</p>
 
 ---
 
@@ -12,11 +21,15 @@ Diploma graduate in **Automobile Engineering** from Dhaka Polytechnic Institute,
 
 I approach engineering by understanding the system, defining safety boundaries, building useful tools and verifying actual behaviour. Current learning focus: **TELC Deutsch B2**.
 
-<p align="center"><img src="./assets/motion/signal-sweep.gif" width="560" alt="Blood-red signal sweep across a black technical grid." /></p>
+## SYSTEMS AT A GLANCE
+
+A map of the disciplines behind my projects. The connections represent a shared engineering approach—not a claim that every project uses every technology.
+
+<p align="center"><img src="./assets/diagrams/engineering-systems-map.svg" width="100%" alt="Engineering systems map connecting software engineering, AI and automation, Android systems, automotive engineering, learning technology and technical visualisation to a common engineering approach." /></p>
 
 ## SELECTED PROJECTS
 
-Six project studies. The animated artwork is a rendered visual interpretation of each repository's documented workflow, not a screenshot of a live application.
+Six selected project studies. Each visual is an original, rendered interpretation of the repository's documented workflow—not a screenshot of a live application. Project status and technical limitations are described in text.
 
 <table>
   <tr>
@@ -75,11 +88,15 @@ Six project studies. The animated artwork is a rendered visual interpretation of
   </tr>
 </table>
 
-<p align="center"><img src="./assets/motion/signal-sweep.gif" width="560" alt="Blood-red scanning line separating project work from technical disciplines." /></p>
+## HOW I APPROACH A BUILD
+
+A repeatable workflow keeps the work grounded in requirements and evidence—from the first investigation to regression checks.
+
+<p align="center"><img src="./assets/diagrams/engineering-build-loop.svg" width="100%" alt="Four-stage engineering workflow: observe requirements and user behaviour, model architecture and failure boundaries, build maintainable changes, and verify with tests and regression checks; then learn and repeat." /></p>
 
 ## TECHNICAL FOCUS
 
-Six distinct engineering disciplines, presented as separate visual cards.
+Six engineering disciplines. The visual cards are illustrations; the descriptions remain the source of truth.
 
 <table>
   <tr>
@@ -90,7 +107,7 @@ Six distinct engineering disciplines, presented as separate visual cards.
     </td>
     <td width="50%" valign="top">
       <img src="./assets/motion/focus-02-live.gif" width="100%" alt="Animated AI and Automation card with a restrained red scanning highlight." />
-      <h3>02 — AI & Automation</h3>
+      <h3>02 — AI &amp; Automation</h3>
       <p>Multi-provider integrations, routing, retries and user-controlled workflows.</p>
     </td>
   </tr>
@@ -119,8 +136,6 @@ Six distinct engineering disciplines, presented as separate visual cards.
     </td>
   </tr>
 </table>
-
-<p align="center"><img src="./assets/motion/focus-pulse.gif" width="560" alt="Subtle blood-red signal pulse representing the six technical focus areas." /></p>
 
 ## AUTOMOTIVE ENGINEERING / 3D STUDY
 
@@ -151,19 +166,10 @@ Six distinct engineering disciplines, presented as separate visual cards.
 
 ## PUBLIC REPOSITORY ANALYTICS
 
-<table>
-  <tr>
-    <td width="100%" valign="top">
-      <p><strong><sub>GITHUB PUBLIC DATA / SNAPSHOT 2026-11-07</sub></strong></p>
-      <img src="./assets/motion/analytics-snapshot-live.gif" width="100%" alt="Dated repository chart with a moving red scan overlay; all displayed metrics remain static." />
-      <p><sub>Seven public project repositories · 13 stars · 4 forks. Language counts represent each repository's primary language, not code-byte share or personal proficiency. The snapshot excludes this profile repository and private repositories. Values are static, not live.</sub></p>
-    </td>
-  </tr>
-</table>
+<p><strong><sub>GITHUB PUBLIC DATA / SNAPSHOT 2026-11-07</sub></strong></p>
+<img src="./assets/motion/analytics-snapshot-live.gif" width="100%" alt="Dated repository chart with a moving red scan overlay; all displayed metrics remain static." />
 
-<p align="center"><img src="./assets/motion/analytics-trace.gif" width="560" alt="Animated red chart trace; underlying repository snapshot values remain static." /></p>
-
----
+<sub>Seven public project repositories · 13 stars · 4 forks. Language counts represent each repository's primary language, not code-byte share or personal proficiency. The snapshot excludes this profile repository and private repositories. Values are static, not live.</sub>
 
 ## CONNECT
 
@@ -187,7 +193,6 @@ Six distinct engineering disciplines, presented as separate visual cards.
   </tr>
 </table>
 
-<p align="center"><img src="./assets/motion/signal-sweep.gif" width="560" alt="Blood-red signal sweep closing the engineering portfolio." /></p>
 <table>
   <tr>
     <td width="50%" valign="top" align="center">
