@@ -16,20 +16,22 @@
   <a href="#save-point">SAVE POINT</a>
 </p>
 
+<p align="center"><a href="https://shovo127.github.io/shovo127/"><strong>▶ PLAY THE RPG — ENTER THE SYSTEMS FRONTIER</strong></a></p>
+
 ## PLAYER PROFILE / BUILD PHILOSOPHY
 
 I am an Automobile Engineering diploma graduate who builds practical software and studies how complex systems work—from browser workflows and AI applications to Android behaviour and mechanical assemblies.
 
 **My build loop:** understand the constraints → model the system → implement carefully → verify the result.
 
-The missions below link to real source repositories. Portfolio artwork is illustrative; the linked code is the source of truth for implementation and project status.
+The missions below link to real source repositories. Portfolio artwork is illustrative; the linked code is the source of truth for implementation and project status. The playable RPG is hosted separately so its movement, quests and save system work normally.
 
 ---
 
 <a name="quest-world"></a>
 ## 01 / QUEST WORLD
 
-<p align="center"><img src="./assets/game/quest-world.gif" width="100%" alt="Animated top-down pixel-art engineering world map with six illuminated quest zones: browser automation, AI lab, Android systems, Windows architecture, automotive garage and learning camp." /></p>
+<p align="center"><img src="./assets/game/quest-world.gif" width="100%" alt="Animated top-down pixel-art engineering world map with six quest zones: Browser Outpost, AI Lab, Android Tower, Systems Gate, Scanner Workshop and Playlist Archive." /></p>
 
 <p align="center"><strong>CHOOSE A REGION. ENTER A MISSION. EXPLORE THE REAL BUILD.</strong></p>
 
